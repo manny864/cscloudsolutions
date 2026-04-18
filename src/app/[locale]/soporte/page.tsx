@@ -4,10 +4,10 @@ import {Container} from '@/components/Container';
 import Image from 'next/image';
 import {ContactSection} from '@/components/ContactSection';
 
-export default async function SupportPage({{params}}: {{params: Promise<{locale: string}>}}) {{
-  const {{locale}} = await params;
+export default async function SupportPage({params}: {params: Promise<{locale: string}>}) {{
+  const {locale} = await params;
   setRequestLocale(locale);
-  const t = await getTranslations({{locale, namespace: 'pages.support'}});
+  const t = await getTranslations({locale, namespace: 'pages.support'}
 
   return (
     <>
