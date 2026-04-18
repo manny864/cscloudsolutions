@@ -1,1 +1,7 @@
-export {default} from './src/i18n';
+import {getRequestConfig} from 'next-intl/server';
+
+export default getRequestConfig(async ({requestLocale}) => {
+  const locale = (await requestLocale) ?? 'es';
+
+  return {
+    locale
