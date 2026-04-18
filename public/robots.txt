@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cscloudsolutions.com.ar/sitemap.xml
