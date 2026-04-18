@@ -6,12 +6,12 @@
   "nav": {
     "aria": "Navegación principal",
     "topbarEmail": "Email",
-    "topbarTagline": "Soluciones cloud para PyMEs argentinas",
+    "topbarTagline": "Soluciones cloud para PyMEs de LatinoAmerica y el Mundo",
     "home": "Inicio",
-    "about": "Nosotros",
     "m365": "Microsoft 365",
     "azure": "Azure",
     "security": "Seguridad",
+    "about": "Nosotros",
     "cta": "Auditoría Gratis ›"
   },
   "home": {
@@ -31,7 +31,7 @@
         "s3l": "Soporte y monitoreo"
       },
       "cardTitle": "Auditoría de seguridad express",
-      "cardSub": "En 30 minutos detectamos riesgos reales en tu Microsoft 365 y te dejamos un plan claro para resolverlos.",
+      "cardSub": "Detectamos riesgos reales en tu Microsoft 365 y te dejamos un plan claro para resolverlos.",
       "cardBullets": [
         "Autenticación multifactor y accesos",
         "Reenvíos de correo a externos",
@@ -101,21 +101,21 @@
       "items": [
         {
           "quote": "El cambio a Microsoft 365 fue ordenado y sin sorpresas. Hoy el equipo trabaja mejor y el soporte responde cuando importa.",
-          "name": "Juan Pérez",
-          "role": "Director de Operaciones — Global Logistics",
-          "initials": "JP"
+          "name": "Ernesto Bernal",
+          "role": "Director de Operaciones — Bernal Logistics",
+          "initials": "EB"
         },
         {
           "quote": "La auditoría nos abrió los ojos. Ajustamos accesos y políticas y ganamos tranquilidad sin volvernos burocráticos.",
-          "name": "Ana Pérez",
-          "role": "Gerente General — InnovaTech S.R.L.",
-          "initials": "AP"
+          "name": "Raquel M. Martinez",
+          "role": "Gerente General — Aquatech S.R.L.",
+          "initials": "RMM"
         },
         {
           "quote": "Optimizamos Azure y bajamos costos sin perder rendimiento. Se nota cuando te acompaña alguien que sabe.",
-          "name": "Javier Rossi",
-          "role": "CEO — Market Insight Consulting",
-          "initials": "JR"
+          "name": "Alejandro Ferrer",
+          "role": "CEO — Consultora Groi S.A",
+          "initials": "AF"
         }
       ]
     },

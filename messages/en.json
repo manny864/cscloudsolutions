@@ -8,10 +8,10 @@
     "topbarEmail": "Email",
     "topbarTagline": "Cloud solutions for growing businesses",
     "home": "Home",
-    "about": "About",
     "m365": "Microsoft 365",
     "azure": "Azure",
     "security": "Security",
+    "about": "About",
     "cta": "Free Audit ›"
   },
   "home": {
@@ -31,7 +31,7 @@
         "s3l": "Support & monitoring"
       },
       "cardTitle": "Express security audit",
-      "cardSub": "In 30 minutes we identify real Microsoft 365 risks and share a clear, prioritized action plan.",
+      "cardSub": "We identify real Microsoft 365 risks and share a clear, prioritized action plan.",
       "cardBullets": [
         "Multi-factor authentication and access",
         "External mail forwarding rules",
@@ -101,21 +101,21 @@
       "items": [
         {
           "quote": "Moving to Microsoft 365 was smooth and predictable. The team works better and support shows up when it matters.",
-          "name": "Juan Pérez",
-          "role": "Operations Director — Global Logistics",
-          "initials": "JP"
+          "name": "Ernesto Bernal",
+          "role": "Operations Director — Bernal Logistics",
+          "initials": "EB"
         },
         {
           "quote": "The audit was eye‑opening. We tightened access and policies and gained peace of mind without extra bureaucracy.",
-          "name": "Ana Pérez",
-          "role": "General Manager — InnovaTech S.R.L.",
-          "initials": "AP"
+          "name": "Raquel M. Martinez",
+          "role": "General Manager — Aquatech S.R.L.",
+          "initials": "RMM"
         },
         {
           "quote": "We optimized Azure and reduced costs without losing performance. You can tell when a real expert is guiding you.",
-          "name": "Javier Rossi",
-          "role": "CEO — Market Insight Consulting",
-          "initials": "JR"
+          "name": "Alejandro Ferrer",
+          "role": "CEO — Groi S.A Consulting",
+          "initials": "AF"
         }
       ]
     },
