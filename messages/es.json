@@ -1,7 +1,7 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions — Soluciones cloud empresariales con Azure y Microsoft 365",
-    "homeDescription": "Migraciones seguras, auditoría de ciberseguridad y soporte 24/7 para PyMEs. Convertimos Microsoft 365 y Azure en una ventaja real: menos riesgo, menos costo y más continuidad."
+    "homeTitle": "CSCloudSolutions — Soluciones Cloud Microsoft para PyMEs | Azure y Microsoft 365",
+    "homeDescription": "Ayudamos a PyMEs a migrar, proteger y optimizar Microsoft 365 y Azure. Auditoría de seguridad gratuita, soporte experto y acompañamiento real."
   },
   "nav": {
     "aria": "Navegación principal",
@@ -18,8 +18,8 @@
     "hero": {
       "badge": "Partner Microsoft en Argentina",
       "titleA": "Tu empresa segura y",
-      "titleB": "eficiente en la nube",
-      "sub": "Migramos, protegemos y optimizamos tu entorno Microsoft para que tu negocio trabaje sin interrupciones. Diseñamos soluciones a medida en Azure y Microsoft 365, con foco en seguridad, costos y continuidad. Si tu equipo crece, tu tecnología también.",
+      "titleB": "funcionando mejor en la nube",
+      "sub": "Migramos, protegemos y optimizamos tu entorno Microsoft para que tu negocio trabaje sin tranquilo, sin interrupciones y con costos bajo control. Acompañamos a PyMEs que quieren crecer, no complicarse con la tecnología.",
       "ctaPrimary": "Auditoría gratuita de seguridad",
       "ctaSecondary": "Conocer Azure ›",
       "stats": {
@@ -30,8 +30,8 @@
         "s3n": "24/7",
         "s3l": "Soporte y monitoreo"
       },
-      "cardTitle": "Auditoría de seguridad express",
-      "cardSub": "Detectamos riesgos reales en tu Microsoft 365 y te dejamos un plan claro para resolverlos.",
+      "cardTitle": "Auditoría de Seguridad sin costo, en solo 30 minutos",
+      "cardSub": "Revisamos los puntos críticos de tu Microsoft 365 para detectar riesgos reales antes de que se conviertan en un problema. Sin letra chica, sin compromiso. Cuando terminamos, te explicamos qué está bien, qué no, y qué haríamos nosotros en tu lugar.",
       "cardBullets": [
         "Autenticación multifactor y accesos",
         "Reenvíos de correo a externos",
@@ -43,18 +43,18 @@
       "cardNote": "Sin costo · Sin compromiso · Enfoque práctico"
     },
     "services": {
-      "badge": "Nuestros servicios",
+      "badge": "Servicios",
       "titleA": "Soluciones cloud completas",
       "titleB": "para tu PyME",
-      "sub": "Desde la migración inicial hasta el soporte del día a día. Elegí un punto de entrada y nosotros armamos el resto del camino.",
+      "sub": "No vendemos servicios sueltos. Diseñamos soluciones completas para que tu empresa trabaje mejor hoy y esté preparada para mañana.",
       "more": "Ver más",
       "m365": {
         "title": "Microsoft 365",
-        "desc": "Correo, Teams y SharePoint bien configurados. Menos fricción, más productividad y seguridad desde el primer día."
+        "desc": "Implementamos Microsoft 365 para que tu equipo trabaje mejor desde el primer día. Migramos correos, archivos y herramientas sin frenar la operación, y dejamos todo configurado de forma segura y ordenada."
       },
       "azure": {
         "title": "Microsoft Azure",
-        "desc": "Infraestructura escalable con foco en costo/beneficio: VMs, redes, bases de datos y continuidad operativa."
+        "desc": "Infraestructura en Azure pensada para PyMEs reales. Pagás solo lo que usás, escalás cuando lo necesitás y te olvidás de servidores que se quedan viejos o cortan el negocio."
       },
       "security": {
         "title": "Seguridad en la nube",
@@ -96,8 +96,8 @@
     },
     "testimonials": {
       "badge": "Casos de éxito",
-      "titleA": "Lo que dicen",
-      "titleB": "nuestros clientes",
+      "titleA": "Empresas como la tuya ya dieron el paso.",
+      "titleB": "Esto es lo que nos cuentan después de trabajar con nosotros.",
       "items": [
         {
           "quote": "El cambio a Microsoft 365 fue ordenado y sin sorpresas. Hoy el equipo trabaja mejor y el soporte responde cuando importa.",
@@ -128,7 +128,7 @@
       "items": [
         {
           "q": "¿Qué incluye la auditoría de seguridad gratuita?",
-          "a": "Revisamos 10 puntos críticos de Microsoft 365 y te entregamos un reporte con riesgos, impacto y prioridades. Es una mirada práctica para que sepas qué ajustar primero."
+          "a": "En una sesión de 30 minutos revisamos los puntos más sensibles de tu Microsoft 365. Te llevás un diagnóstico claro, entendible y accionable, incluso si decidís no avanzar con nosotros."
         },
         {
           "q": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
@@ -147,9 +147,9 @@
   },
   "contact": {
     "badge": "Contacto",
-    "titleA": "Hablemos de tu",
-    "titleB": "estrategia cloud",
-    "sub": "Dejanos tus datos y un experto te contacta en menos de 24 horas hábiles. Si preferís, escribinos por WhatsApp.",
+    "titleA": "Contanos",
+    "titleB": "qué necesitás",
+    "sub": "Dejanos tus datos y hablamos. Sin vendedores, sin presión. Un especialista te escucha y te dice si podemos ayudarte o no. Si preferís, escribinos por WhatsApp.",
     "whatsTitle": "WhatsApp directo",
     "emailTitle": "Correo electrónico",
     "formTitle": "Solicitá una consulta gratuita",
@@ -190,8 +190,8 @@
   "pages": {
     "about": {
       "badge": "Acerca de nosotros",
-      "title": "Tu aliado estratégico en la nube",
-      "sub": "Nacimos en Argentina para ayudar a PyMEs a crecer con tecnología segura, ordenada y escalable. No vendemos humo: diseñamos, implementamos y acompañamos.",
+      "title": "Somos CSCloudSolutions, y ayudamos a PyMEs a usar la nube sin dolores de cabeza.",
+      "sub": "y trabajamos con empresas de toda la región que necesitan seguridad, continuidad y alguien que se haga cargo de la tecnología de verdad. No prometemos magia: diseñamos, implementamos y acompañamos para que todo funcione como tiene que funcionar.",
       "stats": [
         {
           "n": "+20",
