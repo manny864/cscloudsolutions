@@ -32,6 +32,11 @@ body {
   background: var(--white);
   color: var(--gray-800);
 }
+/* Ajuste tipográfico estilo ctrl365 */
+h1, h2 {
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
 /* ── fin del CSS actual ── */
 
 /* Cache hint para hero-bg.svg */
