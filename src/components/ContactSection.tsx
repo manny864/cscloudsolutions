@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import {useTranslations} from 'next-intl';
 import {Container} from './Container';
 import {ContactForm} from './ContactForm';
@@ -9,12 +8,6 @@ export function ContactSection() {
 
   return (
     <section id="contacto" className="bg-[color:var(--navy)] py-20 text-white">
-      <Script
-        id="recaptcha-v3"
-        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''}`}
-        strategy="afterInteractive"
-      />
-
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-start">
         <div>
           <div className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-white">
