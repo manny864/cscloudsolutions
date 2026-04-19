@@ -4,7 +4,7 @@ import {useTranslations} from 'next-intl';
 import {Container} from './Container';
 import {MotionDiv} from './Motion';
 import {Link} from '@/i18n/routing';
-import type {Variants} from 'framer-motion'; // <-- Importamos el tipo de Framer Motion
+import type {Variants} from 'framer-motion';
 
 type Item = {
   icon: string;
@@ -33,13 +33,10 @@ const itemVariants: Variants = {
     y: 0, 
     transition: { 
       duration: 0.5, 
-      ease: [0.25, 0.1, 0.25, 1] // <-- Reemplazamos "easeOut" por su curva bezier exacta (válida en TS)
+      ease: [0.25, 0.1, 0.25, 1] 
     } 
   },
 };
-
-export function ServiceBento() {
-// ... el resto del código sigue exactamente igual ...
 
 export function ServiceBento() {
   const t = useTranslations('home.services');
@@ -68,7 +65,6 @@ export function ServiceBento() {
           </p>
         </div>
 
-        {/* 3. Convertimos el div de la grilla en un MotionDiv para controlar los hijos */}
         <MotionDiv 
           variants={containerVariants}
           initial="hidden"
@@ -79,7 +75,7 @@ export function ServiceBento() {
           {items.map((it) => (
             <MotionDiv
               key={it.title}
-              variants={itemVariants} // 4. Cada hijo hereda el disparador del padre
+              variants={itemVariants}
               className="group relative overflow-hidden rounded-2xl border border-[color:var(--gray-200)] bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:border-[color:var(--cyan)] hover:shadow-[0_20px_60px_rgba(0,174,239,0.12)]"
             >
               <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-[linear-gradient(90deg,var(--cyan),var(--cyan-light))] transition group-hover:scale-x-100" />
