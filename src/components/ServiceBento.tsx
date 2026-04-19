@@ -65,11 +65,12 @@ export function ServiceBento() {
           </p>
         </div>
 
+        {/* CAmbio CLAVE AQUI: viewport={{ once: true, amount: 0.1 }} */}
         <MotionDiv 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          viewport={{ once: true, amount: 0.1 }}
           className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {items.map((it) => (
