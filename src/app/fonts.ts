@@ -1,15 +1,15 @@
-import {DM_Sans, Plus_Jakarta_Sans} from 'next/font/google';
+import { Bricolage_Grotesque, Inter } from 'next/font/google';
 
-export const fontBody = DM_Sans({
+export const fontBody = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['300', '400', '500', '600'],
   display: 'swap',
-  variable: '--font-body'
+  variable: '--font-body',
 });
 
-export const fontHeading = Plus_Jakarta_Sans({
+export const fontHeading = Bricolage_Grotesque({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
-  variable: '--font-heading'
+  variable: '--font-heading',
 });
