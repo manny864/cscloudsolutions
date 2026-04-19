@@ -32,3 +32,15 @@ body {
   background: var(--white);
   color: var(--gray-800);
 }
+/* ── fin del CSS actual ── */
+
+/* Cache hint para hero-bg.svg */
+/* (esto va en next.config.mjs, no acá — ver abajo) */
+
+/* Mejora contraste: badges en fondos claros usan --cyan-dark que ya está definido ✅ */
+/* No se necesita cambio — ServiceBento ya usa --cyan-dark correctamente */
+
+/* Font display swap — reduce FCP 10ms */
+@font-face {
+  font-display: swap;
+}

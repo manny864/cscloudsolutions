@@ -1,158 +1,210 @@
 'use client';
 
-import {useState} from 'react';
-import {useTranslations} from 'next-intl';
-import {submitContact} from '@/app/_actions/submitContact';
+import { useState, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
+import { submitContact } from '@/app/_actions/submitContact';
 
-type Status = {kind: 'idle' | 'loading' | 'success' | 'error'; message?: string};
+type Status = { kind: 'idle' | 'loading' | 'success' | 'error'; message?: string };
 
 declare global {
   interface Window {
     grecaptcha?: {
-      execute: (siteKey: string, opts: {action: string}) => Promise<string>;
+      execute: (siteKey: string, opts: { action: string }) => Promise<string>;
       ready: (cb: () => void) => void;
     };
   }
 }
 
 async function getRecaptchaToken(siteKey: string): Promise<string> {
-  return await new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const g = window.grecaptcha;
     if (!g) return reject(new Error('recaptcha-not-loaded'));
-
     g.ready(async () => {
-      try {
-        const token = await g.execute(siteKey, {action: 'submit'});
-        resolve(token);
-      } catch (e) {
-        reject(e);
-      }
+      try { resolve(await g.execute(siteKey, { action: 'submit' })); }
+      catch (e) { reject(e); }
     });
   });
 }
 
-export function ContactForm({variant = 'default'}: {variant?: 'default' | 'compact'}) {
+export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'compact' }) {
   const t = useTranslations('contact');
-  const [status, setStatus] = useState<Status>({kind: 'idle'});
-  const [form, setForm] = useState({nombre: '', email: '', empresa: '', telefono: '', mensaje: ''});
-
+  const [status, setStatus] = useState<Status>({ kind: 'idle' });
+  const [form, setForm] = useState({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  // Carga reCAPTCHA solo cuando el formulario entra en el viewport
+  useEffect(() => {
+    if (!siteKey) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !scriptLoaded) {
+          const script = document.createElement('script');
+          script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+          script.async = true;
+          script.onload = () => setScriptLoaded(true);
+          document.head.appendChild(script);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (formRef.current) observer.observe(formRef.current);
+    return () => observer.disconnect();
+  }, [siteKey, scriptLoaded]);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setStatus({kind: 'loading'});
-
+    setStatus({ kind: 'loading' });
     try {
       if (!siteKey) throw new Error('missing-site-key');
       const token = await getRecaptchaToken(siteKey);
-
-      const res = await submitContact({
-        ...form,
-        recaptchaToken: token
-      });
-
+      const res = await submitContact({ ...form, recaptchaToken: token });
       if (res.ok) {
-        setStatus({kind: 'success', message: res.message});
-        setForm({nombre: '', email: '', empresa: '', telefono: '', mensaje: ''});
+        setStatus({ kind: 'success', message: res.message });
+        setForm({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
       } else {
-        setStatus({kind: 'error', message: res.message});
+        setStatus({ kind: 'error', message: res.message });
       }
     } catch {
-      setStatus({kind: 'error', message: t('errorGeneric')});
+      setStatus({ kind: 'error', message: t('errorGeneric') });
     }
   }
 
-  const compact = variant === 'compact';
+  const inputClass = `w-full rounded-xl border border-[color:var(--gray-200)] bg-white px-4 py-3 text-sm text-[color:var(--gray-800)] placeholder-[color:var(--gray-400)] outline-none transition focus:border-[color:var(--cyan)] focus:ring-2 focus:ring-[color:rgba(0,174,239,0.15)] ${variant === 'compact' ? 'py-2.5' : ''}`;
 
   return (
-    <form onSubmit={onSubmit} className={`rounded-3xl bg-white p-8 shadow-sm ${compact ? 'p-7' : ''}`}>
-      <h3 className="text-xl font-extrabold text-[color:var(--navy)]">{t('formTitle')}</h3>
-      <p className="mt-2 text-sm text-[color:var(--gray-600)]">{t('formSub')}</p>
-
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-2 text-xs font-bold text-[color:var(--gray-800)]">
-          {t('name')}
-          <input
-            required
-            value={form.nombre}
-            onChange={(e) => setForm((s) => ({...s, nombre: e.target.value}))}
-            className="h-11 rounded-xl border border-[color:var(--gray-200)] px-4 text-sm outline-none transition focus:border-[color:var(--cyan)]"
-            placeholder={t('namePh')}
-            autoComplete="name"
-          />
-        </label>
-
-        <label className="grid gap-2 text-xs font-bold text-[color:var(--gray-800)]">
-          {t('email')}
-          <input
-            required
-            type="email"
-            value={form.email}
-            onChange={(e) => setForm((s) => ({...s, email: e.target.value}))}
-            className="h-11 rounded-xl border border-[color:var(--gray-200)] px-4 text-sm outline-none transition focus:border-[color:var(--cyan)]"
-            placeholder={t('emailPh')}
-            autoComplete="email"
-          />
-        </label>
-      </div>
-
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <label className="grid gap-2 text-xs font-bold text-[color:var(--gray-800)]">
-          {t('company')}
-          <input
-            value={form.empresa}
-            onChange={(e) => setForm((s) => ({...s, empresa: e.target.value}))}
-            className="h-11 rounded-xl border border-[color:var(--gray-200)] px-4 text-sm outline-none transition focus:border-[color:var(--cyan)]"
-            placeholder={t('companyPh')}
-            autoComplete="organization"
-          />
-        </label>
-
-        <label className="grid gap-2 text-xs font-bold text-[color:var(--gray-800)]">
-          {t('phone')}
-          <input
-            value={form.telefono}
-            onChange={(e) => setForm((s) => ({...s, telefono: e.target.value}))}
-            className="h-11 rounded-xl border border-[color:var(--gray-200)] px-4 text-sm outline-none transition focus:border-[color:var(--cyan)]"
-            placeholder={t('phonePh')}
-            autoComplete="tel"
-          />
-        </label>
-      </div>
-
-      <label className="mt-4 grid gap-2 text-xs font-bold text-[color:var(--gray-800)]">
-        {t('message')}
-        <textarea
-          value={form.mensaje}
-          onChange={(e) => setForm((s) => ({...s, mensaje: e.target.value}))}
-          className="min-h-[96px] resize-y rounded-xl border border-[color:var(--gray-200)] px-4 py-3 text-sm outline-none transition focus:border-[color:var(--cyan)]"
-          placeholder={t('messagePh')}
-        />
-      </label>
-
-      <button
-        type="submit"
-        disabled={status.kind === 'loading'}
-        className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[color:var(--cyan)] px-6 py-4 text-sm font-extrabold text-[color:var(--navy)] transition hover:bg-[color:var(--cyan-light)] disabled:cursor-not-allowed disabled:opacity-70"
+    <div ref={formRef}>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        className="rounded-3xl bg-white p-8 shadow-sm"
       >
-        {status.kind === 'loading' ? t('sending') : t('send')}
-      </button>
+        <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold text-[color:var(--navy)]">
+          {t('formTitle')}
+        </h3>
+        <p className="mt-1 text-sm text-[color:var(--gray-600)]">{t('formSub')}</p>
 
-      {status.kind === 'success' ? (
-        <div className="mt-4 rounded-xl border border-[color:rgba(34,197,94,0.30)] bg-[color:rgba(34,197,94,0.10)] px-4 py-3 text-sm font-bold text-[color:var(--success)]">
-          {status.message}
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {/* Nombre */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-nombre" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
+              {t('name')}
+            </label>
+            <input
+              id="cf-nombre"
+              name="nombre"
+              type="text"
+              autoComplete="name"
+              required
+              value={form.nombre}
+              onChange={handleChange}
+              placeholder={t('namePh')}
+              className={inputClass}
+            />
+          </div>
+
+          {/* Email */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-email" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
+              {t('email')}
+            </label>
+            <input
+              id="cf-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={form.email}
+              onChange={handleChange}
+              placeholder={t('emailPh')}
+              className={inputClass}
+            />
+          </div>
+
+          {/* Empresa */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-empresa" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
+              {t('company')}
+            </label>
+            <input
+              id="cf-empresa"
+              name="empresa"
+              type="text"
+              autoComplete="organization"
+              value={form.empresa}
+              onChange={handleChange}
+              placeholder={t('companyPh')}
+              className={inputClass}
+            />
+          </div>
+
+          {/* Teléfono */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-telefono" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
+              {t('phone')}
+            </label>
+            <input
+              id="cf-telefono"
+              name="telefono"
+              type="tel"
+              autoComplete="tel"
+              value={form.telefono}
+              onChange={handleChange}
+              placeholder={t('phonePh')}
+              className={inputClass}
+            />
+          </div>
         </div>
-      ) : null}
 
-      {status.kind === 'error' ? (
-        <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">
-          {status.message}
+        {/* Mensaje */}
+        <div className="mt-4 flex flex-col gap-1">
+          <label htmlFor="cf-mensaje" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
+            {t('message')}
+          </label>
+          <textarea
+            id="cf-mensaje"
+            name="mensaje"
+            rows={4}
+            value={form.mensaje}
+            onChange={handleChange}
+            placeholder={t('messagePh')}
+            className={`${inputClass} resize-none`}
+          />
         </div>
-      ) : null}
 
-      <p className="mt-3 text-center text-[11px] font-semibold text-[color:var(--gray-400)]">
-        {t('note')}
-      </p>
-    </form>
+        {/* Error */}
+        {status.kind === 'error' && (
+          <p role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
+            {status.message}
+          </p>
+        )}
+
+        {/* Éxito */}
+        {status.kind === 'success' && (
+          <p role="status" className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
+            {status.message}
+          </p>
+        )}
+
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={status.kind === 'loading' || status.kind === 'success'}
+          className="mt-6 w-full rounded-xl bg-[color:var(--cyan)] px-6 py-4 text-sm font-extrabold text-[color:var(--navy)] shadow-[0_8px_30px_rgba(0,174,239,0.25)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-light)] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status.kind === 'loading' ? t('sending') : t('send')}
+        </button>
+
+        <p className="mt-3 text-center text-[11px] font-semibold text-[color:var(--gray-400)]">
+          {t('note')}
+        </p>
+      </form>
+    </div>
   );
 }

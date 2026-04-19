@@ -5,10 +5,10 @@ export function Logo({locale}: {locale: 'es' | 'en'}) {
   return (
     <Link href="/" locale={locale} className="flex items-center gap-3" aria-label="CSCloudSolutions">
       <Image
-        src="/images/logo.png"
+        src="/images/Logo_Nombre_CSCloudSolutions-150x84.avif"
         alt="CSCloudSolutions"
-        width={180}
-        height={52}
+        width={150}
+        height={84}
         priority
         className="h-10 w-auto"
       />

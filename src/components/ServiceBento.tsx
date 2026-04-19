@@ -10,19 +10,20 @@ type Item = {
   title: string;
   desc: string;
   href: string;
+  label: string; 
 };
 
 export function ServiceBento() {
   const t = useTranslations('home.services');
 
-  const items: Item[] = [
-    {icon: '📧', title: t('m365.title'), desc: t('m365.desc'), href: '/microsoft-365'},
-    {icon: '☁️', title: t('azure.title'), desc: t('azure.desc'), href: '/azure'},
-    {icon: '🔐', title: t('security.title'), desc: t('security.desc'), href: '/seguridad'},
-    {icon: '💼', title: t('modern.title'), desc: t('modern.desc'), href: '/modern-workplace'},
-    {icon: '⚡', title: t('power.title'), desc: t('power.desc'), href: '/power-platform'},
-    {icon: '🛠️', title: t('support.title'), desc: t('support.desc'), href: '/soporte'}
-  ];
+const items: Item[] = [
+  {icon: '📧', title: t('m365.title'),     desc: t('m365.desc'),     href: '/microsoft-365',    label: t('m365.title')},
+  {icon: '☁️', title: t('azure.title'),    desc: t('azure.desc'),    href: '/azure',             label: t('azure.title')},
+  {icon: '🔐', title: t('security.title'), desc: t('security.desc'), href: '/seguridad',         label: t('security.title')},
+  {icon: '💼', title: t('modern.title'),   desc: t('modern.desc'),   href: '/modern-workplace',  label: t('modern.title')},
+  {icon: '⚡', title: t('power.title'),    desc: t('power.desc'),    href: '/power-platform',    label: t('power.title')},
+  {icon: '🛠️', title: t('support.title'),  desc: t('support.desc'),  href: '/soporte',           label: t('support.title')}
+];
 
   return (
     <section className="bg-[color:var(--gray-50)] py-20">
@@ -56,11 +57,12 @@ export function ServiceBento() {
               <h3 className="mt-5 text-lg font-extrabold text-[color:var(--navy)]">{it.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[color:var(--gray-600)]">{it.desc}</p>
               <Link
-                href={it.href}
-                className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[color:var(--cyan-dark)] transition group-hover:gap-3"
-              >
-                {t('more')} <span aria-hidden>→</span>
-              </Link>
+  href={it.href}
+  aria-label={`${t('more')} ${it.label}`}
+  className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[color:var(--cyan-dark)] transition group-hover:gap-3"
+>
+  {t('more')} <span aria-hidden>→</span>
+</Link>
             </MotionDiv>
           ))}
         </div>

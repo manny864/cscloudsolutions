@@ -21,7 +21,7 @@ export function AuditSection() {
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/75">{t('sub')}</p>
 
           <div className="mt-8 rounded-2xl border border-white/15 bg-[color:rgba(0,174,239,0.10)] p-7">
-            <h3 className="text-lg font-extrabold">{t('calloutTitle')}</h3>
+            <p className="text-lg font-extrabold">{t('calloutTitle')}</p>
             <p className="mt-2 text-sm text-white/75">{t('calloutSub')}</p>
             <a
               href="#contacto"

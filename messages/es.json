@@ -16,7 +16,7 @@
   },
   "home": {
     "hero": {
-      "badge": "Partner Microsoft en Argentina",
+      "badge": "Especialistas en Microsoft365 y Azure",
       "titleA": "Tu empresa segura y",
       "titleB": "funcionando mejor en la nube",
       "sub": "Migramos, protegemos y optimizamos tu entorno Microsoft para que tu negocio trabaje sin tranquilo, sin interrupciones y con costos bajo control. Acompañamos a PyMEs que quieren crecer, no complicarse con la tecnología.",
@@ -43,7 +43,7 @@
       "cardNote": "Sin costo · Sin compromiso · Enfoque práctico"
     },
     "services": {
-      "badge": "Servicios",
+      "badge": "Nuestros Servicios",
       "titleA": "Soluciones cloud completas",
       "titleB": "para tu PyME",
       "sub": "No vendemos servicios sueltos. Diseñamos soluciones completas para que tu empresa trabaje mejor hoy y esté preparada para mañana.",
@@ -146,7 +146,7 @@
     }
   },
   "contact": {
-    "badge": "Contacto",
+    "badge": "Contactemos",
     "titleA": "Contanos",
     "titleB": "qué necesitás",
     "sub": "Dejanos tus datos y hablamos. Sin vendedores, sin presión. Un especialista te escucha y te dice si podemos ayudarte o no. Si preferís, escribinos por WhatsApp.",
@@ -191,7 +191,7 @@
     "about": {
       "badge": "Acerca de nosotros",
       "title": "Somos CSCloudSolutions, y ayudamos a PyMEs a usar la nube sin dolores de cabeza.",
-      "sub": "y trabajamos con empresas de toda la región que necesitan seguridad, continuidad y alguien que se haga cargo de la tecnología de verdad. No prometemos magia: diseñamos, implementamos y acompañamos para que todo funcione como tiene que funcionar.",
+      "sub": "Trabajamos con empresas de toda la región que necesitan seguridad, continuidad y alguien que se haga cargo de la tecnología de verdad. No prometemos magia: diseñamos, implementamos y acompañamos para que todo funcione como tiene que funcionar.",
       "stats": [
         {
           "n": "+20",

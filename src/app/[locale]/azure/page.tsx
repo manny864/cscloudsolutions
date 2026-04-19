@@ -1,11 +1,10 @@
-import {getTranslations} from 'next-intl/server';
-import Image from 'next/image';
-import {Container} from '@/components/Container';
-import {ContactSection} from '@/components/ContactSection';
+import { Suspense } from 'react';
+import { getTranslations } from 'next-intl/server';
+import { Container } from '@/components/Container';
+import { ContactSection } from '@/components/ContactSection';
 
 export default async function AzurePage({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
-
   const t = await getTranslations({locale, namespace: 'pages.azure'});
 
   return (
@@ -19,8 +18,9 @@ export default async function AzurePage({params}: {params: Promise<{locale: stri
           <p className="mt-4 max-w-2xl text-white/75">{t('sub')}</p>
         </Container>
       </section>
-
-      <ContactSection />
+      <Suspense fallback={null}>
+        <ContactSection />
+      </Suspense>
     </>
   );
 }
