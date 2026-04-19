@@ -4,6 +4,7 @@ import {useTranslations} from 'next-intl';
 import {Container} from './Container';
 import {MotionDiv} from './Motion';
 import {Link} from '@/i18n/routing';
+import type {Variants} from 'framer-motion'; // <-- Importamos el tipo de Framer Motion
 
 type Item = {
   icon: string;
@@ -13,26 +14,32 @@ type Item = {
   label: string; 
 };
 
-// 1. Definimos la animación del contenedor (la grilla)
-const containerVariants = {
+// 1. Asignamos el tipo Variants al contenedor
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Tiempo de espera entre cada tarjeta
+      staggerChildren: 0.15,
     },
   },
 };
 
-// 2. Definimos la animación de cada tarjeta individual
-const itemVariants = {
+// 2. Asignamos el tipo Variants al hijo y quitamos el string genérico de ease
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.5, ease: "easeOut" } 
+    transition: { 
+      duration: 0.5, 
+      ease: [0.25, 0.1, 0.25, 1] // <-- Reemplazamos "easeOut" por su curva bezier exacta (válida en TS)
+    } 
   },
 };
+
+export function ServiceBento() {
+// ... el resto del código sigue exactamente igual ...
 
 export function ServiceBento() {
   const t = useTranslations('home.services');
