@@ -3,9 +3,9 @@
 import { useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 
-type Props = { title: string; description: string; videoSrc: string; badge: string; href: string };
+type Props = { title: string; description: string; videoSrc: string; posterSrc: string; badge: string; href: string };
 
-export function InteractiveVideoCard({ title, description, videoSrc, badge, href }: Props) {
+export function InteractiveVideoCard({ title, description, videoSrc, posterSrc, badge, href }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHover, setIsHover] = useState(false);
 
@@ -14,17 +14,42 @@ export function InteractiveVideoCard({ title, description, videoSrc, badge, href
       href={href}
       onMouseEnter={() => { setIsHover(true); videoRef.current?.play().catch(() => {}) }}
       onMouseLeave={() => { setIsHover(false); videoRef.current?.pause() }}
-      className="group relative flex h-[420px] w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--navy-mid)] transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--cyan)] hover:shadow-[0_20px_40px_rgba(0,174,239,0.2)]"
+      className="group relative flex h-[420px] w-full flex-col justify-end overflow-hidden rounded-3xl border border-white/10 bg-[color:var(--navy-mid)] transition-all duration-500 lg:hover:-translate-y-1 lg:hover:border-[color:var(--cyan)] lg:hover:shadow-[0_20px_40px_rgba(0,174,239,0.2)]"
     >
-      <video ref={videoRef} src={videoSrc} muted loop playsInline className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${isHover ? 'opacity-40' : 'opacity-0'}`} />
-      <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--navy)] via-[color:var(--navy)]/70 to-transparent" />
+      {/* Poster / Miniatura */}
+      <img 
+        src={posterSrc} 
+        alt=""
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${isHover ? 'opacity-0' : 'opacity-40'}`}
+      />
+
+      {/* Video */}
+      <video 
+        ref={videoRef} 
+        src={videoSrc} 
+        muted 
+        loop 
+        playsInline 
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${isHover ? 'opacity-40' : 'opacity-0'}`} 
+      />
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--navy)] via-[color:var(--navy)]/80 to-transparent" />
+      
       <div className="relative z-10 p-8">
-        <div className="mb-4 w-max rounded-full border border-[color:rgba(0,174,239,0.3)] bg-[color:rgba(0,174,239,0.1)] px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-[color:var(--cyan-light)]">{badge}</div>
-        <h3 className="font-heading text-2xl font-extrabold text-white transition-transform duration-500 group-hover:-translate-y-2">{title}</h3>
-        <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-hover:grid-rows-[1fr] group-hover:opacity-100">
-          <p className="overflow-hidden pt-3 text-sm text-white/70">{description}</p>
+        <div className="mb-4 w-max rounded-full border border-[color:rgba(0,174,239,0.3)] bg-[color:rgba(0,174,239,0.1)] px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-[color:var(--cyan-light)]">
+          {badge}
         </div>
-        <div className="absolute bottom-8 right-8 flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--cyan)] text-[color:var(--navy)] opacity-0 transition-all duration-500 group-hover:rotate-[-45deg] group-hover:opacity-100">
+        
+        <h3 className="font-heading text-2xl font-extrabold text-white transition-transform duration-500 lg:group-hover:-translate-y-2">
+          {title}
+        </h3>
+        
+        {/* El texto siempre se ve en móvil, se expande en desktop */}
+        <div className="grid grid-rows-[1fr] opacity-100 lg:grid-rows-[0fr] lg:opacity-0 transition-all duration-500 lg:group-hover:grid-rows-[1fr] lg:group-hover:opacity-100">
+          <p className="overflow-hidden pt-3 text-sm leading-relaxed text-white/75">{description}</p>
+        </div>
+        
+        <div className="absolute bottom-8 right-8 flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--cyan)] text-[color:var(--navy)] opacity-100 lg:opacity-0 transition-all duration-500 lg:group-hover:rotate-[-45deg] lg:group-hover:opacity-100">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </div>

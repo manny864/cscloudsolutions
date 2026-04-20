@@ -17,6 +17,7 @@ export function ServiceBento() {
             title="Microsoft 365" 
             description="Colaboración total y gestión moderna del workplace."
             videoSrc="/videos/Trabajo_Colaborativo.webm" 
+            posterSrc="/images/Trabajo_Colaborativo.webp"
             href="/microsoft-365"
           />
           <InteractiveVideoCard 
@@ -24,6 +25,7 @@ export function ServiceBento() {
             title="Azure Cloud" 
             description="Migración y escalabilidad con arquitectura de clase mundial."
             videoSrc="/videos/Futuristic_Server_Room_Motion_Graphics.webm" 
+            posterSrc="/images/Futuristic_Server_Room_Motion_Graphics.webp"
             href="/azure"
           />
           <InteractiveVideoCard 
@@ -31,6 +33,7 @@ export function ServiceBento() {
             title="Ciberseguridad" 
             description="Protección de datos bajo estándares internacionales de cumplimiento."
             videoSrc="/videos/Ciberseguridad_Escudo_Digital.webm" 
+            posterSrc="/images/Ciberseguridad_Escudo_Digital.webp"
             href="/seguridad"
           />
         </div>
