@@ -49,3 +49,13 @@ h1, h2 {
 @font-face {
   font-display: swap;
 }
+/* CORRECTO (Ruta Absoluta) */
+.hero-background {
+  background-image: url('/images/hero-bg.svg');
+  background-size: cover;
+  background-position: center;
+}
+
+.section-background {
+  background-image: url('/images/section-bg.svg');
+}
