@@ -8,9 +8,10 @@ export function Hero() {
   const t = useTranslations('home.hero');
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,rgba(11,30,61,0.96),rgba(26,50,96,0.96))]">
-      <BackgroundOrbs />
-      <div className="absolute inset-0 -z-20">
+    <section className="relative overflow-hidden bg-[#0B1E3D]">
+      
+      {/* CAPA 1 (Fondo): La imagen SVG original */}
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg.svg"
           alt=""
@@ -20,7 +21,16 @@ export function Hero() {
         />
       </div>
 
-      <Container className="grid min-h-[92dvh] items-center gap-12 py-16 lg:grid-cols-[1fr_420px]">
+      {/* CAPA 2 (Filtro): El gradiente oscuro superpuesto a la imagen para que el texto sea legible */}
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(135deg,rgba(11,30,61,0.96),rgba(26,50,96,0.96))]" />
+
+      {/* CAPA 3 (Decoración): Los orbes animados */}
+      <div className="absolute inset-0 z-10">
+        <BackgroundOrbs />
+      </div>
+
+      {/* CAPA 4 (Contenido): El texto y los botones al frente de todo */}
+      <Container className="relative z-20 grid min-h-[92dvh] items-center gap-12 py-16 lg:grid-cols-[1fr_420px]">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-[color:rgba(0,174,239,0.35)] bg-[color:rgba(0,174,239,0.12)] px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--cyan)]">
             {t('badge')}
