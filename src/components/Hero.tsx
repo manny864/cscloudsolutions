@@ -17,12 +17,12 @@ export function Hero() {
           alt=""
           fill
           priority
-          className="object-cover opacity-60"
+          className="object-cover opacity-90"
         />
       </div>
 
       {/* CAPA 2 (Filtro): El gradiente oscuro superpuesto a la imagen para que el texto sea legible */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(135deg,rgba(11,30,61,0.70),rgba(26,50,96,0.96))]" />
+      <div className="absolute inset-0 z-10 bg-[linear-gradient(135deg,rgba(11,30,61,0.10),rgba(26,50,96,0.96))]" />
 
       {/* CAPA 3 (Decoración): Los orbes animados */}
       <div className="absolute inset-0 z-10">

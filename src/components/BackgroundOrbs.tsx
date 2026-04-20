@@ -17,22 +17,23 @@ export function BackgroundOrbs({count = 6}: {count?: number}) {
   const slice = ORBS.slice(0, Math.max(1, Math.min(count, ORBS.length)));
 
   return (
-    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {slice.map((o, idx) => (
         <MotionDiv
           key={`orb-${idx}`}
           aria-hidden
           className={
-            `absolute rounded-full blur-3xl opacity-30 mix-blend-screen ` +
-            `bg-[radial-gradient(circle_at_30%_30%,rgba(0,174,239,0.95),rgba(255,107,53,0.45),rgba(11,30,61,0)_70%)] ` +
+            /* Quitamos el mix-blend-screen y usamos blur explícito */
+            `absolute rounded-full blur-[80px] ` +
+            `bg-[radial-gradient(circle_at_30%_30%,rgba(0,174,239,0.8),rgba(255,107,53,0.3),transparent_70%)] ` +
             o.className
           }
           initial={{opacity: 0}}
           animate={{
-            opacity: 0.30,
-            x: [-22, 22],
-            y: [-14, 18],
-            scale: [1, 1.08]
+            opacity: 0.85, /* Alta opacidad garantizada */
+            x: [-20, 20],
+            y: [-15, 15],
+            scale: [1, 1.1]
           }}
           transition={{
             duration: o.duration,

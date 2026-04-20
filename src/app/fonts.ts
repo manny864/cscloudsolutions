@@ -1,15 +1,23 @@
-import { Bricolage_Grotesque, Inter } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 
-export const fontBody = Inter({
+// Usamos Geist para los textos generales del sitio
+export const fontBody = Geist({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
   display: 'swap',
   variable: '--font-body',
 });
 
-export const fontHeading = Bricolage_Grotesque({
+// Usamos la misma familia Geist (o sus pesos más gruesos) para los títulos
+// Mantenemos la variable '--font-heading' para no romper tu diseño actual
+export const fontHeading = Geist({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
   variable: '--font-heading',
+});
+
+// Agregamos Geist_Mono por si en algún momento muestras código o datos numéricos fijos
+export const fontMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
 });

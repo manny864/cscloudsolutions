@@ -49,7 +49,6 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
 export default async function LocaleLayout({children, params}: {children: React.ReactNode; params: Promise<{locale: string}>}) {
   const {locale} = await params;
   if (!routing.locales.includes(locale as any)) {
-    // next-intl middleware should prevent this, but keep safe
     setRequestLocale('es');
   }
   setRequestLocale(locale);
@@ -58,7 +57,8 @@ export default async function LocaleLayout({children, params}: {children: React.
 
   return (
     <html lang={locale} className={`${fontBody.variable} ${fontHeading.variable}`}>
-      <body className="min-h-dvh bg-[color:var(--white)] text-[color:var(--gray-800)]">
+      {/* El secreto está aquí: agregamos 'antialiased' y mantenemos tus variables de color */}
+      <body className="min-h-dvh bg-[color:var(--white)] text-[color:var(--gray-800)] antialiased font-[family:var(--font-body)]">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="min-h-[70dvh]">{children}</main>
