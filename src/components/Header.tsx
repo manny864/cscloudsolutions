@@ -25,8 +25,8 @@ export function Header() {
   // Aquí está el cambio: movimos 'about' (Nosotros) al final de la lista
   const items: NavItem[] = [
     {href: '/', key: 'home'},
-    {href: '/azure', key: 'azure'},
     {href: '/microsoft-365', key: 'm365'},
+    {href: '/azure', key: 'azure'},
     {href: '/seguridad', key: 'security'},
     {href: '/nosotros', key: 'about'}
   ];
