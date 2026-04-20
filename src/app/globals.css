@@ -17,6 +17,15 @@
   --gray-400: #94A3B8;
   --gray-600: #475569;
   --gray-800: #1E293B;
+
+  /* ¡EL TRUCO ESTÁ AQUÍ! Clonamos la variable de la fuente para los títulos */
+  --font-heading: var(--font-body);
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
 }
 
 :focus-visible {
@@ -32,24 +41,16 @@ body {
   background: var(--white);
   color: var(--gray-800);
 }
-/* Ajuste tipográfico estilo ctrl365 */
+
 h1, h2 {
   letter-spacing: -0.03em;
   line-height: 1.05;
 }
-/* ── fin del CSS actual ── */
 
-/* Cache hint para hero-bg.svg */
-/* (esto va en next.config.mjs, no acá — ver abajo) */
-
-/* Mejora contraste: badges en fondos claros usan --cyan-dark que ya está definido ✅ */
-/* No se necesita cambio — ServiceBento ya usa --cyan-dark correctamente */
-
-/* Font display swap — reduce FCP 10ms */
 @font-face {
   font-display: swap;
 }
-/* CORRECTO (Ruta Absoluta) */
+
 .hero-background {
   background-image: url('/images/hero-bg.svg');
   background-size: cover;

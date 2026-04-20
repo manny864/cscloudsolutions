@@ -1,8 +1,10 @@
+import '../globals.css';
+
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import type {Metadata} from 'next';
 import {routing} from '@/i18n/routing';
-import {fontBody, fontHeading} from '../fonts';
+import {fontBody, fontMono} from '../fonts';
 import {Header} from '@/components/Header';
 import {Footer} from '@/components/Footer';
 import {SITE, absoluteUrl} from '@/lib/seo';
@@ -19,7 +21,11 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
   const description = t('homeDescription');
 
   return {
-    title,
+    metadataBase: new URL('https://cscloudsolutions.com.ar'),
+    title: {
+      default: 'CSCloudSolutions',
+      template: '%s | CSCloudSolutions'
+    },
     description,
     alternates: {
       canonical: locale === 'es' ? absoluteUrl('/') : absoluteUrl('/en'),
@@ -56,9 +62,8 @@ export default async function LocaleLayout({children, params}: {children: React.
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${fontBody.variable} ${fontHeading.variable}`}>
-      {/* El secreto está aquí: agregamos 'antialiased' y mantenemos tus variables de color */}
-      <body className="min-h-dvh bg-[color:var(--white)] text-[color:var(--gray-800)] antialiased font-[family:var(--font-body)]">
+    <html lang={locale} suppressHydrationWarning className={`${fontBody.variable} ${fontMono.variable}`}>
+      <body className="min-h-dvh bg-[color:var(--white)] text-[color:var(--gray-800)] antialiased font-sans">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="min-h-[70dvh]">{children}</main>
