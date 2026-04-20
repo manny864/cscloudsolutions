@@ -7,6 +7,7 @@ import {routing} from '@/i18n/routing';
 import {fontBody, fontMono} from '../fonts';
 import {Header} from '@/components/Header';
 import {Footer} from '@/components/Footer';
+import {CookieBanner} from '@/components/CookieBanner'; // AHORA SÍ ENCONTRARÁ EL ARCHIVO
 import {SITE, absoluteUrl} from '@/lib/seo';
 
 export function generateStaticParams() {
@@ -68,6 +69,7 @@ export default async function LocaleLayout({children, params}: {children: React.
           <Header />
           <main className="min-h-[70dvh]">{children}</main>
           <Footer />
+          <CookieBanner />
         </NextIntlClientProvider>
       </body>
     </html>
