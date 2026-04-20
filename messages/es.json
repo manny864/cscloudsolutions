@@ -3,6 +3,54 @@
     "homeTitle": "CSCloudSolutions — Soluciones Cloud Microsoft para PyMEs | Azure y Microsoft 365",
     "homeDescription": "Ayudamos a PyMEs a migrar, proteger y optimizar Microsoft 365 y Azure. Auditoría de seguridad gratuita, soporte experto y acompañamiento real."
   },
+  "structured": {
+    "orgDescription": "Expert consulting in Microsoft Azure, Microsoft 365, and cybersecurity. Secure cloud migration and technical support for SMBs in Latin America and worldwide.",
+    "knowsAbout": [
+      "Microsoft Azure",
+      "Microsoft 365",
+      "Email Migration",
+      "Exchange Online Migration",
+      "Cloud Security",
+      "Cybersecurity for SMEs",
+      "Cloud Migration",
+      "Azure Virtual Desktop",
+      "Identity and Access Management"
+    ],
+    "faq": [
+      {
+        "@type": "Question",
+        "name": "What does the free security audit include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We review critical points of Microsoft 365 (MFA, forwarding, conditional access, roles, connected apps, SharePoint/OneDrive, anti-phishing, retention, and logs) and deliver a prioritized report."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to migrate to Microsoft 365?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the size and current state. We plan the migration to minimize impact and keep operations running during the process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work outside of Argentina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We provide remote services to Latin America, the United States, and Europe, with adapted schedules and communication."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What advantages does Azure have for an SMB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Azure offers enterprise-level infrastructure on a pay-as-you-go basis. We design an architecture that prioritizes continuity and cost without over-provisioning."
+        }
+      }
+    ]
+  },
   "nav": {
     "aria": "Navegación principal",
     "topbarEmail": "Email",
@@ -11,6 +59,7 @@
     "m365": "Microsoft 365",
     "azure": "Azure",
     "security": "Seguridad",
+    "blog": "Blog",
     "about": "Nosotros",
     "cta": "Auditoría Gratis ›"
   },
@@ -19,7 +68,7 @@
       "badge": "Especialistas en Microsoft365 y Azure",
       "titleA": "Tu empresa segura y",
       "titleB": "funcionando mejor en la nube",
-      "sub": "Migramos, protegemos y optimizamos tu entorno Microsoft para que tu negocio trabaje sin tranquilo, sin interrupciones y con costos bajo control. Acompañamos a PyMEs que quieren crecer, no complicarse con la tecnología.",
+      "sub": "Migramos, protegemos y optimizamos tu entorno Microsoft para que tu negocio trabaje tranquilo, sin interrupciones y con costos bajo control. Acompañamos a PyMEs que quieren crecer, no complicarse con la tecnología.",
       "ctaPrimary": "Auditoría gratuita de seguridad",
       "ctaSecondary": "Conocer Azure ›",
       "stats": {
@@ -31,7 +80,7 @@
         "s3l": "Soporte y monitoreo"
       },
       "cardTitle": "Auditoría de Seguridad sin costo, en solo 30 minutos",
-      "cardSub": "Revisamos los puntos críticos de tu Microsoft 365 para detectar riesgos reales antes de que se conviertan en un problema. Sin letra chica, sin compromiso. Cuando terminamos, te explicamos qué está bien, qué no, y qué haríamos nosotros en tu lugar.",
+      "cardSub": "Revisamos los puntos críticos de tu Microsoft 365 para detectar riesgos reales antes de que se conviertan en un problema. Sin letra chica, sin compromiso.",
       "cardBullets": [
         "Autenticación multifactor y accesos",
         "Reenvíos de correo a externos",
@@ -43,35 +92,33 @@
       "cardNote": "Sin costo · Sin compromiso · Enfoque práctico"
     },
     "services": {
-      "badge": "Nuestros Servicios",
-      "titleA": "Soluciones cloud completas",
-      "titleB": "para tu PyME",
-      "sub": "No vendemos servicios sueltos. Diseñamos soluciones completas para que tu empresa trabaje mejor hoy y esté preparada para mañana.",
-      "more": "Ver más",
-      "m365": {
-        "title": "Microsoft 365",
-        "desc": "Implementamos Microsoft 365 para que tu equipo trabaje mejor desde el primer día. Migramos correos, archivos y herramientas sin frenar la operación, y dejamos todo configurado de forma segura y ordenada."
-      },
-      "azure": {
-        "title": "Microsoft Azure",
-        "desc": "Infraestructura en Azure pensada para PyMEs reales. Pagás solo lo que usás, escalás cuando lo necesitás y te olvidás de servidores que se quedan viejos o cortan el negocio."
-      },
-      "security": {
-        "title": "Seguridad en la nube",
-        "desc": "Zero Trust, MFA, acceso condicional y protección contra phishing para bajar el riesgo sin frenar al equipo."
-      },
-      "modern": {
-        "title": "Modern Workplace",
-        "desc": "Trabajo híbrido seguro: Intune, Teams avanzado y dispositivos bajo control sin dolores de cabeza."
-      },
-      "power": {
-        "title": "Power Platform",
-        "desc": "Automatizá procesos y mirá tus datos con claridad: Power BI, Power Automate y Power Apps."
-      },
-      "support": {
-        "title": "Soporte técnico",
-        "desc": "Mesa de ayuda y monitoreo proactivo. Respondemos rápido y evitamos incidentes antes de que te impacten."
-      }
+      "title": "Nuestras Soluciones",
+      "items": [
+        {
+          "id": "m365",
+          "badge": "Productividad",
+          "title": "Microsoft 365",
+          "description": "Potenciamos la colaboración de tu equipo con el ecosistema líder de Microsoft.",
+          "video": "/videos/Trabajo_Colaborativo.webm",
+          "link": "/microsoft-365"
+        },
+        {
+          "id": "azure",
+          "badge": "Infraestructura",
+          "title": "Azure Cloud",
+          "description": "Migraciones seguras y escalabilidad infinita en la nube de Microsoft.",
+          "video": "/videos/Futuristic_Server_Room_Motion_Graphics.webm",
+          "link": "/azure"
+        },
+        {
+          "id": "security",
+          "badge": "Ciberseguridad",
+          "title": "Seguridad & Compliance",
+          "description": "Protección avanzada contra amenazas y auditorías de seguridad en tiempo real.",
+          "video": "/videos/Ciberseguridad_Escudo_Digital.webm",
+          "link": "/seguridad"
+        }
+      ]
     },
     "audit": {
       "badge": "Auditoría express gratuita",
@@ -186,379 +233,5 @@
     ],
     "rights": "Todos los derechos reservados.",
     "afip": "QR AFIP"
-  },
-  "pages": {
-    "about": {
-      "badge": "Acerca de nosotros",
-      "title": "Somos CSCloudSolutions, y ayudamos a PyMEs a usar la nube sin dolores de cabeza.",
-      "sub": "Trabajamos con empresas de toda la región que necesitan seguridad, continuidad y alguien que se haga cargo de la tecnología de verdad. No prometemos magia: diseñamos, implementamos y acompañamos para que todo funcione como tiene que funcionar.",
-      "stats": [
-        {
-          "n": "+20",
-          "l": "Años en IT"
-        },
-        {
-          "n": "Senior",
-          "l": "Arquitectura y soporte"
-        },
-        {
-          "n": "Global",
-          "l": "Cobertura remota"
-        }
-      ],
-      "featuresBadge": "Cómo trabajamos",
-      "featuresTitleA": "Un enfoque",
-      "featuresTitleB": "simple y medible",
-      "features": [
-        {
-          "i": "🧭",
-          "t": "Diagnóstico claro",
-          "d": "Entendemos tu punto de partida y definimos prioridades sin complicarte."
-        },
-        {
-          "i": "🧱",
-          "t": "Arquitectura sólida",
-          "d": "Diseño pensado para continuidad, seguridad y crecimiento."
-        },
-        {
-          "i": "🤝",
-          "t": "Acompañamiento real",
-          "d": "No te dejamos solo: documentación, soporte y mejoras continuas."
-        }
-      ],
-      "ctaTitle": "¿Querés un plan de mejora para tu entorno Microsoft?",
-      "ctaSub": "Te proponemos opciones según tu presupuesto y tu urgencia. Primero ordenamos, después optimizamos.",
-      "ctaButton": "Hablemos →"
-    },
-    "m365": {
-      "badge": "Microsoft 365",
-      "title": "Microsoft 365 para PyMEs: orden, seguridad y productividad",
-      "sub": "Implementamos, migramos y gestionamos toda la suite. El objetivo es simple: que tu equipo trabaje mejor y que tus datos estén protegidos.",
-      "stats": [
-        {
-          "n": "+40",
-          "l": "Migraciones realizadas"
-        },
-        {
-          "n": "0",
-          "l": "Downtime planificado"
-        },
-        {
-          "n": "-30%",
-          "l": "Ahorro por licencias"
-        }
-      ],
-      "featuresBadge": "Qué incluye",
-      "featuresTitleA": "Servicio completo de",
-      "featuresTitleB": "Microsoft 365",
-      "features": [
-        {
-          "i": "📧",
-          "t": "Migración de correo",
-          "d": "Gmail, Zoho, cPanel o Exchange. Migración ordenada con historial y contactos."
-        },
-        {
-          "i": "👥",
-          "t": "Teams bien configurado",
-          "d": "Estructura de equipos y canales, permisos y buenas prácticas para colaboración."
-        },
-        {
-          "i": "📁",
-          "t": "SharePoint y OneDrive",
-          "d": "Estructura, permisos y migración para que no se pierdan archivos ni control."
-        },
-        {
-          "i": "🔐",
-          "t": "Seguridad desde el día 1",
-          "d": "MFA, acceso condicional y políticas anti-phishing aplicadas a tu realidad."
-        },
-        {
-          "i": "📊",
-          "t": "Licencias optimizadas",
-          "d": "Asignamos el plan correcto a cada usuario para que no pagues de más."
-        },
-        {
-          "i": "🎓",
-          "t": "Capacitación corta y útil",
-          "d": "Tu equipo aprende lo necesario para adoptar rápido y sin frustración."
-        }
-      ],
-      "ctaTitle": "¿Querés migrar sin frenar el negocio?",
-      "ctaSub": "Planificamos la migración para reducir riesgos y evitar interrupciones. Te explicamos cada paso.",
-      "ctaButton": "Solicitar propuesta →"
-    },
-    "azure": {
-      "badge": "Microsoft Azure",
-      "title": "Infraestructura Azure para PyMEs en Argentina y el mundo",
-      "sub": "Diseñamos arquitecturas que priorizan rendimiento y costo. Implementamos continuidad operativa y seguridad para que puedas crecer sin miedo.",
-      "stats": [
-        {
-          "n": "99.9%",
-          "l": "SLA objetivo"
-        },
-        {
-          "n": "-35%",
-          "l": "Ahorro promedio"
-        },
-        {
-          "n": "24/7",
-          "l": "Monitoreo"
-        }
-      ],
-      "featuresBadge": "Servicios Azure",
-      "featuresTitleA": "Lo que implementamos en",
-      "featuresTitleB": "Microsoft Azure",
-      "features": [
-        {
-          "i": "🖥️",
-          "t": "Máquinas virtuales",
-          "d": "Windows o Linux para ERP, apps críticas y escritorios virtuales."
-        },
-        {
-          "i": "🗄️",
-          "t": "Bases de datos",
-          "d": "SQL, MySQL o PostgreSQL gestionados con backup y alta disponibilidad."
-        },
-        {
-          "i": "🌐",
-          "t": "Redes y conectividad",
-          "d": "VPN site-to-site, VNets, NSG y diseño seguro de accesos."
-        },
-        {
-          "i": "💾",
-          "t": "Backup y DR",
-          "d": "Azure Backup y Site Recovery con objetivos de RPO/RTO realistas."
-        },
-        {
-          "i": "📈",
-          "t": "Optimización de costos",
-          "d": "Right-sizing, reservas y análisis de consumo para bajar la factura."
-        },
-        {
-          "i": "🤖",
-          "t": "Automatización",
-          "d": "Integración con AI, analytics y flujos que simplifican operación."
-        }
-      ],
-      "ctaTitle": "¿Querés saber cuánto te costaría migrar a Azure?",
-      "ctaSub": "Estimamos costo, riesgos y un plan por etapas. Sin letra chica.",
-      "ctaButton": "Pedir estimación →"
-    },
-    "security": {
-      "badge": "Seguridad en la nube",
-      "title": "Protegé tus datos con un enfoque Zero Trust",
-      "sub": "La seguridad no debería frenar el trabajo. Implementamos controles inteligentes para bajar riesgos reales: accesos, phishing, dispositivos y políticas.",
-      "stats": [
-        {
-          "n": "Zero",
-          "l": "Confianza implícita"
-        },
-        {
-          "n": "MFA",
-          "l": "Acceso protegido"
-        },
-        {
-          "n": "SOC",
-          "l": "Mejor visibilidad"
-        }
-      ],
-      "featuresBadge": "Capas de protección",
-      "featuresTitleA": "Seguridad",
-      "featuresTitleB": "en todas las capas",
-      "features": [
-        {
-          "i": "🔐",
-          "t": "MFA y acceso condicional",
-          "d": "Definimos quién entra, desde dónde y con qué nivel de riesgo."
-        },
-        {
-          "i": "🛡️",
-          "t": "Microsoft Defender",
-          "d": "Protección contra malware y ransomware con políticas aplicables a tu operación."
-        },
-        {
-          "i": "📧",
-          "t": "Anti-phishing",
-          "d": "Fortalecemos correo con buenas prácticas y configuraciones de dominio."
-        }
-      ],
-      "ctaTitle": "¿Querés bajar el riesgo sin complicar al usuario?",
-      "ctaSub": "Primero priorizamos vulnerabilidades críticas y después afinamos el resto.",
-      "ctaButton": "Solicitar auditoría →"
-    },
-    "modern": {
-      "badge": "Modern Workplace",
-      "title": "Trabajo híbrido seguro y productivo",
-      "sub": "Colaboración moderna, dispositivos controlados y acceso seguro desde cualquier lugar. Sin improvisación.",
-      "stats": [
-        {
-          "n": "Teams",
-          "l": "Colaboración"
-        },
-        {
-          "n": "Intune",
-          "l": "Dispositivos"
-        },
-        {
-          "n": "AVD",
-          "l": "Escritorios"
-        }
-      ],
-      "featuresBadge": "Soluciones",
-      "featuresTitleA": "Tu lugar de trabajo",
-      "featuresTitleB": "reinventado",
-      "features": [
-        {
-          "i": "💬",
-          "t": "Teams avanzado",
-          "d": "Estructura, permisos y buenas prácticas para equipos distribuidos."
-        },
-        {
-          "i": "📱",
-          "t": "Intune",
-          "d": "Políticas, enrolamiento y borrado remoto para PCs y móviles."
-        },
-        {
-          "i": "🖥️",
-          "t": "Azure Virtual Desktop",
-          "d": "Escritorios virtuales para trabajar desde cualquier dispositivo con seguridad."
-        }
-      ],
-      "ctaTitle": "¿Tu equipo trabaja remoto o híbrido?",
-      "ctaSub": "Te ayudamos a ordenar el acceso y la gestión de dispositivos sin frenar la productividad.",
-      "ctaButton": "Hablar con un experto →"
-    },
-    "power": {
-      "badge": "Power Platform",
-      "title": "Automatizá procesos y convertí datos en decisiones",
-      "sub": "Procesos manuales cuestan tiempo y errores. Con Power Platform los automatizamos y te dejamos visibilidad real.",
-      "stats": [
-        {
-          "n": "BI",
-          "l": "Dashboards"
-        },
-        {
-          "n": "Automate",
-          "l": "Flujos"
-        },
-        {
-          "n": "Apps",
-          "l": "Soluciones"
-        }
-      ],
-      "featuresBadge": "Herramientas",
-      "featuresTitleA": "Todo el poder de",
-      "featuresTitleB": "Power Platform",
-      "features": [
-        {
-          "i": "📊",
-          "t": "Power BI",
-          "d": "Dashboards que conectan ventas, finanzas y operaciones en un mismo lugar."
-        },
-        {
-          "i": "⚙️",
-          "t": "Power Automate",
-          "d": "Aprobaciones, alertas y sincronización. Menos tareas repetitivas."
-        },
-        {
-          "i": "📱",
-          "t": "Power Apps",
-          "d": "Apps internas a medida: stock, formularios, incidentes y más."
-        }
-      ],
-      "ctaTitle": "¿Qué proceso querés automatizar primero?",
-      "ctaSub": "Elegimos un caso con impacto y lo resolvemos rápido para que veas valor.",
-      "ctaButton": "Contanos tu caso →"
-    },
-    "support": {
-      "badge": "Soporte técnico",
-      "title": "Soporte que no te abandona",
-      "sub": "Tu negocio no para. Nosotros tampoco. Mesa de ayuda, monitoreo y mantenimiento preventivo.",
-      "stats": [
-        {
-          "n": "24/7",
-          "l": "Disponibilidad"
-        },
-        {
-          "n": "SLA",
-          "l": "Priorización"
-        },
-        {
-          "n": "Proactivo",
-          "l": "Monitoreo"
-        }
-      ],
-      "featuresBadge": "Qué incluye",
-      "featuresTitleA": "Soporte",
-      "featuresTitleB": "completo y proactivo",
-      "features": [
-        {
-          "i": "🎫",
-          "t": "Mesa de ayuda",
-          "d": "Tickets priorizados y canales directos para emergencias."
-        },
-        {
-          "i": "👁️",
-          "t": "Monitoreo",
-          "d": "Alertas antes de que el problema te afecte."
-        },
-        {
-          "i": "🔧",
-          "t": "Mantenimiento",
-          "d": "Parches, revisiones y mejoras para evitar incidentes."
-        }
-      ],
-      "ctaTitle": "¿Querés dejar de apagar incendios?",
-      "ctaSub": "Armamos un esquema de soporte acorde a tu operación y presupuesto.",
-      "ctaButton": "Pedir plan →"
-    }
-  },
-  "structured": {
-    "orgDescription": "Consultoría experta en Microsoft Azure, Microsoft 365 y ciberseguridad. Migración cloud segura y soporte técnico para PyMEs en Latinoamérica y el mundo.",
-    "knowsAbout": [
-      "Microsoft Azure",
-      "Microsoft 365",
-      "Email Migration",
-      "Exchange Online Migration",
-      "Cloud Security",
-      "Cybersecurity for SMEs",
-      "Cloud Migration",
-      "Azure Virtual Desktop",
-      "Identity and Access Management"
-    ],
-    "faq": [
-      {
-        "@type": "Question",
-        "name": "¿Qué incluye la auditoría de seguridad gratuita?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Revisamos puntos críticos de Microsoft 365 (MFA, reenvíos, acceso condicional, roles, apps conectadas, SharePoint/OneDrive, protección anti-phishing, retención y logs) y entregamos un reporte con prioridades."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Depende del tamaño y del estado actual. Planificamos la migración para minimizar impacto y mantener la operación durante el proceso."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Trabajan fuera de Argentina?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Damos servicio remoto a Latinoamérica, Estados Unidos y Europa, con horarios y comunicación adaptados."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué ventajas tiene Azure para una PyME?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Azure ofrece infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo sin sobredimensionar."
-        }
-      }
-    ]
   }
 }

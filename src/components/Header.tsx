@@ -27,7 +27,8 @@ export function Header() {
     {href: '/microsoft-365', key: 'm365'},
     {href: '/azure', key: 'azure'},
     {href: '/seguridad', key: 'security'},
-    {href: '/nosotros', key: 'about'}
+    {href: '/nosotros', key: 'about'},
+    {href: '/blog', key: 'blog'},
   ];
 
   return (

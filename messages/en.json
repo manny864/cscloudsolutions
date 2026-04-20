@@ -1,520 +1,10 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions — Enterprise cloud solutions with Azure & Microsoft 365",
-    "homeDescription": "Secure migrations, cybersecurity audits and 24/7 support for SMBs. We turn Microsoft 365 and Azure into a real advantage: lower risk, lower cost and stronger business continuity."
-  },
-  "nav": {
-    "aria": "Main navigation",
-    "topbarEmail": "Email",
-    "topbarTagline": "Cloud solutions for growing businesses",
-    "home": "Home",
-    "m365": "Microsoft 365",
-    "azure": "Azure",
-    "security": "Security",
-    "about": "About",
-    "cta": "Free Audit ›"
-  },
-  "home": {
-    "hero": {
-      "badge": "Microsoft partner based in Argentina",
-      "titleA": "Keep your business safe and",
-      "titleB": "efficient in the cloud",
-      "sub": "We migrate, protect and optimize your Microsoft environment so your business runs without interruptions. We build tailored Azure and Microsoft 365 solutions focused on security, cost and continuity. As your team grows, your tech keeps up.",
-      "ctaPrimary": "Free security audit",
-      "ctaSecondary": "Explore Azure ›",
-      "stats": {
-        "s1n": "20+",
-        "s1l": "Years in IT",
-        "s2n": "99.9%",
-        "s2l": "Business-oriented uptime",
-        "s3n": "24/7",
-        "s3l": "Support & monitoring"
-      },
-      "cardTitle": "Express security audit",
-      "cardSub": "We identify real Microsoft 365 risks and share a clear, prioritized action plan.",
-      "cardBullets": [
-        "Multi-factor authentication and access",
-        "External mail forwarding rules",
-        "Conditional access and admin roles",
-        "Connected third‑party apps",
-        "SharePoint & OneDrive permissions"
-      ],
-      "cardButton": "Request your audit →",
-      "cardNote": "Free · No commitment · Practical outcomes"
-    },
-    "services": {
-      "badge": "Services",
-      "titleA": "End‑to‑end cloud solutions",
-      "titleB": "for SMBs",
-      "sub": "From the first migration step to day‑to‑day support. Pick a starting point and we’ll design the rest of the journey.",
-      "more": "Learn more",
-      "m365": {
-        "title": "Microsoft 365",
-        "desc": "Email, Teams and SharePoint done right. Less friction, more productivity and security from day one."
-      },
-      "azure": {
-        "title": "Microsoft Azure",
-        "desc": "Scalable infrastructure focused on value: VMs, networking, databases and business continuity."
-      },
-      "security": {
-        "title": "Cloud security",
-        "desc": "Zero Trust, MFA, conditional access and anti‑phishing protections that don’t slow people down."
-      },
-      "modern": {
-        "title": "Modern Workplace",
-        "desc": "Secure hybrid work with Intune, advanced Teams and device governance without headaches."
-      },
-      "power": {
-        "title": "Power Platform",
-        "desc": "Automate processes and make data visible: Power BI, Power Automate and Power Apps."
-      },
-      "support": {
-        "title": "Technical support",
-        "desc": "Helpdesk + proactive monitoring. Fast response and fewer incidents over time."
-      }
-    },
-    "audit": {
-      "badge": "Free express audit",
-      "titleA": "10 critical checks",
-      "titleB": "for your Microsoft 365",
-      "sub": "When incidents happen, there were usually signals. We look for them, explain them clearly and help you close gaps with a simple plan.",
-      "calloutTitle": "Want to know your exposure before something happens?",
-      "calloutSub": "You get an executive summary with clear priorities. If you’re fine, we’ll say that too.",
-      "calloutCta": "Request the audit →",
-      "points": [
-        "Multi‑factor authentication (MFA)",
-        "External mail forwarding",
-        "Conditional access",
-        "Admin roles and privileges",
-        "Connected third‑party applications",
-        "SharePoint & OneDrive permissions",
-        "Anti‑phishing and malware protection",
-        "Retention and backups",
-        "Audit logs and alerts",
-        "Licenses and unnecessary accounts"
-      ]
-    },
-    "testimonials": {
-      "badge": "Success stories",
-      "titleA": "What",
-      "titleB": "clients say",
-      "items": [
-        {
-          "quote": "Moving to Microsoft 365 was smooth and predictable. The team works better and support shows up when it matters.",
-          "name": "Ernesto Bernal",
-          "role": "Operations Director — Bernal Logistics",
-          "initials": "EB"
-        },
-        {
-          "quote": "The audit was eye‑opening. We tightened access and policies and gained peace of mind without extra bureaucracy.",
-          "name": "Raquel M. Martinez",
-          "role": "General Manager — Aquatech S.R.L.",
-          "initials": "RMM"
-        },
-        {
-          "quote": "We optimized Azure and reduced costs without losing performance. You can tell when a real expert is guiding you.",
-          "name": "Alejandro Ferrer",
-          "role": "CEO — Groi S.A Consulting",
-          "initials": "AF"
-        }
-      ]
-    },
-    "faq": {
-      "badge": "FAQ",
-      "titleA": "Everything you",
-      "titleB": "should know",
-      "sub": "Short answers, no fluff. If your case is unique, we’ll review it on a call.",
-      "cta": "Let’s talk →",
-      "items": [
-        {
-          "q": "What’s included in the free security audit?",
-          "a": "We review 10 Microsoft 365 risk areas and deliver a report with impact and priorities. It’s practical guidance on what to fix first."
-        },
-        {
-          "q": "How long does a Microsoft 365 migration take?",
-          "a": "It depends on your size and current setup. We plan it to minimize impact and keep email running during the process."
-        },
-        {
-          "q": "Do you work outside Argentina?",
-          "a": "Yes. We deliver services remotely across Latin America, the US and Europe, adapting communication and schedules."
-        },
-        {
-          "q": "Why is Azure a good fit for SMBs?",
-          "a": "You get enterprise‑grade infrastructure with pay‑as‑you‑go pricing. We design for continuity and cost without over‑engineering."
-        }
-      ]
-    }
-  },
-  "contact": {
-    "badge": "Contact",
-    "titleA": "Let’s discuss your",
-    "titleB": "cloud strategy",
-    "sub": "Share your details and an expert will reach out within one business day. Prefer WhatsApp? That works too.",
-    "whatsTitle": "Direct WhatsApp",
-    "emailTitle": "Email",
-    "formTitle": "Request a free consultation",
-    "formSub": "Tell us what you want to improve and we’ll propose the simplest path.",
-    "name": "Name *",
-    "email": "Email *",
-    "company": "Company",
-    "phone": "Phone",
-    "message": "Message",
-    "namePh": "Your name",
-    "emailPh": "name@company.com",
-    "companyPh": "Company name",
-    "phonePh": "+1 ...",
-    "messagePh": "Briefly describe what you need...",
-    "send": "Send request →",
-    "sending": "Sending...",
-    "note": "No spam. We reply with clear, useful info.",
-    "errorGeneric": "We couldn’t send your request. Please try again."
-  },
-  "footer": {
-    "brand": "Experts in Microsoft cloud solutions for SMBs worldwide. We migrate, protect and optimize your infrastructure.",
-    "company": "Company",
-    "about": "About us",
-    "blog": "Blog",
-    "privacy": "Privacy policy",
-    "terms": "Terms",
-    "contact": "Social & contact",
-    "certTitle": "Credentials",
-    "certs": [
-      "🏆 Microsoft Certified: Azure Solutions Architect Expert",
-      "🏆 Microsoft Certified: Azure Administrator Associate",
-      "🏆 Microsoft Certified: Azure Network Engineer Associate",
-      "🏆 Microsoft 365 Certified: Enterprise Administrator"
-    ],
-    "rights": "All rights reserved.",
-    "afip": "AFIP QR"
-  },
-  "pages": {
-    "about": {
-      "badge": "About",
-      "title": "Your strategic partner in the cloud",
-      "sub": "We started in Argentina to help SMBs grow with secure, structured and scalable technology. No smoke and mirrors: we design, implement and stay with you.",
-      "stats": [
-        {
-          "n": "20+",
-          "l": "Years in IT"
-        },
-        {
-          "n": "Senior",
-          "l": "Architecture & support"
-        },
-        {
-          "n": "Global",
-          "l": "Remote coverage"
-        }
-      ],
-      "featuresBadge": "How we work",
-      "featuresTitleA": "A simple",
-      "featuresTitleB": "measurable approach",
-      "features": [
-        {
-          "i": "🧭",
-          "t": "Clear assessment",
-          "d": "We understand your starting point and set priorities without overwhelm."
-        },
-        {
-          "i": "🧱",
-          "t": "Solid architecture",
-          "d": "Designed for continuity, security and growth."
-        },
-        {
-          "i": "🤝",
-          "t": "Real partnership",
-          "d": "Documentation, support and continuous improvements — not a one‑off delivery."
-        }
-      ],
-      "ctaTitle": "Want a practical improvement plan for Microsoft?",
-      "ctaSub": "We propose options based on budget and urgency. First we stabilize, then we optimize.",
-      "ctaButton": "Talk to us →"
-    },
-    "m365": {
-      "badge": "Microsoft 365",
-      "title": "Microsoft 365 for SMBs: structure, security and productivity",
-      "sub": "We implement, migrate and manage the full suite. The goal is simple: your team works better and your data stays protected.",
-      "stats": [
-        {
-          "n": "40+",
-          "l": "Migrations"
-        },
-        {
-          "n": "0",
-          "l": "Planned downtime"
-        },
-        {
-          "n": "-30%",
-          "l": "License savings"
-        }
-      ],
-      "featuresBadge": "What you get",
-      "featuresTitleA": "End‑to‑end",
-      "featuresTitleB": "Microsoft 365",
-      "features": [
-        {
-          "i": "📧",
-          "t": "Email migration",
-          "d": "From Gmail, Zoho, cPanel or Exchange — organized and predictable."
-        },
-        {
-          "i": "👥",
-          "t": "Teams configured properly",
-          "d": "Teams, channels, permissions and practical collaboration guidelines."
-        },
-        {
-          "i": "📁",
-          "t": "SharePoint & OneDrive",
-          "d": "Structure, permissions and migration without losing control."
-        },
-        {
-          "i": "🔐",
-          "t": "Security from day one",
-          "d": "MFA, conditional access and anti‑phishing policies aligned to your needs."
-        },
-        {
-          "i": "📊",
-          "t": "License optimization",
-          "d": "Right plan for each user so you don’t overpay."
-        },
-        {
-          "i": "🎓",
-          "t": "Short, useful training",
-          "d": "Quick adoption without frustration."
-        }
-      ],
-      "ctaTitle": "Want to migrate without stopping the business?",
-      "ctaSub": "We plan the move to reduce risk and keep operations running — with full transparency.",
-      "ctaButton": "Request a proposal →"
-    },
-    "azure": {
-      "badge": "Microsoft Azure",
-      "title": "Azure infrastructure for SMBs, locally and globally",
-      "sub": "We design for performance and cost. Business continuity and security come first so you can scale with confidence.",
-      "stats": [
-        {
-          "n": "99.9%",
-          "l": "SLA target"
-        },
-        {
-          "n": "-35%",
-          "l": "Average savings"
-        },
-        {
-          "n": "24/7",
-          "l": "Monitoring"
-        }
-      ],
-      "featuresBadge": "Azure services",
-      "featuresTitleA": "What we build in",
-      "featuresTitleB": "Microsoft Azure",
-      "features": [
-        {
-          "i": "🖥️",
-          "t": "Virtual machines",
-          "d": "Windows/Linux for ERP, critical apps and virtual desktops."
-        },
-        {
-          "i": "🗄️",
-          "t": "Databases",
-          "d": "Managed SQL/MySQL/PostgreSQL with backups and high availability."
-        },
-        {
-          "i": "🌐",
-          "t": "Networking",
-          "d": "VPNs, VNets, NSGs and secure access design."
-        },
-        {
-          "i": "💾",
-          "t": "Backup & DR",
-          "d": "Azure Backup and Site Recovery with realistic RPO/RTO goals."
-        },
-        {
-          "i": "📈",
-          "t": "Cost optimization",
-          "d": "Right‑sizing, reservations and usage analysis to reduce spend."
-        },
-        {
-          "i": "🤖",
-          "t": "Automation",
-          "d": "AI, analytics and workflows that simplify operations."
-        }
-      ],
-      "ctaTitle": "Want an Azure migration cost estimate?",
-      "ctaSub": "We outline cost, risks and a phased plan — no fine print.",
-      "ctaButton": "Get an estimate →"
-    },
-    "security": {
-      "badge": "Cloud security",
-      "title": "Protect your data with a Zero Trust mindset",
-      "sub": "Security shouldn’t slow work down. We implement smart controls for real risks: access, phishing, devices and policies.",
-      "stats": [
-        {
-          "n": "Zero",
-          "l": "Implicit trust"
-        },
-        {
-          "n": "MFA",
-          "l": "Protected access"
-        },
-        {
-          "n": "SOC",
-          "l": "Better visibility"
-        }
-      ],
-      "featuresBadge": "Protection layers",
-      "featuresTitleA": "Security",
-      "featuresTitleB": "across the stack",
-      "features": [
-        {
-          "i": "🔐",
-          "t": "MFA & conditional access",
-          "d": "Who can access, from where and under what risk conditions."
-        },
-        {
-          "i": "🛡️",
-          "t": "Microsoft Defender",
-          "d": "Policies against malware and ransomware aligned to your environment."
-        },
-        {
-          "i": "📧",
-          "t": "Anti‑phishing",
-          "d": "Harden email with practical policies and domain settings."
-        }
-      ],
-      "ctaTitle": "Want to reduce risk without hurting UX?",
-      "ctaSub": "We focus on critical gaps first, then fine‑tune.",
-      "ctaButton": "Request an audit →"
-    },
-    "modern": {
-      "badge": "Modern Workplace",
-      "title": "Secure and productive hybrid work",
-      "sub": "Modern collaboration, device governance and safe access from anywhere — without improvisation.",
-      "stats": [
-        {
-          "n": "Teams",
-          "l": "Collaboration"
-        },
-        {
-          "n": "Intune",
-          "l": "Devices"
-        },
-        {
-          "n": "AVD",
-          "l": "Virtual desktops"
-        }
-      ],
-      "featuresBadge": "Solutions",
-      "featuresTitleA": "A workplace",
-      "featuresTitleB": "rebuilt",
-      "features": [
-        {
-          "i": "💬",
-          "t": "Advanced Teams",
-          "d": "Structure, permissions and practical guidelines for distributed teams."
-        },
-        {
-          "i": "📱",
-          "t": "Intune management",
-          "d": "Enrollment, policies and remote wipe for PCs and mobiles."
-        },
-        {
-          "i": "🖥️",
-          "t": "Azure Virtual Desktop",
-          "d": "Access work desktops from any device with strong security."
-        }
-      ],
-      "ctaTitle": "Is your team remote or hybrid?",
-      "ctaSub": "We’ll help you organize access and device management without hurting productivity.",
-      "ctaButton": "Talk to an expert →"
-    },
-    "power": {
-      "badge": "Power Platform",
-      "title": "Automate workflows and turn data into decisions",
-      "sub": "Manual processes cost time and create errors. With Power Platform we automate them and give you real visibility.",
-      "stats": [
-        {
-          "n": "BI",
-          "l": "Dashboards"
-        },
-        {
-          "n": "Automate",
-          "l": "Flows"
-        },
-        {
-          "n": "Apps",
-          "l": "Solutions"
-        }
-      ],
-      "featuresBadge": "Tools",
-      "featuresTitleA": "The power of",
-      "featuresTitleB": "Power Platform",
-      "features": [
-        {
-          "i": "📊",
-          "t": "Power BI",
-          "d": "Dashboards that connect sales, finance and operations in one place."
-        },
-        {
-          "i": "⚙️",
-          "t": "Power Automate",
-          "d": "Approvals, alerts and sync — fewer repetitive tasks."
-        },
-        {
-          "i": "📱",
-          "t": "Power Apps",
-          "d": "Internal apps: inventory, field forms, incidents and more."
-        }
-      ],
-      "ctaTitle": "Which process should we automate first?",
-      "ctaSub": "We pick a high‑impact case and deliver fast so you see value quickly.",
-      "ctaButton": "Tell us your case →"
-    },
-    "support": {
-      "badge": "Support",
-      "title": "Support that doesn’t disappear",
-      "sub": "Your business doesn’t stop. Neither do we. Helpdesk, proactive monitoring and preventive maintenance.",
-      "stats": [
-        {
-          "n": "24/7",
-          "l": "Availability"
-        },
-        {
-          "n": "SLA",
-          "l": "Prioritization"
-        },
-        {
-          "n": "Proactive",
-          "l": "Monitoring"
-        }
-      ],
-      "featuresBadge": "What’s included",
-      "featuresTitleA": "Full",
-      "featuresTitleB": "proactive support",
-      "features": [
-        {
-          "i": "🎫",
-          "t": "Helpdesk",
-          "d": "Prioritized tickets and direct channels for critical issues."
-        },
-        {
-          "i": "👁️",
-          "t": "Monitoring",
-          "d": "Alerts before a problem affects the business."
-        },
-        {
-          "i": "🔧",
-          "t": "Maintenance",
-          "d": "Patching, reviews and improvements to prevent incidents."
-        }
-      ],
-      "ctaTitle": "Want to stop firefighting?",
-      "ctaSub": "We build a support model that fits your operations and budget.",
-      "ctaButton": "Get a plan →"
-    }
+    "homeTitle": "CSCloudSolutions — Microsoft Cloud Solutions for SMBs | Azure & Microsoft 365",
+    "homeDescription": "We help SMBs migrate, protect, and optimize Microsoft 365 and Azure. Free security audit, expert support, and real guidance."
   },
   "structured": {
-    "orgDescription": "Expert consulting in Microsoft Azure, Microsoft 365 and cybersecurity. Secure cloud migrations and technical support for SMBs across Latin America and worldwide.",
+    "orgDescription": "Consultoría experta en Microsoft Azure, Microsoft 365 y ciberseguridad. Migración cloud segura y soporte técnico para PyMEs en Latinoamérica y el mundo.",
     "knowsAbout": [
       "Microsoft Azure",
       "Microsoft 365",
@@ -529,36 +19,219 @@
     "faq": [
       {
         "@type": "Question",
-        "name": "What’s included in the free security audit?",
+        "name": "¿Qué incluye la auditoría de seguridad gratuita?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We review key Microsoft 365 risk areas (MFA, forwarding, conditional access, admin roles, connected apps, SharePoint/OneDrive permissions, anti‑phishing, retention and logs) and deliver a prioritized report."
+          "text": "Revisamos puntos críticos de Microsoft 365 (MFA, reenvíos, acceso condicional, roles, apps conectadas, SharePoint/OneDrive, protección anti-phishing, retención y logs) y entregamos un reporte con prioridades."
         }
       },
       {
         "@type": "Question",
-        "name": "How long does a Microsoft 365 migration take?",
+        "name": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It depends on your size and current setup. We plan the migration to minimize impact and keep operations running."
+          "text": "Depende del tamaño y del estado actual. Planificamos la migración para minimizar impacto y mantener la operación durante el proceso."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you work outside Argentina?",
+        "name": "¿Trabajan fuera de Argentina?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. We work remotely across Latin America, the US and Europe, adapting schedules and communication."
+          "text": "Sí. Damos servicio remoto a Latinoamérica, Estados Unidos y Europa, con horarios y comunicación adaptados."
         }
       },
       {
         "@type": "Question",
-        "name": "Why is Azure a good fit for SMBs?",
+        "name": "¿Qué ventajas tiene Azure para una PyME?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Azure provides enterprise‑grade infrastructure with pay‑as‑you‑go pricing. We design for continuity and cost without over‑engineering."
+          "text": "Azure ofrece infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo sin sobredimensionar."
         }
       }
     ]
+  },
+  "nav": {
+    "aria": "Main navigation",
+    "topbarEmail": "Email",
+    "topbarTagline": "Cloud solutions for SMBs in Latin America and the World",
+    "home": "Home",
+    "m365": "Microsoft 365",
+    "azure": "Azure",
+    "security": "Security",
+    "blog": "Blog",
+    "about": "About Us",
+    "cta": "Free Audit ›"
+  },
+  "home": {
+    "hero": {
+      "badge": "Microsoft 365 & Azure Specialists",
+      "titleA": "Your company secure and",
+      "titleB": "running better in the cloud",
+      "sub": "We migrate, protect, and optimize your Microsoft environment so your business can run smoothly, without interruptions, and with costs under control.",
+      "ctaPrimary": "Free Security Audit",
+      "ctaSecondary": "Discover Azure ›",
+      "stats": {
+        "s1n": "20+",
+        "s1l": "Years of IT experience",
+        "s2n": "99.9%",
+        "s2l": "Business-oriented uptime",
+        "s3n": "24/7",
+        "s3l": "Support and monitoring"
+      },
+      "cardTitle": "Free Security Audit in just 30 minutes",
+      "cardSub": "We review the critical points of your Microsoft 365 to detect real risks before they become a problem. No fine print, no commitment.",
+      "cardBullets": [
+        "Multi-factor authentication & access",
+        "External email forwarding",
+        "Conditional access & admin roles",
+        "Connected third-party apps",
+        "SharePoint & OneDrive (permissions)"
+      ],
+      "cardButton": "Request audit now →",
+      "cardNote": "Free · No commitment · Practical approach"
+    },
+    "services": {
+      "title": "Our Solutions",
+      "items": [
+        {
+          "id": "m365",
+          "badge": "Productivity",
+          "title": "Microsoft 365",
+          "description": "We boost your team's collaboration with the leading Microsoft ecosystem.",
+          "video": "/videos/Trabajo_Colaborativo.webm",
+          "link": "/microsoft-365"
+        },
+        {
+          "id": "azure",
+          "badge": "Infrastructure",
+          "title": "Azure Cloud",
+          "description": "Secure migrations and infinite scalability in the Microsoft cloud.",
+          "video": "/videos/Futuristic_Server_Room_Motion_Graphics.webm",
+          "link": "/azure"
+        },
+        {
+          "id": "security",
+          "badge": "Cybersecurity",
+          "title": "Security & Compliance",
+          "description": "Advanced protection against threats and real-time security audits.",
+          "video": "/videos/Ciberseguridad_Escudo_Digital.webm",
+          "link": "/seguridad"
+        }
+      ]
+    },
+    "audit": {
+      "badge": "Free Express Audit",
+      "titleA": "10 critical points we",
+      "titleB": "review in your M365",
+      "sub": "When there is an incident, there were almost always signs beforehand. We look for them, explain them, and leave you with a simple plan to close gaps.",
+      "calloutTitle": "Want to know if you are exposed before something happens?",
+      "calloutSub": "We give you an executive report and clear priorities. If everything is fine, we will tell you that too.",
+      "calloutCta": "Request audit now →",
+      "points": [
+        "Multi-factor authentication (MFA)",
+        "Email forwarding to external domains",
+        "Conditional Access",
+        "Administrator roles and permissions",
+        "Connected third-party applications",
+        "SharePoint and OneDrive (permissions)",
+        "Anti-phishing and malware protection",
+        "Retention and backups",
+        "Audit logs and alerts",
+        "Unnecessary licenses and users"
+      ]
+    },
+    "testimonials": {
+      "badge": "Success Stories",
+      "titleA": "Companies like yours already took the step.",
+      "titleB": "Here is what they tell us after working with us.",
+      "items": [
+        {
+          "quote": "The move to Microsoft 365 was orderly and without surprises. Today the team works better and support responds when it matters.",
+          "name": "Ernesto Bernal",
+          "role": "Operations Director — Bernal Logistics",
+          "initials": "EB"
+        },
+        {
+          "quote": "The audit opened our eyes. We adjusted access and policies and gained peace of mind without becoming bureaucratic.",
+          "name": "Raquel M. Martinez",
+          "role": "General Manager — Aquatech S.R.L.",
+          "initials": "RMM"
+        },
+        {
+          "quote": "We optimized Azure and lowered costs without losing performance. It shows when you are accompanied by someone who knows.",
+          "name": "Alejandro Ferrer",
+          "role": "CEO — Consultora Groi S.A",
+          "initials": "AF"
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Frequently Asked Questions",
+      "titleA": "Everything you need",
+      "titleB": "to know",
+      "sub": "Short, straightforward answers. If your case is special, we can discuss it on a call.",
+      "cta": "Let's look at it together →",
+      "items": [
+        {
+          "q": "What does the free security audit include?",
+          "a": "In a 30-minute session we review the most sensitive points of your Microsoft 365. You take away a clear, understandable and actionable diagnosis, even if you decide not to move forward with us."
+        },
+        {
+          "q": "How long does it take to migrate to Microsoft 365?",
+          "a": "It depends on the size and current state. For many SMBs, the migration can be planned to minimize impact and keep email operational during the process."
+        },
+        {
+          "q": "Do you only work with companies in Argentina?",
+          "a": "Our base is Argentina, but we provide remote service to Latin America, the US, and Europe. We adjust schedules and communication to make it simple."
+        },
+        {
+          "q": "What advantage does Azure have for an SMB?",
+          "a": "You access enterprise-level infrastructure paying per use. We design an architecture that prioritizes continuity and cost, without over-provisioning."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "badge": "Let's Connect",
+    "titleA": "Tell us",
+    "titleB": "what you need",
+    "sub": "Leave us your details and we will talk. No salespeople, no pressure. A specialist listens to you and tells you if we can help or not.",
+    "whatsTitle": "Direct WhatsApp",
+    "emailTitle": "Email address",
+    "formTitle": "Request a free consultation",
+    "formSub": "Tell us what you want to improve and we will propose the simplest path.",
+    "name": "Name *",
+    "email": "Email *",
+    "company": "Company",
+    "phone": "Phone",
+    "message": "Message",
+    "namePh": "Your name",
+    "emailPh": "email@company.com",
+    "companyPh": "Your company name",
+    "phonePh": "+1 555 ...",
+    "messagePh": "Briefly tell us your need...",
+    "send": "Send inquiry →",
+    "sending": "Sending...",
+    "note": "No spam. We respond with useful and direct information.",
+    "errorGeneric": "We could not send your inquiry. Please try again."
+  },
+  "footer": {
+    "brand": "Experts in Microsoft cloud solutions for SMBs in Latin America and the world. We migrate, protect, and optimize your infrastructure.",
+    "company": "Company",
+    "about": "About Us",
+    "blog": "Blog",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "contact": "Social & Contact",
+    "certTitle": "Our Credentials",
+    "certs": [
+      "🏆 Microsoft Certified: Azure Solutions Architect Expert",
+      "🏆 Microsoft Certified: Azure Administrator Associate",
+      "🏆 Microsoft Certified: Azure Network Engineer Associate",
+      "🏆 Microsoft 365 Certified: Enterprise Administrator"
+    ],
+    "rights": "All rights reserved.",
+    "afip": "AFIP QR"
   }
 }
