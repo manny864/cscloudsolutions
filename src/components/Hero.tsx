@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import {useTranslations} from 'next-intl';
-import {Container} from './Container';
-import {Link} from '@/i18n/routing';
-import {BackgroundOrbs} from './BackgroundOrbs';
+import { useTranslations } from 'next-intl';
+import { Container } from './Container';
+import { Link } from '@/i18n/routing';
+import { BackgroundOrbs } from './BackgroundOrbs';
+import { StatCounter } from './StatCounter'; // <--- IMPORTAMOS EL CONTADOR
 
 export function Hero() {
   const t = useTranslations('home.hero');
@@ -10,7 +11,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#0B1E3D]">
       
-      {/* CAPA 1 (Fondo): La imagen SVG original */}
+      {/* CAPA 1 (Fondo) */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg.svg"
@@ -21,15 +22,15 @@ export function Hero() {
         />
       </div>
 
-      {/* CAPA 2 (Filtro): El gradiente oscuro superpuesto a la imagen para que el texto sea legible */}
+      {/* CAPA 2 (Filtro) */}
       <div className="absolute inset-0 z-10 bg-[linear-gradient(135deg,rgba(11,30,61,0.10),rgba(26,50,96,0.96))]" />
 
-      {/* CAPA 3 (Decoración): Los orbes animados */}
+      {/* CAPA 3 (Decoración) */}
       <div className="absolute inset-0 z-10">
         <BackgroundOrbs />
       </div>
 
-      {/* CAPA 4 (Contenido): El texto y los botones al frente de todo */}
+      {/* CAPA 4 (Contenido) */}
       <Container className="relative z-20 grid min-h-[92dvh] items-center gap-12 py-16 lg:grid-cols-[1fr_420px]">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-[color:rgba(0,174,239,0.35)] bg-[color:rgba(0,174,239,0.12)] px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--cyan)]">
@@ -60,20 +61,43 @@ export function Hero() {
             </Link>
           </div>
 
+          {/* 👇 AQUÍ APLICAMOS LAS ANIMACIONES DE LOS NÚMEROS 👇 */}
           <div className="mt-10 flex flex-wrap gap-8">
-            {[
-              {n: t('stats.s1n'), l: t('stats.s1l')},
-              {n: t('stats.s2n'), l: t('stats.s2l')},
-              {n: t('stats.s3n'), l: t('stats.s3l')}
-            ].map((s) => (
-              <div key={s.l} className="min-w-[120px] text-center">
-                <div className="text-3xl font-extrabold text-[color:var(--cyan)]">{s.n}</div>
-                <div className="mt-1 text-[12px] font-semibold text-white/80">{s.l}</div>
+            
+            {/* Tarjeta 1: Años de Experiencia */}
+            <div className="min-w-[120px] text-center">
+              <div className="text-3xl font-extrabold text-[color:var(--cyan)]">
+                <StatCounter target={20} prefix="+" duration={2000} />
               </div>
-            ))}
+              <div className="mt-1 text-[12px] font-semibold text-white/80">
+                {t('stats.s1l')}
+              </div>
+            </div>
+
+            {/* Tarjeta 2: Uptime */}
+            <div className="min-w-[120px] text-center">
+              <div className="text-3xl font-extrabold text-[color:var(--cyan)]">
+                <StatCounter target={99.9} decimals={1} suffix="%" duration={2500} />
+              </div>
+              <div className="mt-1 text-[12px] font-semibold text-white/80">
+                {t('stats.s2l')}
+              </div>
+            </div>
+
+            {/* Tarjeta 3: Soporte */}
+            <div className="min-w-[120px] text-center">
+              <div className="text-3xl font-extrabold text-[color:var(--cyan)]">
+                <StatCounter target={24} duration={1500} />/<StatCounter target={7} duration={1500} />
+              </div>
+              <div className="mt-1 text-[12px] font-semibold text-white/80">
+                {t('stats.s3l')}
+              </div>
+            </div>
+
           </div>
         </div>
 
+        {/* Tarjeta de Auditoría */}
         <div className="rounded-3xl border border-[color:rgba(0,174,239,0.22)] bg-white/5 p-8 backdrop-blur">
           <h3 className="text-xl font-extrabold text-white">{t('cardTitle')}</h3>
           <p className="mt-2 text-sm leading-relaxed text-white/75">{t('cardSub')}</p>
