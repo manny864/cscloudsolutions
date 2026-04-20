@@ -17,6 +17,7 @@ export type ContactFormInput = z.infer<typeof ContactSchema>;
 export type ActionResult = {
   ok: boolean;
   message: string;
+  debug?: string; // Temporal para troubleshooting
 };
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
@@ -48,14 +49,19 @@ async function hasMxRecords(email: string): Promise<boolean> {
   }
 }
 
-async function getGraphAccessToken(): Promise<string | null> {
+async function getGraphAccessToken(): Promise<{token: string | null; error?: string}> {
   const tenantId = process.env.AZURE_TENANT_ID;
   const clientId = process.env.AZURE_CLIENT_ID;
   const clientSecret = process.env.AZURE_CLIENT_SECRET;
 
   if (!tenantId || !clientId || !clientSecret) {
-    console.error('Missing Azure credentials in environment');
-    return null;
+    const missing = [];
+    if (!tenantId) missing.push('AZURE_TENANT_ID');
+    if (!clientId) missing.push('AZURE_CLIENT_ID');
+    if (!clientSecret) missing.push('AZURE_CLIENT_SECRET');
+    const error = `Missing env: ${missing.join(', ')}`;
+    console.error('[Graph] ' + error);
+    return {token: null, error};
   }
 
   try {
@@ -75,16 +81,23 @@ async function getGraphAccessToken(): Promise<string | null> {
     );
 
     if (!res.ok) {
-      const error = await res.text();
-      console.error('Azure token error:', error);
-      return null;
+      const errorText = await res.text();
+      console.error('[Graph] Token error:', res.status, errorText);
+      return {token: null, error: `Auth failed: ${res.status}`};
     }
 
-    const data = (await res.json()) as {access_token?: string};
-    return data.access_token ?? null;
+    const data = (await res.json()) as {access_token?: string; error?: string; error_description?: string};
+    
+    if (data.error) {
+      console.error('[Graph] Token error:', data.error, data.error_description);
+      return {token: null, error: data.error_description || data.error};
+    }
+
+    return {token: data.access_token ?? null};
   } catch (err) {
-    console.error('Failed to get Graph token:', err);
-    return null;
+    const error = String(err);
+    console.error('[Graph] Exception:', error);
+    return {token: null, error};
   }
 }
 
@@ -94,16 +107,19 @@ async function sendEmailViaGraph(
   empresa: string,
   telefono: string,
   mensaje: string
-): Promise<boolean> {
-  const token = await getGraphAccessToken();
-  if (!token) return false;
+): Promise<{ok: boolean; error?: string}> {
+  const {token, error: authError} = await getGraphAccessToken();
+  if (!token) {
+    return {ok: false, error: authError || 'Auth failed'};
+  }
 
   const senderEmail = process.env.AZURE_SENDER_EMAIL;
   const recipientEmail = process.env.AZURE_RECIPIENT_EMAIL || senderEmail;
 
-  if (!senderEmail || !recipientEmail) {
-    console.error('Missing sender/recipient email config');
-    return false;
+  if (!senderEmail) {
+    const error = 'Missing AZURE_SENDER_EMAIL';
+    console.error('[Graph]', error);
+    return {ok: false, error};
   }
 
   const emailBody = {
@@ -144,15 +160,24 @@ async function sendEmailViaGraph(
     );
 
     if (!res.ok) {
-      const error = await res.text();
-      console.error('Graph sendMail error:', error);
-      return false;
+      const errorText = await res.text();
+      console.error('[Graph] sendMail error:', res.status, errorText);
+      
+      try {
+        const errorJson = JSON.parse(errorText);
+        const graphError = errorJson?.error?.message || errorJson?.error?.code || `HTTP ${res.status}`;
+        return {ok: false, error: graphError};
+      } catch {
+        return {ok: false, error: `HTTP ${res.status}`};
+      }
     }
 
-    return true;
+    console.log('[Graph] Email sent successfully');
+    return {ok: true};
   } catch (err) {
-    console.error('Failed to send email via Graph:', err);
-    return false;
+    const error = String(err);
+    console.error('[Graph] Exception:', error);
+    return {ok: false, error};
   }
 }
 
@@ -166,19 +191,31 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
 
   const recaptchaOk = await verifyRecaptcha(recaptchaToken);
   if (!recaptchaOk) {
-    return {ok: false, message: 'Validación de seguridad fallida. Probá de nuevo en unos segundos.'};
+    return {
+      ok: false, 
+      message: 'Validación de seguridad fallida. Probá de nuevo en unos segundos.',
+      debug: 'reCAPTCHA failed'
+    };
   }
 
   const mxOk = await hasMxRecords(email);
   if (!mxOk) {
-    return {ok: false, message: 'Ese correo no parece válido (dominio sin MX). Usá un email corporativo.'};
+    return {
+      ok: false, 
+      message: 'Ese correo no parece válido (dominio sin MX). Usá un email corporativo.',
+      debug: 'MX check failed'
+    };
   }
 
-  const sent = await sendEmailViaGraph(nombre, email, empresa, telefono, mensaje);
+  const {ok, error} = await sendEmailViaGraph(nombre, email, empresa, telefono, mensaje);
 
-  if (sent) {
+  if (ok) {
     return {ok: true, message: '¡Listo! Te respondemos a la brevedad.'};
   }
 
-  return {ok: false, message: 'No pudimos enviar la consulta. Probá nuevamente.'};
+  return {
+    ok: false, 
+    message: 'No pudimos enviar la consulta. Probá nuevamente.',
+    debug: error || 'Unknown error'
+  };
 }

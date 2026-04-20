@@ -11,3 +11,4 @@ out/
 
 # Variables de entorno locales
 .env*.local
+.env
