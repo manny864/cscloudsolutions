@@ -22,12 +22,13 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Aquí está el cambio: movimos 'about' (Nosotros) al final de la lista
   const items: NavItem[] = [
     {href: '/', key: 'home'},
-    {href: '/nosotros', key: 'about'},
-    {href: '/microsoft-365', key: 'm365'},
     {href: '/azure', key: 'azure'},
-    {href: '/seguridad', key: 'security'}
+    {href: '/microsoft-365', key: 'm365'},
+    {href: '/seguridad', key: 'security'},
+    {href: '/nosotros', key: 'about'}
   ];
 
   return (
@@ -57,6 +58,7 @@ export function Header() {
               </Link>
             );
           })}
+          {/* El botón CTA siempre se renderiza después de los items */}
           <Link
             href="/#contacto"
             locale={locale}
