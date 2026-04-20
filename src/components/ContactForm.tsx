@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { submitContact } from '@/app/_actions/submitContact';
 
-type Status = { kind: 'idle' | 'loading' | 'success' | 'error'; message?: string; debug?: string };
+type Status = { kind: 'idle' | 'loading' | 'success' | 'error'; message?: string };
 
 declare global {
   interface Window {
@@ -180,12 +180,9 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
 
         {/* Error */}
         {status.kind === 'error' && (
-          <div role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3">
-            <p className="text-sm font-semibold text-red-600">{status.message}</p>
-            {status.debug && (
-              <p className="mt-1 text-xs text-red-500 font-mono">Debug: {status.debug}</p>
-            )}
-          </div>
+          <p role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
+            {status.message}
+          </p>
         )}
 
         {/* Éxito */}
