@@ -1,10 +1,14 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { getAllPosts } from '@/lib/blog';
+import Image from 'next/image';
 
-// ¡Esta línea es la clave para que Next.js la reconozca como página!
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  // Recuperamos el idioma actual de la URL
+  const { locale } = await params;
+  
+  // Ahora la función busca los posts de la carpeta correcta (en o es)
+  const posts = getAllPosts(locale);
 
   return (
     <div className="bg-white py-24 sm:py-32">
@@ -21,13 +25,15 @@ export default function BlogPage() {
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {posts.map((post) => (
             <article key={post.slug} className="flex flex-col items-start justify-between group">
-              <div className="relative w-full">
-                <img
+              <div className="relative w-full aspect-[16/9] sm:aspect-[2/1] lg:aspect-[3/2] overflow-hidden rounded-2xl">
+                <Image
                   src={post.meta.image}
                   alt={post.meta.title}
-                  className="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] transition-transform duration-300 group-hover:scale-[1.02]"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="bg-gray-100 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10 pointer-events-none" />
               </div>
               <div className="max-w-xl">
                 <div className="mt-8 flex items-center gap-x-4 text-xs">

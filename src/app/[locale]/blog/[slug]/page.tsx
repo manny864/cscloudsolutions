@@ -3,21 +3,30 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
-// Obligatorio para Hostinger (Static Export)
+// Le pasamos los idiomas a Hostinger para que genere las URLs
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
-  return slugs.map((slug) => ({
+  // Obtenemos los slugs para español y para inglés
+  const slugsEs = getPostSlugs('es').map((slug) => ({
+    locale: 'es',
     slug: slug.replace(/\.md$/, ''),
   }));
+  const slugsEn = getPostSlugs('en').map((slug) => ({
+    locale: 'en',
+    slug: slug.replace(/\.md$/, ''),
+  }));
+
+  // Retornamos todas las combinaciones de [locale]/blog/[slug]
+  return [...slugsEs, ...slugsEn];
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale, slug } = await params;
   
   let post;
   try {
-    post = getPostBySlug(slug);
+    post = getPostBySlug(slug, locale);
   } catch (e) {
     notFound(); 
   }
@@ -26,19 +35,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <div className="bg-white px-6 py-24 lg:px-8 min-h-screen">
       <div className="mx-auto max-w-4xl">
         
-        {/* ENCABEZADO ESTILO TARJETA (Imagen a la izquierda, Texto a la derecha) */}
+        {/* ENCABEZADO ESTILO TARJETA */}
         <div className="flex flex-col md:flex-row gap-8 items-start mb-16">
           
-          {/* Imagen de Portada (Tamaño fijo 300x300 en desktop) */}
+          {/* Imagen de Portada */}
           {post.meta.image && (
-            <div className="w-full md:w-[300px] flex-shrink-0">
-              <div className="aspect-square md:w-[300px] md:h-[300px] rounded-2xl overflow-hidden shadow-lg border border-[color:var(--gray-100)] bg-gray-50">
-                <img 
-                  className="w-full h-full object-cover" 
-                  src={post.meta.image} 
-                  alt={post.meta.title} 
-                />
-              </div>
+            <div className="w-full md:w-[300px] flex-shrink-0 relative h-[300px] rounded-2xl overflow-hidden shadow-lg border border-[color:var(--gray-100)] bg-gray-50">
+              <Image 
+                src={post.meta.image} 
+                alt={post.meta.title} 
+                fill
+                sizes="(max-width: 768px) 100vw, 300px"
+                className="object-cover" 
+              />
             </div>
           )}
 
@@ -59,7 +68,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             
             <p className="text-base text-[color:var(--gray-600)] font-medium flex items-center gap-2">
               <span className="w-8 h-8 rounded-full bg-[color:var(--navy)] text-white flex items-center justify-center font-bold text-xs">
-                {/* Extrae las iniciales del autor automáticamente */}
                 {post.meta.author.split(' ').map((n: string) => n[0]).join('').substring(0, 2)}
               </span>
               Por {post.meta.author}
@@ -67,10 +75,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
 
-        {/* Separador elegante */}
         <hr className="border-t-2 border-[color:var(--gray-100)] mb-16" />
 
-        {/* CONTENIDO MARKDOWN RENDERIZADO */}
+        {/* CONTENIDO MARKDOWN */}
         <div className="prose prose-lg prose-blue max-w-none text-[color:var(--gray-700)] 
           prose-headings:font-[family:var(--font-heading)] prose-headings:font-extrabold prose-headings:text-[color:var(--navy)]
           prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-[color:var(--gray-100)] prose-h2:pb-2
@@ -88,7 +95,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         </div>
 
-        {/* FOOTER DEL ARTÍCULO (Botón de volver) */}
         <div className="mt-20 pt-10 border-t border-[color:var(--gray-200)] flex justify-between items-center">
           <Link 
             href="/blog" 
@@ -97,8 +103,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             Volver al Blog
           </Link>
-          
-          
         </div>
 
       </div>
