@@ -69,4 +69,4 @@ The decision isn't always "one or the other"; often, the ideal architecture incl
 At **CSCloudSolutions**, we help SMBs design network topologies that balance security with cost efficiency. Properly implementing Azure NAT Gateway can drastically reduce your company's attack surface in an affordable and simple way.
 
 **Need help securing your Azure internet egress?**
-[Contact us today for a free network audit.](https://cscloudsolutions.com.ar/contactos)
+[Contact us today for a free network audit.](/#contacto)

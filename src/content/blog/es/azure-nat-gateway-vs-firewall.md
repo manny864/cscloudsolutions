@@ -69,4 +69,4 @@ La decisión no siempre es "uno u otro"; muchas veces la arquitectura ideal incl
 En **CSCloudSolutions**, ayudamos a las PyMEs a diseñar topologías de red que equilibran la seguridad con la eficiencia de costos. Implementar correctamente Azure NAT Gateway puede reducir drásticamente la superficie de ataque de tu empresa de forma económica y sencilla.
 
 **¿Necesitas ayuda para asegurar tu salida a Internet en Azure?**
-[Contáctanos hoy mismo para una auditoría de red gratuita.](https://cscloudsolutions.com.ar/contactos)
+[Contáctanos hoy mismo para una auditoría de red gratuita.](/#contacto)

@@ -292,3 +292,4 @@ La transición del despliegue de una zona de aterrizaje a la gestión de un ento
 28. [The 6 Rs of application modernization – App Modernization Guidance | Microsoft Learn](https://learn.microsoft.com/en-us/azure/app-modernization-guidance/plan/the-6-rs-of-application-modernization)
 
 En última instancia, el rol del arquitecto de Azure es liderar esta transición, transformando la infraestructura de un conjunto de recursos estáticos en una plataforma dinámica y segura que no solo resista los riesgos, sino que también impulse el crecimiento y la innovación continua de la organización. El CAF es la guía para lograr esta transformación de manera sostenible.
+[Contáctanos hoy para una Consultoría Gratuita de CAF.](/#contacto)
