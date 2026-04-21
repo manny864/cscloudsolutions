@@ -1,10 +1,10 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions — Microsoft Cloud Solutions for SMBs | Azure & Microsoft 365",
+    "homeTitle": "CSCloudSolutions | Microsoft Cloud Solutions for SMBs",
     "homeDescription": "We help SMBs migrate, protect, and optimize Microsoft 365 and Azure. Free security audit, expert support, and real guidance."
   },
   "structured": {
-    "orgDescription": "Consultoría experta en Microsoft Azure, Microsoft 365 y ciberseguridad. Migración cloud segura y soporte técnico para PyMEs en Latinoamérica y el mundo.",
+    "orgDescription": "Expert consulting in Microsoft Azure, Microsoft 365, and cybersecurity. Secure cloud migration and technical support for SMBs in Latin America and worldwide.",
     "knowsAbout": [
       "Microsoft Azure",
       "Microsoft 365",
@@ -16,32 +16,40 @@
       "Azure Virtual Desktop",
       "Identity and Access Management"
     ],
-    
-    "faq": {
-      "badge": "Preguntas frecuentes",
-      "titleA": "Todo lo que necesitás",
-      "titleB": "saber",
-      "sub": "Respuestas cortas, sin vueltas. Si tu caso es especial, lo vemos en una llamada.",
-      "cta": "¿Lo vemos juntos? →",
-      "items": [
-        {
-          "q": "¿Qué incluye la auditoría de seguridad gratuita?",
-          "a": "En una sesión de 30 minutos revisamos los puntos más sensibles de tu Microsoft 365. Te llevás un diagnóstico claro, entendible y accionable, incluso si decidís no avanzar con nosotros."
-        },
-        {
-          "q": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
-          "a": "Depende del tamaño y el estado actual. Para muchas PyMEs, la migración puede planificarse para minimizar impacto y mantener el correo operativo durante el proceso."
-        },
-        {
-          "q": "¿Trabajan solo con empresas de Argentina?",
-          "a": "Nuestra base es Argentina, pero damos servicio remoto a Latinoamérica, EE.UU. y Europa. Ajustamos horarios y comunicación para que sea simple."
-        },
-        {
-          "q": "¿Qué ventaja tiene Azure para una PyME?",
-          "a": "Accedés a infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo, sin sobredimensionar."
+    "faq": [
+      {
+        "@type": "Question",
+        "name": "What does the free security audit include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We review critical points of Microsoft 365 (MFA, forwarding, conditional access, roles, connected apps, SharePoint/OneDrive, anti-phishing, retention, and logs) and deliver a prioritized report."
         }
-      ]
-    }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to migrate to Microsoft 365?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the size and current state. We plan the migration to minimize impact and keep operations running during the process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work outside of Argentina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We provide remote services to Latin America, the United States, and Europe, with adapted schedules and communication."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What advantages does Azure have for an SMB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Azure offers enterprise-level infrastructure on a pay-as-you-go basis. We design an architecture that prioritizes continuity and cost without over-provisioning."
+        }
+      }
+    ]
   },
   "nav": {
     "aria": "Main navigation",
@@ -212,6 +220,47 @@
     "titleA": "Blog & ",
     "titleB": "Insights",
     "subtitle": "Technical knowledge, architecture guides, and updates from the Microsoft Cloud ecosystem."
+  },
+  "pages": {
+    "about": {
+      "title": "About Us"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Your Strategic Partner in ",
+      "titleAccent": "Digital Transformation",
+      "sub": "At CSCloudSolutions, we are more than just a service provider; we are the technological engine driving your peace of mind and growth.",
+      "image": "/images/Trabajo_Colaborativo.webp"
+    },
+    "content": {
+      "history_title": "Born to Simplify the Cloud",
+      "history_p1": "Born in Argentina with a clear mission: to empower small and medium-sized businesses (SMBs) with cloud technology solutions that guarantee security, cost optimization, and business continuity.",
+      "history_p2": "Founded by a team of cloud architecture specialists led by Microsoft Azure certified experts, our firm understands the specific challenges of both local and international markets. We help businesses transition seamlessly from the physical to the digital world, strengthening their security and increasing productivity.",
+      "approach_title": "Our Strategic Approach",
+      "m1_t": "Security First",
+      "m1_d": "Proactive protection of your most valuable assets through constant audits and industry best practices.",
+      "m2_t": "Real Optimization",
+      "m2_d": "We eliminate unnecessary cloud spend so that every dollar invested generates direct value for your business.",
+      "m3_t": "Expert Guidance",
+      "m3_d": "We don't just implement; we guide and educate you so that technology is an ally, not a barrier."
+    }
+  },
+  "cookies": {
+    "title": "Privacy & Cookies",
+    "desc": "We use cookies to enhance your experience. You can configure your preferences or accept all. Review our ",
+    "policy": "Privacy Policy",
+    "btnConfig": "Settings",
+    "btnAccept": "Accept All",
+    "configTitle": "Configuration",
+    "lblNecessary": "Necessary",
+    "descNecessary": "Essential for the website to function.",
+    "lblAnalytics": "Analytics",
+    "descAnalytics": "To understand website usage and traffic.",
+    "lblMarketing": "Marketing",
+    "descMarketing": "For personalized content and ads.",
+    "btnBack": "Go Back",
+    "btnSave": "Save Preferences"
   },
   "footer": {
     "brand": "Experts in Microsoft cloud solutions for SMBs in Latin America and the world. We migrate, protect, and optimize your infrastructure.",

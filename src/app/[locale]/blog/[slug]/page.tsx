@@ -34,37 +34,46 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     <div className="bg-white px-6 py-24 lg:px-8 min-h-screen">
       <div className="mx-auto max-w-4xl">
         
-        {/* ENCABEZADO PRINCIPAL */}
-        <div className="flex flex-col md:flex-row gap-8 items-start mb-16">
+        {/* ENCABEZADO PRINCIPAL (Proporción original) */}
+        <div className="flex flex-col md:flex-row gap-10 items-center mb-16">
           {post.meta.image && (
-            <div className="w-full md:w-[300px] flex justify-center flex-shrink-0">
-              <div className="relative w-[300px] h-[300px] rounded-2xl overflow-hidden shadow-lg border border-[color:var(--gray-100)] bg-gray-50">
-                <Image src={post.meta.image} alt={post.meta.title} fill sizes="300px" className="object-cover" priority />
+            <div className="w-full md:w-[350px] flex-shrink-0">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-[color:var(--gray-100)] bg-gray-50">
+                <Image 
+                  src={post.meta.image} 
+                  alt={post.meta.title} 
+                  width={800}
+                  height={450}
+                  className="w-full h-auto object-contain" 
+                  priority 
+                />
               </div>
             </div>
           )}
-          <div className="flex-1 flex flex-col justify-center min-h-[300px] pt-4 md:pt-0">
+          <div className="flex-1 pt-4 md:pt-0">
             <div className="flex items-center gap-x-4 mb-4">
               <span className="rounded-full bg-[color:rgba(0,174,239,0.1)] px-3 py-1 text-sm font-bold text-[color:var(--cyan-dark)] uppercase tracking-wide border border-[color:rgba(0,174,239,0.2)]">
                 {post.meta.category}
               </span>
-              <time dateTime={post.meta.date} className="text-sm text-[color:var(--gray-500)] font-medium">{post.meta.date}</time>
+              <time dateTime={post.meta.date} className="text-sm text-[color:var(--gray-500)] font-medium">
+                {post.meta.date}
+              </time>
             </div>
-            <h1 className="font-[family:var(--font-heading)] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[color:var(--navy)] leading-tight mb-6">
+            <h1 className="font-[family:var(--font-heading)] text-3xl md:text-4xl font-extrabold tracking-tight text-[color:var(--navy)] leading-tight mb-6">
               {post.meta.title}
             </h1>
-            <p className="text-base text-[color:var(--gray-600)] font-medium flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <span className="w-8 h-8 rounded-full bg-[color:var(--navy)] text-white flex items-center justify-center font-bold text-xs uppercase">
                 {post.meta.author.split(' ').map((n: string) => n[0]).join('').substring(0, 2)}
               </span>
-              Por {post.meta.author}
-            </p>
+              <p className="text-base text-[color:var(--gray-600)] font-medium">Por {post.meta.author}</p>
+            </div>
           </div>
         </div>
 
         <hr className="border-t-2 border-[color:var(--gray-100)] mb-16" />
 
-        {/* CONTENIDO DINÁMICO CON LÓGICA DE IMÁGENES ALTERNAS */}
+        {/* CONTENIDO CON PROPORCIONES ORIGINALES Y ALINEACIÓN ALTERNA */}
         <div className="prose prose-lg prose-blue max-w-none text-[color:var(--gray-700)] 
           prose-headings:font-[family:var(--font-heading)] prose-headings:font-extrabold prose-headings:text-[color:var(--navy)]
           prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-[color:var(--gray-100)] prose-h2:pb-2 prose-h2:clear-both
@@ -77,24 +86,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <ReactMarkdown 
             remarkPlugins={[remarkGfm]}
             components={{
-              // Personalizamos el renderizado de imágenes
               img: ({node, ...props}) => {
                 imageIndex++;
                 const isEven = imageIndex % 2 === 0;
                 return (
-                  <span className={`block md:inline-block w-full md:w-[320px] mb-8 ${isEven ? 'md:float-right md:ml-8' : 'md:float-left md:mr-8'}`}>
-                    <span className="block relative aspect-square w-full rounded-2xl overflow-hidden shadow-lg border border-[color:var(--gray-100)] bg-gray-50">
+                  <span className={`block md:inline-block w-full md:w-[380px] mb-8 ${isEven ? 'md:float-right md:ml-8' : 'md:float-left md:mr-8'}`}>
+                    <span className="block w-full rounded-2xl overflow-hidden shadow-lg border border-[color:var(--gray-100)] bg-gray-50">
                       <Image 
-                        src={props.src || ''} 
-                        alt={props.alt || ''} 
-                        fill 
-                        sizes="(max-width: 768px) 100vw, 320px" 
-                        className="object-cover"
+                        src={String(props.src || '')} 
+                        alt={String(props.alt || '')} 
+                        width={600}
+                        height={400}
+                        sizes="(max-width: 768px) 100vw, 380px" 
+                        className="w-full h-auto object-contain"
                       />
                     </span>
                     {props.alt && (
                       <span className="block mt-2 text-center text-xs text-gray-500 italic">
-                        {props.alt}
+                        {String(props.alt)}
                       </span>
                     )}
                   </span>

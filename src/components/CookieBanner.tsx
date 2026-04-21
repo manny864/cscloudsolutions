@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
-// 1. Agregamos la definición estricta de tipos para complacer a TypeScript en el build
 type CookieOptionProps = {
   label: string;
   checked?: boolean;
@@ -13,6 +13,8 @@ type CookieOptionProps = {
 };
 
 export function CookieBanner() {
+  const t = useTranslations('cookies'); // <- Inyectamos las traducciones
+  
   const [isOpen, setIsOpen] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
   const [consent, setConsent] = useState({ necessary: true, analytics: false, marketing: false });
@@ -34,30 +36,39 @@ export function CookieBanner() {
         {!showConfig ? (
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
-              <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold">Privacidad y Cookies</h3>
+              <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold">{t('title')}</h3>
               <p className="mt-2 text-sm text-white/70">
-                Mejoramos tu experiencia con cookies. Podés configurar tus preferencias o aceptar todas. 
-                Revisá nuestra <Link href="/politica-de-privacidad" className="text-[color:var(--cyan)] underline">Política de Privacidad</Link>.
+                {t('desc')}
+                {/* Nota: En un futuro, el enlace a /politica-de-privacidad también debería ser dinámico si tienes una ruta para cada idioma */}
+                <Link href="/politica-de-privacidad" className="text-[color:var(--cyan)] underline">
+                  {t('policy')}
+                </Link>.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <button onClick={() => setShowConfig(true)} className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold hover:bg-white/10 transition">Configurar</button>
-              <button onClick={() => saveConsent({necessary: true, analytics: true, marketing: true})} className="rounded-xl bg-[color:var(--cyan)] px-6 py-3 text-sm font-black text-[color:var(--navy)] hover:bg-[color:var(--cyan-light)] transition">Aceptar todas</button>
+              <button onClick={() => setShowConfig(true)} className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold hover:bg-white/10 transition">
+                {t('btnConfig')}
+              </button>
+              <button onClick={() => saveConsent({necessary: true, analytics: true, marketing: true})} className="rounded-xl bg-[color:var(--cyan)] px-6 py-3 text-sm font-black text-[color:var(--navy)] hover:bg-[color:var(--cyan-light)] transition">
+                {t('btnAccept')}
+              </button>
             </div>
           </div>
         ) : (
           <div className="space-y-6 animate-in fade-in duration-300">
-            <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold">Configuración</h3>
+            <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold">{t('configTitle')}</h3>
             <div className="grid gap-4 sm:grid-cols-3">
-              <CookieOption label="Necesarias" checked disabled desc="Esenciales para el sitio." />
-              
-              {/* 2. Aquí le decimos explícitamente a TypeScript que 'v' es un boolean */}
-              <CookieOption label="Analíticas" checked={consent.analytics} onChange={(v: boolean) => setConsent({...consent, analytics: v})} desc="Para entender el uso de la web." />
-              <CookieOption label="Marketing" checked={consent.marketing} onChange={(v: boolean) => setConsent({...consent, marketing: v})} desc="Contenido personalizado." />
+              <CookieOption label={t('lblNecessary')} checked disabled desc={t('descNecessary')} />
+              <CookieOption label={t('lblAnalytics')} checked={consent.analytics} onChange={(v: boolean) => setConsent({...consent, analytics: v})} desc={t('descAnalytics')} />
+              <CookieOption label={t('lblMarketing')} checked={consent.marketing} onChange={(v: boolean) => setConsent({...consent, marketing: v})} desc={t('descMarketing')} />
             </div>
             <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-white/10">
-              <button onClick={() => setShowConfig(false)} className="text-sm font-bold text-white/60 hover:text-white transition">Volver atrás</button>
-              <button onClick={() => saveConsent(consent)} className="rounded-xl bg-white/10 px-6 py-3 text-sm font-bold transition hover:bg-white/20">Guardar selección</button>
+              <button onClick={() => setShowConfig(false)} className="text-sm font-bold text-white/60 hover:text-white transition">
+                {t('btnBack')}
+              </button>
+              <button onClick={() => saveConsent(consent)} className="rounded-xl bg-white/10 px-6 py-3 text-sm font-bold transition hover:bg-white/20">
+                {t('btnSave')}
+              </button>
             </div>
           </div>
         )}
@@ -66,7 +77,6 @@ export function CookieBanner() {
   );
 }
 
-// 3. Aplicamos la interfaz de tipos al componente hijo
 function CookieOption({ label, checked, onChange, disabled, desc }: CookieOptionProps) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">

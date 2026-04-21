@@ -230,6 +230,49 @@
     "titleB": "Insights",
     "subtitle": "Conocimiento técnico, guías de arquitectura y novedades del ecosistema Microsoft Cloud."
   },
+  "about": {
+    "hero": {
+      "badge": "Quiénes Somos",
+      "title": "Tu Socio Estratégico en la ",
+      "titleAccent": "Transformación Digital",
+      "sub": "En CSCloudSolutions, somos más que un proveedor de servicios; somos el motor tecnológico que impulsa tu tranquilidad y crecimiento."
+    },
+    "history": {
+      "title": "Nacidos para Simplificar la Nube",
+      "p1": "Nacimos en Argentina con una misión clara: empoderar a las pequeñas y medianas empresas (PyMEs) con soluciones de tecnología en la nube que garantizan seguridad, optimización de costos y continuidad del negocio.",
+      "p2": "Fundada por un equipo de especialistas en arquitectura de nube liderado por expertos certificados en Microsoft Azure, nuestra firma entiende los desafíos específicos del mercado local e internacional. Ayudamos a negocios a transitar sin problemas del mundo físico al digital, fortaleciendo su seguridad y aumentando su productividad."
+    },
+    "mission": {
+      "title": "Nuestro Enfoque",
+      "m1_t": "Seguridad Primero",
+      "m1_d": "Protección proactiva de tus activos más valiosos mediante auditorías constantes y mejores prácticas de industria.",
+      "m2_t": "Optimización Real",
+      "m2_d": "Eliminamos el gasto innecesario en la nube para que cada dólar invertido genere valor directo a tu negocio.",
+      "m3_t": "Acompañamiento Experto",
+      "m3_d": "No solo implementamos; te guiamos y educamos para que la tecnología sea un aliado, no una barrera."
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "Quiénes Somos"
+    }
+  },
+  "cookies": {
+    "title": "Privacidad y Cookies",
+    "desc": "Mejoramos tu experiencia con cookies. Podés configurar tus preferencias o aceptar todas. Revisá nuestra ",
+    "policy": "Política de Privacidad",
+    "btnConfig": "Configurar",
+    "btnAccept": "Aceptar todas",
+    "configTitle": "Configuración",
+    "lblNecessary": "Necesarias",
+    "descNecessary": "Esenciales para que el sitio funcione.",
+    "lblAnalytics": "Analíticas",
+    "descAnalytics": "Para entender el uso y tráfico de la web.",
+    "lblMarketing": "Marketing",
+    "descMarketing": "Para mostrar contenido personalizado.",
+    "btnBack": "Volver atrás",
+    "btnSave": "Guardar selección"
+  },
   "footer": {
     "brand": "Expertos en soluciones cloud Microsoft para PyMEs de Latinoamérica y el mundo. Migramos, protegemos y optimizamos tu infraestructura.",
     "company": "Empresa",
