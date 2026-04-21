@@ -1,6 +1,6 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions | Microsoft Cloud Solutions for SMBs",
+    "homeTitle": "CSCloudSolutions — Microsoft Cloud Solutions for SMBs | Azure & Microsoft 365",
     "homeDescription": "We help SMBs migrate, protect, and optimize Microsoft 365 and Azure. Free security audit, expert support, and real guidance."
   },
   "structured": {
@@ -50,6 +50,22 @@
         }
       }
     ]
+  },
+  "cookies": {
+    "title": "Privacy & Cookies",
+    "desc": "We use cookies to enhance your experience. You can configure your preferences or accept all. Review our ",
+    "policy": "Privacy Policy",
+    "btnConfig": "Settings",
+    "btnAccept": "Accept All",
+    "configTitle": "Configuration",
+    "lblNecessary": "Necessary",
+    "descNecessary": "Essential for the website to function.",
+    "lblAnalytics": "Analytics",
+    "descAnalytics": "To understand website usage and traffic.",
+    "lblMarketing": "Marketing",
+    "descMarketing": "For personalized content and ads.",
+    "btnBack": "Go Back",
+    "btnSave": "Save Preferences"
   },
   "nav": {
     "aria": "Main navigation",
@@ -224,6 +240,24 @@
   "pages": {
     "about": {
       "title": "About Us"
+    },
+    "m365": {
+      "title": "Microsoft 365"
+    },
+    "modern": {
+      "title": "Modern Workplace"
+    },
+    "security": {
+      "title": "Security"
+    },
+    "support": {
+      "title": "IT Support"
+    },
+    "power": {
+      "title": "Power Platform"
+    },
+    "azure": {
+      "title": "Microsoft Azure"
     }
   },
   "about": {
@@ -245,22 +279,6 @@
       "m3_t": "Expert Guidance",
       "m3_d": "We don't just implement; we guide and educate you so that technology is an ally, not a barrier."
     }
-  },
-  "cookies": {
-    "title": "Privacy & Cookies",
-    "desc": "We use cookies to enhance your experience. You can configure your preferences or accept all. Review our ",
-    "policy": "Privacy Policy",
-    "btnConfig": "Settings",
-    "btnAccept": "Accept All",
-    "configTitle": "Configuration",
-    "lblNecessary": "Necessary",
-    "descNecessary": "Essential for the website to function.",
-    "lblAnalytics": "Analytics",
-    "descAnalytics": "To understand website usage and traffic.",
-    "lblMarketing": "Marketing",
-    "descMarketing": "For personalized content and ads.",
-    "btnBack": "Go Back",
-    "btnSave": "Save Preferences"
   },
   "footer": {
     "brand": "Experts in Microsoft cloud solutions for SMBs in Latin America and the world. We migrate, protect, and optimize your infrastructure.",

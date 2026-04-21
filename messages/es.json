@@ -4,7 +4,7 @@
     "homeDescription": "Ayudamos a PyMEs a migrar, proteger y optimizar Microsoft 365 y Azure. Auditoría de seguridad gratuita, soporte experto y acompañamiento real."
   },
   "structured": {
-    "orgDescription": "Expert consulting in Microsoft Azure, Microsoft 365, and cybersecurity. Secure cloud migration and technical support for SMBs in Latin America and worldwide.",
+    "orgDescription": "Consultoría experta en Microsoft Azure, Microsoft 365 y ciberseguridad. Migración cloud segura y soporte técnico para PyMEs en Latinoamérica y el mundo.",
     "knowsAbout": [
       "Microsoft Azure",
       "Microsoft 365",
@@ -19,37 +19,53 @@
     "faq": [
       {
         "@type": "Question",
-        "name": "What does the free security audit include?",
+        "name": "¿Qué incluye la auditoría de seguridad gratuita?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We review critical points of Microsoft 365 (MFA, forwarding, conditional access, roles, connected apps, SharePoint/OneDrive, anti-phishing, retention, and logs) and deliver a prioritized report."
+          "text": "Revisamos puntos críticos de Microsoft 365 (MFA, reenvíos, acceso condicional, roles, apps conectadas, SharePoint/OneDrive, protección anti-phishing, retención y logs) y entregamos un reporte con prioridades."
         }
       },
       {
         "@type": "Question",
-        "name": "How long does it take to migrate to Microsoft 365?",
+        "name": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It depends on the size and current state. We plan the migration to minimize impact and keep operations running during the process."
+          "text": "Depende del tamaño y del estado actual. Planificamos la migración para minimizar impacto y mantener la operación durante el proceso."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you work outside of Argentina?",
+        "name": "¿Trabajan fuera de Argentina?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. We provide remote services to Latin America, the United States, and Europe, with adapted schedules and communication."
+          "text": "Sí. Damos servicio remoto a Latinoamérica, Estados Unidos y Europa, con horarios y comunicación adaptados."
         }
       },
       {
         "@type": "Question",
-        "name": "What advantages does Azure have for an SMB?",
+        "name": "¿Qué ventajas tiene Azure para una PyME?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Azure offers enterprise-level infrastructure on a pay-as-you-go basis. We design an architecture that prioritizes continuity and cost without over-provisioning."
+          "text": "Azure ofrece infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo sin sobredimensionar."
         }
       }
     ]
+  },
+  "cookies": {
+    "title": "Privacidad y Cookies",
+    "desc": "Mejoramos tu experiencia con cookies. Podés configurar tus preferencias o aceptar todas. Revisá nuestra ",
+    "policy": "Política de Privacidad",
+    "btnConfig": "Configurar",
+    "btnAccept": "Aceptar todas",
+    "configTitle": "Configuración",
+    "lblNecessary": "Necesarias",
+    "descNecessary": "Esenciales para que el sitio funcione.",
+    "lblAnalytics": "Analíticas",
+    "descAnalytics": "Para entender el uso y tráfico de la web.",
+    "lblMarketing": "Marketing",
+    "descMarketing": "Para mostrar contenido personalizado.",
+    "btnBack": "Volver atrás",
+    "btnSave": "Guardar selección"
   },
   "nav": {
     "aria": "Navegación principal",
@@ -166,40 +182,31 @@
         }
       ]
     },
-    "faq": [
-      {
-        "@type": "Question",
-        "name": "¿Qué incluye la auditoría de seguridad gratuita?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Revisamos puntos críticos de Microsoft 365 (MFA, reenvíos, acceso condicional, roles, apps conectadas, SharePoint/OneDrive, protección anti-phishing, retención y logs) y entregamos un reporte con prioridades."
+    "faq": {
+      "badge": "Preguntas frecuentes",
+      "titleA": "Todo lo que necesitás",
+      "titleB": "saber",
+      "sub": "Respuestas cortas, sin vueltas. Si tu caso es especial, lo vemos en una llamada.",
+      "cta": "¿Lo vemos juntos? →",
+      "items": [
+        {
+          "q": "¿Qué incluye la auditoría de seguridad gratuita?",
+          "a": "En una sesión de 30 minutos revisamos los puntos más sensibles de tu Microsoft 365. Te llevás un diagnóstico claro, entendible y accionable, incluso si decidís no avanzar con nosotros."
+        },
+        {
+          "q": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
+          "a": "Depende del tamaño y del estado actual. Para muchas PyMEs, la migración puede planificarse para minimizar impacto y mantener el correo operativo durante el proceso."
+        },
+        {
+          "q": "¿Trabajan solo con empresas de Argentina?",
+          "a": "Nuestra base es Argentina, pero damos servicio remoto a Latinoamérica, EE.UU. y Europa. Ajustamos horarios y comunicación para que sea simple."
+        },
+        {
+          "q": "¿Qué ventaja tiene Azure para una PyME?",
+          "a": "Accedés a infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo, sin sobredimensionar."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Depende del tamaño y del estado actual. Planificamos la migración para minimizar impacto y mantener la operación durante el proceso."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Trabajan fuera de Argentina?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Damos servicio remoto a Latinoamérica, Estados Unidos y Europa, con horarios y comunicación adaptados."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué ventajas tiene Azure para una PyME?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Azure ofrece infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo sin sobredimensionar."
-        }
-      }
-    ]
+      ]
+    }
   },
   "contact": {
     "badge": "Contactemos",
@@ -230,48 +237,48 @@
     "titleB": "Insights",
     "subtitle": "Conocimiento técnico, guías de arquitectura y novedades del ecosistema Microsoft Cloud."
   },
-  "about": {
-    "hero": {
-      "badge": "Quiénes Somos",
-      "title": "Tu Socio Estratégico en la ",
-      "titleAccent": "Transformación Digital",
-      "sub": "En CSCloudSolutions, somos más que un proveedor de servicios; somos el motor tecnológico que impulsa tu tranquilidad y crecimiento."
-    },
-    "history": {
-      "title": "Nacidos para Simplificar la Nube",
-      "p1": "Nacimos en Argentina con una misión clara: empoderar a las pequeñas y medianas empresas (PyMEs) con soluciones de tecnología en la nube que garantizan seguridad, optimización de costos y continuidad del negocio.",
-      "p2": "Fundada por un equipo de especialistas en arquitectura de nube liderado por expertos certificados en Microsoft Azure, nuestra firma entiende los desafíos específicos del mercado local e internacional. Ayudamos a negocios a transitar sin problemas del mundo físico al digital, fortaleciendo su seguridad y aumentando su productividad."
-    },
-    "mission": {
-      "title": "Nuestro Enfoque",
-      "m1_t": "Seguridad Primero",
-      "m1_d": "Protección proactiva de tus activos más valiosos mediante auditorías constantes y mejores prácticas de industria.",
-      "m2_t": "Optimización Real",
-      "m2_d": "Eliminamos el gasto innecesario en la nube para que cada dólar invertido genere valor directo a tu negocio.",
-      "m3_t": "Acompañamiento Experto",
-      "m3_d": "No solo implementamos; te guiamos y educamos para que la tecnología sea un aliado, no una barrera."
-    }
-  },
   "pages": {
     "about": {
       "title": "Quiénes Somos"
+    },
+    "m365": {
+      "title": "Microsoft 365"
+    },
+    "modern": {
+      "title": "Modern Workplace"
+    },
+    "security": {
+      "title": "Seguridad"
+    },
+    "support": {
+      "title": "Soporte IT"
+    },
+    "power": {
+      "title": "Power Platform"
+    },
+    "azure": {
+      "title": "Microsoft Azure"
     }
   },
-  "cookies": {
-    "title": "Privacidad y Cookies",
-    "desc": "Mejoramos tu experiencia con cookies. Podés configurar tus preferencias o aceptar todas. Revisá nuestra ",
-    "policy": "Política de Privacidad",
-    "btnConfig": "Configurar",
-    "btnAccept": "Aceptar todas",
-    "configTitle": "Configuración",
-    "lblNecessary": "Necesarias",
-    "descNecessary": "Esenciales para que el sitio funcione.",
-    "lblAnalytics": "Analíticas",
-    "descAnalytics": "Para entender el uso y tráfico de la web.",
-    "lblMarketing": "Marketing",
-    "descMarketing": "Para mostrar contenido personalizado.",
-    "btnBack": "Volver atrás",
-    "btnSave": "Guardar selección"
+  "about": {
+    "hero": {
+      "title": "Tu Socio Estratégico en la ",
+      "titleAccent": "Transformación Digital",
+      "sub": "En CSCloudSolutions, somos más que un proveedor de servicios; somos el motor tecnológico liderado por expertos certificados en Microsoft Azure que impulsa tu crecimiento.",
+      "image": "/images/Trabajo_Colaborativo.webp"
+    },
+    "content": {
+      "history_title": "Nacidos para Simplificar la Nube",
+      "history_p1": "Nacimos en Argentina con una misión clara: empoderar a las pequeñas y medianas empresas (PyMEs) con soluciones de tecnología en la nube que garantizan seguridad, optimización de costos y continuidad del negocio.",
+      "history_p2": "Liderada por Manuel Enrique Chávez Manzano, arquitecto experto con certificaciones Azure Solutions Architect Expert, nuestra firma entiende los desafíos del mercado local e internacional. Ayudamos a negocios a transitar sin problemas del mundo físico al digital, fortaleciendo su seguridad y aumentando su productividad.",
+      "approach_title": "Nuestro Enfoque Estratégico",
+      "m1_t": "Seguridad de Grado Enterprise",
+      "m1_d": "Protección proactiva de tus activos mediante auditorías constantes y cumplimiento de estándares internacionales.",
+      "m2_t": "Optimización de Costos (FinOps)",
+      "m2_d": "Eliminamos el gasto innecesario en la nube para que cada inversión genere valor directo a tu rentabilidad.",
+      "m3_t": "Acompañamiento Humano",
+      "m3_d": "No solo implementamos tecnología; guiamos a tu equipo para que la nube sea una ventaja competitiva real."
+    }
   },
   "footer": {
     "brand": "Expertos en soluciones cloud Microsoft para PyMEs de Latinoamérica y el mundo. Migramos, protegemos y optimizamos tu infraestructura.",
