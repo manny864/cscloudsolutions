@@ -1,7 +1,7 @@
 'use server';
 
 import dns from 'node:dns/promises';
-import {z} from 'zod';
+import { z } from 'zod';
 
 const ContactSchema = z.object({
   nombre: z.string().min(2).max(80),
@@ -25,12 +25,12 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 
   const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
     method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: new URLSearchParams({secret, response: token}).toString(),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ secret, response: token }).toString(),
     cache: 'no-store'
   });
 
-  const data = (await res.json()) as {success?: boolean; score?: number};
+  const data = (await res.json()) as { success?: boolean; score?: number };
   if (!data?.success) return false;
   if (typeof data.score === 'number' && data.score < 0.5) return false;
   return true;
@@ -40,6 +40,14 @@ async function hasMxRecords(email: string): Promise<boolean> {
   const parts = email.split('@');
   if (parts.length !== 2) return false;
   const domain = parts[1];
+  
+  // Si estamos en local (desarrollo), nos saltamos la validación DNS
+  // para evitar bloqueos por firewall o antivirus locales.
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`💻 [Local Dev] Saltando validación MX estricta para: ${domain}`);
+    return true; 
+  }
+
   try {
     const mx = await dns.resolveMx(domain);
     return Array.isArray(mx) && mx.length > 0;
@@ -63,7 +71,7 @@ async function getGraphAccessToken(): Promise<string | null> {
       `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
       {
         method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
           client_id: clientId,
           client_secret: clientSecret,
@@ -80,7 +88,7 @@ async function getGraphAccessToken(): Promise<string | null> {
       return null;
     }
 
-    const data = (await res.json()) as {access_token?: string};
+    const data = (await res.json()) as { access_token?: string };
     return data.access_token ?? null;
   } catch (err) {
     console.error('Failed to get Graph token:', err);
@@ -123,8 +131,8 @@ async function sendEmailViaGraph(
           <p style="color: #666; font-size: 12px;">Enviado desde el formulario de contacto del sitio web</p>
         `
       },
-      toRecipients: [{emailAddress: {address: recipientEmail}}],
-      replyTo: [{emailAddress: {address: email, name: nombre}}]
+      toRecipients: [{ emailAddress: { address: recipientEmail } }],
+      replyTo: [{ emailAddress: { address: email, name: nombre } }]
     },
     saveToSentItems: true
   };
@@ -159,26 +167,26 @@ async function sendEmailViaGraph(
 export async function submitContact(payload: ContactFormInput): Promise<ActionResult> {
   const parsed = ContactSchema.safeParse(payload);
   if (!parsed.success) {
-    return {ok: false, message: 'Revisá los datos e intentá nuevamente.'};
+    return { ok: false, message: 'Revisá los datos e intentá nuevamente.' };
   }
 
-  const {nombre, email, empresa, telefono, mensaje, recaptchaToken} = parsed.data;
+  const { nombre, email, empresa, telefono, mensaje, recaptchaToken } = parsed.data;
 
   const recaptchaOk = await verifyRecaptcha(recaptchaToken);
   if (!recaptchaOk) {
-    return {ok: false, message: 'Validación de seguridad fallida. Probá de nuevo en unos segundos.'};
+    return { ok: false, message: 'Validación de seguridad fallida. Probá de nuevo en unos segundos.' };
   }
 
   const mxOk = await hasMxRecords(email);
   if (!mxOk) {
-    return {ok: false, message: 'Ese correo no parece válido (dominio sin MX). Usá un email corporativo.'};
+    return { ok: false, message: 'Ese correo no parece válido (dominio sin MX). Usá un email corporativo.' };
   }
 
   const sent = await sendEmailViaGraph(nombre, email, empresa, telefono, mensaje);
 
   if (sent) {
-    return {ok: true, message: '¡Listo! Te respondemos a la brevedad.'};
+    return { ok: true, message: '¡Listo! Te respondemos a la brevedad.' };
   }
 
-  return {ok: false, message: 'No pudimos enviar la consulta. Probá nuevamente.'};
+  return { ok: false, message: 'No pudimos enviar la consulta. Probá nuevamente.' };
 }

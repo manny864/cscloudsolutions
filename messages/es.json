@@ -239,25 +239,39 @@
   },
   "pages": {
     "about": {
-      "title": "Quiénes Somos"
+      "title": "Quiénes Somos",
+      "badge": "Nuestra Empresa",
+      "sub": "Somos tu socio estratégico en transformación digital."
     },
     "m365": {
-      "title": "Microsoft 365"
+      "title": "Microsoft 365",
+      "badge": "Productividad",
+      "sub": "Mejora la colaboración, seguridad y productividad con el ecosistema líder en la nube. Trabajá desde cualquier lugar sin comprometer datos."
     },
     "modern": {
-      "title": "Modern Workplace"
+      "title": "Modern Workplace",
+      "badge": "Colaboración",
+      "sub": "Transformá la manera en que tu equipo trabaja con soluciones remotas seguras, integradas y flexibles."
     },
     "security": {
-      "title": "Seguridad"
+      "title": "Ciberseguridad",
+      "badge": "Protección y Cumplimiento",
+      "sub": "Protección avanzada contra amenazas y auditorías de seguridad en tiempo real para tu entorno cloud."
     },
     "support": {
-      "title": "Soporte IT"
+      "title": "Soporte IT",
+      "badge": "Servicios Gestionados",
+      "sub": "Soporte técnico experto y monitoreo 24/7 para garantizar que la operación de tu negocio nunca se detenga."
     },
     "power": {
-      "title": "Power Platform"
+      "title": "Power Platform",
+      "badge": "Automatización",
+      "sub": "Automatizá flujos de trabajo y creá aplicaciones a medida para acelerar los procesos de tu negocio."
     },
     "azure": {
-      "title": "Microsoft Azure"
+      "title": "Microsoft Azure",
+      "badge": "Infraestructura Cloud",
+      "sub": "Migraciones seguras, escalabilidad infinita y operaciones modernizadas en la nube de Microsoft."
     }
   },
   "about": {
