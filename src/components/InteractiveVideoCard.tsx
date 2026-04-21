@@ -31,7 +31,9 @@ export function InteractiveVideoCard({ title, description, videoSrc, posterSrc, 
         src={videoSrc} 
         muted 
         loop 
-        playsInline 
+        playsInline
+        preload="none"       {/* <-- AGREGA ESTO PARA EL RENDIMIENTO */}
+        aria-hidden="true"   {/* <-- AGREGA ESTO PARA LA ACCESIBILIDAD */}
         className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${isHover ? 'opacity-40' : 'opacity-0'}`} 
       />
       

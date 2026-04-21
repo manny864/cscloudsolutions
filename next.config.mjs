@@ -2,7 +2,6 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
-// Detectamos si estamos en modo desarrollo o producción
 const isDev = process.env.NODE_ENV !== 'production';
 
 const securityHeaders = [
@@ -16,7 +15,6 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      // Aquí está la magia: si es DEV agregamos 'unsafe-eval', si es PROD lo quitamos por seguridad
       `script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://www.google.com https://www.gstatic.com`,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com",
       "font-src 'self' https://fonts.gstatic.com",
