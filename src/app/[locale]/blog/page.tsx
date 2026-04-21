@@ -1,27 +1,33 @@
-import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { getAllPosts } from '@/lib/blog';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   // Recuperamos el idioma actual de la URL
   const { locale } = await params;
   
-  // Ahora la función busca los posts de la carpeta correcta (en o es)
+  // Cargamos las traducciones específicas de la sección "blog"
+  const t = await getTranslations({ locale, namespace: 'blog' });
+  
+  // Buscamos los posts de la carpeta correspondiente (en o es)
   const posts = getAllPosts(locale);
 
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        
+        {/* Cabecera dinámica usando traducciones */}
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="font-[family:var(--font-heading)] text-4xl font-extrabold tracking-tight text-[color:var(--navy)] sm:text-5xl">
-            Blog & <span className="text-[color:var(--cyan)]">Insights</span>
+            {t('titleA')}<span className="text-[color:var(--cyan)]">{t('titleB')}</span>
           </h1>
           <p className="mt-4 text-lg leading-8 text-[color:var(--gray-600)]">
-            Conocimiento técnico, guías de arquitectura y novedades del ecosistema Microsoft Cloud.
+            {t('subtitle')}
           </p>
         </div>
 
+        {/* Listado de Artículos */}
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {posts.map((post) => (
             <article key={post.slug} className="flex flex-col items-start justify-between group">
@@ -66,6 +72,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             </article>
           ))}
         </div>
+        
       </div>
     </div>
   );

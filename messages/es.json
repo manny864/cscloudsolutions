@@ -166,31 +166,40 @@
         }
       ]
     },
-    "faq": {
-      "badge": "Preguntas frecuentes",
-      "titleA": "Todo lo que necesitás",
-      "titleB": "saber",
-      "sub": "Respuestas cortas, sin vueltas. Si tu caso es especial, lo vemos en una llamada.",
-      "cta": "¿Lo vemos juntos? →",
-      "items": [
-        {
-          "q": "¿Qué incluye la auditoría de seguridad gratuita?",
-          "a": "En una sesión de 30 minutos revisamos los puntos más sensibles de tu Microsoft 365. Te llevás un diagnóstico claro, entendible y accionable, incluso si decidís no avanzar con nosotros."
-        },
-        {
-          "q": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
-          "a": "Depende del tamaño y el estado actual. Para muchas PyMEs, la migración puede planificarse para minimizar impacto y mantener el correo operativo durante el proceso."
-        },
-        {
-          "q": "¿Trabajan solo con empresas de Argentina?",
-          "a": "Nuestra base es Argentina, pero damos servicio remoto a Latinoamérica, EE.UU. y Europa. Ajustamos horarios y comunicación para que sea simple."
-        },
-        {
-          "q": "¿Qué ventaja tiene Azure para una PyME?",
-          "a": "Accedés a infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo, sin sobredimensionar."
+    "faq": [
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye la auditoría de seguridad gratuita?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Revisamos puntos críticos de Microsoft 365 (MFA, reenvíos, acceso condicional, roles, apps conectadas, SharePoint/OneDrive, protección anti-phishing, retención y logs) y entregamos un reporte con prioridades."
         }
-      ]
-    }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tiempo lleva migrar a Microsoft 365?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del tamaño y del estado actual. Planificamos la migración para minimizar impacto y mantener la operación durante el proceso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajan fuera de Argentina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Damos servicio remoto a Latinoamérica, Estados Unidos y Europa, con horarios y comunicación adaptados."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué ventajas tiene Azure para una PyME?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Azure ofrece infraestructura de nivel enterprise pagando por uso. Diseñamos una arquitectura que prioriza continuidad y costo sin sobredimensionar."
+        }
+      }
+    ]
   },
   "contact": {
     "badge": "Contactemos",
@@ -215,6 +224,11 @@
     "sending": "Enviando...",
     "note": "Sin spam. Respondemos con información útil y directa.",
     "errorGeneric": "No pudimos enviar tu consulta. Probá nuevamente."
+  },
+  "blog": {
+    "titleA": "Blog & ",
+    "titleB": "Insights",
+    "subtitle": "Conocimiento técnico, guías de arquitectura y novedades del ecosistema Microsoft Cloud."
   },
   "footer": {
     "brand": "Expertos en soluciones cloud Microsoft para PyMEs de Latinoamérica y el mundo. Migramos, protegemos y optimizamos tu infraestructura.",

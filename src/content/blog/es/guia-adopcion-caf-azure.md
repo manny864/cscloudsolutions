@@ -259,4 +259,36 @@ La transición del despliegue de una zona de aterrizaje a la gestión de un ento
 4.  **Adoptar un Monitoreo Holístico:** La excelencia operacional depende de una estrategia de monitoreo que combine una plataforma centralizada (ej. Azure Monitor) con la responsabilidad específica de los equipos de carga de trabajo. Esta federación permite la visibilidad en toda la empresa y el análisis de problemas específicos de la aplicación.
 5.  **Utilizar las Herramientas Correctas para la Tarea Correcta:** Cada herramienta en la nube tiene un propósito específico. Es fundamental no confundir los roles. **Azure Migrate** es para la migración de un solo uso, **Azure Site Recovery** es para la recuperación ante desastres continua y **Azure Backup** es para la protección de datos y la retención a largo plazo.
 
+---
+
+#### Fuentes citadas:
+1. [Develop a Cloud Adoption Strategy – Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/strategy/)
+2. [What is Azure Governance? A complete guide for businesses – Future Processing](https://www.future-processing.com/blog/azure-governance-guide/)
+3. [Azure Policy & Azure Blueprints – Jacob McCormick](https://mccor.xyz/wiki/azure/az-900/5.1.-azure-policy-azure-blueprints/)
+4. [Difference Between Azure RBAC, Azure Policy, and Azure Blueprints – K21 Academy](https://k21academy.com/az-305/azure-rbac-vs-azure-policies-vs-azure-blueprints/)
+5. [Best practices for Azure RBAC – Microsoft Learn](https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices)
+6. [Azure Role-Based Access Control (RBAC) – Tutorials Dojo](https://tutorialsdojo.com/azure-role-based-access-control-rbac/)
+7. [Overview of Azure Policy - Microsoft Learn](https://learn.microsoft.com/en-us/azure/governance/policy/overview)
+8. [Enforce cloud governance policies – Cloud Adoption Framework | Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/govern/enforce-cloud-governance-policies)
+9. [Define your tagging strategy – Cloud Adoption Framework – Microsoft Learn](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-tagging)
+10. [Understanding Azure Blueprints: A Comprehensive Guide to Infrastructure Management](https://www.certlibrary.com/blog/understanding-azure-blueprints-a-comprehensive-guide-to-infrastructure-management/)
+11. [Deploy the CAF Foundation blueprint sample – Azure Blueprints | Microsoft Learn](https://learn.microsoft.com/en-us/azure/governance/blueprints/samples/caf-foundation/deploy)
+12. [Deploy CAF Migration landing zone blueprint sample – Azure Blueprints | Microsoft Learn](https://learn.microsoft.com/en-us/azure/governance/blueprints/samples/caf-migrate-landing-zone/deploy)
+13. [Implementing Least-Privilege Administrative Models – Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)
+14. [The Least Privilege Policy Explained – Delinea](https://delinea.com/what-is/least-privilege)
+15. [Privileged Identity Management documentation – Microsoft Entra ID Governance](https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/)
+16. [Microsoft Entra ID Governance deployment guide to govern privileged identities](https://learn.microsoft.com/en-us/entra/architecture/governance-deployment-privileged-identities)
+17. [Use tags to organize your Azure resources and management hierarchy – Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources)
+18. [Azure cloud management checklist – Cloud Adoption Framework](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/manage/)
+19. [A complete guide to setup & configuration Azure monitoring – Pelanor](https://www.pelanor.io/learning-center/learn-azure-monitoring-guide)
+20. [Understanding Microsoft Defender for Cloud: Features and Best Practices](https://www.tsg.com/insights/blog/understanding-microsoft-defender-for-cloud-features-and-best-practices)
+21. [Architecture Overview – Azure Backup | Microsoft Learn](https://learn.microsoft.com/en-us/azure/backup/backup-architecture)
+22. [Back up your data to Azure with Commvault – Azure Storage | Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/solution-integration/validated-partners/backup-archive-disaster-recovery/commvault/commvault-solution-guide)
+23. [What Is Azure Site Recovery? A Practical Guide to your BCDR strategy in Azure](https://n2ws.com/blog/microsoft-azure-cloud-services/azure-site-recovery-strategy)
+24. [Setting Up Azure Site Recovery: A Step-by-Step CLI Tutorial – N2W Software](https://n2ws.com/blog/microsoft-azure-cloud-services/azure-site-recovery-cli-tutorial)
+25. [Azure Migrate FAQ – Microsoft Community](https://learn.microsoft.com/en-us/azure/migrate/resources-faq?view=migrate-classic)
+26. [What's the difference between Azure Migrate and Site Recovery? | One Ops Question](https://www.youtube.com/watch?v=tN8EifYTN-s)
+27. [Cloud Migration Strategies: The 6 Rs of Cloud Migration | Lucidchart Blog](https://www.lucidchart.com/blog/cloud-migration-strategies-the-6-rs-of-cloud-migration)
+28. [The 6 Rs of application modernization – App Modernization Guidance | Microsoft Learn](https://learn.microsoft.com/en-us/azure/app-modernization-guidance/plan/the-6-rs-of-application-modernization)
+
 En última instancia, el rol del arquitecto de Azure es liderar esta transición, transformando la infraestructura de un conjunto de recursos estáticos en una plataforma dinámica y segura que no solo resista los riesgos, sino que también impulse el crecimiento y la innovación continua de la organización. El CAF es la guía para lograr esta transformación de manera sostenible.
