@@ -1,49 +1,24 @@
-'use client';
+import React from 'react';
 
-import {MotionDiv} from './Motion';
-
-type Orb = {className: string; duration: number; delay: number};
-
-const ORBS: Orb[] = [
-  {className: 'left-[6%] top-[10%] h-[260px] w-[260px]', duration: 14, delay: 0},
-  {className: 'left-[62%] top-[6%] h-[320px] w-[320px]', duration: 16, delay: 0.4},
-  {className: 'left-[78%] top-[52%] h-[420px] w-[420px]', duration: 18, delay: 0.8},
-  {className: 'left-[10%] top-[58%] h-[360px] w-[360px]', duration: 17, delay: 0.2},
-  {className: 'left-[36%] top-[34%] h-[300px] w-[300px]', duration: 15, delay: 0.6},
-  {className: 'left-[44%] top-[76%] h-[240px] w-[240px]', duration: 13, delay: 1.0}
-];
-
-export function BackgroundOrbs({count = 6}: {count?: number}) {
-  const slice = ORBS.slice(0, Math.max(1, Math.min(count, ORBS.length)));
-
+export function BackgroundOrbs() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {slice.map((o, idx) => (
-        <MotionDiv
-          key={`orb-${idx}`}
-          aria-hidden
-          className={
-            /* Quitamos el mix-blend-screen y usamos blur explícito */
-            `absolute rounded-full blur-[80px] ` +
-            `bg-[radial-gradient(circle_at_30%_30%,rgba(0,174,239,0.8),rgba(255,107,53,0.3),transparent_70%)] ` +
-            o.className
-          }
-          initial={{opacity: 0}}
-          animate={{
-            opacity: 0.85, /* Alta opacidad garantizada */
-            x: [-20, 20],
-            y: [-15, 15],
-            scale: [1, 1.1]
-          }}
-          transition={{
-            duration: o.duration,
-            delay: o.delay,
-            repeat: Infinity,
-            repeatType: 'mirror',
-            ease: 'easeInOut'
-          }}
-        />
-      ))}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* Orbe 1: Superior izquierdo (Cyan) */}
+      <div 
+        className="absolute top-[-10%] left-[-10%] w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-[#00AEEF] opacity-20 mix-blend-screen filter blur-[100px] animate-blob"
+      />
+
+      {/* Orbe 2: Superior derecho (Azul más profundo), con un retraso en la animación */}
+      <div 
+        className="absolute top-[10%] right-[-5%] w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-[#0095D0] opacity-20 mix-blend-screen filter blur-[100px] animate-blob"
+        style={{ animationDelay: "2s" }}
+      />
+
+      {/* Orbe 3: Inferior centro (Mezcla suave), con otro retraso */}
+      <div 
+        className="absolute -bottom-8 left-[20%] w-72 h-72 sm:w-[500px] sm:h-[500px] rounded-full bg-[#33C3FF] opacity-10 mix-blend-screen filter blur-[120px] animate-blob"
+        style={{ animationDelay: "4s" }}
+      />
     </div>
   );
 }

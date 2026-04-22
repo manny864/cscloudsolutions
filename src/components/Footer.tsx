@@ -15,12 +15,13 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
             <Image
-              src="/images/Logo_CSCloudSolutions.avif"
-              alt="CSCloudSolutions"
-              width={180}
-              height={52}
-              className="h-10 w-auto"
-            />
+                    src="/images/Logo_Nombre_CSCloudSolutions.avif"
+                    alt="CSCloudSolutions"
+                    width={573}
+                    height={319}
+                    priority
+                    className="h-16 w-auto"
+                  />
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/65">{t('brand')}</p>
           </div>
 
