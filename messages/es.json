@@ -77,7 +77,11 @@
     "security": "Seguridad",
     "blog": "Blog",
     "about": "Nosotros",
-    "cta": "Auditoría Gratis ›"
+    "cta": "Auditoría Gratis ›",
+    "services": "Servicios",
+    "modern": "Modern Workplace",
+    "power": "Power Platform",
+    "support": "Soporte IT"
   },
   "home": {
     "hero": {
@@ -251,7 +255,28 @@
     "modern": {
       "title": "Modern Workplace",
       "badge": "Colaboración",
-      "sub": "Transformá la manera en que tu equipo trabaja con soluciones remotas seguras, integradas y flexibles."
+      "sub": "Transformá la manera en que tu equipo trabaja con soluciones remotas seguras, integradas y flexibles.",
+      "hero": {
+        "badge": "Trabajo Híbrido y Colaboración",
+        "title": "El Futuro del Trabajo para tu Empresa",
+        "sub": "Transformamos cómo trabaja tu equipo. Implementamos soluciones de colaboración moderna y trabajo remoto seguro para que la productividad de tu empresa no tenga límites geográficos.",
+        "stat1": "Flexibilidad",
+        "stat2": "Acceso Seguro",
+        "stat3": "Aumento en Productividad"
+      },
+      "features": {
+        "titleA": "Tu lugar de trabajo,",
+        "titleB": "completamente reinventado",
+        "sub": "Adaptarse al trabajo remoto no es solo usar videollamadas; es tener procesos ágiles, dispositivos seguros y equipos conectados sin importar dónde se encuentren.",
+        "items": [
+          { "icon": "💬", "title": "Microsoft Teams Avanzado", "desc": "Configuración completa: canales estructurados, bots, apps integradas, telefonía IP y salas de reuniones virtuales para equipos distribuidos." },
+          { "icon": "📱", "title": "Gestión de Dispositivos (Intune)", "desc": "Inscripción y gestión de PCs, Macs, tablets y celulares. Controlamos las políticas de acceso y aplicamos borrado remoto si es necesario." },
+          { "icon": "🖥️", "title": "Azure Virtual Desktop", "desc": "Escritorios virtuales en la nube: tus empleados acceden a su entorno de trabajo corporativo desde cualquier dispositivo personal con total seguridad." },
+          { "icon": "🌐", "title": "Intranets con SharePoint", "desc": "Creamos el portal central de tu empresa para noticias corporativas, recursos humanos y gestión documental centralizada." },
+          { "icon": "🧠", "title": "Microsoft Viva (Employee Exp)", "desc": "Mejoramos el bienestar de tu equipo midiendo el engagement, facilitando el aprendizaje y balanceando los tiempos de trabajo." },
+          { "icon": "🛡️", "title": "Seguridad Endpoint", "desc": "Aseguramos que cada dispositivo que se conecte a tu red cumpla con los estándares de seguridad antes de permitir el acceso a los datos." }
+        ]
+      }
     },
     "security": {
       "title": "Ciberseguridad",
@@ -261,12 +286,54 @@
     "support": {
       "title": "Soporte IT",
       "badge": "Servicios Gestionados",
-      "sub": "Soporte técnico experto y monitoreo 24/7 para garantizar que la operación de tu negocio nunca se detenga."
+      "sub": "Soporte técnico experto y monitoreo 24/7 para garantizar que la operación de tu negocio nunca se detenga.",
+      "hero": {
+        "badge": "Servicios Gestionados (MSP)",
+        "title": "Soporte Técnico que Nunca te Abandona",
+        "sub": "Mesa de ayuda experta, gestión proactiva y resolución rápida. Delega la administración de tu TI en verdaderos especialistas para que tu negocio no pare nunca.",
+        "stat1": "Soporte Continuo",
+        "stat2": "Minutos (Respuesta SLA)",
+        "stat3": "Resolución Rápida"
+      },
+      "features": {
+        "titleA": "Actuamos antes de que",
+        "titleB": "los problemas te afecten",
+        "sub": "No esperamos a que las cosas se rompan para actuar. Nuestro enfoque como Proveedor de Servicios Gestionados es prevenir fallos, mantener todo actualizado y asistir a tus usuarios con calidez y rapidez.",
+        "items": [
+          { "icon": "🎫", "title": "Mesa de Ayuda (Help Desk)", "desc": "Sistema de tickets con priorización por impacto. Múltiples canales de contacto: portal web, correo, Teams y línea telefónica para emergencias críticas." },
+          { "icon": "👁️", "title": "Monitoreo Proactivo 24/7", "desc": "Vigilamos la salud de tus servidores y red. Recibimos alertas automáticas sobre rendimiento y seguridad antes de que tus usuarios noten un fallo." },
+          { "icon": "🔧", "title": "Mantenimiento Preventivo", "desc": "Instalamos parches de seguridad, actualizaciones de Windows y realizamos revisiones periódicas del entorno para blindar tus operaciones." },
+          { "icon": "⭐", "title": "Soporte VIP a Directivos", "desc": "Atención prioritaria y dedicada para los altos ejecutivos de tu empresa, garantizando que su trabajo y viajes de negocios no sufran interrupciones técnicas." },
+          { "icon": "📋", "title": "Gestión de Licencias y Altas", "desc": "Nos encargamos del ingreso de nuevos empleados (Onboarding), creación de correos, asignación de licencias M365 y baja segura de usuarios." },
+          { "icon": "📈", "title": "Reportes Ejecutivos (vCIO)", "desc": "Reuniones periódicas donde te mostramos el estado de tu red, el consumo de licencias, incidentes resueltos y propuestas de mejora." }
+        ]
+      }
     },
     "power": {
       "title": "Power Platform",
       "badge": "Automatización",
-      "sub": "Automatizá flujos de trabajo y creá aplicaciones a medida para acelerar los procesos de tu negocio."
+      "sub": "Automatizá flujos de trabajo y creá aplicaciones a medida para acelerar los procesos de tu negocio.",
+      "hero": {
+        "badge": "Automatización y Análisis de Datos",
+        "title": "Automatizá y Analizá con Power Platform",
+        "sub": "Convertimos datos en decisiones y procesos manuales en flujos automáticos. Desarrollamos soluciones a medida sin necesidad de incurrir en costosos desarrollos de software.",
+        "stat1": "Tiempo en Tareas Manuales",
+        "stat2": "Apps Integradas",
+        "stat3": "Integración con M365"
+      },
+      "features": {
+        "titleA": "Todo el poder de la tecnología,",
+        "titleB": "al alcance de tu negocio",
+        "sub": "No necesitas un equipo de programadores in-house para modernizarte. Utilizamos tecnología Low-Code para crear aplicaciones y reportes en semanas, no en meses.",
+        "items": [
+          { "icon": "📊", "title": "Power BI", "desc": "Dashboards interactivos que conectan todas tus fuentes de datos: ventas, producción, finanzas y RRHH. Toma decisiones basadas en datos reales y en tiempo real." },
+          { "icon": "⚙️", "title": "Power Automate", "desc": "Automatización de aprobaciones, notificaciones de correos y procesos repetitivos. Conectamos tu entorno Microsoft con más de 1000 aplicaciones externas." },
+          { "icon": "📱", "title": "Power Apps", "desc": "Aplicaciones empresariales personalizadas: control de stock, formularios de campo, gestión de incidentes y recolección de datos desde cualquier celular." },
+          { "icon": "🤖", "title": "Copilot Studio", "desc": "Implementamos asistentes virtuales (chatbots) inteligentes con IA para responder consultas frecuentes de tus empleados o clientes de forma automática." },
+          { "icon": "🔗", "title": "Integración de Datos", "desc": "Unificamos la información de tus sistemas antiguos (ERPs, CRMs locales) para que interactúen fluidamente con tu entorno en la nube." },
+          { "icon": "⚖️", "title": "Gobernanza y Seguridad", "desc": "Aplicamos políticas estrictas para asegurar que las automatizaciones y apps creadas cumplan con los estándares de seguridad de tu empresa." }
+        ]
+      }
     },
     "azure": {
       "title": "Microsoft Azure",
