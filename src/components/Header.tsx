@@ -28,6 +28,9 @@ export function Header() {
     { href: '/modern-workplace', key: 'modern' },
     { href: '/power-platform', key: 'power' },
     { href: '/soporte', key: 'support' },
+    { href: '/automations', key: 'automations' }, 
+    { href: '/agentic-ai', key: 'agentic' },    
+    { href: '/finops', key: 'finops' },          
   ];
 
   const mainLinks = [

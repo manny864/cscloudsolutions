@@ -81,7 +81,10 @@
     "services": "Servicios",
     "modern": "Modern Workplace",
     "power": "Power Platform",
-    "support": "Soporte IT"
+    "support": "Soporte IT",
+    "automations": "Automatización",
+    "agentic": "IA Agéntica",
+    "finops": "FinOps (Costos)"
   },
   "home": {
     "hero": {
@@ -339,6 +342,75 @@
       "title": "Microsoft Azure",
       "badge": "Infraestructura Cloud",
       "sub": "Migraciones seguras, escalabilidad infinita y operaciones modernizadas en la nube de Microsoft."
+    },
+    "automations": {
+      "hero": {
+        "badge": "Eficiencia Operativa",
+        "title": "Automatización de Procesos de Negocio",
+        "sub": "Eliminamos las tareas repetitivas y los errores humanos mediante flujos inteligentes que conectan tus aplicaciones y datos.",
+        "stat1": "Menos tiempo manual",
+        "stat2": "Precisión operativa",
+        "stat3": "Ejecución continua"
+      },
+      "features": {
+        "titleA": "Libera a tu equipo de",
+        "titleB": "las tareas rutinarias",
+        "sub": "La verdadera productividad no es trabajar más horas, es hacer que los sistemas trabajen por vos. Conectamos tus herramientas para crear una maquinaria eficiente.",
+        "items": [
+          { "icon": "⚙️", "title": "Flujos con Power Automate", "desc": "Automatizamos aprobaciones, notificaciones y sincronización de datos entre cientos de aplicaciones sin intervención humana." },
+          { "icon": "🤖", "title": "RPA (Robotic Process Automation)", "desc": "Automatizamos aplicaciones heredadas que no tienen API, simulando las acciones de un usuario en pantalla." },
+          { "icon": "🔗", "title": "Azure Logic Apps", "desc": "Flujos de integración empresarial de alta escalabilidad para conectar sistemas complejos en la nube o locales." },
+          { "icon": "📊", "title": "Automatización de Reportes", "desc": "Generación automática de informes en PDF o Power BI basados en disparadores de negocio o fechas." },
+          { "icon": "⚡", "title": "Event-Driven Workflows", "desc": "Tus procesos reaccionan instantáneamente ante cambios en bases de datos, llegada de correos o señales de sensores IoT." },
+          { "icon": "✅", "title": "Reducción de Errores", "desc": "Garantizamos que cada dato se mueva exactamente como debe, eliminando el factor de distracción humana en procesos críticos." }
+        ]
+      }
+    },
+    "agentic": {
+      "hero": {
+        "badge": "Inteligencia Artificial Avanzada",
+        "title": "Agentes de IA: El Futuro de la Autonomía",
+        "sub": "Implementamos agentes inteligentes capaces de razonar, tomar decisiones y ejecutar tareas complejas en tu entorno corporativo de forma autónoma.",
+        "stat1": "Aumento en eficiencia",
+        "stat2": "Disponibilidad total",
+        "stat3": "Integración M365"
+      },
+      "features": {
+        "titleA": "IA que no solo responde,",
+        "titleB": "sino que actúa",
+        "sub": "Pasamos del simple Chatbot al Agente Cognitivo. Sistemas que comprenden tus reglas de negocio y ejecutan acciones reales para resolver problemas.",
+        "items": [
+          { "icon": "🧠", "title": "Agentes Autónomos", "desc": "IA capaz de recibir una meta y planificar los pasos necesarios para cumplirla utilizando tus herramientas empresariales." },
+          { "icon": "💬", "title": "Copilot Studio", "desc": "Desarrollamos copilotos personalizados integrados en Teams o tu web que conocen tus datos específicos y actúan sobre ellos." },
+          { "icon": "🤖", "title": "Multi-Agent Systems", "desc": "Orquestamos múltiples IAs especializadas que colaboran entre sí para resolver procesos departamentales complejos." },
+          { "icon": "🛡️", "title": "IA con Gobernanza", "desc": "Implementamos agentes bajo marcos de seguridad estrictos, asegurando que solo accedan a lo permitido y cumplan tus políticas." },
+          { "icon": "🔍", "title": "Razonamiento sobre Datos", "desc": "Tus agentes analizan tendencias en tiempo real y te proponen acciones o las ejecutan automáticamente tras tu aprobación." },
+          { "icon": "📈", "title": "Soporte y Ventas 2.0", "desc": "Agentes que califican prospectos, agendan reuniones o resuelven tickets técnicos extrayendo info de manuales internos." }
+        ]
+      }
+    },
+    "finops": {
+      "hero": {
+        "badge": "Control Financiero Cloud",
+        "title": "Azure FinOps: Maximizá el Valor de tu Inversión",
+        "sub": "Detenemos el desperdicio de dinero en la nube. Optimizamos tu infraestructura Azure para que pagues exactamente por lo que necesitás, sin sorpresas.",
+        "stat1": "Ahorro mensual promedio",
+        "stat2": "Visibilidad de costos",
+        "stat3": "Garantizado"
+      },
+      "features": {
+        "titleA": "Dominá tu factura cloud",
+        "titleB": "con ingeniería financiera",
+        "sub": "La nube es elástica, pero sin control, el costo se expande indefinidamente. Aplicamos disciplina FinOps para devolverte el control del presupuesto.",
+        "items": [
+          { "icon": "💰", "title": "Cost Management", "desc": "Configuración de presupuestos, alertas y análisis granular de consumo por departamento, proyecto o recurso." },
+          { "icon": "📏", "title": "Right-Sizing", "desc": "Analizamos el rendimiento real para ajustar el tamaño de tus servidores y bases de datos a lo que realmente consumen." },
+          { "icon": "🎟️", "title": "Reservas e Instancias", "desc": "Aprovechamos descuentos de hasta el 72% mediante la reserva estratégica de capacidad a largo plazo en Azure." },
+          { "icon": "🏷️", "title": "Etiquetado y Gobernanza", "desc": "Implementamos políticas de tagging para que no exista ni un solo centavo en la factura sin un responsable asignado." },
+          { "icon": "♻️", "title": "Limpieza de Recursos", "desc": "Identificamos y eliminamos discos huérfanos, IPs no usadas y entornos de prueba olvidados que drenan tu dinero." },
+          { "icon": "🏢", "title": "Azure Hybrid Benefit", "desc": "Ahorramos costos de licenciamiento utilizando tus licencias actuales de Windows Server y SQL Server en la nube." }
+        ]
+      }
     }
   },
   "about": {

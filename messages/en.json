@@ -81,7 +81,10 @@
     "services": "Services",
     "modern": "Modern Workplace",
     "power": "Power Platform",
-    "support": "IT Support"
+    "support": "IT Support",
+    "automations": "Automation",
+    "agentic": "Agentic AI",
+    "finops": "FinOps (Costs)"
   },
   "home": {
     "hero": {
@@ -339,6 +342,75 @@
       "title": "Microsoft Azure",
       "badge": "Cloud Infrastructure",
       "sub": "Secure migrations, infinite scalability, and modernized operations in the Microsoft cloud."
+    },
+    "automations": {
+      "hero": {
+        "badge": "Operational Efficiency",
+        "title": "Business Process Automation",
+        "sub": "We eliminate repetitive tasks and human errors through smart workflows that connect your applications and data.",
+        "stat1": "Less manual time",
+        "stat2": "Operational accuracy",
+        "stat3": "Continuous execution"
+      },
+      "features": {
+        "titleA": "Free your team from",
+        "titleB": "routine tasks",
+        "sub": "True productivity isn't about working more hours; it's about making systems work for you. We connect your tools to create an efficient machinery.",
+        "items": [
+          { "icon": "⚙️", "title": "Power Automate Flows", "desc": "We automate approvals, notifications, and data synchronization between hundreds of apps without human intervention." },
+          { "icon": "🤖", "title": "RPA (Robotic Process Automation)", "desc": "We automate legacy applications that lack APIs by simulating user actions on the screen." },
+          { "icon": "🔗", "title": "Azure Logic Apps", "desc": "High-scalability enterprise integration flows to connect complex cloud or local systems." },
+          { "icon": "📊", "title": "Report Automation", "desc": "Automatic generation of reports in PDF or Power BI based on business triggers or specific dates." },
+          { "icon": "⚡", "title": "Event-Driven Workflows", "desc": "Your processes react instantly to database changes, incoming emails, or IoT sensor signals." },
+          { "icon": "✅", "title": "Error Reduction", "desc": "We ensure every data point moves exactly as it should, eliminating human distraction in critical processes." }
+        ]
+      }
+    },
+    "agentic": {
+      "hero": {
+        "badge": "Advanced AI",
+        "title": "Agentic AI: The Future of Autonomy",
+        "sub": "We implement intelligent agents capable of reasoning, making decisions, and executing complex tasks in your corporate environment autonomously.",
+        "stat1": "Efficiency boost",
+        "stat2": "24/7 Availability",
+        "stat3": "M365 Integration"
+      },
+      "features": {
+        "titleA": "AI that doesn't just answer,",
+        "titleB": "it acts",
+        "sub": "We move from simple Chatbots to Cognitive Agents. Systems that understand your business rules and execute real actions to solve problems.",
+        "items": [
+          { "icon": "🧠", "title": "Autonomous Agents", "desc": "AI capable of receiving a goal and planning the steps needed to fulfill it using your business tools." },
+          { "icon": "💬", "title": "Copilot Studio", "desc": "We develop custom copilots integrated into Teams or your web that know your specific data and act on it." },
+          { "icon": "🤖", "title": "Multi-Agent Systems", "desc": "We orchestrate multiple specialized AIs that collaborate with each other to solve complex departmental processes." },
+          { "icon": "🛡️", "title": "AI with Governance", "desc": "We implement agents under strict security frameworks, ensuring they only access what's allowed and comply with policies." },
+          { "icon": "🔍", "title": "Data Reasoning", "desc": "Your agents analyze real-time trends and propose actions or execute them automatically after your approval." },
+          { "icon": "📈", "title": "Support & Sales 2.0", "desc": "Agents that qualify leads, schedule meetings, or solve technical tickets by extracting info from internal manuals." }
+        ]
+      }
+    },
+    "finops": {
+      "hero": {
+        "badge": "Cloud Financial Control",
+        "title": "Azure FinOps: Maximize Your Investment Value",
+        "sub": "We stop cloud waste. We optimize your Azure infrastructure so you pay exactly for what you need, with no bill surprises.",
+        "stat1": "Average monthly savings",
+        "stat2": "Cost visibility",
+        "stat3": "ROI Guaranteed"
+      },
+      "features": {
+        "titleA": "Master your cloud bill",
+        "titleB": "with financial engineering",
+        "sub": "The cloud is elastic, but without control, costs expand indefinitely. We apply FinOps discipline to give you back budget control.",
+        "items": [
+          { "icon": "💰", "title": "Cost Management", "desc": "Setting up budgets, alerts, and granular analysis of consumption by department, project, or resource." },
+          { "icon": "📏", "title": "Right-Sizing", "desc": "We analyze real performance to adjust the size of your servers and databases to what they actually consume." },
+          { "icon": "🎟️", "title": "Reservations & Instances", "desc": "We leverage discounts of up to 72% through strategic long-term capacity reservations in Azure." },
+          { "icon": "🏷️", "title": "Tagging & Governance", "desc": "We implement tagging policies so that not a single cent on the bill goes without an assigned owner." },
+          { "icon": "♻️", "title": "Resource Cleanup", "desc": "We identify and eliminate orphan disks, unused IPs, and forgotten test environments that drain your money." },
+          { "icon": "🏢", "title": "Azure Hybrid Benefit", "desc": "We save licensing costs by using your current Windows Server and SQL Server licenses in the cloud." }
+        ]
+      }
     }
   },
   "about": {
