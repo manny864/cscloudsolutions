@@ -77,7 +77,11 @@
     "security": "Security",
     "blog": "Blog",
     "about": "About Us",
-    "cta": "Free Audit ›"
+    "cta": "Free Audit ›",
+    "services": "Services",
+    "modern": "Modern Workplace",
+    "power": "Power Platform",
+    "support": "IT Support"
   },
   "home": {
     "hero": {
@@ -251,7 +255,28 @@
     "modern": {
       "title": "Modern Workplace",
       "badge": "Collaboration",
-      "sub": "Transform the way your team works with secure, integrated, and flexible remote solutions."
+      "sub": "Transform the way your team works with secure, integrated, and flexible remote solutions.",
+      "hero": {
+        "badge": "Hybrid Work & Collaboration",
+        "title": "The Future of Work for Your Company",
+        "sub": "We transform how your team works. We implement modern collaboration solutions and secure remote work so your company's productivity has no geographical limits.",
+        "stat1": "Flexibility",
+        "stat2": "Secure Access",
+        "stat3": "Productivity Boost"
+      },
+      "features": {
+        "titleA": "Your workplace,",
+        "titleB": "completely reinvented",
+        "sub": "Adapting to remote work isn't just about video calls; it's about having agile processes, secure devices, and connected teams no matter where they are.",
+        "items": [
+          { "icon": "💬", "title": "Advanced Microsoft Teams", "desc": "Full setup: structured channels, bots, integrated apps, IP telephony, and virtual meeting rooms for distributed teams." },
+          { "icon": "📱", "title": "Device Management (Intune)", "desc": "Enrollment and management of PCs, Macs, tablets, and mobile phones. We control access policies and enforce remote wipe if necessary." },
+          { "icon": "🖥️", "title": "Azure Virtual Desktop", "desc": "Cloud virtual desktops: your employees access their corporate work environment securely from any personal device." },
+          { "icon": "🌐", "title": "SharePoint Intranets", "desc": "We create your company's central portal for corporate news, human resources, and centralized document management." },
+          { "icon": "🧠", "title": "Microsoft Viva (Employee Exp)", "desc": "We improve your team's well-being by measuring engagement, facilitating learning, and balancing work times." },
+          { "icon": "🛡️", "title": "Endpoint Security", "desc": "We ensure every device connecting to your network meets security standards before allowing access to data." }
+        ]
+      }
     },
     "security": {
       "title": "Security",
@@ -261,12 +286,54 @@
     "support": {
       "title": "IT Support",
       "badge": "Managed Services",
-      "sub": "24/7 expert technical support and monitoring to ensure your business operations never stop."
+      "sub": "24/7 expert technical support and monitoring to ensure your business operations never stop.",
+      "hero": {
+        "badge": "Managed Services (MSP)",
+        "title": "Technical Support That Never Leaves You",
+        "sub": "Expert help desk, proactive management, and fast resolution. Delegate your IT administration to true specialists so your business never stops.",
+        "stat1": "Continuous Support",
+        "stat2": "Minutes (SLA Response)",
+        "stat3": "Fast Resolution"
+      },
+      "features": {
+        "titleA": "We act before",
+        "titleB": "problems affect you",
+        "sub": "We don't wait for things to break. Our approach as a Managed Service Provider is to prevent failures, keep everything updated, and assist your users warmly and quickly.",
+        "items": [
+          { "icon": "🎫", "title": "Help Desk", "desc": "Ticketing system with impact-based prioritization. Multiple contact channels: web portal, email, Teams, and an emergency phone line." },
+          { "icon": "👁️", "title": "24/7 Proactive Monitoring", "desc": "We watch over the health of your servers and network. We receive automatic alerts on performance and security before users notice a failure." },
+          { "icon": "🔧", "title": "Preventive Maintenance", "desc": "We install security patches, Windows updates, and conduct periodic environment reviews to shield your operations." },
+          { "icon": "⭐", "title": "VIP Support for Executives", "desc": "Priority and dedicated attention for your company's top executives, ensuring their work and business trips suffer no technical interruptions." },
+          { "icon": "📋", "title": "Licensing & Onboarding", "desc": "We handle new employee onboarding, email creation, M365 license assignment, and secure user offboarding." },
+          { "icon": "📈", "title": "Executive Reports (vCIO)", "desc": "Periodic meetings where we show you the status of your network, license consumption, resolved incidents, and improvement proposals." }
+        ]
+      }
     },
     "power": {
       "title": "Power Platform",
       "badge": "Business Automation",
-      "sub": "Automate workflows and build custom apps to accelerate your business processes."
+      "sub": "Automate workflows and build custom apps to accelerate your business processes.",
+      "hero": {
+        "badge": "Automation & Data Analytics",
+        "title": "Automate and Analyze with Power Platform",
+        "sub": "We turn data into decisions and manual processes into automated workflows. We develop custom solutions without the need for expensive software development.",
+        "stat1": "Time on Manual Tasks",
+        "stat2": "Integrated Apps",
+        "stat3": "M365 Integration"
+      },
+      "features": {
+        "titleA": "All the power of technology,",
+        "titleB": "at your business's fingertips",
+        "sub": "You don't need an in-house team of programmers to modernize. We use Low-Code technology to build applications and reports in weeks, not months.",
+        "items": [
+          { "icon": "📊", "title": "Power BI", "desc": "Interactive dashboards connecting all your data sources: sales, production, finance, and HR. Make decisions based on real-time data." },
+          { "icon": "⚙️", "title": "Power Automate", "desc": "Automation of approvals, email notifications, and repetitive processes. We connect your Microsoft environment with over 1000 external apps." },
+          { "icon": "📱", "title": "Power Apps", "desc": "Custom business applications: inventory control, field forms, incident management, and data collection from any mobile device." },
+          { "icon": "🤖", "title": "Copilot Studio", "desc": "We implement smart virtual assistants (chatbots) with AI to automatically answer frequent questions from your employees or customers." },
+          { "icon": "🔗", "title": "Data Integration", "desc": "We unify information from your legacy systems (ERPs, local CRMs) so they interact seamlessly with your cloud environment." },
+          { "icon": "⚖️", "title": "Governance & Security", "desc": "We apply strict policies to ensure the automations and apps created meet your company's security standards." }
+        ]
+      }
     },
     "azure": {
       "title": "Microsoft Azure",
