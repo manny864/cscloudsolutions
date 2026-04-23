@@ -8,24 +8,55 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
-// Generación de Metadata con Alternate Links para evitar 404 al cambiar idioma
+// Generación de Metadata con Alternate Links y Etiquetas Open Graph
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   
-  // Buscamos si el slug actual tiene una traducción manual en nuestro diccionario
   const mapping = Object.values(blogMapping).find(m => m.es === slug || m.en === slug);
-  
-  // Determinamos cuál sería el slug en el idioma opuesto
-  const alternateSlug = mapping 
-    ? (locale === 'es' ? mapping.en : mapping.es) 
-    : slug; // Si no hay mapeo, asumimos que el slug es igual (futuros posts)
+  const alternateSlug = mapping ? (locale === 'es' ? mapping.en : mapping.es) : slug;
+
+  let post;
+  try {
+    // Obtenemos la información del post para generar las tarjetas sociales
+    post = getPostBySlug(slug, locale);
+  } catch (e) {
+    post = null;
+  }
+
+  const alternates = {
+    languages: {
+      es: `/es/blog/${locale === 'es' ? slug : alternateSlug}`,
+      en: `/en/blog/${locale === 'en' ? slug : alternateSlug}`,
+    },
+  };
+
+  if (!post) {
+    return { alternates };
+  }
 
   return {
-    alternates: {
-      languages: {
-        es: `/es/blog/${locale === 'es' ? slug : alternateSlug}`,
-        en: `/en/blog/${locale === 'en' ? slug : alternateSlug}`,
-      },
+    title: post.meta.title,
+    description: post.meta.excerpt || post.meta.title,
+    alternates,
+    openGraph: {
+      title: post.meta.title,
+      description: post.meta.excerpt || post.meta.title,
+      type: 'article',
+      url: `https://cscloudsolutions.com.ar/${locale}/blog/${slug}`,
+      images: post.meta.image ? [
+        {
+          url: post.meta.image,
+          width: 1200,
+          height: 630,
+          alt: post.meta.title,
+        },
+      ] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.meta.title,
+      description: post.meta.excerpt || post.meta.title,
+      images: post.meta.image ? [post.meta.image] : [],
     },
   };
 }
@@ -50,9 +81,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   try {
     post = getPostBySlug(slug, locale);
   } catch (e) {
-    // LÓGICA DE REDIRECCIÓN INTELIGENTE SI NO SE ENCUENTRA EL POST
-    
-    // 1. Intentamos buscar si el slug pertenece al OTRO idioma mediante el diccionario
     const mapping = Object.values(blogMapping).find(m => (locale === 'es' ? m.en : m.es) === slug);
     
     if (mapping) {
@@ -60,8 +88,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       redirect(`/${locale}/blog/${correctSlug}`);
     }
 
-    // 2. Si no está en el mapa, pero quizás el slug es idéntico en ambos idiomas (futuros posts)
-    // Next.js ya lo habría encontrado arriba, así que si llega aquí es que realmente no existe.
     notFound(); 
   }
 

@@ -27,9 +27,23 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       canonical: locale === 'es' ? '/' : '/en',
       languages: { es: '/', en: '/en' }
     },
-    // Etiqueta de verificación de Google Search Console añadida aquí
     verification: {
       google: 'FXWGTuJKHNAxiW38Ti-DUn_1ltz7zHhWMStgIaMUlAw',
+    },
+    // Configuración global para Redes Sociales (LinkedIn, WhatsApp, etc.)
+    openGraph: {
+      title: 'CSCloudSolutions',
+      description: t('homeDescription'),
+      url: 'https://cscloudsolutions.com.ar',
+      siteName: 'CSCloudSolutions',
+      locale: locale === 'es' ? 'es_AR' : 'en_US',
+      type: 'website',
+    },
+    // Configuración global para Twitter/X
+    twitter: {
+      card: 'summary_large_image',
+      title: 'CSCloudSolutions',
+      description: t('homeDescription'),
     },
   };
 }
