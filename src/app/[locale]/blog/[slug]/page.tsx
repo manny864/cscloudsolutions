@@ -1,9 +1,34 @@
 import { getPostBySlug, getPostSlugs } from '@/lib/blog';
-import { notFound } from 'next/navigation';
+import { blogMapping } from '@/lib/blog-mapping';
+import { notFound, redirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { Metadata } from 'next';
+import { setRequestLocale } from 'next-intl/server';
+
+// Generación de Metadata con Alternate Links para evitar 404 al cambiar idioma
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
+  
+  // Buscamos si el slug actual tiene una traducción manual en nuestro diccionario
+  const mapping = Object.values(blogMapping).find(m => m.es === slug || m.en === slug);
+  
+  // Determinamos cuál sería el slug en el idioma opuesto
+  const alternateSlug = mapping 
+    ? (locale === 'es' ? mapping.en : mapping.es) 
+    : slug; // Si no hay mapeo, asumimos que el slug es igual (futuros posts)
+
+  return {
+    alternates: {
+      languages: {
+        es: `/es/blog/${locale === 'es' ? slug : alternateSlug}`,
+        en: `/en/blog/${locale === 'en' ? slug : alternateSlug}`,
+      },
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const slugsEs = getPostSlugs('es').map((slug) => ({
@@ -19,22 +44,34 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   
   let post;
   try {
     post = getPostBySlug(slug, locale);
   } catch (e) {
+    // LÓGICA DE REDIRECCIÓN INTELIGENTE SI NO SE ENCUENTRA EL POST
+    
+    // 1. Intentamos buscar si el slug pertenece al OTRO idioma mediante el diccionario
+    const mapping = Object.values(blogMapping).find(m => (locale === 'es' ? m.en : m.es) === slug);
+    
+    if (mapping) {
+      const correctSlug = locale === 'es' ? mapping.es : mapping.en;
+      redirect(`/${locale}/blog/${correctSlug}`);
+    }
+
+    // 2. Si no está en el mapa, pero quizás el slug es idéntico en ambos idiomas (futuros posts)
+    // Next.js ya lo habría encontrado arriba, así que si llega aquí es que realmente no existe.
     notFound(); 
   }
 
-  // Contador para alternar imágenes
   let imageIndex = 0;
 
   return (
     <div className="bg-white px-6 py-24 lg:px-8 min-h-screen">
       <div className="mx-auto max-w-4xl">
         
-        {/* ENCABEZADO PRINCIPAL (Proporción original) */}
+        {/* ENCABEZADO PRINCIPAL */}
         <div className="flex flex-col md:flex-row gap-10 items-center mb-16">
           {post.meta.image && (
             <div className="w-full md:w-[350px] flex-shrink-0">
@@ -73,7 +110,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
         <hr className="border-t-2 border-[color:var(--gray-100)] mb-16" />
 
-        {/* CONTENIDO CON PROPORCIONES ORIGINALES Y ALINEACIÓN ALTERNA */}
+        {/* CONTENIDO */}
         <div className="prose prose-lg prose-blue max-w-none text-[color:var(--gray-700)] 
           prose-headings:font-[family:var(--font-heading)] prose-headings:font-extrabold prose-headings:text-[color:var(--navy)]
           prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-[color:var(--gray-100)] prose-h2:pb-2 prose-h2:clear-both
@@ -97,7 +134,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                         alt={String(props.alt || '')} 
                         width={600}
                         height={400}
-                        sizes="(max-width: 768px) 100vw, 380px" 
                         className="w-full h-auto object-contain"
                       />
                     </span>
