@@ -30,7 +30,32 @@ const securityHeaders = [
 const nextConfig = {
   poweredByHeader: false,
   async headers() {
-    return [{ source: '/(.*)', headers: securityHeaders }];
+    return [
+      { 
+        // 1. Aplica tus cabeceras de seguridad a todas las rutas
+        source: '/(.*)', 
+        headers: securityHeaders 
+      },
+      {
+        // 2. Previene el guardado en caché del HTML (soluciona el error al hacer push en Hostinger).
+        // Excluye las carpetas estáticas y de assets para no perjudicar la velocidad de carga.
+        source: '/:path*((?!_next/static|_next/image|images|favicon.ico).*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          },
+          {
+            key: 'Pragma',
+            value: 'no-cache',
+          },
+          {
+            key: 'Expires',
+            value: '0',
+          },
+        ],
+      }
+    ];
   },
 };
 
