@@ -29,9 +29,9 @@ export function Footer() {
             <div className="text-xs font-extrabold uppercase tracking-widest text-white">{t('company')}</div>
             <div className="mt-4 space-y-2">
               <Link href="/nosotros" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('about')}</Link>
-              <a href="https://cscloudsolutions.com.ar/blog/" target="_blank" rel="noreferrer" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('blog')}</a>
-              <a href="https://cscloudsolutions.com.ar/politica-de-privacidad/" target="_blank" rel="noreferrer" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('privacy')}</a>
-              <a href="https://cscloudsolutions.com.ar/terminos-y-condiciones/" target="_blank" rel="noreferrer" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('terms')}</a>
+              <a href="/blog/" target="_blank" rel="noreferrer" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('blog')}</a>
+              <a href="/politica-de-privacidad" target="_blank" rel="noreferrer" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('privacy')}</a>
+              <a href="/terminos-y-condiciones/" target="_blank" rel="noreferrer" className="block text-sm text-white/65 hover:text-[color:var(--cyan)]">{t('terms')}</a>
             </div>
           </div>
 
