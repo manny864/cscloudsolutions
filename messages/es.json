@@ -111,7 +111,7 @@
         "Apps de terceros conectadas",
         "SharePoint y OneDrive (permisos)"
       ],
-      "cardButton": "Solicitar auditoría ahora →",
+      "cardButton": "Solicitar auditoría →",
       "cardNote": "Sin costo · Sin compromiso · Enfoque práctico"
     },
     "services": {
@@ -150,7 +150,7 @@
       "sub": "Cuando hay un incidente, casi siempre había señales antes. Nosotros las buscamos, las explicamos y te dejamos un plan simple para cerrar brechas.",
       "calloutTitle": "¿Querés saber si estás expuesto antes de que pase algo?",
       "calloutSub": "Te damos un reporte ejecutivo y prioridades claras. Si todo está bien, también te lo decimos.",
-      "calloutCta": "Solicitar auditoría ahora →",
+      "calloutCta": "Solicitar auditoría →",
       "points": [
         "Autenticación multifactor (MFA)",
         "Reenvíos de correo a dominios externos",
