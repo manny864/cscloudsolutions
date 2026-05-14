@@ -15,8 +15,10 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      `script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://www.google.com https://www.gstatic.com`,
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com",
+      // Removed 'unsafe-inline' and dev-only 'unsafe-eval' to harden policy. If inline scripts/styles are required,
+      // prefer using nonces/hashes or move them to external files.
+      `script-src 'self' https://www.google.com https://www.gstatic.com`,
+      "style-src 'self' https://fonts.googleapis.com https://www.gstatic.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https://www.gstatic.com https://cscloudsolutions.com.ar",
       "frame-src https://www.google.com",
