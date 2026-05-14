@@ -223,29 +223,26 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
 
   const { nombre, email, empresa, telefono, mensaje, recaptchaToken } = parsed.data;
 
-  // Rate limiting by IP
+  // Rate limiting by email (avoids reading request headers from server action)
   try {
-    const hdrs = await headers();
-    const xff = hdrs.get('x-forwarded-for') || undefined;
-    const ip = xff ? xff.split(',')[0].trim() : (hdrs.get('x-real-ip') ?? 'unknown');
-
+    const key = email.toLowerCase();
     const now = Date.now();
-    const entry = rateLimitMap.get(ip);
+    const entry = rateLimitMap.get(key);
     if (entry) {
       if (now - entry.firstRequestAt <= RATE_LIMIT_WINDOW_MS) {
         if (entry.count >= RATE_LIMIT_MAX) {
-          return { ok: false, message: 'Demasiadas solicitudes desde tu ubicación. Probá nuevamente más tarde.' };
+          return { ok: false, message: 'Demasiadas solicitudes desde esta dirección de correo. Probá nuevamente más tarde.' };
         }
         entry.count += 1;
       } else {
         // window expired
-        rateLimitMap.set(ip, { count: 1, firstRequestAt: now });
+        rateLimitMap.set(key, { count: 1, firstRequestAt: now });
       }
     } else {
-      rateLimitMap.set(ip, { count: 1, firstRequestAt: now });
+      rateLimitMap.set(key, { count: 1, firstRequestAt: now });
     }
   } catch (err) {
-    // If headers() isn't available for any reason, continue without rate limiting
+    // If rate limiting fails for any reason, continue without blocking the request
     console.warn('Rate limiting skipped:', (err as Error).message);
   }
 
