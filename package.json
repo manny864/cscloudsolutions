@@ -7,10 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ci-checks": "npm audit --audit-level=high && npm run build"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.4",
+    "@sentry/nextjs": "^8.28.0",
     "@tailwindcss/typography": "^0.5.19",
     "framer-motion": "^12.6.3",
     "gray-matter": "^4.0.3",
