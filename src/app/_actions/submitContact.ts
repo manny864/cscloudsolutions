@@ -175,7 +175,15 @@ async function sendEmailViaGraph(
     </div>
   `;
 
-  const attachmentContent = Buffer.from(safeMensajeText, 'utf8').toString('base64');
+  // Limit attachment size to 32KB to avoid large emails
+  const MAX_ATTACHMENT_BYTES = 32 * 1024;
+  let plainText = safeMensajeText;
+  if (Buffer.byteLength(plainText, 'utf8') > MAX_ATTACHMENT_BYTES) {
+    // truncate preserving UTF-8
+    const buf = Buffer.from(plainText, 'utf8').slice(0, MAX_ATTACHMENT_BYTES);
+    plainText = buf.toString('utf8') + '\n\n[Mensaje truncado por tamaño]';
+  }
+  const attachmentContent = Buffer.from(plainText, 'utf8').toString('base64');
 
   const emailBody = {
     message: {
@@ -198,8 +206,27 @@ async function sendEmailViaGraph(
     saveToSentItems: true
   };
 
+  // Send with retries and exponential backoff
+  async function sendMailWithRetries(url: string, options: RequestInit, attempts = 3): Promise<boolean> {
+    const baseDelay = 300; // ms
+    for (let i = 0; i < attempts; i++) {
+      try {
+        const res = await fetchWithTimeout(url, options, 8000);
+        if (res.ok) return true;
+        // Log status but avoid bodies
+        console.error(`Graph sendMail attempt ${i+1} failed: status ${res.status}`);
+      } catch (err) {
+        console.error(`Graph sendMail attempt ${i+1} error:`, (err as Error).message);
+      }
+      // backoff with jitter
+      const delay = baseDelay * Math.pow(2, i) + Math.floor(Math.random() * 100);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+    return false;
+  }
+
   try {
-    const res = await fetchWithTimeout(
+    const success = await sendMailWithRetries(
       `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(senderEmail)}/sendMail`,
       {
         method: 'POST',
@@ -210,17 +237,12 @@ async function sendEmailViaGraph(
         body: JSON.stringify(emailBody),
         cache: 'no-store'
       },
-      8000
+      3
     );
 
-    if (!res.ok) {
-      console.error('Graph sendMail error: status', res.status);
-      return false;
-    }
-
-    return true;
+    return success;
   } catch (err) {
-    console.error('Failed to send email via Graph (short):', (err as Error).message);
+    console.error('Failed to send email via Graph after retries:', (err as Error).message);
     return false;
   }
 }
