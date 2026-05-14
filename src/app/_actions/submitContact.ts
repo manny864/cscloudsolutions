@@ -160,6 +160,14 @@ async function sendEmailViaGraph(
   const safeMensajeHtml = escapeHtml(mensaje).replace(/\n/g, '<br>');
   const safeMensajeText = mensaje;
 
+  // Sanitize header values to prevent header injection (remove CRLF and limit length)
+  function sanitizeHeaderValue(s: string, max = 128) {
+    return s.replace(/[\r\n]/g, ' ').trim().slice(0, max);
+  }
+
+  const headerSafeName = sanitizeHeaderValue(nombre);
+  const headerSafeEmail = sanitizeHeaderValue(email);
+
   const htmlContent = `
     <h2>Nuevo contacto desde CSCloudSolutions</h2>
     <p><strong>Nombre:</strong> ${safeNombre}</p>
@@ -193,7 +201,7 @@ async function sendEmailViaGraph(
         content: htmlContent
       },
       toRecipients: [{ emailAddress: { address: recipientEmail } }],
-      replyTo: [{ emailAddress: { address: email, name: nombre } }],
+      replyTo: [{ emailAddress: { address: headerSafeEmail, name: headerSafeName } }],
       attachments: [
         {
           "@odata.type": "#microsoft.graph.fileAttachment",
