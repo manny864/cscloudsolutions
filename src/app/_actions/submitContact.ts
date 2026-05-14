@@ -225,7 +225,7 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
 
   // Rate limiting by IP
   try {
-    const hdrs = headers();
+    const hdrs = await headers();
     const xff = hdrs.get('x-forwarded-for') || undefined;
     const ip = xff ? xff.split(',')[0].trim() : (hdrs.get('x-real-ip') ?? 'unknown');
 
