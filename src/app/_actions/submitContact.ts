@@ -175,6 +175,8 @@ async function sendEmailViaGraph(
     </div>
   `;
 
+  const attachmentContent = Buffer.from(safeMensajeText, 'utf8').toString('base64');
+
   const emailBody = {
     message: {
       subject: `Nuevo contacto desde el sitio web — ${safeNombre}`,
@@ -183,7 +185,15 @@ async function sendEmailViaGraph(
         content: htmlContent
       },
       toRecipients: [{ emailAddress: { address: recipientEmail } }],
-      replyTo: [{ emailAddress: { address: email, name: nombre } }]
+      replyTo: [{ emailAddress: { address: email, name: nombre } }],
+      attachments: [
+        {
+          "@odata.type": "#microsoft.graph.fileAttachment",
+          name: 'message.txt',
+          contentBytes: attachmentContent,
+          contentType: 'text/plain'
+        }
+      ]
     },
     saveToSentItems: true
   };
