@@ -43,7 +43,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd).replace(/<\/script>/g, '<\\/script>') }} />
       <Hero />
       <ServiceBento />
       <AuditSection />

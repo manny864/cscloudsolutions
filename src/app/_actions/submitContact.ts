@@ -195,7 +195,7 @@ async function sendEmailViaGraph(
 
   const emailBody = {
     message: {
-      subject: `Nuevo contacto desde el sitio web — ${safeNombre}`,
+      subject: `Nuevo contacto desde el sitio web — ${headerSafeName}`,
       body: {
         contentType: 'HTML',
         content: htmlContent
