@@ -37,6 +37,11 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   // Carga reCAPTCHA solo cuando el formulario entra en el viewport
   useEffect(() => {
     if (!siteKey) return;
+    // Load reCAPTCHA only if user consented to analytics
+    let consentObj = null;
+    try { consentObj = JSON.parse(localStorage.getItem('cookie-consent') || 'null'); } catch { consentObj = null; }
+    if (!consentObj || !consentObj.analytics) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !scriptLoaded) {

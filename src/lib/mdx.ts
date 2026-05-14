@@ -15,8 +15,9 @@ export async function getPosts(locale: string) {
 
   const fileNames = fs.readdirSync(localeDirectory);
 
+  const allowed = /^[a-zA-Z0-9\-_]+$/;
   const posts = fileNames
-    .filter((fileName) => fileName.endsWith('.md') || fileName.endsWith('.mdx'))
+    .filter((fileName) => (fileName.endsWith('.md') || fileName.endsWith('.mdx')) && allowed.test(fileName.replace(/\.mdx?$/, '')))
     .map((fileName) => {
       const slug = fileName.replace(/\.mdx?$/, '');
       const fullPath = path.join(localeDirectory, fileName);
