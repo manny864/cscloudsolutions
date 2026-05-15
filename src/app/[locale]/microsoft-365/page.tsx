@@ -29,19 +29,19 @@ export default async function M365Page({ params }: { params: Promise<{ locale: s
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={40} prefix="+" duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Migraciones Exitosas</div>
+              <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.migrations')}</div>
             </div>
             <div className="min-w-[120px]">
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={0} duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Horas de Downtime</div>
+              <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.downtime')}</div>
             </div>
             <div className="min-w-[120px]">
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={100} suffix="%" duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Acompañamiento Técnico</div>
+              <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.accompaniment')}</div>
             </div>
           </div>
         </Container>
@@ -61,14 +61,7 @@ export default async function M365Page({ params }: { params: Promise<{ locale: s
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: '📧', title: 'Migración de Correo (Exchange)', desc: 'Trasladamos tus buzones desde Gmail, cPanel o servidores locales sin pérdida de historial ni contactos. Alta disponibilidad garantizada.' },
-              { icon: '💬', title: 'Trabajo en Equipo con Teams', desc: 'Centralizamos tu comunicación corporativa. Configuramos canales, videollamadas seguras y políticas de acceso para un trabajo híbrido sin fricciones.' },
-              { icon: '📁', title: 'SharePoint & OneDrive', desc: 'Despídete del viejo servidor físico. Diseñamos la intranet de tu empresa y migramos tu documentación con permisos granulares.' },
-              { icon: '🛡️', title: 'Seguridad desde el Diseño', desc: 'No dejamos la seguridad para después. Implementamos Autenticación Multifactor (MFA) y protección contra Phishing desde el día uno.' },
-              { icon: '📉', title: 'Optimización de Licencias', desc: 'Analizamos el rol de cada empleado para asignar el plan exacto, evitando que gastes de más en licencias y características no utilizadas.' },
-              { icon: '🎓', title: 'Adopción y Capacitación', desc: 'La tecnología no sirve si tu equipo no la aprovecha. Ofrecemos entrenamiento estratégico para maximizar tu inversión.' },
-            ].map((feature, idx) => (
+            {t.raw('features').map((feature: any, idx: number) => (
               <div key={idx} className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 transition-all hover:-translate-y-1 hover:border-[color:var(--cyan)] hover:shadow-xl">
                 <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-[color:var(--cyan)] to-[#33C3FF] transition-transform duration-300 group-hover:scale-x-100" />
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[color:var(--cyan)]/10 text-3xl">
