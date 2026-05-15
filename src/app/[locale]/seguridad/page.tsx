@@ -30,19 +30,19 @@ export default async function SeguridadPage({ params }: { params: Promise<{ loca
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={24} duration={1500} />/<StatCounter target={7} duration={1500} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Monitoreo Proactivo</div>
+            <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.monitoring')}</div>
             </div>
             <div className="min-w-[120px]">
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={100} suffix="%" duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Zero Trust Alignment</div>
+            <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.zerotrust')}</div>
             </div>
             <div className="min-w-[120px]">
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={70} prefix="+" suffix="%" duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Reducción de Riesgo</div>
+            <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.riskReduction')}</div>
             </div>
           </div>
         </Container>
@@ -52,23 +52,14 @@ export default async function SeguridadPage({ params }: { params: Promise<{ loca
         <Container>
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="mb-4 text-3xl font-extrabold text-[color:var(--navy)] sm:text-4xl">
-              Tu tranquilidad es<br />
-              <span className="text-[color:var(--cyan)]">nuestra máxima prioridad</span>
+              {t('section.headingPart1')}<br />
+              <span className="text-[color:var(--cyan)]">{t('section.headingPart2')}</span>
             </h2>
-            <p className="text-lg leading-relaxed text-gray-600">
-              Un incidente de seguridad puede detener tu operación y dañar severamente tu reputación. Nuestro enfoque no busca complicarle la vida a tus empleados, sino implementar barreras invisibles pero robustas que actúen de forma inteligente.
-            </p>
+            <p className="text-lg leading-relaxed text-gray-600">{t('section.sub')}</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: '🔐', title: 'Identidad Segura (Entra ID)', desc: 'Asumimos que la brecha ya existe. Implementamos MFA y Acceso Condicional para garantizar que solo usuarios legítimos accedan a tus sistemas.' },
-              { icon: '🛡️', title: 'Defensa contra Amenazas', desc: 'Con Microsoft Defender for Business, detectamos y bloqueamos malware, ransomware y ataques de red en tiempo real a través de IA.' },
-              { icon: '📧', title: 'Anti-Phishing y Correos', desc: 'Configuramos protocolos estrictos para escanear enlaces maliciosos, alineando las firmas SPF, DKIM y DMARC para proteger tu dominio.' },
-              { icon: '📱', title: 'Gestión de Dispositivos (Intune)', desc: 'Aseguramos la información en PCs y móviles. Forzamos políticas de cifrado y permitimos el borrado corporativo remoto.' },
-              { icon: '🔒', title: 'Prevención de Fugas (DLP)', desc: 'Identificamos y protegemos tu información sensible (datos financieros o clientes) para evitar que sea compartida fuera de la organización por error.' },
-              { icon: '👁️', title: 'Auditoría y Alertas Continuas', desc: 'Vigilamos tu entorno silenciosamente. Configuramos alertas para inicios de sesión sospechosos o descargas masivas no autorizadas.' },
-            ].map((feature, idx) => (
+            {t.raw('features').map((feature: any, idx: number) => (
               <div key={idx} className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 transition-all hover:-translate-y-1 hover:border-[color:var(--cyan)] hover:shadow-xl">
                 <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-[color:var(--cyan)] to-[#33C3FF] transition-transform duration-300 group-hover:scale-x-100" />
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[color:var(--cyan)]/10 text-3xl">
