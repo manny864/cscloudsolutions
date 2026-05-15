@@ -141,7 +141,24 @@
           "video": "/videos/Ciberseguridad_Escudo_Digital.webm",
           "link": "/seguridad"
         }
-      ]
+      ],
+      "headingPart1": "Soluciones",
+      "headingPart2": "Cloud & Security",
+      "card1": {
+        "badge": "Productividad",
+        "title": "Microsoft 365",
+        "desc": "Colaboración total y gestión moderna del workplace."
+      },
+      "card2": {
+        "badge": "Infraestructura",
+        "title": "Azure Cloud",
+        "desc": "Migración y escalabilidad con arquitectura de clase mundial."
+      },
+      "card3": {
+        "badge": "Seguridad",
+        "title": "Ciberseguridad",
+        "desc": "Protección de datos bajo estándares internacionales de cumplimiento."
+      }
     },
     "audit": {
       "badge": "Auditoría express gratuita",
@@ -253,7 +270,44 @@
     "m365": {
       "title": "Microsoft 365",
       "badge": "Productividad",
-      "sub": "Mejora la colaboración, seguridad y productividad con el ecosistema líder en la nube. Trabajá desde cualquier lugar sin comprometer datos."
+      "sub": "Mejora la colaboración, seguridad y productividad con el ecosistema líder en la nube. Trabajá desde cualquier lugar sin comprometer datos.",
+      "stats": {
+        "migrations": "Migraciones exitosas",
+        "downtime": "Horas de downtime",
+        "accompaniment": "Acompañamiento técnico"
+      },
+      "features": [
+        {
+          "icon": "📧",
+          "title": "Migración de Correo (Exchange)",
+          "desc": "Trasladamos tus buzones desde Gmail, cPanel o servidores locales sin pérdida de historial ni contactos. Alta disponibilidad garantizada."
+        },
+        {
+          "icon": "💬",
+          "title": "Trabajo en Equipo con Teams",
+          "desc": "Centralizamos tu comunicación corporativa. Configuramos canales, videollamadas seguras y políticas de acceso para un trabajo híbrido sin fricciones."
+        },
+        {
+          "icon": "📁",
+          "title": "SharePoint & OneDrive",
+          "desc": "Diseñamos la intranet y migramos tu documentación con permisos granulares."
+        },
+        {
+          "icon": "🛡️",
+          "title": "Seguridad desde el Diseño",
+          "desc": "Implementamos MFA y protección contra Phishing desde el día uno."
+        },
+        {
+          "icon": "📉",
+          "title": "Optimización de Licencias",
+          "desc": "Analizamos roles para asignar el plan exacto y evitar gastos innecesarios."
+        },
+        {
+          "icon": "🎓",
+          "title": "Adopción y Capacitación",
+          "desc": "Entrenamiento estratégico para maximizar la inversión."
+        }
+      ]
     },
     "modern": {
       "title": "Modern Workplace",
@@ -272,12 +326,36 @@
         "titleB": "completamente reinventado",
         "sub": "Adaptarse al trabajo remoto no es solo usar videollamadas; es tener procesos ágiles, dispositivos seguros y equipos conectados sin importar dónde se encuentren.",
         "items": [
-          { "icon": "💬", "title": "Microsoft Teams Avanzado", "desc": "Configuración completa: canales estructurados, bots, apps integradas, telefonía IP y salas de reuniones virtuales para equipos distribuidos." },
-          { "icon": "📱", "title": "Gestión de Dispositivos (Intune)", "desc": "Inscripción y gestión de PCs, Macs, tablets y celulares. Controlamos las políticas de acceso y aplicamos borrado remoto si es necesario." },
-          { "icon": "🖥️", "title": "Azure Virtual Desktop", "desc": "Escritorios virtuales en la nube: tus empleados acceden a su entorno de trabajo corporativo desde cualquier dispositivo personal con total seguridad." },
-          { "icon": "🌐", "title": "Intranets con SharePoint", "desc": "Creamos el portal central de tu empresa para noticias corporativas, recursos humanos y gestión documental centralizada." },
-          { "icon": "🧠", "title": "Microsoft Viva (Employee Exp)", "desc": "Mejoramos el bienestar de tu equipo midiendo el engagement, facilitando el aprendizaje y balanceando los tiempos de trabajo." },
-          { "icon": "🛡️", "title": "Seguridad Endpoint", "desc": "Aseguramos que cada dispositivo que se conecte a tu red cumpla con los estándares de seguridad antes de permitir el acceso a los datos." }
+          {
+            "icon": "💬",
+            "title": "Microsoft Teams Avanzado",
+            "desc": "Configuración completa: canales estructurados, bots, apps integradas, telefonía IP y salas de reuniones virtuales para equipos distribuidos."
+          },
+          {
+            "icon": "📱",
+            "title": "Gestión de Dispositivos (Intune)",
+            "desc": "Inscripción y gestión de PCs, Macs, tablets y celulares. Controlamos las políticas de acceso y aplicamos borrado remoto si es necesario."
+          },
+          {
+            "icon": "🖥️",
+            "title": "Azure Virtual Desktop",
+            "desc": "Escritorios virtuales en la nube: tus empleados acceden a su entorno de trabajo corporativo desde cualquier dispositivo personal con total seguridad."
+          },
+          {
+            "icon": "🌐",
+            "title": "Intranets con SharePoint",
+            "desc": "Creamos el portal central de tu empresa para noticias corporativas, recursos humanos y gestión documental centralizada."
+          },
+          {
+            "icon": "🧠",
+            "title": "Microsoft Viva (Employee Exp)",
+            "desc": "Mejoramos el bienestar de tu equipo midiendo el engagement, facilitando el aprendizaje y balanceando los tiempos de trabajo."
+          },
+          {
+            "icon": "🛡️",
+            "title": "Seguridad Endpoint",
+            "desc": "Aseguramos que cada dispositivo que se conecte a tu red cumpla con los estándares de seguridad antes de permitir el acceso a los datos."
+          }
         ]
       }
     },
@@ -303,12 +381,36 @@
         "titleB": "los problemas te afecten",
         "sub": "No esperamos a que las cosas se rompan para actuar. Nuestro enfoque como Proveedor de Servicios Gestionados es prevenir fallos, mantener todo actualizado y asistir a tus usuarios con calidez y rapidez.",
         "items": [
-          { "icon": "🎫", "title": "Mesa de Ayuda (Help Desk)", "desc": "Sistema de tickets con priorización por impacto. Múltiples canales de contacto: portal web, correo, Teams y línea telefónica para emergencias críticas." },
-          { "icon": "👁️", "title": "Monitoreo Proactivo 24/7", "desc": "Vigilamos la salud de tus servidores y red. Recibimos alertas automáticas sobre rendimiento y seguridad antes de que tus usuarios noten un fallo." },
-          { "icon": "🔧", "title": "Mantenimiento Preventivo", "desc": "Instalamos parches de seguridad, actualizaciones de Windows y realizamos revisiones periódicas del entorno para blindar tus operaciones." },
-          { "icon": "⭐", "title": "Soporte VIP a Directivos", "desc": "Atención prioritaria y dedicada para los altos ejecutivos de tu empresa, garantizando que su trabajo y viajes de negocios no sufran interrupciones técnicas." },
-          { "icon": "📋", "title": "Gestión de Licencias y Altas", "desc": "Nos encargamos del ingreso de nuevos empleados (Onboarding), creación de correos, asignación de licencias M365 y baja segura de usuarios." },
-          { "icon": "📈", "title": "Reportes Ejecutivos (vCIO)", "desc": "Reuniones periódicas donde te mostramos el estado de tu red, el consumo de licencias, incidentes resueltos y propuestas de mejora." }
+          {
+            "icon": "🎫",
+            "title": "Mesa de Ayuda (Help Desk)",
+            "desc": "Sistema de tickets con priorización por impacto. Múltiples canales de contacto: portal web, correo, Teams y línea telefónica para emergencias críticas."
+          },
+          {
+            "icon": "👁️",
+            "title": "Monitoreo Proactivo 24/7",
+            "desc": "Vigilamos la salud de tus servidores y red. Recibimos alertas automáticas sobre rendimiento y seguridad antes de que tus usuarios noten un fallo."
+          },
+          {
+            "icon": "🔧",
+            "title": "Mantenimiento Preventivo",
+            "desc": "Instalamos parches de seguridad, actualizaciones de Windows y realizamos revisiones periódicas del entorno para blindar tus operaciones."
+          },
+          {
+            "icon": "⭐",
+            "title": "Soporte VIP a Directivos",
+            "desc": "Atención prioritaria y dedicada para los altos ejecutivos de tu empresa, garantizando que su trabajo y viajes de negocios no sufran interrupciones técnicas."
+          },
+          {
+            "icon": "📋",
+            "title": "Gestión de Licencias y Altas",
+            "desc": "Nos encargamos del ingreso de nuevos empleados (Onboarding), creación de correos, asignación de licencias M365 y baja segura de usuarios."
+          },
+          {
+            "icon": "📈",
+            "title": "Reportes Ejecutivos (vCIO)",
+            "desc": "Reuniones periódicas donde te mostramos el estado de tu red, el consumo de licencias, incidentes resueltos y propuestas de mejora."
+          }
         ]
       }
     },
@@ -329,12 +431,36 @@
         "titleB": "al alcance de tu negocio",
         "sub": "No necesitas un equipo de programadores in-house para modernizarte. Utilizamos tecnología Low-Code para crear aplicaciones y reportes en semanas, no en meses.",
         "items": [
-          { "icon": "📊", "title": "Power BI", "desc": "Dashboards interactivos que conectan todas tus fuentes de datos: ventas, producción, finanzas y RRHH. Toma decisiones basadas en datos reales y en tiempo real." },
-          { "icon": "⚙️", "title": "Power Automate", "desc": "Automatización de aprobaciones, notificaciones de correos y procesos repetitivos. Conectamos tu entorno Microsoft con más de 1000 aplicaciones externas." },
-          { "icon": "📱", "title": "Power Apps", "desc": "Aplicaciones empresariales personalizadas: control de stock, formularios de campo, gestión de incidentes y recolección de datos desde cualquier celular." },
-          { "icon": "🤖", "title": "Copilot Studio", "desc": "Implementamos asistentes virtuales (chatbots) inteligentes con IA para responder consultas frecuentes de tus empleados o clientes de forma automática." },
-          { "icon": "🔗", "title": "Integración de Datos", "desc": "Unificamos la información de tus sistemas antiguos (ERPs, CRMs locales) para que interactúen fluidamente con tu entorno en la nube." },
-          { "icon": "⚖️", "title": "Gobernanza y Seguridad", "desc": "Aplicamos políticas estrictas para asegurar que las automatizaciones y apps creadas cumplan con los estándares de seguridad de tu empresa." }
+          {
+            "icon": "📊",
+            "title": "Power BI",
+            "desc": "Dashboards interactivos que conectan todas tus fuentes de datos: ventas, producción, finanzas y RRHH. Toma decisiones basadas en datos reales y en tiempo real."
+          },
+          {
+            "icon": "⚙️",
+            "title": "Power Automate",
+            "desc": "Automatización de aprobaciones, notificaciones de correos y procesos repetitivos. Conectamos tu entorno Microsoft con más de 1000 aplicaciones externas."
+          },
+          {
+            "icon": "📱",
+            "title": "Power Apps",
+            "desc": "Aplicaciones empresariales personalizadas: control de stock, formularios de campo, gestión de incidentes y recolección de datos desde cualquier celular."
+          },
+          {
+            "icon": "🤖",
+            "title": "Copilot Studio",
+            "desc": "Implementamos asistentes virtuales (chatbots) inteligentes con IA para responder consultas frecuentes de tus empleados o clientes de forma automática."
+          },
+          {
+            "icon": "🔗",
+            "title": "Integración de Datos",
+            "desc": "Unificamos la información de tus sistemas antiguos (ERPs, CRMs locales) para que interactúen fluidamente con tu entorno en la nube."
+          },
+          {
+            "icon": "⚖️",
+            "title": "Gobernanza y Seguridad",
+            "desc": "Aplicamos políticas estrictas para asegurar que las automatizaciones y apps creadas cumplan con los estándares de seguridad de tu empresa."
+          }
         ]
       }
     },
@@ -357,12 +483,36 @@
         "titleB": "las tareas rutinarias",
         "sub": "La verdadera productividad no es trabajar más horas, es hacer que los sistemas trabajen por vos. Conectamos tus herramientas para crear una maquinaria eficiente.",
         "items": [
-          { "icon": "⚙️", "title": "Flujos con Power Automate", "desc": "Automatizamos aprobaciones, notificaciones y sincronización de datos entre cientos de aplicaciones sin intervención humana." },
-          { "icon": "🤖", "title": "RPA (Robotic Process Automation)", "desc": "Automatizamos aplicaciones heredadas que no tienen API, simulando las acciones de un usuario en pantalla." },
-          { "icon": "🔗", "title": "Azure Logic Apps", "desc": "Flujos de integración empresarial de alta escalabilidad para conectar sistemas complejos en la nube o locales." },
-          { "icon": "📊", "title": "Automatización de Reportes", "desc": "Generación automática de informes en PDF o Power BI basados en disparadores de negocio o fechas." },
-          { "icon": "⚡", "title": "Event-Driven Workflows", "desc": "Tus procesos reaccionan instantáneamente ante cambios en bases de datos, llegada de correos o señales de sensores IoT." },
-          { "icon": "✅", "title": "Reducción de Errores", "desc": "Garantizamos que cada dato se mueva exactamente como debe, eliminando el factor de distracción humana en procesos críticos." }
+          {
+            "icon": "⚙️",
+            "title": "Flujos con Power Automate",
+            "desc": "Automatizamos aprobaciones, notificaciones y sincronización de datos entre cientos de aplicaciones sin intervención humana."
+          },
+          {
+            "icon": "🤖",
+            "title": "RPA (Robotic Process Automation)",
+            "desc": "Automatizamos aplicaciones heredadas que no tienen API, simulando las acciones de un usuario en pantalla."
+          },
+          {
+            "icon": "🔗",
+            "title": "Azure Logic Apps",
+            "desc": "Flujos de integración empresarial de alta escalabilidad para conectar sistemas complejos en la nube o locales."
+          },
+          {
+            "icon": "📊",
+            "title": "Automatización de Reportes",
+            "desc": "Generación automática de informes en PDF o Power BI basados en disparadores de negocio o fechas."
+          },
+          {
+            "icon": "⚡",
+            "title": "Event-Driven Workflows",
+            "desc": "Tus procesos reaccionan instantáneamente ante cambios en bases de datos, llegada de correos o señales de sensores IoT."
+          },
+          {
+            "icon": "✅",
+            "title": "Reducción de Errores",
+            "desc": "Garantizamos que cada dato se mueva exactamente como debe, eliminando el factor de distracción humana en procesos críticos."
+          }
         ]
       }
     },
@@ -380,12 +530,36 @@
         "titleB": "sino que actúa",
         "sub": "Pasamos del simple Chatbot al Agente Cognitivo. Sistemas que comprenden tus reglas de negocio y ejecutan acciones reales para resolver problemas.",
         "items": [
-          { "icon": "🧠", "title": "Agentes Autónomos", "desc": "IA capaz de recibir una meta y planificar los pasos necesarios para cumplirla utilizando tus herramientas empresariales." },
-          { "icon": "💬", "title": "Copilot Studio", "desc": "Desarrollamos copilotos personalizados integrados en Teams o tu web que conocen tus datos específicos y actúan sobre ellos." },
-          { "icon": "🤖", "title": "Multi-Agent Systems", "desc": "Orquestamos múltiples IAs especializadas que colaboran entre sí para resolver procesos departamentales complejos." },
-          { "icon": "🛡️", "title": "IA con Gobernanza", "desc": "Implementamos agentes bajo marcos de seguridad estrictos, asegurando que solo accedan a lo permitido y cumplan tus políticas." },
-          { "icon": "🔍", "title": "Razonamiento sobre Datos", "desc": "Tus agentes analizan tendencias en tiempo real y te proponen acciones o las ejecutan automáticamente tras tu aprobación." },
-          { "icon": "📈", "title": "Soporte y Ventas 2.0", "desc": "Agentes que califican prospectos, agendan reuniones o resuelven tickets técnicos extrayendo info de manuales internos." }
+          {
+            "icon": "🧠",
+            "title": "Agentes Autónomos",
+            "desc": "IA capaz de recibir una meta y planificar los pasos necesarios para cumplirla utilizando tus herramientas empresariales."
+          },
+          {
+            "icon": "💬",
+            "title": "Copilot Studio",
+            "desc": "Desarrollamos copilotos personalizados integrados en Teams o tu web que conocen tus datos específicos y actúan sobre ellos."
+          },
+          {
+            "icon": "🤖",
+            "title": "Multi-Agent Systems",
+            "desc": "Orquestamos múltiples IAs especializadas que colaboran entre sí para resolver procesos departamentales complejos."
+          },
+          {
+            "icon": "🛡️",
+            "title": "IA con Gobernanza",
+            "desc": "Implementamos agentes bajo marcos de seguridad estrictos, asegurando que solo accedan a lo permitido y cumplan tus políticas."
+          },
+          {
+            "icon": "🔍",
+            "title": "Razonamiento sobre Datos",
+            "desc": "Tus agentes analizan tendencias en tiempo real y te proponen acciones o las ejecutan automáticamente tras tu aprobación."
+          },
+          {
+            "icon": "📈",
+            "title": "Soporte y Ventas 2.0",
+            "desc": "Agentes que califican prospectos, agendan reuniones o resuelven tickets técnicos extrayendo info de manuales internos."
+          }
         ]
       }
     },
@@ -403,12 +577,36 @@
         "titleB": "con ingeniería financiera",
         "sub": "La nube es elástica, pero sin control, el costo se expande indefinidamente. Aplicamos disciplina FinOps para devolverte el control del presupuesto.",
         "items": [
-          { "icon": "💰", "title": "Cost Management", "desc": "Configuración de presupuestos, alertas y análisis granular de consumo por departamento, proyecto o recurso." },
-          { "icon": "📏", "title": "Right-Sizing", "desc": "Analizamos el rendimiento real para ajustar el tamaño de tus servidores y bases de datos a lo que realmente consumen." },
-          { "icon": "🎟️", "title": "Reservas e Instancias", "desc": "Aprovechamos descuentos de hasta el 72% mediante la reserva estratégica de capacidad a largo plazo en Azure." },
-          { "icon": "🏷️", "title": "Etiquetado y Gobernanza", "desc": "Implementamos políticas de tagging para que no exista ni un solo centavo en la factura sin un responsable asignado." },
-          { "icon": "♻️", "title": "Limpieza de Recursos", "desc": "Identificamos y eliminamos discos huérfanos, IPs no usadas y entornos de prueba olvidados que drenan tu dinero." },
-          { "icon": "🏢", "title": "Azure Hybrid Benefit", "desc": "Ahorramos costos de licenciamiento utilizando tus licencias actuales de Windows Server y SQL Server en la nube." }
+          {
+            "icon": "💰",
+            "title": "Cost Management",
+            "desc": "Configuración de presupuestos, alertas y análisis granular de consumo por departamento, proyecto o recurso."
+          },
+          {
+            "icon": "📏",
+            "title": "Right-Sizing",
+            "desc": "Analizamos el rendimiento real para ajustar el tamaño de tus servidores y bases de datos a lo que realmente consumen."
+          },
+          {
+            "icon": "🎟️",
+            "title": "Reservas e Instancias",
+            "desc": "Aprovechamos descuentos de hasta el 72% mediante la reserva estratégica de capacidad a largo plazo en Azure."
+          },
+          {
+            "icon": "🏷️",
+            "title": "Etiquetado y Gobernanza",
+            "desc": "Implementamos políticas de tagging para que no exista ni un solo centavo en la factura sin un responsable asignado."
+          },
+          {
+            "icon": "♻️",
+            "title": "Limpieza de Recursos",
+            "desc": "Identificamos y eliminamos discos huérfanos, IPs no usadas y entornos de prueba olvidados que drenan tu dinero."
+          },
+          {
+            "icon": "🏢",
+            "title": "Azure Hybrid Benefit",
+            "desc": "Ahorramos costos de licenciamiento utilizando tus licencias actuales de Windows Server y SQL Server en la nube."
+          }
         ]
       }
     }
