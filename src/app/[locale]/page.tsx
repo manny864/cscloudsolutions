@@ -20,7 +20,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
         '@type': 'ConsultingService',
         '@id': `${SITE.url}/#organization`,
         name: SITE.name,
-        alternateName: 'CS Cloud Solutions',
+        alternateName: 'CSCloudSolutions',
         url: SITE.url,
         description: t('orgDescription'),
         email: SITE.email,
