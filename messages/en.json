@@ -307,7 +307,12 @@
           "title": "Adoption and Training",
           "desc": "Strategic training to maximize your investment."
         }
-      ]
+      ],
+      "section": {
+        "headingPart1": "More than email,",
+        "headingPart2": "it's your company engine",
+        "sub": "We plan migrations carefully so your team can start working better immediately."
+      }
     },
     "modern": {
       "title": "Modern Workplace",
@@ -362,7 +367,49 @@
     "security": {
       "title": "Security",
       "badge": "Protection & Compliance",
-      "sub": "Advanced protection against threats and real-time security audits for your cloud environment."
+      "sub": "Advanced protection against threats and real-time security audits for your cloud environment.",
+      "stats": {
+        "monitoring": "Proactive monitoring",
+        "zerotrust": "Zero Trust alignment",
+        "riskReduction": "Risk reduction"
+      },
+      "section": {
+        "headingPart1": "Your peace of mind is",
+        "headingPart2": "our top priority",
+        "sub": "Security incidents can halt operations and damage reputation. We implement invisible but strong protections that act intelligently."
+      },
+      "features": [
+        {
+          "icon": "🔐",
+          "title": "Secure Identity (Entra ID)",
+          "desc": "We assume breaches can happen. Implement MFA and Conditional Access to ensure only legitimate users access your systems."
+        },
+        {
+          "icon": "🛡️",
+          "title": "Threat Protection",
+          "desc": "Microsoft Defender for Business detects and blocks malware, ransomware and network attacks in real-time."
+        },
+        {
+          "icon": "📧",
+          "title": "Anti-Phishing & Email",
+          "desc": "We configure strict email checks and align SPF, DKIM and DMARC to protect your domain."
+        },
+        {
+          "icon": "📱",
+          "title": "Device Management (Intune)",
+          "desc": "We secure PCs and mobile devices with encryption policies and remote wipe."
+        },
+        {
+          "icon": "🔒",
+          "title": "Data Loss Prevention (DLP)",
+          "desc": "Identify and protect sensitive data to prevent accidental leaks."
+        },
+        {
+          "icon": "👁️",
+          "title": "Continuous Audit & Alerts",
+          "desc": "We monitor silently and trigger alerts for suspicious sign-ins or bulk downloads."
+        }
+      ]
     },
     "support": {
       "title": "IT Support",
@@ -467,7 +514,49 @@
     "azure": {
       "title": "Microsoft Azure",
       "badge": "Cloud Infrastructure",
-      "sub": "Secure migrations, infinite scalability, and modernized operations in the Microsoft cloud."
+      "sub": "Secure migrations, infinite scalability, and modernized operations in the Microsoft cloud.",
+      "stats": {
+        "sla": "Operational SLA",
+        "finops": "Average Savings (FinOps)",
+        "adaptability": "Adaptability"
+      },
+      "section": {
+        "headingPart1": "Enterprise-grade power,",
+        "headingPart2": "scaled for you",
+        "sub": "Buying physical servers is no longer cost-effective or secure. We help modernize your datacenter migrating to Azure."
+      },
+      "features": [
+        {
+          "icon": "🖥️",
+          "title": "Virtual Machines (IaaS)",
+          "desc": "We migrate your Windows/Linux on-prem servers to the cloud, ideal for ERP and AD, with elastic scalability."
+        },
+        {
+          "icon": "🗄️",
+          "title": "Managed Databases",
+          "desc": "SQL Database (PaaS) with automated backups and high availability."
+        },
+        {
+          "icon": "🌐",
+          "title": "Networking & Hybrid Connectivity",
+          "desc": "Secure VPNs and high-performance network architectures to connect your office to Azure."
+        },
+        {
+          "icon": "💾",
+          "title": "Disaster Recovery & Backup",
+          "desc": "Business continuity orchestration so your company recovers quickly in the cloud."
+        },
+        {
+          "icon": "💻",
+          "title": "Azure Virtual Desktop (AVD)",
+          "desc": "Secure Windows 11 virtual desktops accessible from any device."
+        },
+        {
+          "icon": "💰",
+          "title": "Cost Optimization (FinOps)",
+          "desc": "We monitor usage and apply right-sizing and reserved instances for cost efficiency."
+        }
+      ]
     },
     "automations": {
       "hero": {

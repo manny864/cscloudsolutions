@@ -52,12 +52,10 @@ export default async function M365Page({ params }: { params: Promise<{ locale: s
         <Container>
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="mb-4 text-3xl font-extrabold text-[color:var(--navy)] sm:text-4xl">
-              Más que correo electrónico,<br />
-              <span className="text-[color:var(--cyan)]">es el motor de tu empresa</span>
+              {t('section.headingPart1')}<br />
+              <span className="text-[color:var(--cyan)]">{t('section.headingPart2')}</span>
             </h2>
-            <p className="text-lg leading-relaxed text-gray-600">
-              Sabemos que el temor a perder datos o sufrir caídas del sistema frena la innovación. En CSCloudSolutions planificamos cada migración al milímetro para que tu equipo llegue el lunes y, simplemente, comience a trabajar mejor.
-            </p>
+            <p className="text-lg leading-relaxed text-gray-600">{t('section.sub')}</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

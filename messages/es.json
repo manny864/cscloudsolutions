@@ -307,7 +307,12 @@
           "title": "Adopción y Capacitación",
           "desc": "Entrenamiento estratégico para maximizar la inversión."
         }
-      ]
+      ],
+      "section": {
+        "headingPart1": "Más que correo electrónico,",
+        "headingPart2": "es el motor de tu empresa",
+        "sub": "Planificamos cada migración para que tu equipo pueda empezar a trabajar mejor de inmediato."
+      }
     },
     "modern": {
       "title": "Modern Workplace",
@@ -362,7 +367,49 @@
     "security": {
       "title": "Ciberseguridad",
       "badge": "Protección y Cumplimiento",
-      "sub": "Protección avanzada contra amenazas y auditorías de seguridad en tiempo real para tu entorno cloud."
+      "sub": "Protección avanzada contra amenazas y auditorías de seguridad en tiempo real para tu entorno cloud.",
+      "stats": {
+        "monitoring": "Monitoreo Proactivo",
+        "zerotrust": "Alineamiento Zero Trust",
+        "riskReduction": "Reducción de riesgo"
+      },
+      "section": {
+        "headingPart1": "Tu tranquilidad es",
+        "headingPart2": "nuestra máxima prioridad",
+        "sub": "Un incidente de seguridad puede detener tu operación y dañar tu reputación. Implementamos barreras invisibles y robustas que actúan de forma inteligente."
+      },
+      "features": [
+        {
+          "icon": "🔐",
+          "title": "Identidad Segura (Entra ID)",
+          "desc": "Implementamos MFA y Acceso Condicional para garantizar que solo usuarios legítimos accedan a tus sistemas."
+        },
+        {
+          "icon": "🛡️",
+          "title": "Defensa contra Amenazas",
+          "desc": "Microsoft Defender for Business detecta y bloquea malware, ransomware y ataques en tiempo real."
+        },
+        {
+          "icon": "📧",
+          "title": "Anti-Phishing y Correos",
+          "desc": "Configuramos verificaciones de correo y alineamos SPF, DKIM y DMARC para proteger tu dominio."
+        },
+        {
+          "icon": "📱",
+          "title": "Gestión de Dispositivos (Intune)",
+          "desc": "Aseguramos PCs y móviles con cifrado y borrado remoto."
+        },
+        {
+          "icon": "��",
+          "title": "Prevención de Fugas (DLP)",
+          "desc": "Identificamos y protegemos información sensible para evitar fugas accidentales."
+        },
+        {
+          "icon": "👁️",
+          "title": "Auditoría y Alertas Continuas",
+          "desc": "Vigilamos tu entorno y configuramos alertas para actividades sospechosas."
+        }
+      ]
     },
     "support": {
       "title": "Soporte IT",
@@ -467,7 +514,49 @@
     "azure": {
       "title": "Microsoft Azure",
       "badge": "Infraestructura Cloud",
-      "sub": "Migraciones seguras, escalabilidad infinita y operaciones modernizadas en la nube de Microsoft."
+      "sub": "Migraciones seguras, escalabilidad infinita y operaciones modernizadas en la nube de Microsoft.",
+      "stats": {
+        "sla": "SLA Operativo",
+        "finops": "Ahorro Promedio (FinOps)",
+        "adaptability": "Adaptabilidad"
+      },
+      "section": {
+        "headingPart1": "El poder de las grandes corporaciones,",
+        "headingPart2": "adaptado a tu escala",
+        "sub": "Comprar servidores físicos ya no es rentable ni seguro. Te ayudamos a modernizar tu centro de datos migrando a Azure."
+      },
+      "features": [
+        {
+          "icon": "🖥️",
+          "title": "Servidores Virtuales (IaaS)",
+          "desc": "Migramos tus servidores locales (Windows/Linux) a la nube. Ideal para sistemas ERP y directorios activos, con escalabilidad elástica."
+        },
+        {
+          "icon": "🗄️",
+          "title": "Bases de Datos Gestionadas",
+          "desc": "Implementamos SQL Database (PaaS) con copias de seguridad automáticas y alta disponibilidad."
+        },
+        {
+          "icon": "🌐",
+          "title": "Redes y Conectividad Híbrida",
+          "desc": "Conectamos tu oficina a Azure mediante VPNs seguras y arquitecturas de alto rendimiento."
+        },
+        {
+          "icon": "💾",
+          "title": "Disaster Recovery y Backup",
+          "desc": "Orquestamos la recuperación para que tu empresa se levante en la nube en tiempo récord."
+        },
+        {
+          "icon": "💻",
+          "title": "Azure Virtual Desktop (AVD)",
+          "desc": "Escritorios virtuales seguros accesibles desde cualquier dispositivo."
+        },
+        {
+          "icon": "💰",
+          "title": "Optimización de Costos (FinOps)",
+          "desc": "Monitorizamos consumo y aplicamos right-sizing e instancias reservadas."
+        }
+      ]
     },
     "automations": {
       "hero": {

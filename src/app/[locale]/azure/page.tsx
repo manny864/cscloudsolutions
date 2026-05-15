@@ -28,19 +28,19 @@ export default async function AzurePage({ params }: { params: Promise<{ locale: 
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={99.9} decimals={1} suffix="%" duration={2500} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">SLA Operativo</div>
+              <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.sla')}</div>
             </div>
             <div className="min-w-[120px]">
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={35} suffix="%" duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Ahorro Promedio (FinOps)</div>
+              <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.finops')}</div>
             </div>
             <div className="min-w-[120px]">
               <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
                 <StatCounter target={100} suffix="%" duration={2000} />
               </div>
-              <div className="mt-1 text-sm font-semibold text-white/80">Adaptabilidad</div>
+              <div className="mt-1 text-sm font-semibold text-white/80">{t('stats.adaptability')}</div>
             </div>
           </div>
         </Container>
@@ -50,23 +50,14 @@ export default async function AzurePage({ params }: { params: Promise<{ locale: 
         <Container>
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <h2 className="mb-4 text-3xl font-extrabold text-[color:var(--navy)] sm:text-4xl">
-              El poder de las grandes corporaciones,<br />
-              <span className="text-[color:var(--cyan)]">adaptado a tu escala</span>
+              {t('section.headingPart1')}<br />
+              <span className="text-[color:var(--cyan)]">{t('section.headingPart2')}</span>
             </h2>
-            <p className="text-lg leading-relaxed text-gray-600">
-              Comprar servidores físicos ya no es rentable ni seguro. Te ayudamos a modernizar tu centro de datos migrando a Azure. Pagas solo por lo que consumes, con la tranquilidad de estar respaldado por la nube más robusta del mundo.
-            </p>
+            <p className="text-lg leading-relaxed text-gray-600">{t('section.sub')}</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: '🖥️', title: 'Servidores Virtuales (IaaS)', desc: 'Migramos tus servidores locales (Windows/Linux) a la nube. Ideal para sistemas ERP y directorios activos, con escalabilidad elástica.' },
-              { icon: '🗄️', title: 'Bases de Datos Gestionadas', desc: 'Olvídate del mantenimiento tedioso. Implementamos SQL Database (PaaS) con copias de seguridad automáticas y alta disponibilidad.' },
-              { icon: '🌐', title: 'Redes y Conectividad Híbrida', desc: 'Conectamos tu oficina directamente a Azure mediante VPNs seguras, con arquitecturas de red de alto rendimiento.' },
-              { icon: '💾', title: 'Disaster Recovery y Backup', desc: 'Aseguramos la continuidad de tu negocio. Orquestamos la recuperación para que tu empresa se levante en la nube en tiempo récord.' },
-              { icon: '💻', title: 'Azure Virtual Desktop (AVD)', desc: 'Escritorios virtuales para que tu equipo acceda a su entorno (Windows 11) desde cualquier dispositivo, de forma segura.' },
-              { icon: '💰', title: 'Optimización de Costos (FinOps)', desc: 'Monitorizamos tu consumo. Aplicamos Right-sizing e instancias reservadas para que cada dólar invertido genere valor.' },
-            ].map((feature, idx) => (
+            {t.raw('features').map((feature: any, idx: number) => (
               <div key={idx} className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 transition-all hover:-translate-y-1 hover:border-[color:var(--cyan)] hover:shadow-xl">
                 <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-[color:var(--cyan)] to-[#33C3FF] transition-transform duration-300 group-hover:scale-x-100" />
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[color:var(--cyan)]/10 text-3xl">
