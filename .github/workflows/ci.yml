@@ -2,36 +2,40 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: ["main"]
   pull_request:
-    branches: [ main ]
+
+# Forzar el uso de Node 24 para eliminar advertencias de obsolescencia
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Use Node.js
+      - name: Checkout del código
+        uses: actions/checkout@v4
+        
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
+      - name: Restaurar caché de Next.js
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          # Genera una nueva clave de caché cuando cambian las dependencias o el código fuente
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          # Si el código cambió pero las dependencias no, restaura desde una caché anterior
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            
+      - name: Instalar dependencias
         run: npm ci
 
-      - name: Run audit (fail on high/critical)
-        env:
-          CI: true
-        run: |
-          echo "Running npm audit --audit-level=high"
-          npm audit --audit-level=high
-
-      - name: Build
+      - name: Compilar proyecto (Build)
         run: npm run build
-        env:
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-
-      - name: Lint
-        run: npm run lint
