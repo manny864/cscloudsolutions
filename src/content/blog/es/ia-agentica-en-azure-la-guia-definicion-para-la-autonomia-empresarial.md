@@ -48,7 +48,7 @@ Un **Agente de IA (AI Agent)**, en cambio, es una entidad de software autónoma 
 > **El Enfoque SEO IA (Tip Clave):** Mientras que la IA tradicional funciona como un redactor que escribe una propuesta tras pedírselo, la IA Agéntica funciona como un gerente de proyectos: revisa la documentación existente, consulta los sistemas de inventario, solicita cotizaciones externas a proveedores a través de servicios web, consolida el presupuesto en una hoja de cálculo y envía la propuesta final a los canales correspondientes para su autorización.
 
 ---
-
+![El Cambio de Paradigma (IA Tradicional vs. IA Agéntica)](/images/blog/el-cambio-de-paradigma-ia-tradicional-vs-ia-agentica.avif)
 ## 2. La Anatomía Arquitectónica de un Agente de IA Empresarial
 
 Para que un agente de IA opere de manera eficiente, predecible y segura dentro de una infraestructura corporativa, no basta con realizar llamadas directas a la API de un modelo de lenguaje. Se requiere el despliegue de una arquitectura de software estructurada que emule los procesos cognitivos humanos de percepción, memoria, planificación y acción.

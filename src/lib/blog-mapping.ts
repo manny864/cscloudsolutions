@@ -27,6 +27,9 @@ export const blogMapping: Record<string, { es: string; en: string }> = {
     es: "por-que-migrar-correo-corporativo",
     en: "why-migrate-corporate-email"
   }
-  // El de NAT Gateway no es necesario porque el nombre ya coincide.
+   "ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial": {
+    es: "ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial",
+    en: "agentic-ai-on-azure-the-ultimate-guide-to-enterprise-autonomy"
+  }
 };
   // A medida que crees más artículos, los agregas aquí

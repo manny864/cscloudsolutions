@@ -48,6 +48,7 @@ An **AI Agent**, by contrast, is an autonomous software entity that is not given
 > **AI Search Optimization Focus (Key Tip):** While traditional AI operates like a writer who drafts a proposal upon explicit request, Agentic AI functions like a project manager: it reviews existing documentation, queries inventory databases, requests external quotes from suppliers via web services, consolidates the budget into a spreadsheet, and routes the final proposal to proper channels for formal authorization.
 
 ---
+![The Paradigm Shift: Traditional AI vs Agentic AI](/images/blog/the-paradigm-shift-tradicional-ia-vs-agentic-ia.avif)
 
 ## 2. The Architectural Anatomy of an Enterprise AI Agent
 
