@@ -34,6 +34,11 @@ function escapeHtml(unsafe: string) {
     .replace(/'/g, '&#039;');
 }
 
+// Sanitize header values to prevent header injection (remove CRLF and limit length)
+function sanitizeHeaderValue(s: string, max = 128) {
+  return s.replace(/[\r\n]/g, ' ').trim().slice(0, max);
+}
+
 async function fetchWithTimeout(resource: RequestInfo, options: RequestInit = {}, timeout = 10000) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
@@ -43,6 +48,25 @@ async function fetchWithTimeout(resource: RequestInfo, options: RequestInit = {}
   } finally {
     clearTimeout(id);
   }
+}
+
+// Send with retries and exponential backoff
+async function sendMailWithRetries(url: string, options: RequestInit, attempts = 3): Promise<boolean> {
+  const baseDelay = 300; // ms
+  for (let i = 0; i < attempts; i++) {
+    try {
+      const res = await fetchWithTimeout(url, options, 8000);
+      if (res.ok) return true;
+      // Log status but avoid bodies
+      console.error(`Graph sendMail attempt ${i+1} failed: status ${res.status}`);
+    } catch (err) {
+      console.error(`Graph sendMail attempt ${i+1} error:`, (err as Error).message);
+    }
+    // backoff with jitter
+    const delay = baseDelay * Math.pow(2, i) + Math.floor(Math.random() * 100);
+    await new Promise((r) => setTimeout(r, delay));
+  }
+  return false;
 }
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
@@ -160,11 +184,6 @@ async function sendEmailViaGraph(
   const safeMensajeHtml = escapeHtml(mensaje).replace(/\n/g, '<br>');
   const safeMensajeText = mensaje;
 
-  // Sanitize header values to prevent header injection (remove CRLF and limit length)
-  function sanitizeHeaderValue(s: string, max = 128) {
-    return s.replace(/[\r\n]/g, ' ').trim().slice(0, max);
-  }
-
   const headerSafeName = sanitizeHeaderValue(nombre);
   const headerSafeEmail = sanitizeHeaderValue(email);
 
@@ -214,25 +233,6 @@ async function sendEmailViaGraph(
     saveToSentItems: true
   };
 
-  // Send with retries and exponential backoff
-  async function sendMailWithRetries(url: string, options: RequestInit, attempts = 3): Promise<boolean> {
-    const baseDelay = 300; // ms
-    for (let i = 0; i < attempts; i++) {
-      try {
-        const res = await fetchWithTimeout(url, options, 8000);
-        if (res.ok) return true;
-        // Log status but avoid bodies
-        console.error(`Graph sendMail attempt ${i+1} failed: status ${res.status}`);
-      } catch (err) {
-        console.error(`Graph sendMail attempt ${i+1} error:`, (err as Error).message);
-      }
-      // backoff with jitter
-      const delay = baseDelay * Math.pow(2, i) + Math.floor(Math.random() * 100);
-      await new Promise((r) => setTimeout(r, delay));
-    }
-    return false;
-  }
-
   try {
     const success = await sendMailWithRetries(
       `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(senderEmail)}/sendMail`,
@@ -251,6 +251,65 @@ async function sendEmailViaGraph(
     return success;
   } catch (err) {
     console.error('Failed to send email via Graph after retries:', (err as Error).message);
+    return false;
+  }
+}
+
+// Nueva función para enviar el mail automático al usuario
+async function sendAutoReplyViaGraph(nombre: string, userEmail: string): Promise<boolean> {
+  const token = await getGraphAccessToken();
+  if (!token) return false;
+
+  const senderEmail = process.env.AZURE_SENDER_EMAIL;
+
+  if (!senderEmail) {
+    console.error('Missing sender email config for auto-reply');
+    return false;
+  }
+
+  const safeNombre = escapeHtml(nombre);
+  const safeEmail = sanitizeHeaderValue(userEmail);
+
+  const htmlContent = `
+    <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.5; max-width: 600px;">
+      <h2>¡Hola ${safeNombre}!</h2>
+      <p>Hemos recibido tu consulta de forma satisfactoria a través de nuestro sitio web.</p>
+      <p>En breve, uno de nuestros asesores se pondrá en contacto contigo al correo <strong>${safeEmail}</strong> para brindarte la ayuda que necesitas.</p>
+      <br>
+      <p>Saludos cordiales,</p>
+      <p><strong>El equipo de CSCloudSolutions</strong></p>
+    </div>
+  `;
+
+  const emailBody = {
+    message: {
+      subject: `Hemos recibido tu consulta - CSCloudSolutions`,
+      body: {
+        contentType: 'HTML',
+        content: htmlContent
+      },
+      toRecipients: [{ emailAddress: { address: safeEmail } }],
+    },
+    saveToSentItems: true
+  };
+
+  try {
+    const success = await sendMailWithRetries(
+      `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(senderEmail)}/sendMail`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(emailBody),
+        cache: 'no-store'
+      },
+      2 // Menos reintentos para la respuesta automática para no penalizar tanto si falla
+    );
+    return success;
+  } catch (err) {
+    console.error('Failed to send auto-reply via Graph:', (err as Error).message);
     return false;
   }
 }
@@ -299,6 +358,10 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
   const sent = await sendEmailViaGraph(nombre, email, empresa, telefono, mensaje);
 
   if (sent) {
+    // Si el correo a la empresa se mandó exitosamente, enviamos la respuesta al usuario.
+    // Usamos 'await' para asegurar el flujo de la petición, o podrías lanzarlo sin 'await' para que sea más rápido.
+    await sendAutoReplyViaGraph(nombre, email);
+    
     return { ok: true, message: '¡Listo! Te respondemos a la brevedad.' };
   }
 
