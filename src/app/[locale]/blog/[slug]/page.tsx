@@ -7,6 +7,7 @@ import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
+import MarkdownImage from '@/components/MarkdownImage';
 
 // Generación de Metadata con Alternate Links y Etiquetas Open Graph
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
@@ -157,22 +158,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                 imageIndex++;
                 const isEven = imageIndex % 2 === 0;
                 return (
-                  <span className={`block md:inline-block w-full md:w-[380px] mb-8 ${isEven ? 'md:float-right md:ml-8' : 'md:float-left md:mr-8'}`}>
-                    <span className="block w-full rounded-2xl overflow-hidden shadow-lg border border-[color:var(--gray-100)] bg-gray-50">
-                      <Image 
-                        src={String(props.src || '')} 
-                        alt={String(props.alt || '')} 
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-contain"
-                      />
-                    </span>
-                    {props.alt && (
-                      <span className="block mt-2 text-center text-xs text-gray-500 italic">
-                        {String(props.alt)}
-                      </span>
-                    )}
-                  </span>
+                  <MarkdownImage 
+                    src={String(props.src || '')} 
+                    alt={String(props.alt || '')} 
+                    isEven={isEven} 
+                  />
                 );
               }
             }}
