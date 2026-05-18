@@ -1,7 +1,7 @@
 ---
 title: "Azure NAT Gateway vs. Azure Firewall: ¿Cuál elegir para tu arquitectura de red?"
 date: "2025-09-15"
-author: "Manuel Enrique Chavez Manzano"
+author: "CSCloudSolutions"
 category: "Redes y Seguridad"
 image: "/images/blog/Azure-NAT-Gateway-Seguridad-y-Simplicidad-para-tus-Salidas-a-Internet.avif"
 excerpt: "Comparamos Azure NAT Gateway y Azure Firewall. Descubre cuál es la mejor opción para gestionar salidas a Internet en subredes privadas, optimizando costos y seguridad."

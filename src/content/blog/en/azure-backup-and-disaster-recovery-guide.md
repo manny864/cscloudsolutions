@@ -1,7 +1,7 @@
 ---
 title: "Azure Backup & Disaster Recovery: Business Continuity for SMBs"
 date: "2025-10-15"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Cybersecurity"
 image: "/images/blog/cscloudsolutions-backup-dr-flujo-bcdr-1.avif"
 excerpt: "Discover the key differences between Backup and Disaster Recovery, and how to protect your company's operations and data using Azure Site Recovery."

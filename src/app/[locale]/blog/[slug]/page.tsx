@@ -127,9 +127,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             </h1>
             <div className="flex items-center gap-2">
               <span className="w-8 h-8 rounded-full bg-[color:var(--navy)] text-white flex items-center justify-center font-bold text-xs uppercase">
-                {post.meta.author.split(' ').map((n: string) => n[0]).join('').substring(0, 2)}
+                {post.meta.author
+                  ? post.meta.author.split(' ').map((n: string) => n[0]).join('').substring(0, 2)
+                  : 'CS'}
               </span>
-              <p className="text-base text-[color:var(--gray-600)] font-medium">Por {post.meta.author}</p>
+              <p className="text-base text-[color:var(--gray-600)] font-medium">
+                Por {post.meta.author || 'CS Cloud Solutions'}
+              </p>
             </div>
           </div>
         </div>

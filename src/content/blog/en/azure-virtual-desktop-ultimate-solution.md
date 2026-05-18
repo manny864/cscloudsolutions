@@ -1,7 +1,7 @@
 ---
 title: "Azure Virtual Desktop (AVD): The Ultimate Solution for Secure Virtual Desktops"
 date: "2025-10-10"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Cloud Infrastructure"
 image: "/images/blog/CSCloudSolutions-Implementacion-AVD-Sector-Manufactura-300x300.avif"
 excerpt: "Discover how Azure Virtual Desktop (AVD) enables SMBs to work from anywhere with maximum security, optimizing costs through Windows 11 Multi-session."

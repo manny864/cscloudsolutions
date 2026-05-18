@@ -1,7 +1,7 @@
 ---
 title: "Migración a Exchange Online: Transforma la Comunicación de tu Negocio"
 date: "2025-10-20"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Productividad"
 image: "/images/blog/Migra-tu-Correo-a-Exchange-Online-y-Transforma-tu-Negocio-Colaboracion-y-Seguridad-de-Vanguardia.avif"
 excerpt: "Descubre por qué migrar a Exchange Online es la decisión estratégica que tu PyME necesita para mejorar la seguridad, escalabilidad y colaboración empresarial."

@@ -1,7 +1,7 @@
 ---
 title: "Migración a Azure: Caso de Éxito en el Sector Manufacturero"
 date: "2025-10-25"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Infraestructura Cloud"
 image: "/images/blog/Migracion-a-Azure-Un-Caso-de-Exito-de-CSCloudSolutions.avif"
 excerpt: "Descubre cómo modernizamos la infraestructura de una empresa de manufactura de más de 500 empleados migrando sus servidores a Microsoft Azure sin tiempo de inactividad."

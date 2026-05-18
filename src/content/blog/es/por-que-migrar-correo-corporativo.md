@@ -1,7 +1,7 @@
 ---
 title: "¿Por qué migrar tu correo corporativo a Microsoft 365?"
 date: "2026-04-22"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Microsoft 365"
 image: "/images/blog/migrar-correo.avif"
 excerpt: "Descubre por qué abandonar tu viejo servidor de correo o hosting web y dar el salto a Microsoft 365 es el mejor movimiento estratégico para tu PyME."

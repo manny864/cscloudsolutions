@@ -1,7 +1,7 @@
 ---
 title: "Exchange Online Migration: Transform Your Business Communication"
 date: "2025-10-20"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Productivity"
 image: "/images/blog/Migra-tu-Correo-a-Exchange-Online-y-Transforma-tu-Negocio-Colaboracion-y-Seguridad-de-Vanguardia.avif"
 excerpt: "Discover why migrating to Exchange Online is the strategic decision your SMB needs to enhance security, scalability, and corporate collaboration."

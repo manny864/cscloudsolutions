@@ -1,7 +1,7 @@
 ---
 title: "Azure Migration: A Manufacturing Sector Success Story"
 date: "2025-10-25"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Cloud Infrastructure"
 image: "/images/blog/Migracion-a-Azure-Un-Caso-de-Exito-de-CSCloudSolutions.avif"
 excerpt: "Discover how we modernized the IT infrastructure of a 500+ employee manufacturing company by migrating their servers to Microsoft Azure with zero downtime."

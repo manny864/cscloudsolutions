@@ -1,7 +1,7 @@
 ---
 title: "Azure Cloud Adoption Framework (CAF) Guide: Moving Beyond the Landing Zone"
 date: "2025-09-02"
-author: "Manuel Enrique Chavez Manzano"
+author: "CSCloudSolutions"
 category: "Cloud Adoption"
 image: "/images/blog/guia-caf-azure.avif"
 excerpt: "Plan and optimize your Azure cloud migration with the Microsoft Cloud Adoption Framework (CAF). A comprehensive guide to migrating, innovating, and governing your cloud environment for maximum security and operational excellence."

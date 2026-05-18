@@ -1,7 +1,7 @@
 ---
 title: "Backup y Disaster Recovery en Azure: Continuidad de Negocio para PyMEs"
 date: "2025-10-15"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Ciberseguridad"
 image: "/images/blog/cscloudsolutions-backup-dr-flujo-bcdr-1.avif"
 excerpt: "Descubre las diferencias clave entre Backup y Disaster Recovery, y cómo proteger la operación y los datos de tu empresa utilizando Azure Site Recovery."

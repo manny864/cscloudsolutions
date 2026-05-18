@@ -1,7 +1,7 @@
 ---
 title: "Cloud Bill Shock: How to Reduce Your Azure Costs with FinOps"
 date: "2026-04-24"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "FinOps"
 image: "/images/blog/El_Shock_del_Gasto_Cloud_y_el_Rol_de_FinOps.avif"
 excerpt: "Migrating to the Azure cloud promises flexibility and power, but without control, costs skyrocket. Discover how the FinOps methodology can save you up to 30% monthly."

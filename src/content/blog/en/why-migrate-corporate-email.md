@@ -1,7 +1,7 @@
 ---
 title: "Why Migrate Your Corporate Email to Microsoft 365?"
 date: "2026-04-22"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Microsoft 365"
 image: "/images/blog/migrar-correo.avif"
 excerpt: "Discover why abandoning your old mail server or web hosting and making the leap to Microsoft 365 is the best strategic move for your SMB."

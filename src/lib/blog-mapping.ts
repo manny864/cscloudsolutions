@@ -26,7 +26,7 @@ export const blogMapping: Record<string, { es: string; en: string }> = {
   "por-que-migrar-correo-corporativo": {
     es: "por-que-migrar-correo-corporativo",
     en: "why-migrate-corporate-email"
-  }
+  },
    "ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial": {
     es: "ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial",
     en: "agentic-ai-on-azure-the-ultimate-guide-to-enterprise-autonomy"

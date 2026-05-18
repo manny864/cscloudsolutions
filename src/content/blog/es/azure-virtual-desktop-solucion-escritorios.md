@@ -1,7 +1,7 @@
 ---
 title: "Azure Virtual Desktop (AVD): La Solución Definitiva para Escritorios Virtuales"
 date: "2025-10-10"
-author: "Manuel Enrique Chávez Manzano"
+author: "CSCloudSolutions"
 category: "Infraestructura Cloud"
 image: "/images/blog/CSCloudSolutions-Implementacion-AVD-Sector-Manufactura-300x300.avif"
 excerpt: "Descubre cómo Azure Virtual Desktop (AVD) permite a las PyMEs trabajar desde cualquier lugar con máxima seguridad, optimizando costos mediante Windows 11 Multi-session."

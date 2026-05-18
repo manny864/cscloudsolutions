@@ -64,11 +64,13 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
 
                 {/* Autor Centrado */}
                 <div className="mt-6 flex items-center justify-center gap-2">
-                   <span className="w-7 h-7 rounded-full bg-[color:var(--navy)] text-white flex items-center justify-center font-bold text-[10px] uppercase">
-                    {post.meta.author.split(' ').map((n: string) => n[0]).join('').substring(0, 2)}
+                  <span className="w-7 h-7 rounded-full bg-[color:var(--navy)] text-white flex items-center justify-center font-bold text-[10px] uppercase">
+                    {post.meta.author
+                       ? post.meta.author.split(' ').map((n: string) => n[0]).join('').substring(0, 2)
+                      : 'CS'}
                   </span>
                   <span className="text-xs font-bold text-[color:var(--navy)]">
-                    {post.meta.author}
+                    {post.meta.author || 'CS Cloud Solutions'}
                   </span>
                 </div>
               </div>
