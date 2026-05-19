@@ -5,9 +5,9 @@ import type {Metadata} from 'next';
 import {routing} from '@/i18n/routing';
 import {fontBody, fontMono} from '../fonts';
 import {Header} from '@/components/Header';
-import {Footer} from '@/components/Footer';
+import {Footer} from '@/components/Footer'; // Importación corregida a Footer actual
 import {CookieBanner} from '@/components/CookieBanner';
-
+import Script from 'next/script';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -65,6 +65,22 @@ export default async function LocaleLayout({children, params}: {children: React.
           <Footer />
           <CookieBanner />
         </NextIntlClientProvider>
+
+        {/* Google Analytics Tag */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-64ZDRF4MGK`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-64ZDRF4MGK', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
