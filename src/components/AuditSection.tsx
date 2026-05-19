@@ -8,7 +8,7 @@ export function AuditSection() {
   return (
     <section className="relative overflow-hidden bg-[#060F1E] py-24">
       <div className="absolute inset-0 z-0 opacity-90">
-        <Image src="/images/section-bg.svg" alt="" fill className="object-cover" />
+        <Image src="/images/section-bg.svg" alt="" aria-hidden="true" fill className="object-cover" />
       </div>
       <div className="absolute inset-0 z-10 bg-[rgba(11,30,61,0.15)]" />
       <Container className="relative z-20">

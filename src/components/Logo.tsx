@@ -7,8 +7,8 @@ export function Logo({locale}: {locale: 'es' | 'en'}) {
       <Image
         src="/images/Logo_Nombre_CSCloudSolutions.avif"
         alt="CSCloudSolutions"
-        width={573}
-        height={319}
+        width={230} 
+        height={128}
         priority
         className="h-16 w-auto"
       />

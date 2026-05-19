@@ -24,6 +24,8 @@ export function InteractiveVideoCard({ title, description, videoSrc, posterSrc, 
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         className={`object-cover transition-opacity duration-700 ${isHover ? 'opacity-0' : 'opacity-50'}`}
+        quality={60}
+sizes="(max-width: 768px) 100vw, 450px"
       />
 
       <video 

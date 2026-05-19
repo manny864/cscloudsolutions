@@ -20,7 +20,6 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Agrupamos los servicios para crear un Dropdown limpio
   const serviceLinks = [
     { href: '/microsoft-365', key: 'm365' },
     { href: '/azure', key: 'azure' },
@@ -46,12 +45,10 @@ export function Header() {
         
         {/* NAVEGACIÓN DESKTOP */}
         <nav className="hidden lg:flex items-center gap-2">
-          {/* Link: Inicio */}
           <Link href="/" className={`rounded-lg px-4 py-2 text-sm font-bold transition ${pathname === '/' ? 'text-[color:var(--cyan)] bg-white/5' : 'text-white/80 hover:text-white'}`}>
             {t('home')}
           </Link>
 
-          {/* Dropdown: Servicios */}
           <div className="group relative">
             <button className="rounded-lg px-4 py-2 text-sm font-bold text-white/80 transition hover:text-white flex items-center gap-1">
               {t('services')}
@@ -66,7 +63,6 @@ export function Header() {
             </div>
           </div>
 
-          {/* Resto de enlaces principales */}
           {mainLinks.slice(1).map((it) => (
             <Link key={it.key} href={it.href} className={`rounded-lg px-4 py-2 text-sm font-bold transition ${pathname === it.href ? 'text-[color:var(--cyan)] bg-white/5' : 'text-white/80 hover:text-white'}`}>
               {t(it.key)}
@@ -85,6 +81,7 @@ export function Header() {
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-white p-2 focus:outline-none"
+            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (

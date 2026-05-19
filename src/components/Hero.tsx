@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { Container } from './Container';
 import { Link } from '@/i18n/routing';
 import { BackgroundOrbs } from './BackgroundOrbs';
-import { StatCounter } from './StatCounter'; // <--- IMPORTAMOS EL CONTADOR
+import { StatCounter } from './StatCounter';
 
 export function Hero() {
   const t = useTranslations('home.hero');
@@ -16,6 +16,7 @@ export function Hero() {
         <Image
           src="/images/hero-bg.svg"
           alt=""
+          aria-hidden="true"
           fill
           priority
           className="object-cover opacity-90"
@@ -61,10 +62,7 @@ export function Hero() {
             </Link>
           </div>
 
-          {/* 👇 AQUÍ APLICAMOS LAS ANIMACIONES DE LOS NÚMEROS 👇 */}
           <div className="mt-10 flex flex-wrap gap-8">
-            
-            {/* Tarjeta 1: Años de Experiencia */}
             <div className="min-w-[120px] text-center">
               <div className="text-3xl font-extrabold text-[color:var(--cyan)]">
                 <StatCounter target={20} prefix="+" duration={2000} />
@@ -74,7 +72,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Tarjeta 2: Uptime */}
             <div className="min-w-[120px] text-center">
               <div className="text-3xl font-extrabold text-[color:var(--cyan)]">
                 <StatCounter target={99.9} decimals={1} suffix="%" duration={2500} />
@@ -84,7 +81,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Tarjeta 3: Soporte */}
             <div className="min-w-[120px] text-center">
               <div className="text-3xl font-extrabold text-[color:var(--cyan)]">
                 <StatCounter target={24} duration={1500} />/<StatCounter target={7} duration={1500} />
@@ -97,9 +93,9 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Tarjeta de Auditoría */}
+        {/* Tarjeta de Auditoría (H2 Corregido) */}
         <div className="rounded-3xl border border-[color:rgba(0,174,239,0.22)] bg-white/5 p-8 backdrop-blur">
-          <h3 className="text-xl font-extrabold text-white">{t('cardTitle')}</h3>
+          <h2 className="text-xl font-extrabold text-white">{t('cardTitle')}</h2>
           <p className="mt-2 text-sm leading-relaxed text-white/75">{t('cardSub')}</p>
 
           <ul className="mt-6 space-y-2 text-[13px] text-white/80">

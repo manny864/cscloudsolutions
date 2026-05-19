@@ -5,7 +5,7 @@ import type {Metadata} from 'next';
 import {routing} from '@/i18n/routing';
 import {fontBody, fontMono} from '../fonts';
 import {Header} from '@/components/Header';
-import {Footer} from '@/components/Footer'; // Importación corregida a Footer actual
+import {Footer} from '@/components/Footer';
 import {CookieBanner} from '@/components/CookieBanner';
 import Script from 'next/script';
 
@@ -31,7 +31,6 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     verification: {
       google: 'FXWGTuJKHNAxiW38Ti-DUn_1ltz7zHhWMStgIaMUlAw',
     },
-    // Configuración global para Redes Sociales (LinkedIn, WhatsApp, etc.)
     openGraph: {
       title: 'CSCloudSolutions',
       description: t('homeDescription'),
@@ -40,7 +39,6 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       locale: locale === 'es' ? 'es_AR' : 'en_US',
       type: 'website',
     },
-    // Configuración global para Twitter/X
     twitter: {
       card: 'summary_large_image',
       title: 'CSCloudSolutions',
@@ -66,12 +64,12 @@ export default async function LocaleLayout({children, params}: {children: React.
           <CookieBanner />
         </NextIntlClientProvider>
 
-        {/* Google Analytics Tag */}
+        {/* Google Analytics Tag - Postergado para no afectar PageSpeed */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-64ZDRF4MGK`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
