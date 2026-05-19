@@ -9,10 +9,8 @@ import Script from 'next/script';
 export function Footer() {
   const t = useTranslations('footer');
 
-  // Recuperamos el array de certificaciones del archivo de traducción
   const certifications = t.raw('certs') as string[];
 
-  // Forzar la inicialización del widget de Clutch si el script ya está en caché/cargado en el cliente
   useEffect(() => {
     if (typeof window !== 'undefined' && (window as any).CLUTCH) {
       try {
@@ -28,7 +26,6 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           
-          {/* Columna 1: Branding e Información de la Firma */}
           <div className="md:col-span-4 space-y-4">
             <h3 className="text-xl font-black tracking-tight text-white flex items-center">
               CS<span className="text-[color:var(--cyan)]">CloudSolutions</span>
@@ -37,7 +34,6 @@ export function Footer() {
               {t('brand')}
             </p>
 
-            {/* Nuevo Widget Oficial de Clutch (Review) */}
             <div className="pt-2 block min-h-[65px]">
               <Script 
                 src="https://widget.clutch.co/static/js/widget.js" 
@@ -61,7 +57,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna 2: Enlaces de Navegación y Páginas Legales */}
           <div className="md:col-span-3 space-y-4">
             <h4 className="text-sm font-extrabold uppercase tracking-wider text-white">
               {t('company')}
@@ -90,7 +85,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna 3: Credenciales de Microsoft y Badge de Clutch alineados en paralelo */}
           <div className="md:col-span-5 flex flex-col sm:flex-row justify-between items-start gap-6">
             <div className="space-y-4 max-w-[260px]">
               <h4 className="text-sm font-extrabold uppercase tracking-wider text-white">
@@ -106,7 +100,6 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Integración del Badge Oficial de Clutch */}
             <div className="pt-2 shrink-0">
               <div className="bg-white/5 rounded-xl p-3 border border-white/10 inline-block overflow-hidden max-w-full">
                 <iframe 
@@ -123,8 +116,7 @@ export function Footer() {
 
         </div>
 
-        {/* Barra Inferior de Copyright y Regulaciones */}
-       <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
+        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
           <div>
             &copy; {new Date().getFullYear()} CSCloudSolutions. {t('rights')}
           </div>
