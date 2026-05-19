@@ -15,7 +15,8 @@ export function FAQ() {
     <section className="bg-[color:var(--gray-50)] py-20">
       <Container className="grid gap-10 lg:grid-cols-[1fr_560px] lg:items-start">
         <div>
-          <div className="inline-flex items-center rounded-full border border-[color:rgba(0,174,239,0.22)] bg-[color:rgba(0,174,239,0.10)] px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--cyan-dark)]">
+          {/* Cambiado a text-[color:var(--navy)] para contraste perfecto */}
+          <div className="inline-flex items-center rounded-full border border-[color:rgba(0,174,239,0.22)] bg-[color:rgba(0,174,239,0.10)] px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--navy)]">
             {t('badge')}
           </div>
           <h2 className="mt-4 font-[family:var(--font-heading)] text-3xl font-extrabold text-[color:var(--navy)] sm:text-4xl">

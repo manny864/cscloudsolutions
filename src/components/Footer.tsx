@@ -124,7 +124,7 @@ export function Footer() {
         </div>
 
         {/* Barra Inferior de Copyright y Regulaciones */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/40">
+       <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
           <div>
             &copy; {new Date().getFullYear()} CSCloudSolutions. {t('rights')}
           </div>

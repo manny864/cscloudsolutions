@@ -3,16 +3,15 @@ import {Link} from '@/i18n/routing';
 
 export function Logo({locale}: {locale: 'es' | 'en'}) {
   return (
-    <Link href="/" locale={locale} className="flex items-center gap-3" aria-label="CSCloudSolutions">
+    <Link href="/" locale={locale} className="flex items-center gap-3">
       <Image
         src="/images/Logo_Nombre_CSCloudSolutions.avif"
-        alt="CSCloudSolutions"
-        width={230} 
+        alt="CSCloudSolutions Logo"
+        width={230}
         height={128}
         priority
         className="h-16 w-auto"
       />
-      <span className="sr-only">CSCloudSolutions</span>
     </Link>
   );
 }
