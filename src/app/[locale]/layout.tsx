@@ -5,8 +5,9 @@ import type {Metadata} from 'next';
 import {routing} from '@/i18n/routing';
 import {fontBody, fontMono} from '../fonts';
 import {Header} from '@/components/Header';
-import {Footer} from '@/components/Footer_old';
+import {Footer} from '@/components/Footer';
 import {CookieBanner} from '@/components/CookieBanner';
+
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));

@@ -2,7 +2,12 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
+// Detectamos si estamos en desarrollo
 const isDev = process.env.NODE_ENV !== 'production';
+
+// Construimos la directiva de scripts dinámicamente.
+// Agregamos 'unsafe-eval' SOLAMENTE en desarrollo para que funcione el Fast Refresh.
+const scriptSrc = `script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://widget.clutch.co ${isDev ? "'unsafe-eval'" : ""}`;
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -15,13 +20,11 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      // Removed 'unsafe-inline' and dev-only 'unsafe-eval' to harden policy. If inline scripts/styles are required,
-      // prefer using nonces/hashes or move them to external files.
-      `script-src 'self' https://www.google.com https://www.gstatic.com`,
-      "style-src 'self' https://fonts.googleapis.com https://www.gstatic.com",
+      scriptSrc,
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: https://www.gstatic.com https://cscloudsolutions.com.ar",
-      "frame-src https://www.google.com",
+      "img-src 'self' blob: data: https://www.gstatic.com https://cscloudsolutions.com.ar https://clutch.co",
+      "frame-src 'self' https://www.google.com https://clutch.co https://widget.clutch.co",
       "connect-src 'self' https://www.google.com",
       "object-src 'none'",
     ].join('; '),

@@ -1,15 +1,27 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import Image from 'next/image';
 import { Container } from './Container';
+import Script from 'next/script';
 
 export function Footer() {
   const t = useTranslations('footer');
 
   // Recuperamos el array de certificaciones del archivo de traducción
   const certifications = t.raw('certs') as string[];
+
+  // Forzar la inicialización del widget de Clutch si el script ya está en caché/cargado en el cliente
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).CLUTCH) {
+      try {
+        (window as any).CLUTCH.init();
+      } catch (err) {
+        console.error('Clutch init error:', err);
+      }
+    }
+  }, []);
 
   return (
     <footer className="bg-[color:var(--navy)] text-white/80 border-t border-white/10 py-12 md:py-16">
@@ -18,12 +30,35 @@ export function Footer() {
           
           {/* Columna 1: Branding e Información de la Firma */}
           <div className="md:col-span-4 space-y-4">
-            <h3 className="text-xl font-black tracking-tight text-white flex items-center gap-2">
+            <h3 className="text-xl font-black tracking-tight text-white flex items-center">
               CS<span className="text-[color:var(--cyan)]">CloudSolutions</span>
             </h3>
             <p className="text-sm leading-relaxed text-white/60">
               {t('brand')}
             </p>
+
+            {/* Nuevo Widget Oficial de Clutch (Review) */}
+            <div className="pt-2 block min-h-[65px]">
+              <Script 
+                src="https://widget.clutch.co/static/js/widget.js" 
+                strategy="afterInteractive"
+                onLoad={() => {
+                  if (typeof window !== 'undefined' && (window as any).CLUTCH) {
+                    (window as any).CLUTCH.init();
+                  }
+                }}
+              />
+              <div 
+                className="clutch-widget" 
+                data-url="https://widget.clutch.co" 
+                data-widget-type="7" 
+                data-height="65" 
+                data-nofollow="false" 
+                data-expandifr="true" 
+                data-scale="100" 
+                data-clutchcompany-id="2655696"
+              ></div>
+            </div>
           </div>
 
           {/* Columna 2: Enlaces de Navegación y Páginas Legales */}
@@ -55,17 +90,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna 3: Bloque de Credenciales (Certificaciones + Badge en paralelo) */}
-          <div className="md:col-span-5 space-y-4">
-            <h4 className="text-sm font-extrabold uppercase tracking-wider text-white">
-              {t('certTitle')}
-            </h4>
-            
-            {/* Contenedor Flex para ubicar la lista a la izquierda y el badge a la derecha */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-              
-              {/* Lista de Certificaciones Microsoft */}
-              <ul className="space-y-2 text-xs text-white/70 max-w-[260px]">
+          {/* Columna 3: Credenciales de Microsoft y Badge de Clutch alineados en paralelo */}
+          <div className="md:col-span-5 flex flex-col sm:flex-row justify-between items-start gap-6">
+            <div className="space-y-4 max-w-[260px]">
+              <h4 className="text-sm font-extrabold uppercase tracking-wider text-white">
+                {t('certTitle')}
+              </h4>
+              <ul className="space-y-2 text-xs text-white/70">
                 {certifications.map((cert, index) => (
                   <li key={index} className="flex items-start gap-2 leading-relaxed">
                     <span className="shrink-0">{cert.split(' ')[0]}</span>
@@ -73,27 +104,20 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
+            </div>
 
-              {/* Badge Oficial de Clutch posicionado a la derecha con tamaño reducido */}
-              <div className="shrink-0">
-                <a 
-                  href="https://clutch.co/share/badges/2655696/7925?utm_source=clutch_top_company_badge&utm_medium=image_embed"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white/5 rounded-xl p-2.5 border border-white/10 inline-block overflow-hidden transition hover:bg-white/10"
+            {/* Integración del Badge Oficial de Clutch */}
+            <div className="pt-2 shrink-0">
+              <div className="bg-white/5 rounded-xl p-3 border border-white/10 inline-block overflow-hidden max-w-full">
+                <iframe 
+                  width="160" 
+                  height="160" 
+                  src="https://clutch.co/share/badges/2655696/7925?utm_source=clutch_top_company_badge&utm_medium=image_embed" 
                   title="Top Clutch Cybersecurity Company Buenos Aires 2026"
-                >
-                  <Image 
-                    src="/images/Top_Clutch_Cybersecurity_Company_Buenos_Aires_2026.png"
-                    alt="Top Clutch Cybersecurity Company Buenos Aires 2026"
-                    width={160}
-                    height={160}
-                    className="block h-auto w-[160px] object-contain"
-                    priority={false}
-                  />
-                </a>
+                  className="border-0 block"
+                  loading="lazy"
+                />
               </div>
-
             </div>
           </div>
 
