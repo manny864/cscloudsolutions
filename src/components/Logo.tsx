@@ -9,6 +9,7 @@ export function Logo({locale}: {locale: 'es' | 'en'}) {
         alt="CSCloudSolutions Logo"
         width={230}
         height={128}
+        sizes="(max-width: 768px) 200px, 230px"
         priority
         className="h-16 w-auto"
       />

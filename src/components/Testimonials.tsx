@@ -40,7 +40,7 @@ export function Testimonials() {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-[color:var(--navy)]">{it.name}</div>
-                  <div className="text-[12px] text-[color:var(--gray-400)]">{it.role}</div>
+                  <div className="text-[12px] text-[color:var(--gray-600)]">{it.role}</div>
                 </div>
               </div>
             </MotionDiv>

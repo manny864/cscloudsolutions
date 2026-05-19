@@ -43,7 +43,6 @@ export function Header() {
       <Container className="flex h-20 items-center justify-between">
         <Logo locale={locale} />
         
-        {/* NAVEGACIÓN DESKTOP */}
         <nav className="hidden lg:flex items-center gap-2">
           <Link href="/" className={`rounded-lg px-4 py-2 text-sm font-bold transition ${pathname === '/' ? 'text-[color:var(--cyan)] bg-white/5' : 'text-white/80 hover:text-white'}`}>
             {t('home')}
@@ -75,7 +74,6 @@ export function Header() {
           <LanguageSwitcher />
         </nav>
 
-        {/* BOTÓN HAMBURGUESA MOBILE */}
         <div className="flex items-center gap-4 lg:hidden">
           <LanguageSwitcher />
           <button 
@@ -94,14 +92,13 @@ export function Header() {
         </div>
       </Container>
 
-      {/* MENÚ DESPLEGABLE MOBILE */}
       {isMobileMenuOpen && (
         <div className="absolute top-20 left-0 w-full bg-[color:var(--navy)] border-b border-white/10 p-6 flex flex-col gap-4 shadow-2xl lg:hidden animate-in slide-in-from-top-5 duration-300 overflow-y-auto max-h-[80vh]">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === '/' ? 'text-[color:var(--cyan)]' : 'text-white'}`}>
             {t('home')}
           </Link>
           
-          <div className="text-sm font-bold uppercase tracking-widest text-white/50 mt-2">{t('services')}</div>
+          <div className="text-sm font-bold uppercase tracking-widest text-white/70 mt-2">{t('services')}</div>
           <div className="flex flex-col gap-3 pl-4 border-l border-white/10">
             {serviceLinks.map((it) => (
               <Link key={it.key} href={it.href} onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === it.href ? 'text-[color:var(--cyan)]' : 'text-white/80'}`}>

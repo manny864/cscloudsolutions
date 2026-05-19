@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Container } from './Container';
@@ -8,18 +7,7 @@ import Script from 'next/script';
 
 export function Footer() {
   const t = useTranslations('footer');
-
   const certifications = t.raw('certs') as string[];
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).CLUTCH) {
-      try {
-        (window as any).CLUTCH.init();
-      } catch (err) {
-        console.error('Clutch init error:', err);
-      }
-    }
-  }, []);
 
   return (
     <footer className="bg-[color:var(--navy)] text-white/80 border-t border-white/10 py-12 md:py-16">
@@ -34,15 +22,11 @@ export function Footer() {
               {t('brand')}
             </p>
 
+            {/* Widget cargado pasivamente para NO bloquear el CPU ni generar CLS */}
             <div className="pt-2 block min-h-[65px]">
               <Script 
                 src="https://widget.clutch.co/static/js/widget.js" 
-                strategy="afterInteractive"
-                onLoad={() => {
-                  if (typeof window !== 'undefined' && (window as any).CLUTCH) {
-                    (window as any).CLUTCH.init();
-                  }
-                }}
+                strategy="lazyOnload"
               />
               <div 
                 className="clutch-widget" 
