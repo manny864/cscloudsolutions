@@ -4,8 +4,8 @@ export const SITE = {
   name: 'CSCloudSolutions',
   domain: 'cscloudsolutions.com.ar',
   url: 'https://cscloudsolutions.com.ar',
-  email: 'soporte@cscloudsolutions.com.ar',
-  whatsapp: '+54 9 2320 67-0178',
+  email: 'sales@cscloudsolutions.com.ar',
+  whatsapp: '+5492320670178',
   whatsappLink: 'https://wa.me/5492320670178'
 } as const;
 
