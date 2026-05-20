@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 
   return {
+    metadataBase: new URL('https://cscloudsolutions.com.ar'),
     title: post.meta.title,
     description: post.meta.excerpt || post.meta.title,
     alternates,

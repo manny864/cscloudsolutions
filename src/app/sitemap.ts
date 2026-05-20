@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getPosts } from '@/lib/mdx';
+import { getAllPosts } from '@/lib/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://cscloudsolutions.com.ar';
@@ -42,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   for (const locale of locales) {
     try {
-      const posts = await getPosts(locale);
+      const posts = getAllPosts(locale);
       posts.forEach((post) => {
         blogEntries.push({
           url: `${baseUrl}/${locale}/blog/${post.slug}`,

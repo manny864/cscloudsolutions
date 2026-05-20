@@ -1,9 +1,7 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Container } from './Container';
-import Script from 'next/script';
+import { ClutchWidget } from './ClutchWidget';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -22,23 +20,7 @@ export function Footer() {
               {t('brand')}
             </p>
 
-            {/* Widget cargado pasivamente para NO bloquear el CPU ni generar CLS */}
-            <div className="pt-2 block min-h-[65px]">
-              <Script 
-                src="https://widget.clutch.co/static/js/widget.js" 
-                strategy="lazyOnload"
-              />
-              <div 
-                className="clutch-widget" 
-                data-url="https://widget.clutch.co" 
-                data-widget-type="7" 
-                data-height="65" 
-                data-nofollow="false" 
-                data-expandifr="true" 
-                data-scale="100" 
-                data-clutchcompany-id="2655696"
-              ></div>
-            </div>
+            <ClutchWidget />
           </div>
 
           <div className="md:col-span-3 space-y-4">

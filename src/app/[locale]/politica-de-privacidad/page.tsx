@@ -1,5 +1,17 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isEs = locale === 'es';
+  return {
+    title: isEs ? 'Política de Privacidad' : 'Privacy Policy',
+    description: isEs 
+      ? 'Política de privacidad y protección de datos personales de CSCloudSolutions.' 
+      : 'Privacy policy and personal data protection of CSCloudSolutions.',
+  };
+}
 
 export default async function PrivacyPolicyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

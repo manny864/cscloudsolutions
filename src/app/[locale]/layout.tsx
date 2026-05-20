@@ -64,6 +64,26 @@ export default async function LocaleLayout({children, params}: {children: React.
           <CookieBanner />
         </NextIntlClientProvider>
 
+        {/* Google Consent Mode v2 Default Settings */}
+        <Script id="google-analytics-consent" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            
+            let consentObj = null;
+            try {
+              consentObj = JSON.parse(localStorage.getItem('cookie-consent'));
+            } catch(e) {}
+            
+            gtag('consent', 'default', {
+              'analytics_storage': (consentObj && consentObj.analytics) ? 'granted' : 'denied',
+              'ad_storage': (consentObj && consentObj.marketing) ? 'granted' : 'denied',
+              'ad_user_data': (consentObj && consentObj.marketing) ? 'granted' : 'denied',
+              'ad_personalization': (consentObj && consentObj.marketing) ? 'granted' : 'denied'
+            });
+          `}
+        </Script>
+
         {/* Google Analytics Tag - Postergado para no afectar PageSpeed */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-64ZDRF4MGK`}

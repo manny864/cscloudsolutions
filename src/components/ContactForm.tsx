@@ -31,40 +31,29 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const [form, setForm] = useState({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  const [interacted, setInteracted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
-  // Carga reCAPTCHA solo cuando el formulario entra en el viewport
+  // Carga reCAPTCHA cuando el usuario interactúa con el formulario
   useEffect(() => {
-    if (!siteKey) return;
-    // Load reCAPTCHA only if user consented to analytics
-    let consentObj = null;
-    try { consentObj = JSON.parse(localStorage.getItem('cookie-consent') || 'null'); } catch { consentObj = null; }
-    if (!consentObj || !consentObj.analytics) return;
+    if (!siteKey || !interacted || scriptLoaded) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !scriptLoaded) {
-          const script = document.createElement('script');
-          script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
-          script.async = true;
-          script.onload = () => setScriptLoaded(true);
-          document.head.appendChild(script);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px' }
-    );
-    if (formRef.current) observer.observe(formRef.current);
-    return () => observer.disconnect();
-  }, [siteKey, scriptLoaded]);
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+    script.async = true;
+    script.onload = () => setScriptLoaded(true);
+    document.head.appendChild(script);
+  }, [siteKey, interacted, scriptLoaded]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setInteracted(true);
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setInteracted(true);
     setStatus({ kind: 'loading' });
     try {
       if (!siteKey) throw new Error('missing-site-key');
@@ -109,6 +98,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
               required
               value={form.nombre}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
               placeholder={t('namePh')}
               className={inputClass}
             />
@@ -127,6 +117,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
               required
               value={form.email}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
               placeholder={t('emailPh')}
               className={inputClass}
             />
@@ -144,6 +135,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
               autoComplete="organization"
               value={form.empresa}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
               placeholder={t('companyPh')}
               className={inputClass}
             />
@@ -161,6 +153,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
               autoComplete="tel"
               value={form.telefono}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
               placeholder={t('phonePh')}
               className={inputClass}
             />
@@ -178,6 +171,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
             rows={4}
             value={form.mensaje}
             onChange={handleChange}
+            onFocus={() => setInteracted(true)}
             placeholder={t('messagePh')}
             className={`${inputClass} resize-none`}
           />

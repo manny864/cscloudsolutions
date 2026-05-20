@@ -25,6 +25,14 @@ export function CookieBanner() {
 
   const saveConsent = (data: typeof consent) => {
     localStorage.setItem('cookie-consent', JSON.stringify(data));
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('consent', 'update', {
+        'analytics_storage': data.analytics ? 'granted' : 'denied',
+        'ad_storage': data.marketing ? 'granted' : 'denied',
+        'ad_user_data': data.marketing ? 'granted' : 'denied',
+        'ad_personalization': data.marketing ? 'granted' : 'denied'
+      });
+    }
     setIsOpen(false);
   };
 

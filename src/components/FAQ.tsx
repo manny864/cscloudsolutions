@@ -1,7 +1,4 @@
-'use client';
-
 import {useTranslations} from 'next-intl';
-import {useState} from 'react';
 import {Container} from './Container';
 
 type QA = {q: string; a: string};
@@ -9,7 +6,6 @@ type QA = {q: string; a: string};
 export function FAQ() {
   const t = useTranslations('home.faq');
   const items = t.raw('items') as QA[];
-  const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section className="bg-[color:var(--gray-50)] py-20">
@@ -31,25 +27,24 @@ export function FAQ() {
         </div>
 
         <div className="space-y-3">
-          {items.map((it, idx) => {
-            const isOpen = open === idx;
-            return (
-              <div key={it.q} className="overflow-hidden rounded-2xl border border-[color:var(--gray-200)] bg-white">
-                <button
-                  type="button"
-                  onClick={() => setOpen(isOpen ? null : idx)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-[color:var(--navy)] hover:bg-[color:var(--gray-50)]"
-                  aria-expanded={isOpen}
-                >
-                  <span>{it.q}</span>
-                  <span className={`text-xl text-[color:var(--cyan)] transition ${isOpen ? 'rotate-45' : ''}`}>+</span>
-                </button>
-                {isOpen ? (
-                  <div className="px-6 pb-6 text-sm leading-relaxed text-[color:var(--gray-600)]">{it.a}</div>
-                ) : null}
+          {items.map((it, idx) => (
+            <details 
+              key={it.q} 
+              name="faq-accordion"
+              open={idx === 0 ? true : undefined}
+              className="group overflow-hidden rounded-2xl border border-[color:var(--gray-200)] bg-white"
+            >
+              <summary
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-[color:var(--navy)] hover:bg-[color:var(--gray-50)] list-none cursor-pointer [&::-webkit-details-marker]:hidden focus-visible:outline-none"
+              >
+                <span>{it.q}</span>
+                <span className="text-xl text-[color:var(--cyan)] transition duration-300 group-open:rotate-45">+</span>
+              </summary>
+              <div className="px-6 pb-6 text-sm leading-relaxed text-[color:var(--gray-600)]">
+                {it.a}
               </div>
-            );
-          })}
+            </details>
+          ))}
         </div>
       </Container>
     </section>

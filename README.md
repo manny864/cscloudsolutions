@@ -45,5 +45,40 @@ cscloudsolutions/
 │   ├── i18n/               # Configuración de routing y middleware de idiomas
 │   ├── lib/                # Utilidades, configuración de SEO y helpers
 │   └── types/              # Definiciones de tipos globales de TypeScript
+├── next.config.mjs         # Configuración de Next.js (con optimizaciones de seguridad y Sentry)
 ├── tailwind.config.mjs     # Configuración de estilos y temas
 └── tsconfig.json           # Configuración estricta de TypeScript
+
+---
+
+## 💻 Desarrollo Local
+
+Para correr la aplicación de forma local, sigue estos pasos:
+
+1. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+2. Corre el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+3. Realiza la compilación de producción para validar:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## ⚡ Mejoras y Optimizaciones Recientes
+
+Recientemente hemos implementado una serie de mejoras técnicas en el proyecto enfocadas en rendimiento, privacidad y SEO:
+
+- **Google Consent Mode v2**: Implementación completa y nativa. Los estados por defecto se inicializan antes de que cargue el script de analytics (`beforeInteractive`) y se actualizan dinámicamente (`gtag('consent', 'update', ...)`) en base a la configuración seleccionada por el usuario en el banner de consentimiento de cookies.
+- **Carga Diferida de reCAPTCHA**: Decoplada del consentimiento de cookies no esenciales, marcándola como un componente de seguridad esencial. Se carga bajo demanda únicamente en la interacción del usuario (al hacer foco en el formulario de contacto o enviarlo).
+- **SEO & Metadatos Dinámicos**: Configuración de `generateMetadata` en todas las páginas estáticas y de legales para traducciones correctas y etiquetas openGraph dinámicas, junto con el ajuste del `metadataBase`.
+- **Refactorización a Server Components**: 
+  - El componente de **FAQ** fue reescrito de un componente dinámico con estado de React (`useState`) a un Server Component estático puro usando etiquetas nativas de HTML5 `<details>` y `<summary>` con animaciones controladas por Tailwind CSS (`group-open`).
+  - El componente **Footer** se convirtió en un Server Component para mejorar la puntuación de PageSpeed y reducir la hidratación JS del lado del cliente.
+- **Sentry**: Corrección de variables de entorno del cliente (`NEXT_PUBLIC_SENTRY_DSN`) y encapsulación del bundle a través de `withSentryConfig` en `next.config.mjs`.
+- **Deduplicación de Código de Contenidos**: Eliminación del cargador redundante de posts `src/lib/mdx.ts` y consolidación de la lógica de blog/sitemap bajo un único punto de entrada unificado y seguro en `src/lib/blog.ts`.

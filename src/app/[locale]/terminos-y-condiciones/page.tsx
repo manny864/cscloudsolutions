@@ -1,5 +1,17 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isEs = locale === 'es';
+  return {
+    title: isEs ? 'Términos y Condiciones' : 'Terms and Conditions',
+    description: isEs 
+      ? 'Términos y condiciones de uso del sitio web y servicios de CSCloudSolutions.' 
+      : 'Terms and conditions of use of the website and services of CSCloudSolutions.',
+  };
+}
 
 export default async function TermsConditionsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
