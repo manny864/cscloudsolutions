@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { useLocale } from 'next-intl';
 
 interface Props {
   target: number;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export function StatCounter({ target, duration = 2000, suffix = '', prefix = '', decimals = 0 }: Props) {
+  const locale = useLocale();
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const elementRef = useRef<HTMLSpanElement>(null);
@@ -56,7 +58,7 @@ export function StatCounter({ target, duration = 2000, suffix = '', prefix = '',
   return (
     <span ref={elementRef}>
       {prefix}
-      {count.toLocaleString('es-AR', {
+      {count.toLocaleString(locale, {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals,
       })}

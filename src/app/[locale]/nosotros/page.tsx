@@ -2,6 +2,17 @@ import { useTranslations } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const tPages = await getTranslations({ locale, namespace: 'pages.about' });
+  const tAbout = await getTranslations({ locale, namespace: 'about' });
+  return {
+    title: tPages('title'),
+    description: tAbout('hero.sub'),
+  };
+}
 
 export default async function NosotrosPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

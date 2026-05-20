@@ -2,6 +2,16 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import { ContactSection } from '@/components/ContactSection';
 import { StatCounter } from '@/components/StatCounter';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'pages.m365' });
+  return {
+    title: t('title'),
+    description: t('sub'),
+  };
+}
 
 export default async function M365Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
