@@ -38,6 +38,7 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     qualities: [60],
+    formats: ['image/avif', 'image/webp'],
   },
   async headers() {
     return [

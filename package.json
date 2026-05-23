@@ -32,5 +32,10 @@
     "eslint": "^9.25.0",
     "eslint-config-next": "^15.0.0",
     "typescript": "^5.8.3"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "not dead",
+    "not IE 11"
+  ]
 }
