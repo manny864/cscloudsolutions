@@ -99,6 +99,16 @@ export default async function LocaleLayout({children, params}: {children: React.
             });
           `}
         </Script>
+
+        {/* Apollo Tracker Tag */}
+        <Script id="apollo-tracker" strategy="lazyOnload">
+          {`
+            function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+            o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+            o.onload=function(){window.trackingFunctions.onLoad({appId:"698cd6a75da43d0021941905"})},
+            document.head.appendChild(o)}initApollo();
+          `}
+        </Script>
       </body>
     </html>
   );
