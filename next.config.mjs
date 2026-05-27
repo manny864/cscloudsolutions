@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 // Construimos la directiva de scripts dinámicamente.
 // Agregamos 'unsafe-eval' SOLAMENTE en desarrollo para que funcione el Fast Refresh.
 // Agregamos los dominios de Google Tag Manager y Google Analytics.
-const scriptSrc = `script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://widget.clutch.co https://www.googletagmanager.com https://www.google-analytics.com ${isDev ? "'unsafe-eval'" : ""}`;
+const scriptSrc = `script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://widget.clutch.co https://www.googletagmanager.com https://www.google-analytics.com https://assets.apollo.io ${isDev ? "'unsafe-eval'" : ""}`;
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -27,7 +27,7 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' blob: data: https://www.gstatic.com https://cscloudsolutions.com.ar https://clutch.co https://www.google-analytics.com",
       "frame-src 'self' https://www.google.com https://clutch.co https://widget.clutch.co",
-      "connect-src 'self' https://www.google.com https://www.google-analytics.com",
+      "connect-src 'self' https://www.google.com https://www.google-analytics.com https://*.apollo.io",
       "object-src 'none'",
     ].join('; '),
   },
