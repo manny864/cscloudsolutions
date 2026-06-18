@@ -736,6 +736,27 @@
       "🏆 Microsoft 365 Certified: Enterprise Administrator"
     ],
     "rights": "All rights reserved.",
-    "afip": "AFIP QR"
+    "afip": "AFIP QR",
+    "refund": "Refund Policy"
+  },
+  "refundPolicy": {
+    "title": "Refund and Cancellation Policy",
+    "updated": "Last updated: 18/06/2026",
+    "intro": "This Refund and Cancellation Policy governs purchases made through CSCloudSolutions (cscloudsolutions.com.ar) and our cloud financial management platform CSCloud FinOps (finops.cscloudsolutions.com.ar).",
+    "saasTitle": "1. SaaS Subscriptions (CSCloud FinOps)",
+    "saasContent1": "Our software as a service (SaaS) is offered with a monthly or annual billing structure. To ensure our platform fits your needs, we offer a 14-day free trial on our Professional and Business plans.",
+    "saasTrial": "During the trial period: You can cancel your subscription at any time before the 14 days end without any charge to your credit card.",
+    "saasAfter": "After the trial period: Due to the nature of digital products and the free evaluation period provided, we do not offer refunds once the subscription charge has been processed (whether monthly or annually).",
+    "saasCancel": "Cancellations: You can cancel your subscription at any time from your account administration panel. Cancellation will stop future charges, and you will retain access to the platform until the end of your current billing cycle.",
+    "consultingTitle": "2. Consulting and Infrastructure Services (CSCloudSolutions)",
+    "consultingContent1": "For consulting services, migrations to Azure, Microsoft 365, custom FinOps audits, or Azure Virtual Desktop implementations, refunds are governed by the Service Level Agreement (SLA) or Statement of Work (SOW) signed by both parties.",
+    "consultingContent2": "Consulting hours already executed, technical diagnoses performed, and cloud resources deployed in the client's tenant are non-refundable.",
+    "consultingContent3": "If a project is canceled before completion, only the work completed up to the date of written notification will be billed.",
+    "paymentsTitle": "3. Payment Processors (Merchant of Record)",
+    "paymentsContent": "Our subscription payments are securely processed through our authorized partners (Merchant of Record). By making a purchase, you also agree to the terms and conditions of our payment processor. Any billing dispute should first be communicated to our team to attempt an amicable resolution.",
+    "exceptionsTitle": "4. Exceptions",
+    "exceptionsContent": "We may make exceptions to this policy at our sole discretion if we consider that there has been a technical error on our part that prevented full use of the platform for an extended period.",
+    "contactTitle": "5. Contact",
+    "contactContent": "If you have any questions about your billing, wish to cancel your account, or believe there has been an error in your charge, please contact us by writing to: "
   }
 }
