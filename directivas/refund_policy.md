@@ -9,3 +9,5 @@ Añadir la página de Política de Reembolso al proyecto Next.js en múltiples i
 - Debe inyectarse el link en `src/components/Footer.tsx`.
 - Debe dejarse un enlace `mailto:` a mchavez@cscloudsolutions.com.ar.
 - Nota: No hacer uso de `unstable_setRequestLocale`, porque causa el error `is not a function`. En su lugar, hacer uso de `setRequestLocale` de `next-intl/server`.
+- Nota: En Next.js 15, `params` en Server Components debe tiparse como `Promise<{ locale: string }>` y resolverse con `await params`, de lo contrario el build fallará con error de constraint `PageProps`.
+- Nota: Al convertir el Server Component en asíncrono, no se puede usar el hook `useTranslations` de React. En su lugar, se debe importar `getTranslations` de `next-intl/server` y utilizar `await getTranslations(...)`.
