@@ -95,13 +95,13 @@ if "{t('refund')}" not in footer_content:
 
 # 3. Create Page
 os.makedirs(page_dir, exist_ok=True)
-page_content = """import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+page_content = """import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 
-export default function RefundPolicyPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function RefundPolicyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations('refundPolicy');
+  const t = await getTranslations('refundPolicy');
 
   return (
     <div className="py-24 bg-[color:var(--navy)] min-h-screen text-white/90">
