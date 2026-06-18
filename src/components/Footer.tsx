@@ -48,6 +48,11 @@ export function Footer() {
                   {t('terms')}
                 </Link>
               </li>
+              <li>
+                <Link href="/politica-de-reembolso" className="hover:text-[color:var(--cyan)] transition-colors">
+                  {t('refund')}
+                </Link>
+              </li>
             </ul>
           </div>
 

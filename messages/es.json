@@ -736,6 +736,27 @@
       "🏆 Microsoft 365 Certified: Enterprise Administrator"
     ],
     "rights": "Todos los derechos reservados.",
-    "afip": "QR AFIP"
+    "afip": "QR AFIP",
+    "refund": "Política de Reembolso"
+  },
+  "refundPolicy": {
+    "title": "Política de Reembolsos y Cancelaciones",
+    "updated": "Última actualización: 18/06/2026",
+    "intro": "Esta Política de Reembolsos y Cancelaciones rige las compras realizadas a través de CSCloudSolutions (cscloudsolutions.com.ar) y nuestra plataforma de gestión financiera en la nube CSCloud FinOps (finops.cscloudsolutions.com.ar).",
+    "saasTitle": "1. Suscripciones SaaS (CSCloud FinOps)",
+    "saasContent1": "Nuestro software como servicio (SaaS) se ofrece con una estructura de facturación mensual o anual. Para garantizar que nuestra plataforma se adapte a sus necesidades, ofrecemos un período de prueba gratuito de 14 días en nuestros planes Professional y Business.",
+    "saasTrial": "Durante el período de prueba: Puede cancelar su suscripción en cualquier momento antes de que finalicen los 14 días sin que se realice ningún cargo en su tarjeta de crédito.",
+    "saasAfter": "Después del período de prueba: Debido a la naturaleza de los productos digitales y al período de evaluación gratuito otorgado, no ofrecemos reembolsos una vez que se ha procesado el cargo de la suscripción (ya sea mensual o anual).",
+    "saasCancel": "Cancelaciones: Puede cancelar su suscripción en cualquier momento desde el panel de administración de su cuenta. La cancelación detendrá los cobros futuros, y usted mantendrá el acceso a la plataforma hasta el final de su ciclo de facturación actual.",
+    "consultingTitle": "2. Servicios de Consultoría e Infraestructura (CSCloudSolutions)",
+    "consultingContent1": "Para los servicios de consultoría, migraciones a Azure, Microsoft 365, auditorías FinOps personalizadas o implementaciones de Azure Virtual Desktop, los reembolsos se rigen por el Acuerdo de Nivel de Servicio (SLA) o la Propuesta Comercial (SOW) firmada por ambas partes.",
+    "consultingContent2": "Las horas de consultoría ya ejecutadas, los diagnósticos técnicos realizados y los recursos de nube desplegados en el tenant del cliente no son reembolsables.",
+    "consultingContent3": "Si un proyecto se cancela antes de su finalización, se facturará únicamente el trabajo completado hasta la fecha de la notificación por escrito.",
+    "paymentsTitle": "3. Procesadores de Pago (Merchant of Record)",
+    "paymentsContent": "Nuestros pagos de suscripción son procesados de manera segura a través de nuestros socios autorizados (Merchant of Record). Al realizar una compra, usted también acepta los términos y condiciones de nuestro procesador de pagos. Cualquier disputa de facturación debe ser comunicada primero a nuestro equipo para intentar una resolución amistosa.",
+    "exceptionsTitle": "4. Excepciones",
+    "exceptionsContent": "Podemos hacer excepciones a esta política a nuestra entera discreción si consideramos que ha habido un error técnico por nuestra parte que haya impedido el uso completo de la plataforma durante un período prolongado.",
+    "contactTitle": "5. Contacto",
+    "contactContent": "Si tiene alguna pregunta sobre su facturación, desea cancelar su cuenta o cree que ha habido un error en su cargo, comuníquese con nosotros escribiendo a: "
   }
 }
