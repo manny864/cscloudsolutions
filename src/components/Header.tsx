@@ -38,6 +38,8 @@ export function Header() {
     { href: '/blog', key: 'blog' },
   ];
 
+  const finopsUrl = locale === 'es' ? 'https://finops.cscloudsolutions.com.ar/es/demo' : 'https://finops.cscloudsolutions.com.ar/en/demo';
+
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'bg-[color:rgba(11,30,61,0.95)] shadow-xl' : 'bg-[color:var(--navy)]'} backdrop-blur-md`}>
       <Container className="flex h-20 items-center justify-between">
@@ -68,9 +70,9 @@ export function Header() {
             </Link>
           ))}
 
-          <Link href="/#contacto" className="ml-4 rounded-xl bg-[color:var(--cyan)] px-6 py-2.5 text-sm font-black text-[color:var(--navy)] hover:bg-[#33C3FF] transition">
+          <a href={finopsUrl} target="_blank" rel="noopener" className="ml-4 rounded-xl bg-[color:var(--cyan)] px-6 py-2.5 text-sm font-black text-[color:var(--navy)] hover:bg-[#33C3FF] transition">
             {t('cta')}
-          </Link>
+          </a>
           <LanguageSwitcher />
         </nav>
 
@@ -115,9 +117,9 @@ export function Header() {
           </Link>
 
           <div className="pt-4 mt-2 border-t border-white/10">
-            <Link href="/#contacto" onClick={() => setIsMobileMenuOpen(false)} className="inline-flex w-full justify-center rounded-xl bg-[color:var(--cyan)] px-6 py-3.5 text-base font-black text-[color:var(--navy)]">
+            <a href={finopsUrl} target="_blank" rel="noopener" onClick={() => setIsMobileMenuOpen(false)} className="inline-flex w-full justify-center rounded-xl bg-[color:var(--cyan)] px-6 py-3.5 text-base font-black text-[color:var(--navy)]">
               {t('cta')}
-            </Link>
+            </a>
           </div>
         </div>
       )}

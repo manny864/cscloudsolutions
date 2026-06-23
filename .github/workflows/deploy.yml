@@ -1,4 +1,4 @@
-name: CI
+name: CI & Deploy
 
 on:
   push:
@@ -10,12 +10,13 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
+  # ── Job 1: Build & Validación ──────────────────────────────────────
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
-        
+
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,9 +34,26 @@ jobs:
           # Si el código cambió pero las dependencias no, restaura desde una caché anterior
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-            
+
       - name: Instalar dependencias
         run: npm ci
 
       - name: Compilar proyecto (Build)
         run: npm run build
+
+  # ── Job 2: Deploy al VPS (solo en push a main) ────────────────────
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/cscloud/web
+            git pull origin main
+            docker compose up -d --build

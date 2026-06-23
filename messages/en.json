@@ -77,7 +77,7 @@
     "security": "Security",
     "blog": "Blog",
     "about": "About Us",
-    "cta": "Free Audit ›",
+    "cta": "Cloud FinOps ›",
     "services": "Services",
     "modern": "Modern Workplace",
     "power": "Power Platform",
@@ -758,5 +758,58 @@
     "exceptionsContent": "We may make exceptions to this policy at our sole discretion if we consider that there has been a technical error on our part that prevented full use of the platform for an extended period.",
     "contactTitle": "5. Contact",
     "contactContent": "If you have any questions about your billing, wish to cancel your account, or believe there has been an error in your charge, please contact us by writing to: "
+  },
+  "finopsPopup": {
+    "title": "Simple and Fixed Pricing",
+    "subtitle": "Whether you are a startup or Enterprise, we have simple and fixed plans that won't aggravate your cost problems.",
+    "essential": {
+      "name": "Essential (Starter)",
+      "desc": "For companies just starting to worry about their Azure costs.",
+      "features": [
+        "Cost and Billing History",
+        "Budget Visualization",
+        "Sustainability Dashboard",
+        "PDF/CSV Export",
+        "Azure Advisor Health Score",
+        "Potential Savings Radar"
+      ]
+    },
+    "pro": {
+      "name": "Professional",
+      "badge": "Recommended",
+      "desc": "For mid-sized companies needing to understand trends and report.",
+      "features": [
+        "Everything in Essential",
+        "Active Cleanup of Zombie Resources",
+        "Rightsizing Execution",
+        "Tag Governance"
+      ]
+    },
+    "business": {
+      "name": "Business",
+      "badge": "Most Popular",
+      "desc": "Basic automation and multiple environments for growing companies.",
+      "features": [
+        "Everything in Professional",
+        "Auto Start/Stop (Schedules)",
+        "FinOps Copilot (AI)",
+        "Anomaly Detection",
+        "Expiration Policies (TTL)",
+        "Cost Distribution (Chargeback)"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "badge": "Total Control",
+      "desc": "For corporations with complex topologies (Hub & Spoke).",
+      "features": [
+        "Everything in Business",
+        "Dedicated Support (SLA)",
+        "Custom Workbooks",
+        "Custom Rates (EA)",
+        "Modular FinOps Audits"
+      ]
+    },
+    "popupCta": "Demo Cloud FinOps ›"
   }
 }
