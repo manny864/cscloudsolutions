@@ -65,3 +65,88 @@ h1, h2, h3 {
 .animate-blob-9 {
   animation: blob 9s infinite ease-in-out alternate;
 }
+
+/* ─────────────────────────────────────────────
+   MOBILE TYPOGRAPHY — legible text on phones
+   Bumps small text sizes so nothing is < 13px
+   ───────────────────────────────────────────── */
+@media (max-width: 639px) {
+  /* Base body — minimum 16px on mobile */
+  body {
+    font-size: 16px;
+  }
+
+  /* Badges & micro-labels: 10-11px → 13px */
+  .text-\[10px\],
+  .text-\[11px\] {
+    font-size: 13px !important;
+  }
+
+  /* xs / 12px text → 14px */
+  .text-xs,
+  .text-\[12px\] {
+    font-size: 14px !important;
+  }
+
+  /* 13px text → 15px */
+  .text-\[13px\] {
+    font-size: 15px !important;
+  }
+
+  /* sm / 14px text → 16px  */
+  .text-sm {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 15px body copy → 16px */
+  .text-\[15px\] {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 17px hero sub → 18px for better readability */
+  .text-\[17px\] {
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Ensure form inputs/textareas are at least 16px (prevents iOS zoom) */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Slightly bigger CTA buttons on mobile */
+  a[href="#contacto"],
+  button[type="submit"] {
+    font-size: 16px !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Footer certifications & copyright legibility */
+  footer .text-xs {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* FAQ answers more readable */
+  details .text-sm {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Testimonial quotes */
+  blockquote.text-sm {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Cookie banner descriptions */
+  .text-\[10px\] {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+}
