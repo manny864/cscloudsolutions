@@ -2,7 +2,9 @@ name: CI & Deploy
 
 on:
   push:
-    branches: ["main"]
+    # staging: corre solo el job de build (validación pre-PR).
+    # main: build + deploy al VPS (el job deploy está gateado por ref abajo).
+    branches: ["main", "staging"]
   pull_request:
 
 # Forzar el uso de Node 24 para eliminar advertencias de obsolescencia
