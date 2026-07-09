@@ -1,12 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations('finopsPopup');
-  const locale = useLocale();
-  const finopsUrl = locale === 'es' ? 'https://finops.cscloudsolutions.com.ar/es/demo' : 'https://finops.cscloudsolutions.com.ar/en/demo';
+  const finopsUrl = 'https://finops.cscloudsolutions.com.ar';
 
   useEffect(() => {
     // Show popup after 7 seconds
@@ -21,13 +20,6 @@ export function FinOpsPopup() {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
       <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-gray-50 rounded-2xl shadow-2xl p-4 sm:p-8 border border-white/20">
-        
-        {/* Diagonal Watermark (Overlay) */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl flex items-center justify-center z-[60]">
-           <div className="transform -rotate-[45deg] md:-rotate-[35deg] text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] font-black text-[#0054A6] opacity-15 whitespace-nowrap select-none">
-             PROXIMAMENTE
-           </div>
-        </div>
 
         {/* Close button */}
         <button 
