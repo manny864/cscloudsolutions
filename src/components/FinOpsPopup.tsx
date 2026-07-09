@@ -1,37 +1,39 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
+
+const STORAGE_KEY = 'finops-popup-shown';
 
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations('finopsPopup');
-  const locale = useLocale();
-  const finopsUrl = locale === 'es' ? 'https://finops.cscloudsolutions.com.ar/es/demo' : 'https://finops.cscloudsolutions.com.ar/en/demo';
+  const finopsUrl = 'https://finops.cscloudsolutions.com.ar';
 
   useEffect(() => {
-    // Show popup after 7 seconds
+    // Solo se muestra una vez por visitante (primera vez que entra al sitio,
+    // en cualquier página — el componente vive en el layout raíz). Mismo
+    // patrón de persistencia que CookieBanner.tsx (localStorage, sin backend).
+    if (localStorage.getItem(STORAGE_KEY)) return;
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, 7000);
     return () => clearTimeout(timer);
   }, []);
 
+  const handleClose = () => {
+    localStorage.setItem(STORAGE_KEY, '1');
+    setIsOpen(false);
+  };
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
       <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-gray-50 rounded-2xl shadow-2xl p-4 sm:p-8 border border-white/20">
-        
-        {/* Diagonal Watermark (Overlay) */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl flex items-center justify-center z-[60]">
-           <div className="transform -rotate-[45deg] md:-rotate-[35deg] text-[2.5rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] font-black text-[#0054A6] opacity-15 whitespace-nowrap select-none">
-             PROXIMAMENTE
-           </div>
-        </div>
 
         {/* Close button */}
         <button 
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
           className="absolute top-4 right-4 z-[70] p-2 text-gray-500 hover:text-gray-800 bg-white/50 hover:bg-white rounded-full transition-colors backdrop-blur-md"
           aria-label="Close"
         >
@@ -116,7 +118,7 @@ export function FinOpsPopup() {
           </div>
           
           <div className="mt-8 sm:mt-10 text-center pb-4 sm:pb-0">
-             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-xl text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
+             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" onClick={handleClose} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-xl text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
                {t('popupCta')}
              </a>
           </div>

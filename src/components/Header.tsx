@@ -38,7 +38,7 @@ export function Header() {
     { href: '/blog', key: 'blog' },
   ];
 
-  const finopsUrl = locale === 'es' ? 'https://finops.cscloudsolutions.com.ar/es/demo' : 'https://finops.cscloudsolutions.com.ar/en/demo';
+  const finopsUrl = 'https://finops.cscloudsolutions.com.ar';
 
   return (
     <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'bg-[color:rgba(11,30,61,0.95)] shadow-xl' : 'bg-[color:var(--navy)]'} backdrop-blur-md`}>

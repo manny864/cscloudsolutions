@@ -766,12 +766,12 @@
       "name": "Essential (Starter)",
       "desc": "For companies just starting to worry about their Azure costs.",
       "features": [
-        "Cost and Billing History",
-        "Budget Visualization",
+        "Billing & Cost History",
+        "Budgets View",
         "Sustainability Dashboard",
-        "PDF/CSV Export",
-        "Azure Advisor Health Score",
-        "Potential Savings Radar"
+        "Zero-Cost Inventory",
+        "PDF/CSV Exports",
+        "Azure Advisor Health Score"
       ]
     },
     "pro": {
@@ -780,9 +780,11 @@
       "desc": "For mid-sized companies needing to understand trends and report.",
       "features": [
         "Everything in Essential",
-        "Active Cleanup of Zombie Resources",
+        "Active Zombie Resources Cleanup",
         "Rightsizing Execution",
-        "Tag Governance"
+        "Tag Governance",
+        "Commitment Discounts (Reservations)",
+        "Predictive Anomaly Engine (Z-Score)"
       ]
     },
     "business": {
@@ -791,11 +793,11 @@
       "desc": "Basic automation and multiple environments for growing companies.",
       "features": [
         "Everything in Professional",
-        "Auto Start/Stop (Schedules)",
+        "Automatic Power Schedules",
         "FinOps Copilot (AI)",
-        "Anomaly Detection",
-        "Expiration Policies (TTL)",
-        "Cost Distribution (Chargeback)"
+        "AKS Control (Kubernetes)",
+        "Cost Distribution (Chargeback)",
+        "What-If Scenarios (Cost Simulator)"
       ]
     },
     "enterprise": {
@@ -804,12 +806,13 @@
       "desc": "For corporations with complex topologies (Hub & Spoke).",
       "features": [
         "Everything in Business",
-        "Dedicated Support (SLA)",
+        "Unlimited dedicated support (4 h SLA)",
         "Custom Workbooks",
-        "Custom Rates (EA)",
+        "Partner CSP Billing Engine",
+        "SSO Federation (SAML)",
         "Modular FinOps Audits"
       ]
     },
-    "popupCta": "Demo Cloud FinOps ›"
+    "popupCta": "Start free 14-day trial ›"
   }
 }

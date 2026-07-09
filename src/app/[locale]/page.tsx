@@ -4,7 +4,6 @@ import {AuditSection} from '@/components/AuditSection';
 import {Testimonials} from '@/components/Testimonials';
 import {FAQ} from '@/components/FAQ';
 import {ContactSection} from '@/components/ContactSection';
-import {FinOpsPopup} from '@/components/FinOpsPopup';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {SITE, absoluteUrl} from '@/lib/seo';
 
@@ -51,7 +50,6 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
       <Testimonials />
       <FAQ />
       <ContactSection />
-      <FinOpsPopup />
     </>
   );
 }
