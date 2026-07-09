@@ -7,6 +7,7 @@ import {fontBody, fontMono} from '../fonts';
 import {Header} from '@/components/Header';
 import {Footer} from '@/components/Footer';
 import {CookieBanner} from '@/components/CookieBanner';
+import {FinOpsPopup} from '@/components/FinOpsPopup';
 import Script from 'next/script';
 
 export function generateStaticParams() {
@@ -62,6 +63,7 @@ export default async function LocaleLayout({children, params}: {children: React.
           <main className="min-h-[70dvh]">{children}</main>
           <Footer />
           <CookieBanner />
+          <FinOpsPopup />
         </NextIntlClientProvider>
 
         {/* Google Consent Mode v2 Default Settings */}

@@ -2,18 +2,28 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
+const STORAGE_KEY = 'finops-popup-shown';
+
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations('finopsPopup');
   const finopsUrl = 'https://finops.cscloudsolutions.com.ar';
 
   useEffect(() => {
-    // Show popup after 7 seconds
+    // Solo se muestra una vez por visitante (primera vez que entra al sitio,
+    // en cualquier página — el componente vive en el layout raíz). Mismo
+    // patrón de persistencia que CookieBanner.tsx (localStorage, sin backend).
+    if (localStorage.getItem(STORAGE_KEY)) return;
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, 7000);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleClose = () => {
+    localStorage.setItem(STORAGE_KEY, '1');
+    setIsOpen(false);
+  };
 
   if (!isOpen) return null;
 
@@ -23,7 +33,7 @@ export function FinOpsPopup() {
 
         {/* Close button */}
         <button 
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
           className="absolute top-4 right-4 z-[70] p-2 text-gray-500 hover:text-gray-800 bg-white/50 hover:bg-white rounded-full transition-colors backdrop-blur-md"
           aria-label="Close"
         >
@@ -108,7 +118,7 @@ export function FinOpsPopup() {
           </div>
           
           <div className="mt-8 sm:mt-10 text-center pb-4 sm:pb-0">
-             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-xl text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
+             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" onClick={handleClose} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-xl text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
                {t('popupCta')}
              </a>
           </div>
