@@ -67,10 +67,7 @@ export function FinOpsPopup() {
 
             {/* Professional */}
             <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-200 p-5 sm:p-8 flex flex-col relative overflow-hidden">
-               <div className="flex justify-between items-center mb-4">
-                 <h3 className="text-xl font-bold text-gray-900">{t('pro.name')}</h3>
-                 <span className="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">{t('pro.badge')}</span>
-               </div>
+               <h3 className="text-xl font-bold text-gray-900 mb-4">{t('pro.name')}</h3>
                <p className="text-sm text-gray-500 mb-6">{t('pro.desc')}</p>
                <ul className="space-y-4 text-sm text-gray-600">
                   {(t.raw('pro.features') as string[]).map((f, i) => (

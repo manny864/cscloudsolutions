@@ -766,25 +766,26 @@
       "name": "Essential (Starter)",
       "desc": "For companies just starting to worry about their Azure costs.",
       "features": [
+        "1 Azure subscription, 1 user",
         "Billing & Cost History",
         "Budgets View",
+        "FinOps Maturity (Assessment)",
         "Sustainability Dashboard",
-        "Zero-Cost Inventory",
         "PDF/CSV Exports",
         "Azure Advisor Health Score"
       ]
     },
     "pro": {
       "name": "Professional",
-      "badge": "Recommended",
       "desc": "For mid-sized companies needing to understand trends and report.",
       "features": [
+        "Up to 5 Azure subscriptions, up to 5 users",
         "Everything in Essential",
         "Active Zombie Resources Cleanup",
         "Rightsizing Execution",
-        "Tag Governance",
         "Commitment Discounts (Reservations)",
-        "Predictive Anomaly Engine (Z-Score)"
+        "Predictive Anomaly Engine (Z-Score)",
+        "Notification Channels (Slack/Teams/Email/Webhook)"
       ]
     },
     "business": {
@@ -792,6 +793,7 @@
       "badge": "Most Popular",
       "desc": "Basic automation and multiple environments for growing companies.",
       "features": [
+        "Up to 20 Azure subscriptions, up to 20 users",
         "Everything in Professional",
         "Automatic Power Schedules",
         "FinOps Copilot (AI)",
@@ -805,14 +807,15 @@
       "badge": "Total Control",
       "desc": "For corporations with complex topologies (Hub & Spoke).",
       "features": [
+        "Unlimited Azure subscriptions and users",
         "Everything in Business",
         "Unlimited dedicated support (4 h SLA)",
-        "Custom Workbooks",
         "Partner CSP Billing Engine",
         "SSO Federation (SAML)",
-        "Modular FinOps Audits"
+        "Power BI Data Export (FOCUS)",
+        "FinOps Policies as Code"
       ]
     },
-    "popupCta": "Start free 14-day trial ›"
+    "popupCta": "Start free 7-day trial ›"
   }
 }
