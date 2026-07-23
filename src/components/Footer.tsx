@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Container } from './Container';
@@ -13,9 +14,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           
           <div className="md:col-span-4 space-y-4">
-            <h3 className="text-xl font-black tracking-tight text-white flex items-center">
-              CS<span className="text-[color:var(--cyan)]">CloudSolutions</span>
-            </h3>
+            <div className="flex items-center gap-2">
+              <Image src="/images/LogoCS.png" alt="CS" width={32} height={32} className="h-8 w-auto" />
+              <Image src="/images/CSCloudSolutionsText.png" alt="CloudSolutions" width={140} height={32} className="h-6 w-auto" />
+            </div>
             <p className="text-sm leading-relaxed text-white/60">
               {t('brand')}
             </p>
