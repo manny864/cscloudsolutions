@@ -47,7 +47,7 @@ jobs:
         with:
           name: nextjs-build
           path: app-build.tar.gz
-          retention-days: 1
+          retention-days: 1  # Limita la vida útil del artefacto a 1 día
 
   # ── Job 2: Deploy al VPS (solo en push a main) ────────────────────
   deploy:
