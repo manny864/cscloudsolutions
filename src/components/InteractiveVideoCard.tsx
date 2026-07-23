@@ -41,7 +41,7 @@ export function InteractiveVideoCard({ title, description, videoSrc, posterSrc, 
       <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--navy)] via-[color:var(--navy)]/90 to-transparent" />
       
       <div className="relative z-10 p-8">
-        <div className="mb-4 w-max rounded-full border border-[color:rgba(0,174,239,0.3)] bg-[color:rgba(0,174,239,0.1)] px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-[color:var(--cyan-light)]">
+        <div className="mb-4 w-max rounded-full border border-[color:rgba(0,174,239,0.3)] bg-[color:rgba(0,174,239,0.1)] px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-white">
           {badge}
         </div>
         

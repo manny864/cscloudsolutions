@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         <div className="mt-20 pt-10 border-t border-[color:var(--gray-200)] flex justify-between items-center clear-both">
           <Link 
             href="/blog" 
-            className="inline-flex items-center gap-2 text-sm font-bold text-[color:var(--navy)] hover:text-[color:var(--cyan)] transition-colors px-6 py-3 rounded-xl bg-[color:var(--gray-50)] border border-[color:var(--gray-200)]"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[color:var(--navy)] hover:text-[color:var(--cyan)] transition-colors px-6 py-3 rounded-[5px] bg-[color:var(--gray-50)] border border-[color:var(--gray-200)]"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
             {locale === 'es' ? 'Volver al Blog' : 'Back to Blog'}

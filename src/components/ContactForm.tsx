@@ -195,7 +195,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
         <button
           type="submit"
           disabled={status.kind === 'loading' || status.kind === 'success'}
-          className="mt-6 w-full rounded-xl bg-[color:var(--cyan)] px-6 py-4 text-sm font-extrabold text-[color:var(--navy)] shadow-[0_8px_30px_rgba(0,174,239,0.25)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-light)] disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-6 w-full rounded-[5px] bg-[color:var(--cyan)] px-6 py-4 text-sm font-extrabold text-white shadow-[0_8px_30px_rgba(0,174,239,0.25)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-dark)] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status.kind === 'loading' ? t('sending') : t('send')}
         </button>

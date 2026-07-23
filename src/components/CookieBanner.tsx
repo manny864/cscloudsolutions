@@ -40,12 +40,12 @@ export function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 sm:p-6 animate-in slide-in-from-bottom-10 duration-500">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-[color:rgba(0,174,239,0.2)] bg-[color:rgba(11,30,61,0.95)] p-6 shadow-2xl backdrop-blur-xl md:p-8 text-white">
+      <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-black/10 bg-white p-6 shadow-2xl md:p-8 text-[color:var(--navy)]">
         {!showConfig ? (
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
               <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold">{t('title')}</h3>
-              <p className="mt-2 text-sm text-white/70">
+              <p className="mt-2 text-sm text-gray-600">
                 {t('desc')}
                 {/* Nota: En un futuro, el enlace a /politica-de-privacidad también debería ser dinámico si tienes una ruta para cada idioma */}
                 <Link href="/politica-de-privacidad" className="text-[color:var(--cyan)] underline">
@@ -54,10 +54,10 @@ export function CookieBanner() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <button onClick={() => setShowConfig(true)} className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold hover:bg-white/10 transition">
+              <button onClick={() => setShowConfig(true)} className="rounded-[5px] border border-black/15 bg-black/[0.03] px-6 py-3 text-sm font-bold text-[color:var(--navy)] hover:bg-black/[0.06] transition">
                 {t('btnConfig')}
               </button>
-              <button onClick={() => saveConsent({necessary: true, analytics: true, marketing: true})} className="rounded-xl bg-[color:var(--cyan)] px-6 py-3 text-sm font-black text-[color:var(--navy)] hover:bg-[color:var(--cyan-light)] transition">
+              <button onClick={() => saveConsent({necessary: true, analytics: true, marketing: true})} className="rounded-[5px] bg-[color:var(--cyan)] px-6 py-3 text-sm font-black text-white hover:bg-[color:var(--cyan-dark)] transition">
                 {t('btnAccept')}
               </button>
             </div>
@@ -70,11 +70,11 @@ export function CookieBanner() {
               <CookieOption label={t('lblAnalytics')} checked={consent.analytics} onChange={(v: boolean) => setConsent({...consent, analytics: v})} desc={t('descAnalytics')} />
               <CookieOption label={t('lblMarketing')} checked={consent.marketing} onChange={(v: boolean) => setConsent({...consent, marketing: v})} desc={t('descMarketing')} />
             </div>
-            <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-white/10">
-              <button onClick={() => setShowConfig(false)} className="text-sm font-bold text-white/60 hover:text-white transition">
+            <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-black/10">
+              <button onClick={() => setShowConfig(false)} className="text-sm font-bold text-gray-500 hover:text-[color:var(--navy)] transition">
                 {t('btnBack')}
               </button>
-              <button onClick={() => saveConsent(consent)} className="rounded-xl bg-white/10 px-6 py-3 text-sm font-bold transition hover:bg-white/20">
+              <button onClick={() => saveConsent(consent)} className="rounded-[5px] bg-[color:var(--navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[color:var(--navy-light)]">
                 {t('btnSave')}
               </button>
             </div>
@@ -87,18 +87,18 @@ export function CookieBanner() {
 
 function CookieOption({ label, checked, onChange, disabled, desc }: CookieOptionProps) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+    <div className="rounded-2xl border border-black/10 bg-black/[0.03] p-4">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-bold">{label}</span>
-        <input 
-          type="checkbox" 
-          checked={checked} 
-          disabled={disabled} 
-          onChange={(e) => onChange?.(e.target.checked)} 
-          className={`h-4 w-4 accent-[color:var(--cyan)] ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`} 
+        <span className="text-sm font-bold text-[color:var(--navy)]">{label}</span>
+        <input
+          type="checkbox"
+          checked={checked}
+          disabled={disabled}
+          onChange={(e) => onChange?.(e.target.checked)}
+          className={`h-4 w-4 accent-[color:var(--cyan)] ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
         />
       </div>
-      <p className="text-[10px] text-white/50">{desc}</p>
+      <p className="text-[10px] text-gray-500">{desc}</p>
     </div>
   );
 }

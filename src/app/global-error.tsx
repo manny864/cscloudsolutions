@@ -24,7 +24,7 @@ export default function GlobalError({
           </p>
           <button
             onClick={() => reset()}
-            className="rounded-xl bg-[color:var(--cyan)] px-6 py-3 text-sm font-extrabold text-[color:var(--navy)] hover:bg-[color:var(--cyan-light)] transition"
+            className="rounded-[5px] bg-[color:var(--cyan)] px-6 py-3 text-sm font-extrabold text-[color:var(--navy)] hover:bg-[color:var(--cyan-light)] transition"
           >
             Reintentar
           </button>

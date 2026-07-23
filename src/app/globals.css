@@ -2,12 +2,12 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --navy: #0B1E3D;
-  --navy-mid: #122447;
-  --navy-light: #1a3260;
-  --cyan: #00AEEF;
-  --cyan-light: #33C3FF;
-  --cyan-dark: #0095D0;
+  --navy: #0E1A2B;
+  --navy-mid: #16273F;
+  --navy-light: #1F3A5F;
+  --cyan: #004F8A;
+  --cyan-light: #1F6FA8;
+  --cyan-dark: #003A66;
   --accent: #FF6B35;
   --success: #22C55E;
   --white: #FFFFFF;

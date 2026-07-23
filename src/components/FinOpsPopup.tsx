@@ -115,7 +115,7 @@ export function FinOpsPopup() {
           </div>
           
           <div className="mt-8 sm:mt-10 text-center pb-4 sm:pb-0">
-             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" onClick={handleClose} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-xl text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
+             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" onClick={handleClose} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-[5px] text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
                {t('popupCta')}
              </a>
           </div>

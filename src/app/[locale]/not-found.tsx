@@ -26,7 +26,7 @@ export default function NotFoundPage() {
       <div className="mt-10">
         <Link 
           href="/" 
-          className="inline-flex items-center justify-center rounded-xl bg-[color:var(--cyan)] px-8 py-4 text-sm font-extrabold text-[color:var(--navy)] shadow-[0_20px_50px_rgba(0,174,239,0.20)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-light)]"
+          className="inline-flex items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 text-sm font-extrabold text-[color:var(--navy)] shadow-[0_20px_50px_rgba(0,174,239,0.20)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-light)]"
         >
           Volver a la página principal
         </Link>
