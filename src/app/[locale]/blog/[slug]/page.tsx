@@ -12,9 +12,8 @@ import MarkdownImage from '@/components/MarkdownImage';
 // Generación de Metadata con Alternate Links y Etiquetas Open Graph
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
-  
-  const mapping = Object.values(blogMapping).find(m => m.es === slug || m.en === slug);
-  const alternateSlug = mapping ? (locale === 'es' ? mapping.en : mapping.es) : slug;
+
+  const mapping = Object.values(blogMapping).find(m => m.es === slug || m.en === slug || m['pt-BR'] === slug);
 
   let post;
   try {
@@ -26,8 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   const alternates = {
     languages: {
-      es: `/es/blog/${locale === 'es' ? slug : alternateSlug}`,
-      en: `/en/blog/${locale === 'en' ? slug : alternateSlug}`,
+      es: `/es/blog/${mapping ? mapping.es : slug}`,
+      en: `/en/blog/${mapping ? mapping.en : slug}`,
+      'pt-BR': `/pt-BR/blog/${mapping ? mapping['pt-BR'] : slug}`,
     },
   };
 
@@ -64,15 +64,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export async function generateStaticParams() {
-  const slugsEs = getPostSlugs('es').map((slug) => ({
-    locale: 'es',
-    slug: slug.replace(/\.md$/, ''),
-  }));
-  const slugsEn = getPostSlugs('en').map((slug) => ({
-    locale: 'en',
-    slug: slug.replace(/\.md$/, ''),
-  }));
-  return [...slugsEs, ...slugsEn];
+  return ['es', 'en', 'pt-BR'].flatMap((locale) =>
+    getPostSlugs(locale).map((slug) => ({
+      locale,
+      slug: slug.replace(/\.md$/, ''),
+    }))
+  );
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
@@ -83,14 +80,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   try {
     post = getPostBySlug(slug, locale);
   } catch (e) {
-    const mapping = Object.values(blogMapping).find(m => (locale === 'es' ? m.en : m.es) === slug);
-    
+    const mapping = Object.values(blogMapping).find(m => m.es === slug || m.en === slug || m['pt-BR'] === slug);
+
     if (mapping) {
-      const correctSlug = locale === 'es' ? mapping.es : mapping.en;
-      redirect(`/${locale}/blog/${correctSlug}`);
+      const correctSlug = mapping[locale as 'es' | 'en' | 'pt-BR'];
+      if (correctSlug) redirect(`/${locale}/blog/${correctSlug}`);
     }
 
-    notFound(); 
+    notFound();
   }
 
   let imageIndex = 0;
@@ -134,7 +131,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                   : 'CS'}
               </span>
               <p className="text-base text-[color:var(--gray-600)] font-medium">
-                Por {post.meta.author || 'CS Cloud Solutions'}
+                {locale === 'en' ? 'By' : 'Por'} {post.meta.author || 'CS Cloud Solutions'}
               </p>
             </div>
           </div>
@@ -179,7 +176,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             className="inline-flex items-center gap-2 text-sm font-bold text-[color:var(--navy)] hover:text-[color:var(--cyan)] transition-colors px-6 py-3 rounded-[5px] bg-[color:var(--gray-50)] border border-[color:var(--gray-200)]"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            {locale === 'es' ? 'Volver al Blog' : 'Back to Blog'}
+            {locale === 'en' ? 'Back to Blog' : locale === 'pt-BR' ? 'Voltar ao Blog' : 'Volver al Blog'}
           </Link>
         </div>
       </div>

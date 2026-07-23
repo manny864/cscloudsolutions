@@ -18,14 +18,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: t.raw('meta.keywords') as string[],
     alternates: {
       canonical: path,
-      languages: { es: '/finops', en: '/en/finops' }
+      languages: { es: '/finops', en: '/en/finops', 'pt-BR': '/pt-BR/finops' }
     },
     openGraph: {
       title: t('meta.title'),
       description: t('meta.description'),
       url: absoluteUrl(path),
       siteName: SITE.name,
-      locale: locale === 'es' ? 'es_AR' : 'en_US',
+      locale: locale === 'es' ? 'es_AR' : locale === 'pt-BR' ? 'pt_BR' : 'en_US',
       type: 'website',
     },
     twitter: {

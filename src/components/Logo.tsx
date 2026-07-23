@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import {Link} from '@/i18n/routing';
 
-export function Logo({locale}: {locale: 'es' | 'en'}) {
+export function Logo({locale}: {locale: 'es' | 'en' | 'pt-BR'}) {
   return (
     <Link href="/" locale={locale} className="flex flex-shrink-0 items-center gap-2 min-w-0">
       <Image

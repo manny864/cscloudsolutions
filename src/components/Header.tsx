@@ -9,7 +9,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Header() {
   const t = useTranslations('nav');
-  const locale = useLocale() as 'es' | 'en';
+  const locale = useLocale() as 'es' | 'en' | 'pt-BR';
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

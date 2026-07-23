@@ -26,8 +26,8 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     },
     description: t('homeDescription'),
     alternates: {
-      canonical: locale === 'es' ? '/' : '/en',
-      languages: { es: '/', en: '/en' }
+      canonical: locale === 'es' ? '/' : `/${locale}`,
+      languages: { es: '/', en: '/en', 'pt-BR': '/pt-BR' }
     },
     verification: {
       google: 'FXWGTuJKHNAxiW38Ti-DUn_1ltz7zHhWMStgIaMUlAw',
@@ -37,7 +37,7 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       description: t('homeDescription'),
       url: 'https://cscloudsolutions.com.ar',
       siteName: 'CSCloudSolutions',
-      locale: locale === 'es' ? 'es_AR' : 'en_US',
+      locale: locale === 'es' ? 'es_AR' : locale === 'pt-BR' ? 'pt_BR' : 'en_US',
       type: 'website',
     },
     twitter: {
