@@ -47,7 +47,7 @@ export default async function NosotrosPage({ params }: { params: Promise<{ local
 
             {/* Texto del Hero (Lado Derecho) */}
             <div className="flex-1">
-              <span className="inline-flex items-center rounded-full bg-[color:rgba(0,174,239,0.15)] px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[color:var(--cyan)] ring-1 ring-inset ring-[color:rgba(0,174,239,0.3)]">
+              <span className="inline-flex items-center rounded-full bg-[color:rgba(0,174,239,0.15)] px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-white ring-1 ring-inset ring-[color:rgba(0,174,239,0.3)]">
                 {tPages('title')}
               </span>
               <h1 className="mt-6 font-[family:var(--font-heading)] text-4xl font-extrabold tracking-tight text-white sm:text-6xl leading-tight">

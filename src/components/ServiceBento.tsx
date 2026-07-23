@@ -13,31 +13,37 @@ export function ServiceBento() {
             {t('headingPart1')} <span className="text-[color:var(--cyan)]">{t('headingPart2')}</span>
           </h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <InteractiveVideoCard 
-            badge={t('card1.badge')}
-            title={t('card1.title')}
-            description={t('card1.desc')}
-            videoSrc="/videos/Trabajo_Colaborativo.webm" 
-            posterSrc="/images/Trabajo_Colaborativo.webp"
-            href="/microsoft-365"
-          />
-          <InteractiveVideoCard 
-            badge={t('card2.badge')}
-            title={t('card2.title')}
-            description={t('card2.desc')}
-            videoSrc="/videos/Futuristic_Server_Room_Motion_Graphics.webm" 
-            posterSrc="/images/Futuristic_Server_Room_Motion_Graphics.webp"
-            href="/azure"
-          />
-          <InteractiveVideoCard 
-            badge={t('card3.badge')}
-            title={t('card3.title')}
-            description={t('card3.desc')}
-            videoSrc="/videos/Ciberseguridad_Escudo_Digital.webm" 
-            posterSrc="/images/Ciberseguridad_Escudo_Digital.webp"
-            href="/seguridad"
-          />
+        <div className="flex flex-wrap justify-center gap-6">
+          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <InteractiveVideoCard
+              badge={t('card1.badge')}
+              title={t('card1.title')}
+              description={t('card1.desc')}
+              videoSrc="/videos/Trabajo_Colaborativo.webm"
+              posterSrc="/images/Trabajo_Colaborativo.webp"
+              href="/microsoft-365"
+            />
+          </div>
+          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <InteractiveVideoCard
+              badge={t('card2.badge')}
+              title={t('card2.title')}
+              description={t('card2.desc')}
+              videoSrc="/videos/Futuristic_Server_Room_Motion_Graphics.webm"
+              posterSrc="/images/Futuristic_Server_Room_Motion_Graphics.webp"
+              href="/azure"
+            />
+          </div>
+          <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]">
+            <InteractiveVideoCard
+              badge={t('card3.badge')}
+              title={t('card3.title')}
+              description={t('card3.desc')}
+              videoSrc="/videos/Ciberseguridad_Escudo_Digital.webm"
+              posterSrc="/images/Ciberseguridad_Escudo_Digital.webp"
+              href="/seguridad"
+            />
+          </div>
         </div>
       </Container>
     </section>

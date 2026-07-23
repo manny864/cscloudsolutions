@@ -12,3 +12,9 @@ out/
 # Variables de entorno locales
 .env*.local
 .env
+
+# macOS
+.DS_Store
+
+# Claude Code local tooling
+.claude/

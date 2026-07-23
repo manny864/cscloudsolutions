@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Container } from './Container';
@@ -13,11 +14,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           
           <div className="md:col-span-4 space-y-4">
-            <h3 className="text-xl font-black tracking-tight text-white flex items-center">
-              CS<span className="text-[color:var(--cyan)]">CloudSolutions</span>
-            </h3>
+            <div className="flex items-center gap-2">
+              <Image src="/images/LogoCS.png" alt="CS" width={669} height={451} className="h-8 w-auto" />
+              <Image src="/images/CSCloudSolutionsText.png" alt="CloudSolutions" width={1107} height={135} className="h-5 w-auto" />
+            </div>
             <p className="text-sm leading-relaxed text-white/60">
               {t('brand')}
+            </p>
+            <p className="text-sm leading-relaxed text-white/60">
+              {t.rich('partnerNetwork', {b: (chunks) => <strong className="font-bold text-white/80">{chunks}</strong>})}
             </p>
 
             <ClutchWidget />
@@ -90,11 +95,6 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">
           <div>
             &copy; {new Date().getFullYear()} CSCloudSolutions. {t('rights')}
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hover:text-white transition-colors cursor-pointer">
-              {t('afip')}
-            </span>
           </div>
         </div>
       </Container>

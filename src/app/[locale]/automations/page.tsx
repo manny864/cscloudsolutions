@@ -23,7 +23,7 @@ export default async function AutomationsPage({ params }: { params: Promise<{ lo
       <section className="relative overflow-hidden bg-[color:var(--navy)] py-24 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_80%_50%,rgba(0,174,239,0.1),transparent_70%)]" />
         <Container className="relative z-10">
-          <div className="inline-flex rounded-full border border-white/15 bg-[color:var(--cyan)]/10 px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--cyan)] mb-6">
+          <div className="inline-flex rounded-full border border-white bg-[color:var(--cyan)]/10 px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-white mb-6">
             {t('hero.badge')}
           </div>
           <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 max-w-4xl">
@@ -35,19 +35,19 @@ export default async function AutomationsPage({ params }: { params: Promise<{ lo
           
           <div className="mt-10 flex flex-wrap gap-8 sm:gap-12">
             <div className="min-w-[120px]">
-              <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
+              <div className="text-white text-4xl font-extrabold">
                 <StatCounter target={70} suffix="%" duration={2000} />
               </div>
               <div className="mt-1 text-sm font-semibold text-white/80">{t('hero.stat1')}</div>
             </div>
             <div className="min-w-[120px]">
-              <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
+              <div className="text-white text-4xl font-extrabold">
                 <StatCounter target={100} suffix="%" duration={2000} />
               </div>
               <div className="mt-1 text-sm font-semibold text-white/80">{t('hero.stat2')}</div>
             </div>
             <div className="min-w-[120px]">
-              <div className="text-[color:var(--cyan)] text-4xl font-extrabold">
+              <div className="text-white text-4xl font-extrabold">
                 24/7
               </div>
               <div className="mt-1 text-sm font-semibold text-white/80">{t('hero.stat3')}</div>
