@@ -1,6 +1,7 @@
 import {Hero} from '@/components/Hero';
 import {ServiceBento} from '@/components/ServiceBento';
 import {AuditSection} from '@/components/AuditSection';
+import {FinOpsTeaser} from '@/components/FinOpsTeaser';
 import {Testimonials} from '@/components/Testimonials';
 import {FAQ} from '@/components/FAQ';
 import {ContactSection} from '@/components/ContactSection';
@@ -47,6 +48,7 @@ export default async function HomePage({params}: {params: Promise<{locale: strin
       <Hero />
       <ServiceBento />
       <AuditSection />
+      <FinOpsTeaser />
       <Testimonials />
       <FAQ />
       <ContactSection />

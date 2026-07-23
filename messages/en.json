@@ -230,6 +230,13 @@
           "a": "You access enterprise-level infrastructure paying per use. We design an architecture that prioritizes continuity and cost, without over-provisioning."
         }
       ]
+    },
+    "finopsTeaser": {
+      "badge": "FinOps Platform",
+      "title": "Do you know how much you're wasting on Azure?",
+      "sub": "Our FinOps platform detects zombie resources, right-sizes VMs, and projects your spend, all from a dashboard connected to your Azure. Try it in an interactive demo.",
+      "ctaDemo": "See live demo →",
+      "ctaLearnMore": "Learn about FinOps"
     }
   },
   "contact": {
@@ -653,50 +660,144 @@
       }
     },
     "finops": {
+      "meta": {
+        "title": "FinOps Software for Azure | Cloud Cost Optimization",
+        "description": "SaaS FinOps platform for Azure: detect zombie resources, right-size VMs, manage reservations, and cut your cloud bill. Try the interactive demo for free.",
+        "keywords": ["Azure FinOps", "cloud cost optimization", "Azure cost management", "cloud savings", "cloud cost management", "Azure cost optimization", "Azure zombie resources", "Azure rightsizing", "Azure reservations RI", "FinOps software", "FinOps SaaS platform", "cloud governance"]
+      },
       "hero": {
-        "badge": "Cloud Financial Control",
+        "badge": "FinOps Platform for Azure",
         "title": "Azure FinOps: Maximize Your Investment Value",
-        "sub": "We stop cloud waste. We optimize your Azure infrastructure so you pay exactly for what you need, with no bill surprises.",
-        "stat1": "Average monthly savings",
-        "stat2": "Cost visibility",
-        "stat3": "ROI Guaranteed"
+        "sub": "CSCloudSolutions' SaaS platform connects to your Azure via Entra ID and shows you, in minutes, where you're losing money in the cloud and how to get it back.",
+        "ctaDemo": "See live demo →",
+        "ctaConsult": "Talk to an expert",
+        "stat1": "Potential savings detected",
+        "stat2": "Orphan resources scanned",
+        "stat3": "Connects via Entra ID"
+      },
+      "pillars": {
+        "titleA": "One platform,",
+        "titleB": "five FinOps pillars",
+        "sub": "Visibility, optimization, cleanup, governance, and administration: everything you need to govern Azure spend from a single place.",
+        "items": [
+          {
+            "icon": "👁️",
+            "title": "Visibility",
+            "desc": "Executive dashboard, cost histogram going back up to 13 months, spend projection for 3/6/12/24 months, and synced Azure Advisor."
+          },
+          {
+            "icon": "🧠",
+            "title": "Financial Intelligence",
+            "desc": "Real consumption, cost-center budgets, VM rightsizing, reservations (RIs), Hybrid Benefit, and What-If Simulator."
+          },
+          {
+            "icon": "🧹",
+            "title": "Cloud Cleanup",
+            "desc": "Omni-Scan engine that detects 25 types of orphan resources: disks, public IPs, empty App Service Plans, and more."
+          },
+          {
+            "icon": "🛡️",
+            "title": "Governance",
+            "desc": "Tag compliance, high availability checks, expiring credentials, and automatic power schedules for VMs."
+          },
+          {
+            "icon": "⚙️",
+            "title": "Administration",
+            "desc": "Roles and permissions (RBAC), executive reports, self-service billing, and tiered-SLA support."
+          }
+        ]
       },
       "features": {
         "titleA": "Master your cloud bill",
         "titleB": "with financial engineering",
-        "sub": "The cloud is elastic, but without control, costs expand indefinitely. We apply FinOps discipline to give you back budget control.",
+        "sub": "The cloud is elastic, but without control, costs expand indefinitely. Here's how we give you back budget control.",
         "items": [
           {
             "icon": "💰",
             "title": "Cost Management",
-            "desc": "Setting up budgets, alerts, and granular analysis of consumption by department, project, or resource."
+            "desc": "Budgets, alerts, and granular consumption analysis by department, project, or cost center."
           },
           {
             "icon": "📏",
-            "title": "Right-Sizing",
-            "desc": "We analyze real performance to adjust the size of your servers and databases to what they actually consume."
+            "title": "Rightsizing",
+            "desc": "We detect underutilized VMs, App Service, SQL Database, and Storage, with SKU recommendations and estimated savings."
           },
           {
             "icon": "🎟️",
-            "title": "Reservations & Instances",
-            "desc": "We leverage discounts of up to 72% through strategic long-term capacity reservations in Azure."
+            "title": "Reservations & Hybrid Benefit",
+            "desc": "Reserved Instance coverage and utilization, plus licensing savings with your existing Windows/SQL Server licenses."
           },
           {
             "icon": "🏷️",
             "title": "Tagging & Governance",
-            "desc": "We implement tagging policies so that not a single cent on the bill goes without an assigned owner."
+            "desc": "Tag compliance audit so every cost has an assigned owner (showback/chargeback)."
           },
           {
             "icon": "♻️",
-            "title": "Resource Cleanup",
-            "desc": "We identify and eliminate orphan disks, unused IPs, and forgotten test environments that drain your money."
+            "title": "Zombie Resources",
+            "desc": "Omni-Scan engine: 25 types of orphan resources detected, with a direct delete action from the platform."
           },
           {
-            "icon": "🏢",
-            "title": "Azure Hybrid Benefit",
-            "desc": "We save licensing costs by using your current Windows Server and SQL Server licenses in the cloud."
+            "icon": "⏰",
+            "title": "Power Schedules",
+            "desc": "Automatic VM start/stop routines in Dev/Test: up to 60% savings on idle compute hours."
+          },
+          {
+            "icon": "🤖",
+            "title": "FinOps Copilot (AI)",
+            "desc": "An assistant that reads the context of every screen and generates an executive report with findings, savings, and an action plan."
+          },
+          {
+            "icon": "🧮",
+            "title": "What-If Simulator",
+            "desc": "Project the impact of scaling compute, varying traffic, or migrating architecture before spending a single dollar."
+          },
+          {
+            "icon": "📄",
+            "title": "Reports & Invoicing",
+            "desc": "Automated executive reports and per-subscription billing export in JSON, CSV, or PBIT."
           }
         ]
+      },
+      "copilot": {
+        "badge": "Differentiator",
+        "title": "Your FinOps analyst, available 24/7",
+        "sub": "The FinOps Copilot doesn't wait for you to ask: as soon as you open a screen, it generates an executive summary on its own with the overall status, key findings, savings opportunities ranked by impact, and a 7-day action plan. With authorization, it can also guide you through deleting zombie resources or applying missing tags."
+      },
+      "tiers": {
+        "titleA": "A plan for every",
+        "titleB": "stage of your organization",
+        "sub": "From Essential to Enterprise, the platform scales with you: SLA-backed support from 48h down to 4h, and advanced features like AI Analytics, MACC Tracker, or M365 Copilot on higher tiers.",
+        "cta": "See plans & pricing in the demo →"
+      },
+      "faq": {
+        "badge": "FAQ",
+        "titleA": "Questions about",
+        "titleB": "the FinOps platform",
+        "items": [
+          {
+            "q": "How does the platform connect to my Azure?",
+            "a": "Through Microsoft Entra ID (Active Directory), with read-only access via a Service Principal. You decide which permissions to grant based on your contracted tier."
+          },
+          {
+            "q": "Can I try it without connecting my real Azure environment?",
+            "a": "Yes. The interactive demo works with preconfigured commercial profiles (Essential, Professional, Business, Enterprise) with simulated data, so you can explore every module risk-free."
+          },
+          {
+            "q": "What happens if I don't have the right permissions configured?",
+            "a": "The platform includes a diagnostic endpoint that validates the roles assigned to the Service Principal and tells you exactly what to fix in Azure."
+          },
+          {
+            "q": "Does the platform replace Azure Cost Management?",
+            "a": "No, it complements it: it consolidates that data with projections, zombie resource detection, actionable rightsizing, and governance — everything Azure Cost Management doesn't solve on its own."
+          }
+        ]
+      },
+      "finalCta": {
+        "title": "Ready to see how much you can save?",
+        "sub": "Jump into the interactive demo right now or schedule a consultation with our team.",
+        "ctaDemo": "See live demo →",
+        "ctaConsult": "Request a consultation"
       }
     }
   },
