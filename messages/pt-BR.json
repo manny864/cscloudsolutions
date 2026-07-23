@@ -1,0 +1,924 @@
+{
+  "meta": {
+    "homeTitle": "CSCloudSolutions — Soluções Cloud Microsoft para PMEs | Azure e Microsoft 365",
+    "homeDescription": "Ajudamos PMEs a migrar, proteger e otimizar Microsoft 365 e Azure. Auditoria de segurança gratuita, suporte especializado e acompanhamento de verdade."
+  },
+  "structured": {
+    "orgDescription": "Consultoria especializada em Microsoft Azure, Microsoft 365 e cibersegurança. Migração cloud segura e suporte técnico para PMEs na América Latina e no mundo.",
+    "knowsAbout": [
+      "Microsoft Azure",
+      "Microsoft 365",
+      "Email Migration",
+      "Exchange Online Migration",
+      "Cloud Security",
+      "Cybersecurity for SMEs",
+      "Cloud Migration",
+      "Azure Virtual Desktop",
+      "Identity and Access Management"
+    ],
+    "faq": [
+      {
+        "@type": "Question",
+        "name": "O que inclui a auditoria de segurança gratuita?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Revisamos pontos críticos do Microsoft 365 (MFA, encaminhamentos, acesso condicional, funções, apps conectados, SharePoint/OneDrive, proteção antiphishing, retenção e logs) e entregamos um relatório com prioridades."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo leva para migrar para o Microsoft 365?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende do tamanho e do estado atual do ambiente. Planejamos a migração para minimizar o impacto e manter a operação durante todo o processo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vocês atendem fora da Argentina?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. Atendemos remotamente América Latina, Estados Unidos e Europa, com horários e comunicação adaptados."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quais vantagens o Azure oferece para uma PME?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O Azure oferece infraestrutura de nível enterprise pagando por uso. Desenhamos uma arquitetura que prioriza continuidade e custo, sem superdimensionar."
+        }
+      }
+    ]
+  },
+  "cookies": {
+    "title": "Privacidade e Cookies",
+    "desc": "Melhoramos sua experiência com cookies. Você pode configurar suas preferências ou aceitar todos. Confira nossa ",
+    "policy": "Política de Privacidade",
+    "btnConfig": "Configurar",
+    "btnAccept": "Aceitar todos",
+    "configTitle": "Configuração",
+    "lblNecessary": "Necessários",
+    "descNecessary": "Essenciais para o funcionamento do site.",
+    "lblAnalytics": "Analíticos",
+    "descAnalytics": "Para entender o uso e o tráfego do site.",
+    "lblMarketing": "Marketing",
+    "descMarketing": "Para exibir conteúdo personalizado.",
+    "btnBack": "Voltar",
+    "btnSave": "Salvar seleção"
+  },
+  "nav": {
+    "aria": "Navegação principal",
+    "topbarEmail": "Email",
+    "topbarTagline": "Soluções cloud para PMEs da América Latina e do mundo",
+    "home": "Início",
+    "m365": "Microsoft 365",
+    "azure": "Azure",
+    "security": "Segurança",
+    "blog": "Blog",
+    "about": "Sobre nós",
+    "cta": "Cloud FinOps ›",
+    "services": "Serviços",
+    "modern": "Modern Workplace",
+    "power": "Power Platform",
+    "support": "Suporte de TI",
+    "automations": "Automação",
+    "agentic": "IA Agêntica",
+    "finops": "FinOps (Custos)"
+  },
+  "home": {
+    "hero": {
+      "badge": "Especialistas em Microsoft 365 e Azure",
+      "titleA": "Sua empresa segura e",
+      "titleB": "funcionando melhor na nuvem",
+      "sub": "Migramos, protegemos e otimizamos seu ambiente Microsoft para que seu negócio opere tranquilo, sem interrupções e com custos sob controle. Acompanhamos PMEs que querem crescer, não complicar a vida com tecnologia.",
+      "ctaPrimary": "Auditoria de segurança gratuita",
+      "ctaSecondary": "Conhecer o Azure ›",
+      "stats": {
+        "s1n": "+20",
+        "s1l": "Anos de experiência em TI",
+        "s2n": "99,9%",
+        "s2l": "Uptime orientado ao negócio",
+        "s3n": "24/7",
+        "s3l": "Suporte e monitoramento"
+      },
+      "cardTitle": "Auditoria de Segurança sem custo, em apenas 30 minutos",
+      "cardSub": "Revisamos os pontos críticos do seu Microsoft 365 para detectar riscos reais antes que virem um problema. Sem letra miúda, sem compromisso.",
+      "cardBullets": [
+        "Autenticação multifator e acessos",
+        "Encaminhamentos de e-mail para externos",
+        "Acesso condicional e funções de administrador",
+        "Apps de terceiros conectados",
+        "SharePoint e OneDrive (permissões)"
+      ],
+      "cardButton": "Solicitar auditoria →",
+      "cardNote": "Sem custo · Sem compromisso · Abordagem prática"
+    },
+    "services": {
+      "title": "Nossas Soluções",
+      "items": [
+        {
+          "id": "m365",
+          "badge": "Produtividade",
+          "title": "Microsoft 365",
+          "description": "Potencializamos a colaboração do seu time com o ecossistema líder da Microsoft.",
+          "video": "/videos/Trabajo_Colaborativo.webm",
+          "link": "/microsoft-365"
+        },
+        {
+          "id": "azure",
+          "badge": "Infraestrutura",
+          "title": "Azure Cloud",
+          "description": "Migrações seguras e escalabilidade infinita na nuvem da Microsoft.",
+          "video": "/videos/Futuristic_Server_Room_Motion_Graphics.webm",
+          "link": "/azure"
+        },
+        {
+          "id": "security",
+          "badge": "Cibersegurança",
+          "title": "Segurança & Compliance",
+          "description": "Proteção avançada contra ameaças e auditorias de segurança em tempo real.",
+          "video": "/videos/Ciberseguridad_Escudo_Digital.webm",
+          "link": "/seguridad"
+        }
+      ],
+      "headingPart1": "Soluções",
+      "headingPart2": "Cloud & Security",
+      "card1": {
+        "badge": "Produtividade",
+        "title": "Microsoft 365",
+        "desc": "Colaboração total e gestão moderna do workplace."
+      },
+      "card2": {
+        "badge": "Infraestrutura",
+        "title": "Azure Cloud",
+        "desc": "Migração e escalabilidade com arquitetura de classe mundial."
+      },
+      "card3": {
+        "badge": "Segurança",
+        "title": "Cibersegurança",
+        "desc": "Proteção de dados sob padrões internacionais de compliance."
+      }
+    },
+    "audit": {
+      "badge": "Auditoria express gratuita",
+      "titleA": "10 pontos críticos que",
+      "titleB": "revisamos no seu M365",
+      "sub": "Quando há um incidente, quase sempre havia sinais antes. Nós os buscamos, explicamos e deixamos um plano simples para fechar as brechas.",
+      "calloutTitle": "Quer saber se você está exposto antes que algo aconteça?",
+      "calloutSub": "Entregamos um relatório executivo com prioridades claras. Se estiver tudo certo, também avisamos.",
+      "calloutCta": "Solicitar auditoria →",
+      "points": [
+        "Autenticação multifator (MFA)",
+        "Encaminhamentos de e-mail para domínios externos",
+        "Acesso condicional",
+        "Funções e permissões de administrador",
+        "Aplicativos de terceiros conectados",
+        "SharePoint e OneDrive (permissões)",
+        "Proteção antiphishing e antimalware",
+        "Retenção e backups",
+        "Logs de auditoria e alertas",
+        "Licenças e usuários desnecessários"
+      ]
+    },
+    "testimonials": {
+      "badge": "Casos de sucesso",
+      "titleA": "Empresas como a sua já deram o passo.",
+      "titleB": "É isso que nos contam depois de trabalhar conosco.",
+      "items": [
+        {
+          "quote": "A mudança para o Microsoft 365 foi organizada e sem surpresas. Hoje o time trabalha melhor e o suporte responde quando importa.",
+          "name": "Ernesto Bernal",
+          "role": "Diretor de Operações — Bernal Logistics",
+          "initials": "EB"
+        },
+        {
+          "quote": "A auditoria abriu nossos olhos. Ajustamos acessos e políticas e ganhamos tranquilidade sem virar burocráticos.",
+          "name": "Raquel M. Martinez",
+          "role": "Gerente Geral — Aquatech S.R.L.",
+          "initials": "RMM"
+        },
+        {
+          "quote": "Otimizamos o Azure e reduzimos custos sem perder desempenho. Faz diferença ter alguém que entende do assunto ao seu lado.",
+          "name": "Alejandro Ferrer",
+          "role": "CEO — Consultora Groi S.A",
+          "initials": "AF"
+        }
+      ]
+    },
+    "faq": {
+      "badge": "Perguntas frequentes",
+      "titleA": "Tudo o que você precisa",
+      "titleB": "saber",
+      "sub": "Respostas curtas, sem rodeios. Se o seu caso for especial, vemos numa chamada.",
+      "cta": "Vamos ver juntos? →",
+      "items": [
+        {
+          "q": "O que inclui a auditoria de segurança gratuita?",
+          "a": "Em uma sessão de 30 minutos, revisamos os pontos mais sensíveis do seu Microsoft 365. Você leva um diagnóstico claro, compreensível e acionável, mesmo que decida não seguir conosco."
+        },
+        {
+          "q": "Quanto tempo leva para migrar para o Microsoft 365?",
+          "a": "Depende do tamanho e do estado atual do ambiente. Para muitas PMEs, a migração pode ser planejada para minimizar o impacto e manter o e-mail operacional durante o processo."
+        },
+        {
+          "q": "Vocês trabalham só com empresas da Argentina?",
+          "a": "Nossa base é a Argentina, mas atendemos remotamente América Latina, EUA e Europa. Ajustamos horários e comunicação para tornar tudo simples."
+        },
+        {
+          "q": "Qual vantagem o Azure tem para uma PME?",
+          "a": "Você acessa infraestrutura de nível enterprise pagando por uso. Desenhamos uma arquitetura que prioriza continuidade e custo, sem superdimensionar."
+        }
+      ]
+    },
+    "finopsTeaser": {
+      "badge": "Plataforma FinOps",
+      "title": "Você sabe quanto está desperdiçando no Azure?",
+      "sub": "Nossa plataforma FinOps detecta recursos zumbis, faz rightsizing de VMs e projeta seu gasto, tudo a partir de um dashboard conectado ao seu Azure. Experimente em uma demo interativa.",
+      "ctaDemo": "Ver demo ao vivo →",
+      "ctaLearnMore": "Conhecer o FinOps"
+    }
+  },
+  "contact": {
+    "badge": "Vamos conversar",
+    "titleA": "Conte para nós",
+    "titleB": "o que você precisa",
+    "sub": "Deixe seus dados e conversamos. Sem vendedores, sem pressão. Um especialista escuta você e diz se podemos ajudar ou não. Se preferir, fale conosco pelo WhatsApp.",
+    "whatsTitle": "WhatsApp direto",
+    "emailTitle": "E-mail",
+    "formTitle": "Solicite uma consulta gratuita",
+    "formSub": "Conte o que você quer melhorar e propomos o caminho mais simples.",
+    "name": "Nome *",
+    "email": "Email *",
+    "company": "Empresa",
+    "phone": "Telefone",
+    "message": "Mensagem",
+    "namePh": "Seu nome",
+    "emailPh": "email@empresa.com",
+    "companyPh": "Nome da sua empresa",
+    "phonePh": "+54 11 ...",
+    "messagePh": "Conte brevemente sua necessidade...",
+    "send": "Enviar consulta →",
+    "sending": "Enviando...",
+    "note": "Sem spam. Respondemos com informação útil e direta.",
+    "errorGeneric": "Não conseguimos enviar sua consulta. Tente novamente."
+  },
+  "blog": {
+    "titleA": "Blog & ",
+    "titleB": "Insights",
+    "subtitle": "Conhecimento técnico, guias de arquitetura e novidades do ecossistema Microsoft Cloud."
+  },
+  "pages": {
+    "about": {
+      "title": "Quem Somos",
+      "badge": "Nossa Empresa",
+      "sub": "Somos seu parceiro estratégico na transformação digital."
+    },
+    "m365": {
+      "title": "Microsoft 365",
+      "badge": "Produtividade",
+      "sub": "Melhore a colaboração, a segurança e a produtividade com o ecossistema líder na nuvem. Trabalhe de qualquer lugar sem comprometer os dados.",
+      "stats": {
+        "migrations": "Migrações bem-sucedidas",
+        "downtime": "Horas de downtime",
+        "accompaniment": "Acompanhamento técnico"
+      },
+      "features": [
+        {
+          "icon": "📧",
+          "title": "Migração de E-mail (Exchange)",
+          "desc": "Transferimos suas caixas de e-mail do Gmail, cPanel ou servidores locais sem perda de histórico ou contatos. Alta disponibilidade garantida."
+        },
+        {
+          "icon": "💬",
+          "title": "Trabalho em Equipe com Teams",
+          "desc": "Centralizamos sua comunicação corporativa. Configuramos canais, videochamadas seguras e políticas de acesso para um trabalho híbrido sem atritos."
+        },
+        {
+          "icon": "📁",
+          "title": "SharePoint & OneDrive",
+          "desc": "Desenhamos a intranet e migramos sua documentação com permissões granulares."
+        },
+        {
+          "icon": "🛡️",
+          "title": "Segurança desde a Concepção",
+          "desc": "Implementamos MFA e proteção contra phishing desde o primeiro dia."
+        },
+        {
+          "icon": "📉",
+          "title": "Otimização de Licenças",
+          "desc": "Analisamos funções para atribuir o plano exato e evitar gastos desnecessários."
+        },
+        {
+          "icon": "🎓",
+          "title": "Adoção e Capacitação",
+          "desc": "Treinamento estratégico para maximizar o investimento."
+        }
+      ],
+      "section": {
+        "headingPart1": "Mais que e-mail,",
+        "headingPart2": "é o motor da sua empresa",
+        "sub": "Planejamos cada migração para que seu time comece a trabalhar melhor imediatamente."
+      }
+    },
+    "modern": {
+      "title": "Modern Workplace",
+      "badge": "Colaboração",
+      "sub": "Transforme a forma como seu time trabalha com soluções remotas seguras, integradas e flexíveis.",
+      "hero": {
+        "badge": "Trabalho Híbrido e Colaboração",
+        "title": "O Futuro do Trabalho para sua Empresa",
+        "sub": "Transformamos a forma como seu time trabalha. Implementamos soluções de colaboração moderna e trabalho remoto seguro para que a produtividade da sua empresa não tenha limites geográficos.",
+        "stat1": "Flexibilidade",
+        "stat2": "Acesso Seguro",
+        "stat3": "Aumento de Produtividade"
+      },
+      "features": {
+        "titleA": "Seu local de trabalho,",
+        "titleB": "completamente reinventado",
+        "sub": "Adaptar-se ao trabalho remoto não é só usar videochamadas; é ter processos ágeis, dispositivos seguros e equipes conectadas, não importa onde estejam.",
+        "items": [
+          {
+            "icon": "💬",
+            "title": "Microsoft Teams Avançado",
+            "desc": "Configuração completa: canais estruturados, bots, apps integrados, telefonia IP e salas de reunião virtuais para equipes distribuídas."
+          },
+          {
+            "icon": "📱",
+            "title": "Gestão de Dispositivos (Intune)",
+            "desc": "Inscrição e gestão de PCs, Macs, tablets e celulares. Controlamos as políticas de acesso e aplicamos limpeza remota quando necessário."
+          },
+          {
+            "icon": "🖥️",
+            "title": "Azure Virtual Desktop",
+            "desc": "Desktops virtuais na nuvem: seus funcionários acessam o ambiente de trabalho corporativo a partir de qualquer dispositivo pessoal com total segurança."
+          },
+          {
+            "icon": "🌐",
+            "title": "Intranets com SharePoint",
+            "desc": "Criamos o portal central da sua empresa para notícias corporativas, recursos humanos e gestão documental centralizada."
+          },
+          {
+            "icon": "🧠",
+            "title": "Microsoft Viva (Employee Exp)",
+            "desc": "Melhoramos o bem-estar do seu time medindo o engajamento, facilitando o aprendizado e equilibrando os tempos de trabalho."
+          },
+          {
+            "icon": "🛡️",
+            "title": "Segurança de Endpoint",
+            "desc": "Garantimos que cada dispositivo conectado à sua rede cumpra os padrões de segurança antes de permitir acesso aos dados."
+          }
+        ]
+      }
+    },
+    "security": {
+      "title": "Cibersegurança",
+      "badge": "Proteção e Compliance",
+      "sub": "Proteção avançada contra ameaças e auditorias de segurança em tempo real para o seu ambiente cloud.",
+      "stats": {
+        "monitoring": "Monitoramento Proativo",
+        "zerotrust": "Alinhamento Zero Trust",
+        "riskReduction": "Redução de risco"
+      },
+      "section": {
+        "headingPart1": "Sua tranquilidade é",
+        "headingPart2": "nossa maior prioridade",
+        "sub": "Um incidente de segurança pode parar sua operação e prejudicar sua reputação. Implementamos barreiras invisíveis e robustas que atuam de forma inteligente."
+      },
+      "features": [
+        {
+          "icon": "🔐",
+          "title": "Identidade Segura (Entra ID)",
+          "desc": "Implementamos MFA e Acesso Condicional para garantir que só usuários legítimos acessem seus sistemas."
+        },
+        {
+          "icon": "🛡️",
+          "title": "Defesa contra Ameaças",
+          "desc": "O Microsoft Defender for Business detecta e bloqueia malware, ransomware e ataques em tempo real."
+        },
+        {
+          "icon": "📧",
+          "title": "Antiphishing e E-mails",
+          "desc": "Configuramos verificações de e-mail e alinhamos SPF, DKIM e DMARC para proteger seu domínio."
+        },
+        {
+          "icon": "📱",
+          "title": "Gestão de Dispositivos (Intune)",
+          "desc": "Protegemos PCs e celulares com criptografia e limpeza remota."
+        },
+        {
+          "icon": "🔒",
+          "title": "Prevenção de Vazamentos (DLP)",
+          "desc": "Identificamos e protegemos informações sensíveis para evitar vazamentos acidentais."
+        },
+        {
+          "icon": "👁️",
+          "title": "Auditoria e Alertas Contínuos",
+          "desc": "Monitoramos seu ambiente e configuramos alertas para atividades suspeitas."
+        }
+      ]
+    },
+    "support": {
+      "title": "Suporte de TI",
+      "badge": "Serviços Gerenciados",
+      "sub": "Suporte técnico especializado e monitoramento 24/7 para garantir que a operação do seu negócio nunca pare.",
+      "hero": {
+        "badge": "Serviços Gerenciados (MSP)",
+        "title": "Suporte Técnico que Nunca te Abandona",
+        "sub": "Mesa de ajuda especializada, gestão proativa e resolução rápida. Delegue a administração da sua TI a verdadeiros especialistas para que seu negócio nunca pare.",
+        "stat1": "Suporte Contínuo",
+        "stat2": "Minutos (Resposta SLA)",
+        "stat3": "Resolução Rápida"
+      },
+      "features": {
+        "titleA": "Agimos antes que",
+        "titleB": "os problemas te afetem",
+        "sub": "Não esperamos as coisas quebrarem para agir. Nossa abordagem como Provedor de Serviços Gerenciados é prevenir falhas, manter tudo atualizado e atender seus usuários com atenção e agilidade.",
+        "items": [
+          {
+            "icon": "🎫",
+            "title": "Mesa de Ajuda (Help Desk)",
+            "desc": "Sistema de tickets com priorização por impacto. Múltiplos canais de contato: portal web, e-mail, Teams e linha telefônica para emergências críticas."
+          },
+          {
+            "icon": "👁️",
+            "title": "Monitoramento Proativo 24/7",
+            "desc": "Monitoramos a saúde dos seus servidores e rede. Recebemos alertas automáticos sobre desempenho e segurança antes que seus usuários percebam uma falha."
+          },
+          {
+            "icon": "🔧",
+            "title": "Manutenção Preventiva",
+            "desc": "Instalamos patches de segurança, atualizações do Windows e realizamos revisões periódicas do ambiente para blindar suas operações."
+          },
+          {
+            "icon": "⭐",
+            "title": "Suporte VIP para Diretores",
+            "desc": "Atendimento prioritário e dedicado para os altos executivos da sua empresa, garantindo que seu trabalho e viagens de negócios não sofram interrupções técnicas."
+          },
+          {
+            "icon": "📋",
+            "title": "Gestão de Licenças e Admissões",
+            "desc": "Cuidamos da entrada de novos funcionários (onboarding), criação de e-mails, atribuição de licenças M365 e desligamento seguro de usuários."
+          },
+          {
+            "icon": "📈",
+            "title": "Relatórios Executivos (vCIO)",
+            "desc": "Reuniões periódicas em que mostramos o estado da sua rede, o consumo de licenças, incidentes resolvidos e propostas de melhoria."
+          }
+        ]
+      }
+    },
+    "power": {
+      "title": "Power Platform",
+      "badge": "Automação",
+      "sub": "Automatize fluxos de trabalho e crie aplicativos sob medida para acelerar os processos do seu negócio.",
+      "hero": {
+        "badge": "Automação e Análise de Dados",
+        "title": "Automatize e Analise com Power Platform",
+        "sub": "Transformamos dados em decisões e processos manuais em fluxos automáticos. Desenvolvemos soluções sob medida sem a necessidade de desenvolvimentos de software caros.",
+        "stat1": "Tempo em Tarefas Manuais",
+        "stat2": "Apps Integrados",
+        "stat3": "Integração com M365"
+      },
+      "features": {
+        "titleA": "Todo o poder da tecnologia,",
+        "titleB": "ao alcance do seu negócio",
+        "sub": "Você não precisa de uma equipe de programadores in-house para se modernizar. Usamos tecnologia Low-Code para criar aplicativos e relatórios em semanas, não em meses.",
+        "items": [
+          {
+            "icon": "📊",
+            "title": "Power BI",
+            "desc": "Dashboards interativos que conectam todas as suas fontes de dados: vendas, produção, finanças e RH. Tome decisões baseadas em dados reais e em tempo real."
+          },
+          {
+            "icon": "⚙️",
+            "title": "Power Automate",
+            "desc": "Automação de aprovações, notificações por e-mail e processos repetitivos. Conectamos seu ambiente Microsoft a mais de 1000 aplicativos externos."
+          },
+          {
+            "icon": "📱",
+            "title": "Power Apps",
+            "desc": "Aplicativos empresariais personalizados: controle de estoque, formulários de campo, gestão de incidentes e coleta de dados a partir de qualquer celular."
+          },
+          {
+            "icon": "🤖",
+            "title": "Copilot Studio",
+            "desc": "Implementamos assistentes virtuais (chatbots) inteligentes com IA para responder automaticamente às dúvidas mais frequentes dos seus funcionários ou clientes."
+          },
+          {
+            "icon": "🔗",
+            "title": "Integração de Dados",
+            "desc": "Unificamos as informações dos seus sistemas antigos (ERPs, CRMs locais) para que interajam de forma fluida com seu ambiente na nuvem."
+          },
+          {
+            "icon": "⚖️",
+            "title": "Governança e Segurança",
+            "desc": "Aplicamos políticas rígidas para garantir que as automações e apps criados atendam aos padrões de segurança da sua empresa."
+          }
+        ]
+      }
+    },
+    "azure": {
+      "title": "Microsoft Azure",
+      "badge": "Infraestrutura Cloud",
+      "sub": "Migrações seguras, escalabilidade infinita e operações modernizadas na nuvem da Microsoft.",
+      "stats": {
+        "sla": "SLA Operacional",
+        "finops": "Economia Média (FinOps)",
+        "adaptability": "Adaptabilidade"
+      },
+      "section": {
+        "headingPart1": "O poder das grandes corporações,",
+        "headingPart2": "adaptado à sua escala",
+        "sub": "Comprar servidores físicos já não é rentável nem seguro. Ajudamos você a modernizar seu data center migrando para o Azure."
+      },
+      "features": [
+        {
+          "icon": "🖥️",
+          "title": "Servidores Virtuais (IaaS)",
+          "desc": "Migramos seus servidores locais (Windows/Linux) para a nuvem. Ideal para sistemas ERP e diretórios ativos, com escalabilidade elástica."
+        },
+        {
+          "icon": "🗄️",
+          "title": "Bancos de Dados Gerenciados",
+          "desc": "Implementamos SQL Database (PaaS) com backups automáticos e alta disponibilidade."
+        },
+        {
+          "icon": "🌐",
+          "title": "Redes e Conectividade Híbrida",
+          "desc": "Conectamos seu escritório ao Azure por meio de VPNs seguras e arquiteturas de alto desempenho."
+        },
+        {
+          "icon": "💾",
+          "title": "Disaster Recovery e Backup",
+          "desc": "Orquestramos a recuperação para que sua empresa volte a operar na nuvem em tempo recorde."
+        },
+        {
+          "icon": "💻",
+          "title": "Azure Virtual Desktop (AVD)",
+          "desc": "Desktops virtuais seguros acessíveis a partir de qualquer dispositivo."
+        },
+        {
+          "icon": "💰",
+          "title": "Otimização de Custos (FinOps)",
+          "desc": "Monitoramos o consumo e aplicamos right-sizing e instâncias reservadas."
+        }
+      ]
+    },
+    "automations": {
+      "hero": {
+        "badge": "Eficiência Operacional",
+        "title": "Automação de Processos de Negócio",
+        "sub": "Eliminamos tarefas repetitivas e erros humanos por meio de fluxos inteligentes que conectam seus aplicativos e dados.",
+        "stat1": "Menos tempo manual",
+        "stat2": "Precisão operacional",
+        "stat3": "Execução contínua"
+      },
+      "features": {
+        "titleA": "Libere seu time das",
+        "titleB": "tarefas rotineiras",
+        "sub": "A verdadeira produtividade não é trabalhar mais horas, é fazer os sistemas trabalharem por você. Conectamos suas ferramentas para criar uma máquina eficiente.",
+        "items": [
+          {
+            "icon": "⚙️",
+            "title": "Fluxos com Power Automate",
+            "desc": "Automatizamos aprovações, notificações e sincronização de dados entre centenas de aplicativos sem intervenção humana."
+          },
+          {
+            "icon": "🤖",
+            "title": "RPA (Robotic Process Automation)",
+            "desc": "Automatizamos aplicativos legados que não têm API, simulando as ações de um usuário na tela."
+          },
+          {
+            "icon": "🔗",
+            "title": "Azure Logic Apps",
+            "desc": "Fluxos de integração empresarial de alta escalabilidade para conectar sistemas complexos na nuvem ou locais."
+          },
+          {
+            "icon": "📊",
+            "title": "Automação de Relatórios",
+            "desc": "Geração automática de relatórios em PDF ou Power BI com base em gatilhos de negócio ou datas."
+          },
+          {
+            "icon": "⚡",
+            "title": "Event-Driven Workflows",
+            "desc": "Seus processos reagem instantaneamente a mudanças em bancos de dados, chegada de e-mails ou sinais de sensores IoT."
+          },
+          {
+            "icon": "✅",
+            "title": "Redução de Erros",
+            "desc": "Garantimos que cada dado se mova exatamente como deve, eliminando o fator de distração humana em processos críticos."
+          }
+        ]
+      }
+    },
+    "agentic": {
+      "hero": {
+        "badge": "Inteligência Artificial Avançada",
+        "title": "Agentes de IA: O Futuro da Autonomia",
+        "sub": "Implementamos agentes inteligentes capazes de raciocinar, tomar decisões e executar tarefas complexas no seu ambiente corporativo de forma autônoma.",
+        "stat1": "Aumento de eficiência",
+        "stat2": "Disponibilidade total",
+        "stat3": "Integração com M365"
+      },
+      "features": {
+        "titleA": "IA que não só responde,",
+        "titleB": "mas age",
+        "sub": "Vamos além do simples chatbot rumo ao agente cognitivo. Sistemas que compreendem suas regras de negócio e executam ações reais para resolver problemas.",
+        "items": [
+          {
+            "icon": "🧠",
+            "title": "Agentes Autônomos",
+            "desc": "IA capaz de receber uma meta e planejar os passos necessários para cumpri-la usando suas ferramentas empresariais."
+          },
+          {
+            "icon": "💬",
+            "title": "Copilot Studio",
+            "desc": "Desenvolvemos copilotos personalizados integrados ao Teams ou ao seu site, que conhecem seus dados específicos e agem sobre eles."
+          },
+          {
+            "icon": "🤖",
+            "title": "Multi-Agent Systems",
+            "desc": "Orquestramos múltiplas IAs especializadas que colaboram entre si para resolver processos departamentais complexos."
+          },
+          {
+            "icon": "🛡️",
+            "title": "IA com Governança",
+            "desc": "Implementamos agentes sob marcos de segurança rígidos, garantindo que só acessem o permitido e cumpram suas políticas."
+          },
+          {
+            "icon": "🔍",
+            "title": "Raciocínio sobre Dados",
+            "desc": "Seus agentes analisam tendências em tempo real e propõem ações ou as executam automaticamente após sua aprovação."
+          },
+          {
+            "icon": "📈",
+            "title": "Suporte e Vendas 2.0",
+            "desc": "Agentes que qualificam prospects, agendam reuniões ou resolvem tickets técnicos extraindo informações de manuais internos."
+          }
+        ]
+      }
+    },
+    "finops": {
+      "meta": {
+        "title": "Software FinOps para Azure | Otimização de Custos Cloud",
+        "description": "Plataforma FinOps SaaS para Azure: detecte recursos zumbis, faça rightsizing de VMs, gerencie reservas e reduza sua fatura cloud. Experimente a demo interativa gratuita.",
+        "keywords": ["FinOps Azure", "otimização de custos cloud", "gestão de custos Azure", "economia na nuvem", "cloud cost management", "Azure cost optimization", "recursos zumbis Azure", "rightsizing Azure", "reservas Azure RI", "software FinOps", "plataforma FinOps SaaS", "governança cloud"]
+      },
+      "hero": {
+        "badge": "Plataforma FinOps para Azure",
+        "title": "Azure FinOps: Maximize o Valor do seu Investimento",
+        "sub": "A plataforma SaaS da CSCloudSolutions se conecta ao seu Azure via Entra ID e mostra, em minutos, onde você está perdendo dinheiro na nuvem e como recuperá-lo.",
+        "ctaDemo": "Ver demo ao vivo →",
+        "ctaConsult": "Falar com um especialista",
+        "stat1": "Economia potencial detectada",
+        "stat2": "Recursos órfãos escaneados",
+        "stat3": "Conexão via Entra ID"
+      },
+      "pillars": {
+        "titleA": "Uma plataforma,",
+        "titleB": "cinco pilares FinOps",
+        "sub": "Visibilidade, otimização, limpeza, governança e administração: tudo o que você precisa para gerenciar o gasto no Azure em um só lugar.",
+        "items": [
+          {
+            "icon": "👁️",
+            "title": "Visibilidade",
+            "desc": "Dashboard executivo, histograma de custos de até 13 meses atrás, projeção de gasto a 3/6/12/24 meses e Azure Advisor sincronizado."
+          },
+          {
+            "icon": "🧠",
+            "title": "Inteligência Financeira",
+            "desc": "Consumo real, orçamentos por centro de custo, Rightsizing de VMs, reservas (RIs), Hybrid Benefit e Simulador What-If."
+          },
+          {
+            "icon": "🧹",
+            "title": "Limpeza de Nuvem",
+            "desc": "Motor Omni-Scan que detecta 25 tipos de recursos órfãos: discos, IPs públicos, App Service Plans vazios e mais."
+          },
+          {
+            "icon": "🛡️",
+            "title": "Governança",
+            "desc": "Conformidade de tags, alta disponibilidade, credenciais a expirar e horários de desligamento automático de VMs."
+          },
+          {
+            "icon": "⚙️",
+            "title": "Administração",
+            "desc": "Funções e permissões (RBAC), relatórios executivos, faturamento autogerenciado e suporte com SLA por plano."
+          }
+        ]
+      },
+      "features": {
+        "titleA": "Domine sua fatura cloud",
+        "titleB": "com engenharia financeira",
+        "sub": "A nuvem é elástica, mas sem controle o custo se expande indefinidamente. É assim que devolvemos o controle do orçamento.",
+        "items": [
+          {
+            "icon": "💰",
+            "title": "Cost Management",
+            "desc": "Orçamentos, alertas e análise granular de consumo por departamento, projeto ou centro de custo."
+          },
+          {
+            "icon": "📏",
+            "title": "Rightsizing",
+            "desc": "Detectamos VMs, App Service, SQL Database e Storage subutilizados, com recomendação de SKU e economia estimada."
+          },
+          {
+            "icon": "🎟️",
+            "title": "Reservas e Hybrid Benefit",
+            "desc": "Cobertura e utilização de Reserved Instances, além de economia de licenciamento com suas licenças Windows/SQL Server."
+          },
+          {
+            "icon": "🏷️",
+            "title": "Etiquetagem e Governança",
+            "desc": "Auditoria de conformidade de tags para que cada custo tenha um responsável atribuído (showback/chargeback)."
+          },
+          {
+            "icon": "♻️",
+            "title": "Recursos Zumbis",
+            "desc": "Motor Omni-Scan: 25 tipos de recursos órfãos detectados e com ação de exclusão direta pela plataforma."
+          },
+          {
+            "icon": "⏰",
+            "title": "Horários de Desligamento",
+            "desc": "Rotinas automáticas de ligar/desligar VMs em Dev/Test: até 60% de economia em horas de computação ociosas."
+          },
+          {
+            "icon": "🤖",
+            "title": "FinOps Copilot (IA)",
+            "desc": "Assistente que lê o contexto de cada tela e gera um relatório executivo com descobertas, economias e plano de ação."
+          },
+          {
+            "icon": "🧮",
+            "title": "Simulador What-If",
+            "desc": "Projete o impacto de escalar computação, variar tráfego ou migrar arquitetura antes de gastar um único dólar."
+          },
+          {
+            "icon": "📄",
+            "title": "Relatórios e Faturamento",
+            "desc": "Relatórios executivos automatizados e exportação de faturamento por assinatura em JSON, CSV ou PBIT."
+          }
+        ]
+      },
+      "copilot": {
+        "badge": "Diferencial",
+        "title": "Seu analista FinOps, disponível 24/7",
+        "sub": "O FinOps Copilot não espera você perguntar: assim que você abre uma tela, ele gera automaticamente um resumo executivo com o estado geral, as descobertas-chave, as oportunidades de economia priorizadas por impacto e um plano de ação de 7 dias. Com autorização, também pode guiar você na exclusão de recursos zumbis ou na aplicação de tags faltantes."
+      },
+      "tiers": {
+        "titleA": "Um plano para cada",
+        "titleB": "etapa da sua organização",
+        "sub": "De Essential a Enterprise, a plataforma escala com você: suporte com SLA de 48 h a 4 h, e recursos avançados como AI Analytics, MACC Tracker ou M365 Copilot nos planos superiores.",
+        "cta": "Ver planos e preços na demo →"
+      },
+      "faq": {
+        "badge": "Perguntas frequentes",
+        "titleA": "Dúvidas sobre",
+        "titleB": "a plataforma FinOps",
+        "items": [
+          {
+            "q": "Como a plataforma se conecta ao meu Azure?",
+            "a": "Por meio do Microsoft Entra ID (Active Directory), com acesso somente leitura via Service Principal. Você decide quais permissões conceder conforme o tier contratado."
+          },
+          {
+            "q": "Posso testar sem conectar meu Azure real?",
+            "a": "Sim. A demo interativa funciona com perfis comerciais pré-configurados (Essential, Professional, Business, Enterprise) com dados simulados, para que você explore cada módulo sem riscos."
+          },
+          {
+            "q": "O que acontece se eu não tiver as permissões corretas configuradas?",
+            "a": "A plataforma inclui um endpoint de diagnóstico que valida as funções atribuídas ao Service Principal e indica exatamente o que precisa ser corrigido no Azure."
+          },
+          {
+            "q": "A plataforma substitui o Azure Cost Management?",
+            "a": "Não, ela complementa: consolida esses dados com projeções, detecção de recursos zumbis, rightsizing acionável e governança, tudo o que o Azure Cost Management não resolve sozinho."
+          }
+        ]
+      },
+      "finalCta": {
+        "title": "Pronto para ver quanto você pode economizar?",
+        "sub": "Entre na demo interativa agora mesmo ou agende uma consulta com nosso time.",
+        "ctaDemo": "Ver demo ao vivo →",
+        "ctaConsult": "Solicitar consulta"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Seu Parceiro Estratégico na ",
+      "titleAccent": "Transformação Digital",
+      "sub": "Na CSCloudSolutions, somos mais que um fornecedor de serviços; somos o motor tecnológico liderado por especialistas certificados em Microsoft Azure que impulsiona o seu crescimento.",
+      "image": "/images/Trabajo_Colaborativo.webp"
+    },
+    "content": {
+      "history_title": "Nascidos para Simplificar a Nuvem",
+      "history_p1": "Nascemos na Argentina com uma missão clara: capacitar pequenas e médias empresas (PMEs) com soluções de tecnologia em nuvem que garantem segurança, otimização de custos e continuidade do negócio.",
+      "history_p2": "Liderada por Manuel Enrique Chávez Manzano, arquiteto especialista com certificações Azure Solutions Architect Expert, nossa empresa entende os desafios do mercado local e internacional. Ajudamos negócios a fazer a transição do mundo físico para o digital sem dor de cabeça, fortalecendo sua segurança e aumentando sua produtividade."
+    ,
+      "approach_title": "Nossa Abordagem Estratégica",
+      "m1_t": "Segurança de Grau Enterprise",
+      "m1_d": "Proteção proativa dos seus ativos por meio de auditorias constantes e conformidade com padrões internacionais.",
+      "m2_t": "Otimização de Custos (FinOps)",
+      "m2_d": "Eliminamos gastos desnecessários na nuvem para que cada investimento gere valor direto para sua rentabilidade.",
+      "m3_t": "Acompanhamento Humano",
+      "m3_d": "Não apenas implementamos tecnologia; orientamos seu time para que a nuvem seja uma vantagem competitiva real."
+    }
+  },
+  "footer": {
+    "brand": "Especialistas em soluções cloud Microsoft para PMEs da América Latina e do mundo. Migramos, protegemos e otimizamos sua infraestrutura.",
+    "partnerNetwork": "A CSCloudSolutions faz parte da rede global de parceiros <b>Microsoft AI Cloud Partner Program</b>",
+    "company": "Empresa",
+    "about": "Quem somos",
+    "blog": "Blog",
+    "privacy": "Política de privacidade",
+    "terms": "Termos e condições",
+    "contact": "Redes e contato",
+    "certTitle": "Nossas credenciais",
+    "certs": [
+      "🏆 Microsoft Certified: Azure Solutions Architect Expert",
+      "🏆 Microsoft Certified: Azure Administrator Associate",
+      "🏆 Microsoft Certified: Azure Network Engineer Associate",
+      "🏆 Microsoft 365 Certified: Enterprise Administrator"
+    ],
+    "rights": "Todos os direitos reservados.",
+    "afip": "QR AFIP",
+    "refund": "Política de Reembolso"
+  },
+  "refundPolicy": {
+    "title": "Política de Reembolsos e Cancelamentos",
+    "updated": "Última atualização: 18/06/2026",
+    "intro": "Esta Política de Reembolsos e Cancelamentos rege as compras realizadas através da CSCloudSolutions (cscloudsolutions.com.ar) e da nossa plataforma de gestão financeira em nuvem CSCloud FinOps (finops.cscloudsolutions.com.ar).",
+    "saasTitle": "1. Assinaturas SaaS (CSCloud FinOps)",
+    "saasContent1": "Nosso software como serviço (SaaS) é oferecido com faturamento mensal ou anual. Para garantir que nossa plataforma atenda às suas necessidades, oferecemos um período de teste gratuito de 14 dias nos planos Professional e Business.",
+    "saasTrial": "Durante o período de teste: Você pode cancelar sua assinatura a qualquer momento antes do fim dos 14 dias sem que nenhuma cobrança seja feita no seu cartão de crédito.",
+    "saasAfter": "Após o período de teste: Devido à natureza dos produtos digitais e ao período de avaliação gratuito concedido, não oferecemos reembolsos depois que a cobrança da assinatura for processada (seja mensal ou anual).",
+    "saasCancel": "Cancelamentos: Você pode cancelar sua assinatura a qualquer momento pelo painel de administração da sua conta. O cancelamento interrompe as cobranças futuras, e você mantém o acesso à plataforma até o fim do seu ciclo de faturamento atual.",
+    "consultingTitle": "2. Serviços de Consultoria e Infraestrutura (CSCloudSolutions)",
+    "consultingContent1": "Para serviços de consultoria, migrações para Azure, Microsoft 365, auditorias FinOps personalizadas ou implementações de Azure Virtual Desktop, os reembolsos são regidos pelo Acordo de Nível de Serviço (SLA) ou pela Proposta Comercial (SOW) assinada por ambas as partes.",
+    "consultingContent2": "As horas de consultoria já executadas, os diagnósticos técnicos realizados e os recursos de nuvem implantados no tenant do cliente não são reembolsáveis.",
+    "consultingContent3": "Se um projeto for cancelado antes de sua conclusão, será faturado apenas o trabalho concluído até a data da notificação por escrito.",
+    "paymentsTitle": "3. Processadores de Pagamento (Merchant of Record)",
+    "paymentsContent": "Nossos pagamentos de assinatura são processados com segurança por meio dos nossos parceiros autorizados (Merchant of Record). Ao realizar uma compra, você também aceita os termos e condições do nosso processador de pagamentos. Qualquer disputa de faturamento deve ser comunicada primeiro à nossa equipe para tentarmos uma resolução amigável.",
+    "exceptionsTitle": "4. Exceções",
+    "exceptionsContent": "Podemos fazer exceções a esta política a nosso exclusivo critério se considerarmos que houve um erro técnico da nossa parte que tenha impedido o uso completo da plataforma por um período prolongado.",
+    "contactTitle": "5. Contato",
+    "contactContent": "Se você tiver alguma dúvida sobre seu faturamento, quiser cancelar sua conta ou achar que houve um erro na sua cobrança, entre em contato conosco escrevendo para: "
+  },
+  "finopsPopup": {
+    "title": "Preços Simples e Fixos",
+    "subtitle": "Seja você uma startup ou uma Enterprise, temos planos simples e fixos que não agravam seus problemas de custos.",
+    "essential": {
+      "name": "Essential (Starter)",
+      "desc": "Para empresas que estão começando a se preocupar com seus custos no Azure.",
+      "features": [
+        "1 assinatura do Azure, 1 usuário",
+        "Histórico de Custos e Faturamento",
+        "Visualização de Orçamentos",
+        "Maturidade FinOps (Assessment)",
+        "Dashboard de Sustentabilidade",
+        "Exportações PDF/CSV",
+        "Pontuação de Saúde do Azure Advisor"
+      ]
+    },
+    "pro": {
+      "name": "Professional",
+      "desc": "Para empresas médias que precisam entender tendências e gerar relatórios.",
+      "features": [
+        "Até 5 assinaturas do Azure, até 5 usuários",
+        "Tudo do Essential",
+        "Limpeza Ativa de Recursos Zumbis",
+        "Execução de Rightsizing",
+        "Descontos por Compromisso (RIs)",
+        "Motor Preditivo de Anomalias (Z-Score)",
+        "Canais de Notificação (Slack/Teams/Email/Webhook)"
+      ]
+    },
+    "business": {
+      "name": "Business",
+      "badge": "Mais Popular",
+      "desc": "Automação básica e múltiplos ambientes para empresas em crescimento.",
+      "features": [
+        "Até 20 assinaturas do Azure, até 20 usuários",
+        "Tudo do Professional",
+        "Ligar/Desligar Automático (Schedules)",
+        "FinOps Copilot (IA)",
+        "Controle AKS (Kubernetes)",
+        "Distribuição de Custos (Chargeback)",
+        "Cenários What-If (Simulador de Custos)"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "badge": "Controle Total",
+      "desc": "Para corporações com topologias complexas (Hub & Spoke).",
+      "features": [
+        "Assinaturas do Azure e usuários ilimitados",
+        "Tudo do Business",
+        "Suporte dedicado ilimitado (SLA 4 h)",
+        "Motor de Billing para Partners (CSP)",
+        "SSO Federado (SAML)",
+        "Exportação Power BI (FOCUS)",
+        "Políticas Preventivas as Code"
+      ]
+    },
+    "popupCta": "Começar teste gratuito de 7 dias ›"
+  }
+}

@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://cscloudsolutions.com.ar';
-  const locales = ['es', 'en'];
+  const locales = ['es', 'en', 'pt-BR'];
 
   // 1. Definimos todas las rutas base del sitio
   const routes = [
