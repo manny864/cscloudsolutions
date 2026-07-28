@@ -107,7 +107,7 @@ export default async function LocaleLayout({children, params}: {children: React.
           {`
             function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
             o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
-            o.onload=function(){window.trackingFunctions.onLoad({appId:"698cd6a75da43d0021941905"})},
+            o.onload=function(){window.trackingFunctions.onLoad({appId:"6a4bc7e6c53b0b0020bb4678"})},
             document.head.appendChild(o)}initApollo();
           `}
         </Script>
