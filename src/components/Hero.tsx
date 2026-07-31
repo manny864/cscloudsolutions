@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Container } from './Container';
 import { Link } from '@/i18n/routing';
@@ -6,19 +9,61 @@ import { StatCounter } from './StatCounter';
 
 export function Hero() {
   const t = useTranslations('home.hero');
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Carga diferida del vídeo tras renderizado crítico inicial (1s delay / idle)
+    const timer = setTimeout(() => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReducedMotion) {
+        setVideoSrc('/videos/CSCS-Interactivo.mp4');
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-[color:var(--navy)]">
+      {/* CAPA 1 (Video de fondo diferido) */}
+      {videoSrc && (
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-hidden="true"
+            tabIndex={-1}
+            disablePictureInPicture
+            onCanPlay={() => setIsVideoLoaded(true)}
+            className={`h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
+              isVideoLoaded ? 'opacity-40' : 'opacity-0'
+            }`}
+          />
+        </div>
+      )}
 
-      {/* CAPA 3 (Decoración) */}
-      <div className="absolute inset-0 z-10">
+      {/* CAPA 2 (Overlay de degradado corporativo navy para contraste perfecto WCAG) */}
+      <div 
+        className="absolute inset-0 z-[5] pointer-events-none bg-gradient-to-r from-[color:var(--navy)]/90 via-[color:var(--navy)]/75 to-[color:var(--navy)]/80" 
+        aria-hidden="true" 
+      />
+
+      {/* CAPA 3 (Decoración con orbes) */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
         <BackgroundOrbs />
       </div>
 
       {/* CAPA 4 (Contenido) */}
       <Container className="relative z-20 grid min-h-[92dvh] items-center gap-12 py-16 lg:grid-cols-[1fr_420px]">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[color:rgba(0,174,239,0.35)] bg-[color:rgba(0,174,239,0.12)] px-4 py-2 text-[12px] sm:text-[11px] font-extrabold uppercase tracking-widest text-white">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[color:rgba(0,174,239,0.35)] bg-[color:rgba(0,174,239,0.12)] px-4 py-2 text-[12px] sm:text-[11px] font-extrabold uppercase tracking-widest text-white backdrop-blur-sm">
             {t('badge')}
           </div>
 
