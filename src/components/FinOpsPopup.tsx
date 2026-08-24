@@ -2,6 +2,16 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import {
+  IconX,
+  IconCheck,
+  IconChevronDown,
+  IconSparkles,
+  IconShieldCheck,
+  IconStar,
+  IconAward,
+  IconLock,
+} from '@tabler/icons-react';
 
 const STORAGE_KEY = 'finops-popup-shown';
 
@@ -29,7 +39,6 @@ export function FinOpsPopup() {
 
   useEffect(() => {
     // Solo se muestra una vez por visitante (primera vez que entra al sitio).
-    // Mismo patrón de persistencia que CookieBanner.tsx.
     try {
       if (localStorage.getItem(STORAGE_KEY)) return;
     } catch {
@@ -82,16 +91,15 @@ export function FinOpsPopup() {
           className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[70] p-2.5 text-gray-500 hover:text-gray-900 bg-white/80 hover:bg-white rounded-full shadow-sm transition-all hover:scale-105 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
           aria-label="Cerrar modal"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <IconX className="w-5 h-5 text-gray-700" stroke={2.5} />
         </button>
 
         <div className="relative z-10">
           {/* Header */}
           <div className="text-center mb-8 sm:mb-10 pt-2 sm:pt-0">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--cyan)]/30 bg-[color:var(--cyan)]/10 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--navy)] mb-3 sm:mb-4">
-              ✨ CSCloud FinOps Platform
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--cyan)]/30 bg-[color:var(--cyan)]/10 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--navy)] mb-3 sm:mb-4">
+              <IconSparkles className="w-3.5 h-3.5 text-[color:var(--cyan-dark)]" stroke={2} />
+              <span>CSCloud FinOps Platform</span>
             </div>
             <h2 id="finops-popup-title" className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight font-heading">
               {t('title')}
@@ -107,8 +115,9 @@ export function FinOpsPopup() {
             <div className="bg-white/95 rounded-2xl shadow-md border border-gray-200/90 p-6 flex flex-col justify-between transition-all hover:shadow-lg hover:border-blue-300 relative overflow-hidden">
               <div>
                 <div className="flex flex-wrap items-center gap-2 justify-between mb-3">
-                  <span className="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md border border-blue-200">
-                    {t('pro.badge')}
+                  <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md border border-blue-200">
+                    <IconAward className="w-3.5 h-3.5 text-blue-700" stroke={2} />
+                    <span>{t('pro.badge')}</span>
                   </span>
                   <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                     {t('pro.trial')}
@@ -122,9 +131,7 @@ export function FinOpsPopup() {
                 <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
                   {(expandedTiers.pro ? proFeatures : proFeatures.slice(0, 8)).map((f, i) => (
                     <li key={i} className="flex items-start">
-                      <svg className="w-4 h-4 text-[color:var(--cyan-dark)] mr-2.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                      </svg>
+                      <IconCheck className="w-4 h-4 text-[color:var(--cyan-dark)] mr-2.5 mt-0.5 flex-shrink-0" stroke={2.5} />
                       <span className={i === 0 ? 'font-semibold text-gray-900' : ''}>{f}</span>
                     </li>
                   ))}
@@ -141,9 +148,10 @@ export function FinOpsPopup() {
                       ? t('viewLess')
                       : t('viewMore', { count: proFeatures.length })}
                   </span>
-                  <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.pro ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <IconChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.pro ? 'rotate-180' : ''}`}
+                    stroke={2.5}
+                  />
                 </button>
               )}
             </div>
@@ -154,8 +162,9 @@ export function FinOpsPopup() {
               
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="inline-block bg-[color:var(--navy)] text-white text-xs font-extrabold px-3 py-1 rounded-md tracking-wide uppercase">
-                    ⭐ {t('business.badge')}
+                  <span className="inline-flex items-center gap-1.5 bg-[color:var(--navy)] text-white text-xs font-extrabold px-3 py-1 rounded-md tracking-wide uppercase">
+                    <IconStar className="w-3.5 h-3.5 text-amber-300 fill-amber-300" stroke={2} />
+                    <span>{t('business.badge')}</span>
                   </span>
                 </div>
                 <h3 className="text-xl font-extrabold text-[color:var(--navy)] mb-2">{t('business.name')}</h3>
@@ -166,9 +175,7 @@ export function FinOpsPopup() {
                 <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
                   {(expandedTiers.business ? businessFeatures : businessFeatures.slice(0, 8)).map((f, i) => (
                     <li key={i} className="flex items-start">
-                      <svg className="w-4 h-4 text-[color:var(--navy)] mr-2.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                      </svg>
+                      <IconCheck className="w-4 h-4 text-[color:var(--navy)] mr-2.5 mt-0.5 flex-shrink-0" stroke={2.5} />
                       <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-gray-900' : ''}>
                         {f}
                       </span>
@@ -187,35 +194,35 @@ export function FinOpsPopup() {
                       ? t('viewLess')
                       : t('viewMore', { count: businessFeatures.length })}
                   </span>
-                  <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.business ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <IconChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.business ? 'rotate-180' : ''}`}
+                    stroke={2.5}
+                  />
                 </button>
               )}
             </div>
 
-            {/* 3. ENTERPRISE (Dark Luxury) */}
+            {/* 3. ENTERPRISE (Dark Luxury - Full White Accents for Badge, Text and Checks) */}
             <div className="bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-white rounded-2xl shadow-xl border border-slate-700 p-6 flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[color:var(--cyan)]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none" />
 
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="inline-block bg-[color:var(--cyan)]/20 text-[color:var(--cyan)] text-xs font-bold px-2.5 py-1 rounded-md border border-[color:var(--cyan)]/30">
-                    🛡️ {t('enterprise.badge')}
+                  <span className="inline-flex items-center gap-1.5 bg-white/10 text-white text-xs font-bold px-2.5 py-1 rounded-md border border-white/20">
+                    <IconShieldCheck className="w-3.5 h-3.5 text-white" stroke={2} />
+                    <span className="text-white font-bold">{t('enterprise.badge')}</span>
                   </span>
                 </div>
                 <h3 className="text-xl font-extrabold text-white mb-2">{t('enterprise.name')}</h3>
                 <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed">{t('enterprise.desc')}</p>
 
-                <div className="h-px bg-slate-700/80 mb-5" />
+                <div className="h-px bg-slate-700 mb-5" />
 
-                <ul className="space-y-3 text-xs sm:text-sm text-slate-200">
+                <ul className="space-y-3 text-xs sm:text-sm text-white">
                   {(expandedTiers.enterprise ? enterpriseFeatures : enterpriseFeatures.slice(0, 8)).map((f, i) => (
                     <li key={i} className="flex items-start">
-                      <svg className="w-4 h-4 text-[color:var(--cyan)] mr-2.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-white' : ''}>
+                      <IconCheck className="w-4 h-4 text-white mr-2.5 mt-0.5 flex-shrink-0" stroke={2.5} />
+                      <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-white' : 'text-slate-100'}>
                         {f}
                       </span>
                     </li>
@@ -226,16 +233,17 @@ export function FinOpsPopup() {
               {enterpriseFeatures.length > 8 && (
                 <button
                   onClick={() => toggleTier('enterprise')}
-                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan)] hover:text-cyan-200 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                  className="mt-4 pt-2 text-xs font-bold text-white hover:text-white/80 transition-colors text-left flex items-center gap-1 focus:outline-none"
                 >
                   <span>
                     {expandedTiers.enterprise
                       ? t('viewLess')
                       : t('viewMore', { count: enterpriseFeatures.length })}
                   </span>
-                  <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.enterprise ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <IconChevronDown
+                    className={`w-3.5 h-3.5 text-white transition-transform duration-200 ${expandedTiers.enterprise ? 'rotate-180' : ''}`}
+                    stroke={2.5}
+                  />
                 </button>
               )}
             </div>
@@ -252,8 +260,9 @@ export function FinOpsPopup() {
             >
               {t('popupCta')}
             </a>
-            <p className="text-xs text-gray-500 font-medium">
-              🔒 Conexión segura con Azure • Sin tarjeta de crédito requerida • 100% de gobernanza
+            <p className="inline-flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+              <IconLock className="w-3.5 h-3.5 text-gray-400" stroke={2} />
+              <span>Conexión segura con Azure • Sin tarjeta de crédito requerida • 100% de gobernanza</span>
             </p>
           </div>
         </div>
