@@ -1,125 +1,261 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+
+import { useState, useEffect, useCallback } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 
 const STORAGE_KEY = 'finops-popup-shown';
 
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>({
+    pro: false,
+    business: false,
+    enterprise: false,
+  });
+
   const t = useTranslations('finopsPopup');
-  const finopsUrl = 'https://finops.cscloudsolutions.com.ar';
+  const locale = useLocale();
+  const finopsLocale = locale === 'pt-BR' ? 'pt-BR' : locale === 'en' ? 'en' : 'es';
+  const finopsUrl = `https://finops.cscloudsolutions.com.ar/${finopsLocale}/upgrade`;
+
+  const handleClose = useCallback(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, '1');
+    } catch {
+      // Ignorar si localStorage está deshabilitado
+    }
+    setIsOpen(false);
+  }, []);
 
   useEffect(() => {
-    // Solo se muestra una vez por visitante (primera vez que entra al sitio,
-    // en cualquier página — el componente vive en el layout raíz). Mismo
-    // patrón de persistencia que CookieBanner.tsx (localStorage, sin backend).
-    if (localStorage.getItem(STORAGE_KEY)) return;
+    // Solo se muestra una vez por visitante (primera vez que entra al sitio).
+    // Mismo patrón de persistencia que CookieBanner.tsx.
+    try {
+      if (localStorage.getItem(STORAGE_KEY)) return;
+    } catch {
+      return;
+    }
+
     const timer = setTimeout(() => {
       setIsOpen(true);
     }, 7000);
+
     return () => clearTimeout(timer);
   }, []);
 
-  const handleClose = () => {
-    localStorage.setItem(STORAGE_KEY, '1');
-    setIsOpen(false);
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, handleClose]);
+
+  const toggleTier = (tier: string) => {
+    setExpandedTiers((prev) => ({
+      ...prev,
+      [tier]: !prev[tier],
+    }));
   };
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-gray-50 rounded-2xl shadow-2xl p-4 sm:p-8 border border-white/20">
+  const proFeatures = (t.raw('pro.features') as string[]) || [];
+  const businessFeatures = (t.raw('business.features') as string[]) || [];
+  const enterpriseFeatures = (t.raw('enterprise.features') as string[]) || [];
 
-        {/* Close button */}
-        <button 
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 bg-black/65 backdrop-blur-md animate-in fade-in duration-300"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) handleClose();
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="finops-popup-title"
+    >
+      <div className="relative w-full max-w-6xl max-h-[92vh] overflow-y-auto bg-slate-50/95 backdrop-blur-xl rounded-3xl shadow-2xl p-5 sm:p-8 lg:p-10 border border-white/40 custom-scrollbar">
+        {/* Botón de Cierre */}
+        <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-[70] p-2 text-gray-500 hover:text-gray-800 bg-white/50 hover:bg-white rounded-full transition-colors backdrop-blur-md"
-          aria-label="Close"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[70] p-2.5 text-gray-500 hover:text-gray-900 bg-white/80 hover:bg-white rounded-full shadow-sm transition-all hover:scale-105 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+          aria-label="Cerrar modal"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
 
         <div className="relative z-10">
-          <div className="text-center mb-6 sm:mb-10 mt-6 sm:mt-0">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight font-heading">
+          {/* Header */}
+          <div className="text-center mb-8 sm:mb-10 pt-2 sm:pt-0">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--cyan)]/30 bg-[color:var(--cyan)]/10 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-[color:var(--navy)] mb-3 sm:mb-4">
+              ✨ CSCloud FinOps Platform
+            </div>
+            <h2 id="finops-popup-title" className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight font-heading">
               {t('title')}
             </h2>
-            <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto px-2">
+            <p className="mt-3 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto px-2">
               {t('subtitle')}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {/* Essential */}
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-200 p-5 sm:p-8 flex flex-col relative overflow-hidden">
-               <h3 className="text-lg font-medium text-gray-900 mb-4">{t('essential.name')}</h3>
-               <p className="text-sm text-gray-500 mb-6">{t('essential.desc')}</p>
-               <ul className="space-y-4 text-sm text-gray-600">
-                  {(t.raw('essential.features') as string[]).map((f, i) => (
-                    <li key={i} className="flex items-start font-medium text-gray-900">
-                      <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span className={f.startsWith('Todo lo de') || f.startsWith('Everything in') ? 'font-bold' : ''}>{f}</span>
+          {/* Grid de 3 Planes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            {/* 1. PROFESSIONAL */}
+            <div className="bg-white/95 rounded-2xl shadow-md border border-gray-200/90 p-6 flex flex-col justify-between transition-all hover:shadow-lg hover:border-blue-300 relative overflow-hidden">
+              <div>
+                <div className="flex flex-wrap items-center gap-2 justify-between mb-3">
+                  <span className="inline-block bg-blue-50 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-md border border-blue-200">
+                    {t('pro.badge')}
+                  </span>
+                  <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    {t('pro.trial')}
+                  </span>
+                </div>
+                <h3 className="text-xl font-extrabold text-gray-900 mb-2">{t('pro.name')}</h3>
+                <p className="text-xs sm:text-sm text-gray-500 mb-5 leading-relaxed">{t('pro.desc')}</p>
+
+                <div className="h-px bg-gray-100 mb-5" />
+
+                <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
+                  {(expandedTiers.pro ? proFeatures : proFeatures.slice(0, 8)).map((f, i) => (
+                    <li key={i} className="flex items-start">
+                      <svg className="w-4 h-4 text-[color:var(--cyan-dark)] mr-2.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className={i === 0 ? 'font-semibold text-gray-900' : ''}>{f}</span>
                     </li>
                   ))}
-               </ul>
+                </ul>
+              </div>
+
+              {proFeatures.length > 8 && (
+                <button
+                  onClick={() => toggleTier('pro')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan-dark)] hover:text-blue-800 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                >
+                  <span>
+                    {expandedTiers.pro
+                      ? t('viewLess')
+                      : t('viewMore', { count: proFeatures.length })}
+                  </span>
+                  <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.pro ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )}
             </div>
 
-            {/* Professional */}
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-200 p-5 sm:p-8 flex flex-col relative overflow-hidden">
-               <h3 className="text-xl font-bold text-gray-900 mb-4">{t('pro.name')}</h3>
-               <p className="text-sm text-gray-500 mb-6">{t('pro.desc')}</p>
-               <ul className="space-y-4 text-sm text-gray-600">
-                  {(t.raw('pro.features') as string[]).map((f, i) => (
-                    <li key={i} className="flex items-start font-medium text-gray-900">
-                      <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span className={f.startsWith('Todo lo de') || f.startsWith('Everything in') ? 'font-bold' : ''}>{f}</span>
+            {/* 2. BUSINESS (Featured) */}
+            <div className="bg-white rounded-2xl shadow-xl border-2 border-[color:var(--navy)] p-6 flex flex-col justify-between relative overflow-hidden transform md:-translate-y-2 ring-4 ring-blue-500/10">
+              <div className="absolute top-0 right-0 left-0 h-1.5 bg-gradient-to-r from-[color:var(--navy)] via-[color:var(--cyan)] to-[color:var(--navy)]" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="inline-block bg-[color:var(--navy)] text-white text-xs font-extrabold px-3 py-1 rounded-md tracking-wide uppercase">
+                    ⭐ {t('business.badge')}
+                  </span>
+                </div>
+                <h3 className="text-xl font-extrabold text-[color:var(--navy)] mb-2">{t('business.name')}</h3>
+                <p className="text-xs sm:text-sm text-gray-600 mb-5 leading-relaxed">{t('business.desc')}</p>
+
+                <div className="h-px bg-gray-100 mb-5" />
+
+                <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
+                  {(expandedTiers.business ? businessFeatures : businessFeatures.slice(0, 8)).map((f, i) => (
+                    <li key={i} className="flex items-start">
+                      <svg className="w-4 h-4 text-[color:var(--navy)] mr-2.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-gray-900' : ''}>
+                        {f}
+                      </span>
                     </li>
                   ))}
-               </ul>
+                </ul>
+              </div>
+
+              {businessFeatures.length > 8 && (
+                <button
+                  onClick={() => toggleTier('business')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--navy)] hover:text-blue-900 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                >
+                  <span>
+                    {expandedTiers.business
+                      ? t('viewLess')
+                      : t('viewMore', { count: businessFeatures.length })}
+                  </span>
+                  <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.business ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )}
             </div>
 
-            {/* Business */}
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border-2 border-[#0054A6] p-5 sm:p-8 flex flex-col relative overflow-hidden transform lg:-translate-y-4">
-               <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
-                 <span className="bg-[#0054A6] text-white text-xs font-bold px-3 py-1 rounded-b-lg uppercase tracking-wide">{t('business.badge')}</span>
-               </div>
-               <h3 className="text-xl font-bold text-[#0054A6] mb-4 mt-2">{t('business.name')}</h3>
-               <p className="text-sm text-gray-500 mb-6">{t('business.desc')}</p>
-               <ul className="space-y-4 text-sm text-gray-600">
-                  {(t.raw('business.features') as string[]).map((f, i) => (
-                    <li key={i} className="flex items-start font-medium text-gray-900">
-                      <svg className="w-5 h-5 text-[#0054A6] mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span className={f.startsWith('Todo lo de') || f.startsWith('Everything in') ? 'font-bold' : ''}>{f}</span>
-                    </li>
-                  ))}
-               </ul>
-            </div>
+            {/* 3. ENTERPRISE (Dark Luxury) */}
+            <div className="bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-white rounded-2xl shadow-xl border border-slate-700 p-6 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[color:var(--cyan)]/10 rounded-full blur-2xl pointer-events-none" />
 
-            {/* Enterprise */}
-            <div className="bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-700 p-5 sm:p-8 flex flex-col relative overflow-hidden">
-               <div className="flex justify-between items-center mb-4">
-                 <h3 className="text-lg font-medium text-white">{t('enterprise.name')}</h3>
-                 <span className="bg-blue-500/20 text-blue-300 text-xs font-semibold px-2 py-1 rounded">{t('enterprise.badge')}</span>
-               </div>
-               <p className="text-sm text-gray-300 mb-6">{t('enterprise.desc')}</p>
-               <ul className="space-y-4 text-sm text-gray-300">
-                  {(t.raw('enterprise.features') as string[]).map((f, i) => (
-                    <li key={i} className="flex items-start font-medium text-white">
-                      <svg className="w-5 h-5 text-blue-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                      <span className={f.startsWith('Todo lo de') || f.startsWith('Everything in') ? 'font-bold' : ''}>{f}</span>
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="inline-block bg-[color:var(--cyan)]/20 text-[color:var(--cyan)] text-xs font-bold px-2.5 py-1 rounded-md border border-[color:var(--cyan)]/30">
+                    🛡️ {t('enterprise.badge')}
+                  </span>
+                </div>
+                <h3 className="text-xl font-extrabold text-white mb-2">{t('enterprise.name')}</h3>
+                <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed">{t('enterprise.desc')}</p>
+
+                <div className="h-px bg-slate-700/80 mb-5" />
+
+                <ul className="space-y-3 text-xs sm:text-sm text-slate-200">
+                  {(expandedTiers.enterprise ? enterpriseFeatures : enterpriseFeatures.slice(0, 8)).map((f, i) => (
+                    <li key={i} className="flex items-start">
+                      <svg className="w-4 h-4 text-[color:var(--cyan)] mr-2.5 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-white' : ''}>
+                        {f}
+                      </span>
                     </li>
                   ))}
-               </ul>
+                </ul>
+              </div>
+
+              {enterpriseFeatures.length > 8 && (
+                <button
+                  onClick={() => toggleTier('enterprise')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan)] hover:text-cyan-200 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                >
+                  <span>
+                    {expandedTiers.enterprise
+                      ? t('viewLess')
+                      : t('viewMore', { count: enterpriseFeatures.length })}
+                  </span>
+                  <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.enterprise ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              )}
             </div>
           </div>
-          
-          <div className="mt-8 sm:mt-10 text-center pb-4 sm:pb-0">
-             <a href={finopsUrl} target="_blank" rel="noopener noreferrer" onClick={handleClose} className="inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-transparent text-sm sm:text-base font-bold rounded-[5px] text-white bg-[#0054A6] hover:bg-blue-800 transition-colors shadow-lg hover:shadow-xl">
-               {t('popupCta')}
-             </a>
-          </div>
 
+          {/* CTA Footer */}
+          <div className="mt-8 sm:mt-10 text-center flex flex-col items-center justify-center gap-3">
+            <a
+              href={finopsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleClose}
+              className="inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-extrabold text-white bg-gradient-to-r from-[color:var(--navy)] to-[#0054A6] hover:from-[#002244] hover:to-[color:var(--navy)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            >
+              {t('popupCta')}
+            </a>
+            <p className="text-xs text-gray-500 font-medium">
+              🔒 Conexión segura con Azure • Sin tarjeta de crédito requerida • 100% de gobernanza
+            </p>
+          </div>
         </div>
       </div>
     </div>
