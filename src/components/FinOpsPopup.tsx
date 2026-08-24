@@ -8,7 +8,7 @@ import {
   IconChevronDown,
   IconSparkles,
   IconShieldCheck,
-  IconStar,
+  IconStarFilled,
   IconAward,
   IconLock,
 } from '@tabler/icons-react';
@@ -163,7 +163,7 @@ export function FinOpsPopup() {
               <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="inline-flex items-center gap-1.5 bg-[color:var(--navy)] text-white text-xs font-extrabold px-3 py-1 rounded-md tracking-wide uppercase">
-                    <IconStar className="w-3.5 h-3.5 text-amber-300 fill-amber-300" stroke={2} />
+                    <IconStarFilled className="w-3.5 h-3.5 text-amber-400" />
                     <span>{t('business.badge')}</span>
                   </span>
                 </div>
