@@ -30,26 +30,35 @@ export function FinOpsPopup() {
 
   const handleClose = useCallback(() => {
     try {
+      sessionStorage.setItem(STORAGE_KEY, '1');
       localStorage.setItem(STORAGE_KEY, '1');
     } catch {
-      // Ignorar si localStorage está deshabilitado
+      // Ignorar si el almacenamiento está deshabilitado
     }
     setIsOpen(false);
   }, []);
 
   useEffect(() => {
-    // Solo se muestra una vez por visitante (primera vez que entra al sitio).
+    // Listener para apertura manual desde cualquier botón del sitio
+    const handleOpenEvent = () => setIsOpen(true);
+    window.addEventListener('open-finops-modal', handleOpenEvent);
+
+    // Apertura automática a los 5 segundos si no se ha mostrado en la sesión
+    let timer: NodeJS.Timeout;
     try {
-      if (localStorage.getItem(STORAGE_KEY)) return;
+      if (!sessionStorage.getItem(STORAGE_KEY)) {
+        timer = setTimeout(() => {
+          setIsOpen(true);
+        }, 5000);
+      }
     } catch {
-      return;
+      // Fallback
     }
 
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 7000);
-
-    return () => clearTimeout(timer);
+    return () => {
+      window.removeEventListener('open-finops-modal', handleOpenEvent);
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
