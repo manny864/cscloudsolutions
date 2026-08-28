@@ -46,22 +46,22 @@ jobs:
       - name: Compilar proyecto (Build)
         run: npm run build
 
-      - name: Empaquetar artefacto para despliegue
+      - name: Empaquetar artefacto en ZIP (formato nativo Azure)
         run: |
-          tar -czf app-build.tar.gz \
-            --exclude=.next/cache \
+          zip -r release.zip \
             .next \
             public \
             messages \
             next.config.mjs \
             package.json \
-            package-lock.json
+            package-lock.json \
+            -x ".next/cache/*"
 
       - name: Subir artefacto de compilación temporal
         uses: actions/upload-artifact@v4
         with:
-          name: app-package
-          path: app-build.tar.gz
+          name: release-package
+          path: release.zip
           retention-days: 1
 
   # ── Despliegue a Staging (push a rama staging) ──────────────────────────
@@ -74,7 +74,7 @@ jobs:
       - name: Descargar artefacto
         uses: actions/download-artifact@v4
         with:
-          name: app-package
+          name: release-package
 
       - name: Login en Azure
         uses: azure/login@v2
@@ -86,7 +86,7 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: ${{ env.AZURE_STAGING_SLOT }}
-          package: app-build.tar.gz
+          package: release.zip
 
   # ── Despliegue a Producción con Zero-Downtime Swap (push a rama main) ──
   deploy-production:
@@ -98,7 +98,7 @@ jobs:
       - name: Descargar artefacto
         uses: actions/download-artifact@v4
         with:
-          name: app-package
+          name: release-package
 
       - name: Login en Azure
         uses: azure/login@v2
@@ -110,12 +110,12 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           slot-name: ${{ env.AZURE_STAGING_SLOT }}
-          package: app-build.tar.gz
+          package: release.zip
 
       - name: 2. Smoke Test en Staging
         run: |
-          echo "Validando slot de staging..."
-          sleep 10
+          echo "Esperando inicio de la aplicación en el slot de staging..."
+          sleep 15
           STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://cscloudsolutions-staging.azurewebsites.net/es || true)
           echo "Respuesta HTTP en Staging: $STATUS_CODE"
 

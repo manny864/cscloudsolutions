@@ -15,7 +15,7 @@ Aprovisionar y estandarizar la infraestructura como código (IaC) en Microsoft A
 ### 2. Mínimo Privilegio e Identidad Gestionada (Zero Trust Identity & Secrets)
 - **Azure Key Vault:** `cscs-kv-wus2-prod` para el almacenamiento centralizado y cifrado en reposo de secretos con RBAC.
 - **Managed Identities (SystemAssigned):** La Web App y el Slot de Staging acceden al Key Vault mediante el rol `Key Vault Secrets User`.
-- **Service Principal de CI/CD (`github-actions-cscs-web`):** Permisos de Contributor restringidos con ámbito exclusivo sobre el Resource Group `cscs-webpage-wus2-prod` (Zero Trust Least Privilege).
+- **Service Principal de CI/CD (`github-actions-cscs-web`):** Permisos de Contributor restringidos con ámbito exclusivo sobre el Resource Group `cscs-webpage-wus2-prod`.
 
 ### 3. Asumir Brecha y Telemetría Centralizada (Continuous Monitoring)
 - **Log Analytics Workspace:** `cscs-law-wus2-prod` como repositorio central de auditoría.
@@ -25,23 +25,22 @@ Aprovisionar y estandarizar la infraestructura como código (IaC) en Microsoft A
 
 ## Pipeline de CI/CD en GitHub Actions (`.github/workflows/deploy.yml`)
 
-1. **Build & Test (Todas las ramas y PRs):**
+1. **Build & Package:**
    - Node.js 22 LTS
-   - Caché optimizado de dependencias y build de Next.js
-   - Empaquetado del artefacto (`.next`, `public`, `messages`, config y `package.json`).
+   - Compilación con `npm run build`
+   - Empaquetado en formato `.zip` estándar (`release.zip`).
 
 2. **Push a `staging`:**
-   - Despliegue directo al slot `staging` (`cscloudsolutions-staging.azurewebsites.net`).
+   - Despliegue del `.zip` al slot `staging` (`cscloudsolutions-staging.azurewebsites.net`).
 
 3. **Push a `main` (Zero-Downtime Blue/Green Deployment):**
-   - Despliegue del artefacto al slot `staging`.
+   - Despliegue del paquete `.zip` al slot `staging`.
    - Ejecución de smoke test de verificación.
-   - **Intercambio instantáneo (Swap):** `az webapp deployment slot swap --resource-group cscs-webpage-wus2-prod --name cscloudsolutions --slot staging --target-slot production`.
+   - **Swap instantáneo:** `az webapp deployment slot swap --resource-group cscs-webpage-wus2-prod --name cscloudsolutions --slot staging --target-slot production`.
    - Cero caída de servicio para los usuarios finales.
 
 ---
 
-## Configuración DNS y SSL con Cloudflare
-1. **Validación TXT:** `asuid` → `<custom_domain_verification_id>`
-2. **CNAME:** `@` y `www` → `cscloudsolutions.azurewebsites.net`
-3. **Modo SSL en Cloudflare:** `Full` o `Full (Strict)`.
+## Casos Borde y Aprendizajes
+- **Formato de Paquete para `azure/webapps-deploy`:** `azure/webapps-deploy@v3` **no** acepta paquetes `.tar.gz`. Debe usarse estrictamente formato `.zip` o un directorio de archivos.
+- **Certificados Gestionados de Azure vs Cloudflare Proxy:** No utilizar `azurerm_app_service_managed_certificate` cuando el dominio está detrás del proxy de Cloudflare (Nube Naranja). La arquitectura estándar vincula `custom_hostname_binding` y delega el SSL a Cloudflare en modo **Full**.
