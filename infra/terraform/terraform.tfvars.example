@@ -1,0 +1,17 @@
+subscription_id        = "00000000-0000-0000-0000-000000000000"
+location               = "westus2"
+region_code            = "wus2"
+environment            = "prod"
+web_app_name           = "cscloudsolutions"
+app_service_sku        = "P0v3"
+autoscale_min_capacity = 1
+autoscale_max_capacity = 3
+custom_domain          = "cscloudsolutions.com.ar"
+recaptcha_site_key     = "6Lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+recaptcha_secret_key   = "6Lxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+graph_tenant_id        = "00000000-0000-0000-0000-000000000000"
+graph_client_id        = "00000000-0000-0000-0000-000000000000"
+graph_client_secret    = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+sender_email           = "sales@cscloudsolutions.com.ar"
+recipient_email        = "sales@cscloudsolutions.com.ar"
+sentry_dsn             = "https://xxxxxxxx@o000000.ingest.sentry.io/0000000"
