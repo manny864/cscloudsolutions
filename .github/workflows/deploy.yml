@@ -43,19 +43,17 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Compilar proyecto (Build)
+      - name: Compilar proyecto (Build Standalone)
         run: npm run build
 
-      - name: Empaquetar artefacto en ZIP (formato nativo Azure)
+      - name: Preparar y empaquetar artefacto Standalone para Azure
         run: |
-          zip -r release.zip \
-            .next \
-            public \
-            messages \
-            next.config.mjs \
-            package.json \
-            package-lock.json \
-            -x ".next/cache/*"
+          echo "Copiando assets estáticos a la carpeta standalone..."
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          cd .next/standalone
+          zip -r ../../release.zip .
+          cd ../..
 
       - name: Subir artefacto de compilación temporal
         uses: actions/upload-artifact@v4
@@ -105,7 +103,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: 1. Desplegar paquete al Slot de Staging
+      - name: 1. Desplegar paquete Standalone al Slot de Staging
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}

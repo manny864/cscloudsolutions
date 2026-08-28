@@ -218,7 +218,7 @@ resource "azurerm_linux_web_app" "cscs_app" {
     ftps_state                        = "Disabled"
     health_check_path                 = "/es"
     health_check_eviction_time_in_min = 5
-    app_command_line                  = "npm run start"
+    app_command_line                  = "node server.js"
 
     application_stack {
       node_version = "22-lts"
@@ -240,7 +240,8 @@ resource "azurerm_linux_web_app" "cscs_app" {
   }
 
   app_settings = {
-    SCM_DO_BUILD_DURING_DEPLOYMENT = "true"
+    # Desactivar compilación en Azure (el paquete ya viene pre-compilado en standalone)
+    SCM_DO_BUILD_DURING_DEPLOYMENT = "false"
     WEBSITE_NODE_DEFAULT_VERSION   = "~22"
     NODE_ENV                       = "production"
     PORT                           = "8080"
@@ -286,7 +287,7 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
     ftps_state                        = "Disabled"
     health_check_path                 = "/es"
     health_check_eviction_time_in_min = 5
-    app_command_line                  = "npm run start"
+    app_command_line                  = "node server.js"
 
     application_stack {
       node_version = "22-lts"
@@ -308,7 +309,8 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
   }
 
   app_settings = {
-    SCM_DO_BUILD_DURING_DEPLOYMENT = "true"
+    # Desactivar compilación en Azure (el paquete ya viene pre-compilado en standalone)
+    SCM_DO_BUILD_DURING_DEPLOYMENT = "false"
     WEBSITE_NODE_DEFAULT_VERSION   = "~22"
     NODE_ENV                       = "production"
     PORT                           = "8080"
