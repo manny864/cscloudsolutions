@@ -2,7 +2,7 @@
 
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getDb, schema } from '@/db';
+import { getDb, schema, ensureTablesExist } from '@/db';
 import { eq, desc } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import slugify from 'slugify';
@@ -32,6 +32,9 @@ export async function createPost(input: PostInput) {
   if (!session || !session.user) {
     return { success: false, error: 'No autorizado. Se requiere sesión en Microsoft Entra ID.' };
   }
+
+  // Garantizar que las tablas existen en la base de datos
+  await ensureTablesExist();
 
   const db = getDb();
   if (!db) {
