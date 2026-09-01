@@ -41,6 +41,54 @@ export async function uploadToBlobStorage(
   };
 }
 
+export async function listBlobsFromStorage(): Promise<
+  Array<{ filename: string; url: string; sizeBytes: number; createdAt: string }>
+> {
+  if (!connectionString) {
+    return [];
+  }
+
+  try {
+    const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    await containerClient.createIfNotExists();
+
+    const items: Array<{ filename: string; url: string; sizeBytes: number; createdAt: string }> = [];
+
+    for await (const blob of containerClient.listBlobsFlat()) {
+      items.push({
+        filename: blob.name,
+        url: `/api/media/${blob.name}`,
+        sizeBytes: blob.properties.contentLength || 0,
+        createdAt: blob.properties.createdOn ? blob.properties.createdOn.toISOString() : new Date().toISOString(),
+      });
+    }
+
+    // Ordenar de más reciente a más antiguo
+    items.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+    return items;
+  } catch (error) {
+    console.error('[Storage listBlobs Error]:', error);
+    return [];
+  }
+}
+
+export async function deleteBlobFromStorage(blobName: string): Promise<boolean> {
+  if (!connectionString) return false;
+
+  try {
+    const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    await blockBlobClient.deleteIfExists();
+    return true;
+  } catch (error) {
+    console.error('[Storage deleteBlob Error]:', error);
+    return false;
+  }
+}
+
 export async function getBlobBuffer(blobName: string) {
   if (!connectionString) {
     throw new Error('AZURE_STORAGE_CONNECTION_STRING no está configurado');

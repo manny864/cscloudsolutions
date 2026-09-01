@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createPost } from '@/app/_actions/cmsActions';
 import {
@@ -11,8 +11,17 @@ import {
   IconLoader2,
   IconWorld,
   IconPhoto,
+  IconX,
+  IconRefresh,
 } from '@tabler/icons-react';
 import Link from 'next/link';
+
+interface MediaItem {
+  filename: string;
+  url: string;
+  sizeBytes: number;
+  createdAt: string;
+}
 
 export default function NewPostPage() {
   const router = useRouter();
@@ -20,6 +29,11 @@ export default function NewPostPage() {
   const [loading, setLoading] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Media Picker Modal State
+  const [showMediaPicker, setShowMediaPicker] = useState(false);
+  const [libraryMedia, setLibraryMedia] = useState<MediaItem[]>([]);
+  const [loadingLibrary, setLoadingLibrary] = useState(false);
 
   // Form State
   const [titleEs, setTitleEs] = useState('');
@@ -38,6 +52,26 @@ export default function NewPostPage() {
   const [featuredImage, setFeaturedImage] = useState('');
   const [tagsInput, setTagsInput] = useState('Azure, Cloud, Microsoft 365');
   const [status, setStatus] = useState<'published' | 'draft'>('published');
+
+  const fetchLibrary = async () => {
+    setLoadingLibrary(true);
+    try {
+      const res = await fetch('/api/cms/media');
+      if (res.ok) {
+        const data = await res.json();
+        setLibraryMedia(data);
+      }
+    } catch (err) {
+      console.error('Error cargando biblioteca de medios:', err);
+    } finally {
+      setLoadingLibrary(false);
+    }
+  };
+
+  const handleOpenLibrary = () => {
+    setShowMediaPicker(true);
+    fetchLibrary();
+  };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -63,6 +97,7 @@ export default function NewPostPage() {
       setError(err.message);
     } finally {
       setUploadingImage(false);
+      e.target.value = '';
     }
   };
 
@@ -167,155 +202,165 @@ export default function NewPostPage() {
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs sm:text-sm">
-          {error}
+        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium flex items-center justify-between">
+          <span>{error}</span>
+          <button onClick={() => setError(null)} className="text-red-400 hover:text-red-300">
+            <IconX className="w-4 h-4" />
+          </button>
         </div>
       )}
 
+      {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Multilingual Content Card */}
-        <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
-          <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[color:var(--cyan)]">
-            <IconWorld className="w-4 h-4" />
-            <span>
-              Contenido en {activeTab === 'es' ? 'Español' : activeTab === 'en' ? 'Inglés' : 'Portugués'}
-            </span>
+        {/* Contenido en Español */}
+        {activeTab === 'es' && (
+          <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-5">
+            <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <span className="text-base">🇪🇸</span>
+              <h2 className="text-sm font-extrabold text-white">Contenido en Español (Requerido)</h2>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Título del Artículo *
+              </label>
+              <input
+                type="text"
+                required
+                value={titleEs}
+                onChange={(e) => setTitleEs(e.target.value)}
+                placeholder="Ej: Guía Completa de Optimización de Costos en Azure FinOps"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Descripción / Resumen (SEO & Tarjeta) *
+              </label>
+              <textarea
+                required
+                rows={3}
+                value={descEs}
+                onChange={(e) => setDescEs(e.target.value)}
+                placeholder="Breve resumen para el feed del blog y meta descripción..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Cuerpo del Artículo (Soporta Markdown completo) *
+              </label>
+              <textarea
+                required
+                rows={12}
+                value={contentEs}
+                onChange={(e) => setContentEs(e.target.value)}
+                placeholder="# Introducción&#10;&#10;Escribe tu artículo usando Markdown (títulos, listas, imágenes, código, etc.)..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
           </div>
+        )}
 
-          {activeTab === 'es' && (
-            <>
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Título del Artículo (Español) *
-                </label>
-                <input
-                  type="text"
-                  value={titleEs}
-                  onChange={(e) => setTitleEs(e.target.value)}
-                  placeholder="Ej: Guía de Arquitectura Zero Trust en Azure"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                  required
-                />
-              </div>
+        {/* Contenido en Inglés */}
+        {activeTab === 'en' && (
+          <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-5">
+            <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <span className="text-base">🇺🇸</span>
+              <h2 className="text-sm font-extrabold text-white">English Content (Optional)</h2>
+            </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Descripción Corta (Extracto para SEO y Tarjetas) *
-                </label>
-                <textarea
-                  value={descEs}
-                  onChange={(e) => setDescEs(e.target.value)}
-                  rows={2}
-                  placeholder="Resumen del artículo que aparecerá en el listado del blog..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                  required
-                />
-              </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">Post Title</label>
+              <input
+                type="text"
+                value={titleEn}
+                onChange={(e) => setTitleEn(e.target.value)}
+                placeholder="Ex: Complete Guide to Azure FinOps Cost Optimization"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Cuerpo del Artículo (Formato Markdown / HTML) *
-                </label>
-                <textarea
-                  value={contentEs}
-                  onChange={(e) => setContentEs(e.target.value)}
-                  rows={14}
-                  placeholder="# Introducción&#10;&#10;Escribe tu artículo aquí usando formato Markdown..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                  required
-                />
-              </div>
-            </>
-          )}
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Description / Summary
+              </label>
+              <textarea
+                rows={3}
+                value={descEn}
+                onChange={(e) => setDescEn(e.target.value)}
+                placeholder="Short summary for the blog card and SEO..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
 
-          {activeTab === 'en' && (
-            <>
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Article Title (English)
-                </label>
-                <input
-                  type="text"
-                  value={titleEn}
-                  onChange={(e) => setTitleEn(e.target.value)}
-                  placeholder="e.g. Zero Trust Architecture Guide in Azure"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                />
-              </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Article Body (Markdown)
+              </label>
+              <textarea
+                rows={12}
+                value={contentEn}
+                onChange={(e) => setContentEn(e.target.value)}
+                placeholder="# Introduction&#10;&#10;Write in English using Markdown..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
+          </div>
+        )}
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Short Description (English)
-                </label>
-                <textarea
-                  value={descEn}
-                  onChange={(e) => setDescEn(e.target.value)}
-                  rows={2}
-                  placeholder="Brief summary for English readers..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                />
-              </div>
+        {/* Contenido en Portugués */}
+        {activeTab === 'pt' && (
+          <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-5">
+            <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <span className="text-base">🇧🇷</span>
+              <h2 className="text-sm font-extrabold text-white">Conteúdo em Português (Opcional)</h2>
+            </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Article Body (English Markdown)
-                </label>
-                <textarea
-                  value={contentEn}
-                  onChange={(e) => setContentEn(e.target.value)}
-                  rows={14}
-                  placeholder="# Introduction in English..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                />
-              </div>
-            </>
-          )}
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Título do Artigo
+              </label>
+              <input
+                type="text"
+                value={titlePt}
+                onChange={(e) => setTitlePt(e.target.value)}
+                placeholder="Ex: Guia Completo de Otimização de Custos no Azure FinOps"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
 
-          {activeTab === 'pt' && (
-            <>
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Título do Artigo (Português)
-                </label>
-                <input
-                  type="text"
-                  value={titlePt}
-                  onChange={(e) => setTitlePt(e.target.value)}
-                  placeholder="Ex: Guia de Arquitetura Zero Trust no Azure"
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                />
-              </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Descrição / Resumo
+              </label>
+              <textarea
+                rows={3}
+                value={descPt}
+                onChange={(e) => setDescPt(e.target.value)}
+                placeholder="Breve resumo para o card do blog..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Descrição Curta (Português)
-                </label>
-                <textarea
-                  value={descPt}
-                  onChange={(e) => setDescPt(e.target.value)}
-                  rows={2}
-                  placeholder="Resumo para leitores em português..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                />
-              </div>
+            <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Corpo do Artigo (Markdown)
+              </label>
+              <textarea
+                rows={12}
+                value={contentPt}
+                onChange={(e) => setContentPt(e.target.value)}
+                placeholder="# Introdução&#10;&#10;Escreva em Português usando Markdown..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+            </div>
+          </div>
+        )}
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1.5">
-                  Conteúdo do Artigo (Português Markdown)
-                </label>
-                <textarea
-                  value={contentPt}
-                  onChange={(e) => setContentPt(e.target.value)}
-                  rows={14}
-                  placeholder="# Introdução em Português..."
-                  className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-                />
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Metadata & Media Settings Card */}
+        {/* Metadatos y Multimedia */}
         <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-5">
           <h2 className="text-sm font-extrabold uppercase tracking-wider text-slate-400">
             Configuración y Multimedia
@@ -351,7 +396,7 @@ export default function NewPostPage() {
             </div>
           </div>
 
-          {/* Imagen Destacada con Azure Blob Upload */}
+          {/* Imagen Destacada con Azure Blob Upload & Biblioteca */}
           <div>
             <label className="block text-xs font-bold text-slate-300 mb-1.5">
               Imagen Destacada (Azure Blob Storage)
@@ -361,16 +406,26 @@ export default function NewPostPage() {
                 type="text"
                 value={featuredImage}
                 onChange={(e) => setFeaturedImage(e.target.value)}
-                placeholder="https://cscsfinopsprodwestus2sa.blob.core.windows.net/cms-media/..."
+                placeholder="/api/media/..."
                 className="flex-1 w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
               />
-              <label className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold cursor-pointer border border-slate-700 transition shrink-0">
+
+              <button
+                type="button"
+                onClick={handleOpenLibrary}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold border border-slate-700 transition shrink-0"
+              >
+                <IconPhoto className="w-4 h-4 text-[color:var(--cyan)]" />
+                <span>Elegir de la Biblioteca</span>
+              </button>
+
+              <label className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[color:var(--cyan)]/20 hover:bg-[color:var(--cyan)]/30 text-[color:var(--cyan)] hover:text-white text-xs font-bold cursor-pointer border border-[color:var(--cyan)]/40 transition shrink-0">
                 {uploadingImage ? (
                   <IconLoader2 className="w-4 h-4 animate-spin text-[color:var(--cyan)]" />
                 ) : (
-                  <IconUpload className="w-4 h-4 text-[color:var(--cyan)]" />
+                  <IconUpload className="w-4 h-4" />
                 )}
-                <span>{uploadingImage ? 'Subiendo a Azure...' : 'Subir Imagen'}</span>
+                <span>{uploadingImage ? 'Subiendo...' : 'Subir Nueva'}</span>
                 <input
                   type="file"
                   accept="image/*"
@@ -380,17 +435,28 @@ export default function NewPostPage() {
                 />
               </label>
             </div>
+
             {featuredImage && (
-              <div className="mt-3 flex items-center gap-3 p-2.5 rounded-xl bg-slate-800/50 border border-slate-700/60 max-w-sm">
-                <img
-                  src={featuredImage}
-                  alt="Preview"
-                  className="w-12 h-12 rounded-lg object-cover"
-                />
-                <div className="overflow-hidden text-xs">
-                  <p className="font-bold text-white truncate">Imagen Cargada</p>
-                  <p className="text-slate-400 text-[10px] truncate">{featuredImage}</p>
+              <div className="mt-3 flex items-center justify-between p-3 rounded-xl bg-slate-800/50 border border-slate-700/60 max-w-md">
+                <div className="flex items-center gap-3 overflow-hidden">
+                  <img
+                    src={featuredImage}
+                    alt="Preview"
+                    className="w-14 h-14 rounded-lg object-cover bg-slate-950 shrink-0 border border-slate-700"
+                  />
+                  <div className="overflow-hidden text-xs">
+                    <p className="font-bold text-white truncate">Imagen Seleccionada</p>
+                    <p className="text-slate-400 text-[11px] truncate">{featuredImage}</p>
+                  </div>
                 </div>
+                <button
+                  type="button"
+                  onClick={() => setFeaturedImage('')}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition"
+                  title="Quitar imagen"
+                >
+                  <IconX className="w-4 h-4" />
+                </button>
               </div>
             )}
           </div>
@@ -408,10 +474,11 @@ export default function NewPostPage() {
                   value="published"
                   checked={status === 'published'}
                   onChange={() => setStatus('published')}
-                  className="text-[color:var(--cyan)] focus:ring-[color:var(--cyan)]"
+                  className="text-[color:var(--cyan)] focus:ring-[color:var(--cyan)] bg-slate-800 border-slate-700"
                 />
-                <span>Publicar Inmediatamente (Visible en la web)</span>
+                <span className="font-bold">Publicar Inmediatamente (Visible en la Web)</span>
               </label>
+
               <label className="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-400">
                 <input
                   type="radio"
@@ -419,41 +486,145 @@ export default function NewPostPage() {
                   value="draft"
                   checked={status === 'draft'}
                   onChange={() => setStatus('draft')}
-                  className="text-amber-400 focus:ring-amber-400"
+                  className="text-[color:var(--cyan)] focus:ring-[color:var(--cyan)] bg-slate-800 border-slate-700"
                 />
-                <span>Guardar como Borrador</span>
+                <span>Guardar como Borrador (Oculto)</span>
               </label>
             </div>
           </div>
         </div>
 
-        {/* Submit Bar */}
-        <div className="flex items-center justify-end gap-3 pt-4">
+        {/* Botones de Acción */}
+        <div className="flex items-center justify-end gap-3 pt-2">
           <Link
             href="/admin/posts"
-            className="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition"
+            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition"
           >
             Cancelar
           </Link>
           <button
             type="submit"
             disabled={loading}
-            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[color:var(--cyan)] hover:bg-[color:var(--cyan-dark)] text-white font-extrabold text-sm transition-all shadow-lg shadow-cyan-500/20 hover:scale-[1.02] disabled:opacity-50"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[color:var(--cyan)] hover:bg-[color:var(--cyan-dark)] text-white text-xs font-bold shadow-lg shadow-cyan-500/20 transition hover:scale-[1.02] disabled:opacity-50"
           >
             {loading ? (
-              <>
-                <IconLoader2 className="w-4 h-4 animate-spin" />
-                <span>Guardando y Revalidando Web...</span>
-              </>
+              <IconLoader2 className="w-4 h-4 animate-spin" />
             ) : (
-              <>
-                <IconSparkles className="w-4 h-4" />
-                <span>{status === 'published' ? 'Publicar Artículo' : 'Guardar Borrador'}</span>
-              </>
+              <IconCheck className="w-4 h-4" />
             )}
+            <span>{loading ? 'Guardando...' : status === 'published' ? 'Publicar Artículo' : 'Guardar Borrador'}</span>
           </button>
         </div>
       </form>
+
+      {/* Modal Selector de Biblioteca de Medios */}
+      {showMediaPicker && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+          <div className="w-full max-w-3xl rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-5 border-b border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <IconPhoto className="w-5 h-5 text-[color:var(--cyan)]" />
+                <h3 className="text-base font-extrabold text-white">
+                  Seleccionar Imagen de Azure Storage
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={fetchLibrary}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                  title="Recargar"
+                >
+                  <IconRefresh className={`w-4 h-4 ${loadingLibrary ? 'animate-spin text-[color:var(--cyan)]' : ''}`} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowMediaPicker(false)}
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                >
+                  <IconX className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-5 overflow-y-auto flex-1 min-h-[250px]">
+              {loadingLibrary ? (
+                <div className="flex flex-col items-center justify-center py-16 text-slate-400 text-xs gap-3">
+                  <IconLoader2 className="w-8 h-8 animate-spin text-[color:var(--cyan)]" />
+                  <p>Cargando imágenes de Azure Blob Storage...</p>
+                </div>
+              ) : libraryMedia.length === 0 ? (
+                <div className="text-center py-16 text-slate-500 text-xs">
+                  <IconPhoto className="w-10 h-10 mx-auto text-slate-600 mb-2 opacity-50" />
+                  <p className="font-bold text-slate-300">No hay imágenes en la biblioteca.</p>
+                  <p className="text-slate-500 mt-1">
+                    Sube una nueva imagen usando el botón &quot;Subir Nueva&quot;.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {libraryMedia.map((item) => {
+                    const isSelected = featuredImage === item.url;
+                    return (
+                      <button
+                        key={item.filename}
+                        type="button"
+                        onClick={() => {
+                          setFeaturedImage(item.url);
+                          setShowMediaPicker(false);
+                        }}
+                        className={`group relative rounded-xl bg-slate-800/80 border overflow-hidden text-left transition hover:scale-[1.02] ${
+                          isSelected
+                            ? 'border-[color:var(--cyan)] ring-2 ring-[color:var(--cyan)]/40 shadow-lg shadow-cyan-500/20'
+                            : 'border-slate-700/60 hover:border-slate-500'
+                        }`}
+                      >
+                        <div className="aspect-video bg-slate-950 flex items-center justify-center overflow-hidden relative">
+                          <img
+                            src={item.url}
+                            alt={item.filename}
+                            className="w-full h-full object-cover group-hover:scale-105 transition duration-200"
+                            loading="lazy"
+                          />
+                          {isSelected && (
+                            <div className="absolute top-2 right-2 p-1 rounded-md bg-[color:var(--cyan)] text-white shadow">
+                              <IconCheck className="w-3.5 h-3.5" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-2.5">
+                          <p className="text-[11px] font-bold text-white truncate" title={item.filename}>
+                            {item.filename}
+                          </p>
+                          <p className="text-[9px] text-slate-400 mt-0.5">
+                            {(item.sizeBytes / 1024).toFixed(1)} KB
+                          </p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex items-center justify-between p-4 border-t border-slate-800 bg-slate-950/50">
+              <p className="text-xs text-slate-400">
+                {libraryMedia.length} imagen{libraryMedia.length !== 1 ? 'es' : ''} disponible{libraryMedia.length !== 1 ? 's' : ''}
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowMediaPicker(false)}
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
