@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  const posts = getAllPosts(locale);
+  const posts = await getAllPosts(locale);
 
   return (
     <div className="bg-white py-24 sm:py-32">

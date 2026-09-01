@@ -102,3 +102,56 @@ variable "sentry_dsn" {
   sensitive   = true
   description = "DSN de Sentry para monitoreo y reporte de errores."
 }
+
+# ── Variables de Integración con FinOps Backend (West US 2) ────────────────
+variable "finops_resource_group_name" {
+  type        = string
+  default     = "cscs-finops-prod-westus2-rg"
+  description = "Nombre del Resource Group del backend de FinOps."
+}
+
+variable "finops_vnet_name" {
+  type        = string
+  default     = "cscs-finops-prod-westus2-vnet"
+  description = "Nombre de la Virtual Network de FinOps donde se conectará el App Service."
+}
+
+variable "finops_mysql_server_name" {
+  type        = string
+  default     = "cscs-finops-prod-westus2-mysql"
+  description = "Nombre del servidor MySQL Flexible de FinOps."
+}
+
+variable "finops_storage_account_name" {
+  type        = string
+  default     = "cscsfinopsprodwestus2sa"
+  description = "Nombre de la Storage Account de FinOps."
+}
+
+variable "appservice_subnet_prefix" {
+  type        = string
+  default     = "10.50.40.0/24"
+  description = "Prefijo CIDR de la subred para VNet Integration del App Service en la VNet de FinOps."
+}
+
+# ── Microsoft Entra ID SSO para CMS (CSCloud Solutions) ────────────────────
+variable "entra_client_id" {
+  type        = string
+  default     = ""
+  description = "Client ID de la App Registration de Microsoft Entra ID para el CMS."
+}
+
+variable "entra_client_secret" {
+  type        = string
+  default     = ""
+  sensitive   = true
+  description = "Client Secret de la App Registration de Microsoft Entra ID para el CMS."
+}
+
+variable "nextauth_secret" {
+  type        = string
+  default     = ""
+  sensitive   = true
+  description = "Clave secreta de encriptación para NextAuth.js."
+}
+

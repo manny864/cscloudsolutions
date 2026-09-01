@@ -42,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   for (const locale of locales) {
     try {
-      const posts = getAllPosts(locale);
+      const posts = await getAllPosts(locale);
       posts.forEach((post) => {
         blogEntries.push({
           url: `${baseUrl}/${locale}/blog/${post.slug}`,

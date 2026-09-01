@@ -254,6 +254,18 @@ resource "azurerm_linux_web_app" "cscs_app" {
     AZURE_SENDER_EMAIL             = var.sender_email
     AZURE_RECIPIENT_EMAIL          = var.recipient_email
     SENTRY_DSN                     = var.sentry_dsn
+
+    # Configuración de Microsoft Entra ID (SSO CMS)
+    AZURE_AD_CLIENT_ID             = var.entra_client_id
+    AZURE_AD_CLIENT_SECRET         = var.entra_client_secret
+    AZURE_AD_TENANT_ID             = var.graph_tenant_id
+    NEXTAUTH_SECRET                = var.nextauth_secret
+    NEXTAUTH_URL                   = "https://${var.custom_domain != "" ? var.custom_domain : "${local.app_name}.azurewebsites.net"}"
+
+    # Conexión Privada MySQL CMS (VNet Backend)
+    MYSQL_HOST                     = "${var.finops_mysql_server_name}.mysql.database.azure.com"
+    MYSQL_DATABASE                 = "cscloud_cms"
+    AZURE_STORAGE_CONTAINER_NAME   = "cms-media"
   }
 
   logs {
@@ -323,6 +335,18 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
     AZURE_SENDER_EMAIL             = var.sender_email
     AZURE_RECIPIENT_EMAIL          = var.recipient_email
     SENTRY_DSN                     = var.sentry_dsn
+
+    # Configuración de Microsoft Entra ID (SSO CMS)
+    AZURE_AD_CLIENT_ID             = var.entra_client_id
+    AZURE_AD_CLIENT_SECRET         = var.entra_client_secret
+    AZURE_AD_TENANT_ID             = var.graph_tenant_id
+    NEXTAUTH_SECRET                = var.nextauth_secret
+    NEXTAUTH_URL                   = "https://${local.app_name}-staging.azurewebsites.net"
+
+    # Conexión Privada MySQL CMS (VNet Backend)
+    MYSQL_HOST                     = "${var.finops_mysql_server_name}.mysql.database.azure.com"
+    MYSQL_DATABASE                 = "cscloud_cms"
+    AZURE_STORAGE_CONTAINER_NAME   = "cms-media"
   }
 
   logs {
@@ -384,3 +408,67 @@ resource "azurerm_app_service_custom_hostname_binding" "cscs_chb" {
   app_service_name    = azurerm_linux_web_app.cscs_app.name
   resource_group_name = azurerm_resource_group.cscs_rg.name
 }
+
+# ---------------------------------------------------------------------------
+# 11. Integración Backend con FinOps (Zero Trust VNet Integration + MySQL + Storage)
+# ---------------------------------------------------------------------------
+
+# Data Sources del Backend de FinOps existente
+data "azurerm_virtual_network" "finops_vnet" {
+  name                = var.finops_vnet_name
+  resource_group_name = var.finops_resource_group_name
+}
+
+data "azurerm_mysql_flexible_server" "finops_mysql" {
+  name                = var.finops_mysql_server_name
+  resource_group_name = var.finops_resource_group_name
+}
+
+data "azurerm_storage_account" "finops_storage" {
+  name                = var.finops_storage_account_name
+  resource_group_name = var.finops_resource_group_name
+}
+
+# Subred dedicada para el App Service en la VNet de FinOps
+resource "azurerm_subnet" "webpage_snet_appservice" {
+  name                 = "cscs-webpage-snet-appservice"
+  resource_group_name  = data.azurerm_virtual_network.finops_vnet.resource_group_name
+  virtual_network_name = data.azurerm_virtual_network.finops_vnet.name
+  address_prefixes     = [var.appservice_subnet_prefix]
+
+  delegation {
+    name = "delegation-appservice"
+    service_delegation {
+      name    = "Microsoft.Web/serverFarms"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+    }
+  }
+}
+
+# VNet Integration para Web App Producción y Staging
+resource "azurerm_app_service_virtual_network_swift_connection" "prod_vnet" {
+  app_service_id = azurerm_linux_web_app.cscs_app.id
+  subnet_id      = azurerm_subnet.webpage_snet_appservice.id
+}
+
+resource "azurerm_app_service_virtual_network_swift_connection" "staging_vnet" {
+  app_service_id = azurerm_linux_web_app_slot.cscs_app_staging.id
+  subnet_id      = azurerm_subnet.webpage_snet_appservice.id
+}
+
+# Base de datos MySQL dedicada para el CMS en el servidor Flexible existente
+resource "azurerm_mysql_flexible_database" "cms_database" {
+  name                = "cscloud_cms"
+  resource_group_name = data.azurerm_mysql_flexible_server.finops_mysql.resource_group_name
+  server_name         = data.azurerm_mysql_flexible_server.finops_mysql.name
+  charset             = "utf8mb4"
+  collation           = "utf8mb4_unicode_ci"
+}
+
+# Contenedor de Azure Blob Storage para las imágenes del CMS y Blog
+resource "azurerm_storage_container" "cms_media" {
+  name                  = "cms-media"
+  storage_account_name  = data.azurerm_storage_account.finops_storage.name
+  container_access_type = "blob"
+}
+

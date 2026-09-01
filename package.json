@@ -11,18 +11,23 @@
     "ci-checks": "npm audit --audit-level=high && npm run build"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.33.0",
     "@next/third-parties": "^16.2.4",
     "@sentry/nextjs": "^8.28.0",
     "@tabler/icons-react": "^3.46.0",
     "@tailwindcss/typography": "^0.5.19",
+    "drizzle-orm": "^0.45.2",
     "framer-motion": "^12.6.3",
     "gray-matter": "^4.0.3",
+    "mysql2": "^3.24.2",
     "next": "^15.0.0",
+    "next-auth": "^4.24.15",
     "next-intl": "^4.12.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "slugify": "^1.6.9",
     "zod": "^3.24.2"
   },
   "devDependencies": {

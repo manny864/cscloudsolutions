@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   let post;
   try {
     // Obtenemos la información del post para generar las tarjetas sociales
-    post = getPostBySlug(slug, locale);
+    post = await getPostBySlug(slug, locale);
   } catch (e) {
     post = null;
   }
@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   
   let post;
   try {
-    post = getPostBySlug(slug, locale);
+    post = await getPostBySlug(slug, locale);
   } catch (e) {
     const mapping = Object.values(blogMapping).find(m => m.es === slug || m.en === slug || m['pt-BR'] === slug);
 
