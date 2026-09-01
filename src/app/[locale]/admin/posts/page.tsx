@@ -7,7 +7,10 @@ import {
   IconExternalLink,
   IconChecklist,
   IconClock,
+  IconEdit,
 } from '@tabler/icons-react';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AdminPostsPage() {
   const posts = await getAdminPosts();
@@ -21,7 +24,7 @@ export default async function AdminPostsPage() {
             Gestor de Artículos de Blog
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-            Publica, edita y administra el contenido técnico de la plataforma
+            Publica, edita y administra artículos y borradores ({posts.length} totales)
           </p>
         </div>
         <Link
@@ -40,7 +43,7 @@ export default async function AdminPostsPage() {
             <IconArticle className="w-12 h-12 mx-auto text-slate-600 mb-3 opacity-50" />
             <p className="font-bold text-slate-300">No hay artículos dinámicos en la base de datos.</p>
             <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
-              Crea tu primer artículo dinámico arriba. Los artículos preexistentes de Markdown en <code>src/content/blog/</code> se siguen mostrando automáticamente en la web.
+              Crea tu primer artículo o borrador arriba. Los artículos preexistentes de Markdown continúan activos en la web.
             </p>
             <Link
               href="/admin/posts/new"
@@ -66,7 +69,12 @@ export default async function AdminPostsPage() {
                 {posts.map((post) => (
                   <tr key={post.id} className="hover:bg-slate-800/30 transition">
                     <td className="py-4 px-4">
-                      <p className="font-bold text-white text-sm">{post.slug}</p>
+                      <Link
+                        href={`/admin/posts/${post.id}/edit`}
+                        className="font-bold text-white text-sm hover:text-[color:var(--cyan)] transition"
+                      >
+                        {post.slug}
+                      </Link>
                       {post.featuredImage && (
                         <p className="text-[10px] text-[color:var(--cyan)] mt-0.5 truncate max-w-xs">
                           Imagen asignada en Azure Blob
@@ -100,13 +108,22 @@ export default async function AdminPostsPage() {
                     </td>
                     <td className="py-4 px-4 text-right space-x-2">
                       <Link
+                        href={`/admin/posts/${post.id}/edit`}
+                        className="inline-flex p-2 rounded-lg bg-slate-800 hover:bg-[color:var(--cyan)] hover:text-white text-slate-300 transition"
+                        title="Editar artículo"
+                      >
+                        <IconEdit className="w-4 h-4" />
+                      </Link>
+
+                      <Link
                         href={`/es/blog/${post.slug}`}
                         target="_blank"
                         className="inline-flex p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
-                        title="Ver en vivo"
+                        title={post.status === 'draft' ? 'Vista previa del borrador' : 'Ver en vivo'}
                       >
                         <IconExternalLink className="w-4 h-4" />
                       </Link>
+
                       <form
                         action={async () => {
                           'use server';

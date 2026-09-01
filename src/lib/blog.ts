@@ -12,7 +12,7 @@ export function getPostSlugs(locale: string) {
   return fs.readdirSync(folderPath);
 }
 
-export async function getPostBySlug(slug: string, locale: string) {
+export async function getPostBySlug(slug: string, locale: string, allowDraft: boolean = true) {
   if (slug.includes('..') || slug.includes('/') || slug.includes('\\')) throw new Error('Invalid slug');
 
   const realSlug = slug.replace(/\.md$/, '');
@@ -21,13 +21,18 @@ export async function getPostBySlug(slug: string, locale: string) {
   const db = getDb();
   if (db) {
     try {
+      const whereCondition = allowDraft
+        ? eq(schema.posts.slug, realSlug)
+        : and(eq(schema.posts.slug, realSlug), eq(schema.posts.status, 'published'));
+
       const [dbPost] = await db
         .select()
         .from(schema.posts)
-        .where(and(eq(schema.posts.slug, realSlug), eq(schema.posts.status, 'published')));
+        .where(whereCondition);
 
       if (dbPost) {
-        const [translation] = await db
+        // Buscar traducción en el idioma solicitado o fallback a español
+        let [translation] = await db
           .select()
           .from(schema.postTranslations)
           .where(
@@ -37,16 +42,32 @@ export async function getPostBySlug(slug: string, locale: string) {
             )
           );
 
+        if (!translation && locale !== 'es') {
+          [translation] = await db
+            .select()
+            .from(schema.postTranslations)
+            .where(
+              and(
+                eq(schema.postTranslations.postId, dbPost.id),
+                eq(schema.postTranslations.locale, 'es')
+              )
+            );
+        }
+
         if (translation) {
           return {
             slug: realSlug,
+            status: dbPost.status,
             meta: {
               title: translation.title,
               description: translation.description,
-              date: dbPost.publishedAt ? new Date(dbPost.publishedAt).toISOString().split('T')[0] : new Date(dbPost.createdAt).toISOString().split('T')[0],
+              date: dbPost.publishedAt
+                ? new Date(dbPost.publishedAt).toISOString().split('T')[0]
+                : new Date(dbPost.createdAt).toISOString().split('T')[0],
               author: dbPost.author,
               image: dbPost.featuredImage || '/images/blog/default.jpg',
               tags: dbPost.tags || [],
+              status: dbPost.status,
             },
             content: translation.content,
           };
@@ -68,7 +89,7 @@ export async function getPostBySlug(slug: string, locale: string) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  return { slug: realSlug, meta: data, content };
+  return { slug: realSlug, status: 'published', meta: data, content };
 }
 
 export async function getAllPosts(locale: string) {
@@ -87,7 +108,7 @@ export async function getAllPosts(locale: string) {
     })
     .filter(Boolean) as Array<{ slug: string; meta: any; content: string }>;
 
-  // Intentar consultar posts dinámicos desde MySQL
+  // Intentar consultar posts dinámicos desde MySQL (solo publicados para el listado general del blog)
   const db = getDb();
   if (db) {
     try {
@@ -97,12 +118,21 @@ export async function getAllPosts(locale: string) {
         .where(eq(schema.posts.status, 'published'));
 
       for (const p of dbPosts) {
-        const [tr] = await db
+        let [tr] = await db
           .select()
           .from(schema.postTranslations)
           .where(
             and(eq(schema.postTranslations.postId, p.id), eq(schema.postTranslations.locale, locale))
           );
+
+        if (!tr && locale !== 'es') {
+          [tr] = await db
+            .select()
+            .from(schema.postTranslations)
+            .where(
+              and(eq(schema.postTranslations.postId, p.id), eq(schema.postTranslations.locale, 'es'))
+            );
+        }
 
         if (tr) {
           localPosts.unshift({
@@ -110,7 +140,9 @@ export async function getAllPosts(locale: string) {
             meta: {
               title: tr.title,
               description: tr.description,
-              date: p.publishedAt ? new Date(p.publishedAt).toISOString().split('T')[0] : new Date(p.createdAt).toISOString().split('T')[0],
+              date: p.publishedAt
+                ? new Date(p.publishedAt).toISOString().split('T')[0]
+                : new Date(p.createdAt).toISOString().split('T')[0],
               author: p.author,
               image: p.featuredImage || '/images/blog/default.jpg',
               tags: p.tags || [],

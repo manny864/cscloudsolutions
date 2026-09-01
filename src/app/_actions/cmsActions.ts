@@ -137,6 +137,7 @@ export async function createPost(input: PostInput) {
     revalidatePath('/[locale]/blog', 'page');
     revalidatePath('/[locale]/blog/[slug]', 'page');
     revalidatePath('/[locale]/admin/posts', 'page');
+    revalidatePath('/[locale]/admin', 'page');
     revalidatePath('/[locale]', 'page');
 
     return { success: true, postId, slug: finalSlug };
@@ -166,6 +167,30 @@ export async function getAdminPosts() {
   }
 }
 
+export async function getAdminPostById(id: number) {
+  const db = getDb();
+  if (!db) return null;
+
+  try {
+    await ensureTablesExist();
+    const [post] = await db.select().from(schema.posts).where(eq(schema.posts.id, id)).limit(1);
+    if (!post) return null;
+
+    const translations = await db
+      .select()
+      .from(schema.postTranslations)
+      .where(eq(schema.postTranslations.postId, id));
+
+    return {
+      ...post,
+      translations,
+    };
+  } catch (err) {
+    console.error('[getAdminPostById Error]:', err);
+    return null;
+  }
+}
+
 export async function deletePost(id: number) {
   const session = await getServerSession(authOptions);
   if (!session || !session.user) {
@@ -182,6 +207,7 @@ export async function deletePost(id: number) {
     revalidatePath('/[locale]/blog', 'page');
     revalidatePath('/[locale]/blog/[slug]', 'page');
     revalidatePath('/[locale]/admin/posts', 'page');
+    revalidatePath('/[locale]/admin', 'page');
 
     return { success: true };
   } catch (err: any) {

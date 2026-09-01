@@ -10,6 +10,8 @@ import {
   IconChecklist,
 } from '@tabler/icons-react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboardPage() {
   const posts = await getAdminPosts();
   const publishedCount = posts.filter((p) => p.status === 'published').length;

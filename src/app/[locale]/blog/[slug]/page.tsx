@@ -95,6 +95,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   return (
     <div className="bg-white px-6 py-24 lg:px-8 min-h-screen">
       <div className="mx-auto max-w-4xl">
+        {post.status === 'draft' && (
+          <div className="mb-10 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-semibold flex items-center justify-between shadow-sm">
+            <div className="flex items-center gap-2">
+              <span className="text-base">⚠️</span>
+              <span><strong>Modo Vista Previa:</strong> Este artículo está guardado como <strong>BORRADOR</strong> y no aparece en el listado público del blog.</span>
+            </div>
+            <span className="px-2.5 py-1 rounded-full bg-amber-500 text-white font-extrabold uppercase text-[10px] tracking-wider shrink-0">
+              Borrador
+            </span>
+          </div>
+        )}
         
         {/* ENCABEZADO PRINCIPAL */}
         <div className="flex flex-col md:flex-row gap-10 items-center mb-16">
