@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache';
 import slugify from 'slugify';
 
 export interface PostInput {
+  id?: number;
   titleEs: string;
   descEs: string;
   contentEs: string;
@@ -46,18 +47,59 @@ export async function createPost(input: PostInput) {
     const finalSlug = slugify(rawSlug, { lower: true, strict: true });
     const cleanImage = input.featuredImage && input.featuredImage.trim() !== '' ? input.featuredImage.trim() : null;
     const cleanTags = Array.isArray(input.tags) ? input.tags : [];
+    const authorName = input.author || session.user.name || 'CSCloud Solutions Team';
+    const postStatus = input.status || 'published';
 
-    // 1. Insertar post principal
-    const [result] = await db.insert(schema.posts).values({
-      slug: finalSlug,
-      featuredImage: cleanImage,
-      author: input.author || session.user.name || 'CSCloud Solutions Team',
-      tags: cleanTags,
-      status: input.status || 'published',
-      publishedAt: new Date(),
-    });
+    // Verificar si el post ya existe por ID o por Slug (Upsert Inteligente)
+    let postId: number | null = input.id || null;
 
-    const postId = (result as any).insertId;
+    if (!postId) {
+      const existingBySlug = await db
+        .select()
+        .from(schema.posts)
+        .where(eq(schema.posts.slug, finalSlug))
+        .limit(1);
+
+      if (existingBySlug.length > 0) {
+        postId = existingBySlug[0].id;
+      }
+    }
+
+    if (postId) {
+      // 1. Actualizar post existente
+      await db
+        .update(schema.posts)
+        .set({
+          slug: finalSlug,
+          featuredImage: cleanImage,
+          author: authorName,
+          tags: cleanTags,
+          status: postStatus,
+          updatedAt: new Date(),
+        })
+        .where(eq(schema.posts.id, postId));
+
+      // Eliminar traducciones anteriores para re-insertar actualizadas
+      await db
+        .delete(schema.postTranslations)
+        .where(eq(schema.postTranslations.postId, postId));
+    } else {
+      // 1. Insertar nuevo post
+      const [result] = await db.insert(schema.posts).values({
+        slug: finalSlug,
+        featuredImage: cleanImage,
+        author: authorName,
+        tags: cleanTags,
+        status: postStatus,
+        publishedAt: new Date(),
+      });
+
+      postId = (result as any).insertId;
+    }
+
+    if (!postId) {
+      throw new Error('No se pudo determinar el ID del artículo.');
+    }
 
     // 2. Insertar traducciones
     // Español
@@ -94,12 +136,18 @@ export async function createPost(input: PostInput) {
     // 3. Revalidación instantánea (On-Demand ISR)
     revalidatePath('/[locale]/blog', 'page');
     revalidatePath('/[locale]/blog/[slug]', 'page');
+    revalidatePath('/[locale]/admin/posts', 'page');
     revalidatePath('/[locale]', 'page');
 
     return { success: true, postId, slug: finalSlug };
   } catch (error: any) {
-    console.error('[CMS Create Post Error]:', error);
-    const detail = error.cause?.sqlMessage || error.cause?.message || error.sqlMessage || error.message || 'Error desconocido al guardar el artículo';
+    console.error('[CMS Create/Update Post Error]:', error);
+    const detail =
+      error.cause?.sqlMessage ||
+      error.cause?.message ||
+      error.sqlMessage ||
+      error.message ||
+      'Error desconocido al guardar el artículo';
     return { success: false, error: detail };
   }
 }
@@ -133,6 +181,7 @@ export async function deletePost(id: number) {
 
     revalidatePath('/[locale]/blog', 'page');
     revalidatePath('/[locale]/blog/[slug]', 'page');
+    revalidatePath('/[locale]/admin/posts', 'page');
 
     return { success: true };
   } catch (err: any) {
