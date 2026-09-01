@@ -269,6 +269,12 @@ resource "azurerm_linux_web_app" "cscs_app" {
     AZURE_STORAGE_CONTAINER_NAME   = "cms-media"
   }
 
+  sticky_settings {
+    app_setting_names = [
+      "NEXTAUTH_URL"
+    ]
+  }
+
   logs {
     http_logs {
       file_system {
@@ -343,7 +349,7 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
     AZURE_AD_CLIENT_SECRET         = var.entra_client_secret
     AZURE_AD_TENANT_ID             = var.graph_tenant_id
     NEXTAUTH_SECRET                = var.nextauth_secret
-    NEXTAUTH_URL                   = "https://${local.app_name}-staging.azurewebsites.net"
+    NEXTAUTH_URL                   = "https://${var.custom_domain != "" ? var.custom_domain : "${local.app_name}.azurewebsites.net"}"
 
     # Conexión Privada MySQL CMS (VNet Backend)
     MYSQL_HOST                     = "${var.finops_mysql_server_name}.mysql.database.azure.com"
@@ -460,6 +466,6 @@ resource "azurerm_mysql_flexible_database" "cms_database" {
 resource "azurerm_storage_container" "cms_media" {
   name                  = "cms-media"
   storage_account_id    = data.azurerm_storage_account.finops_storage.id
-  container_access_type = "blob"
+  container_access_type = "private"
 }
 
