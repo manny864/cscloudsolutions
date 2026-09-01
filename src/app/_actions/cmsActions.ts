@@ -33,29 +33,31 @@ export async function createPost(input: PostInput) {
     return { success: false, error: 'No autorizado. Se requiere sesión en Microsoft Entra ID.' };
   }
 
-  // Garantizar que las tablas existen en la base de datos
-  await ensureTablesExist();
-
-  const db = getDb();
-  if (!db) {
-    return { success: false, error: 'Base de datos MySQL no conectada en este entorno.' };
-  }
-
   try {
+    // Garantizar que las tablas existen en la base de datos
+    await ensureTablesExist();
+
+    const db = getDb();
+    if (!db) {
+      return { success: false, error: 'Base de datos MySQL no conectada en este entorno.' };
+    }
+
     const rawSlug = input.slug || input.titleEs;
     const finalSlug = slugify(rawSlug, { lower: true, strict: true });
+    const cleanImage = input.featuredImage && input.featuredImage.trim() !== '' ? input.featuredImage.trim() : null;
+    const cleanTags = Array.isArray(input.tags) ? input.tags : [];
 
     // 1. Insertar post principal
     const [result] = await db.insert(schema.posts).values({
       slug: finalSlug,
-      featuredImage: input.featuredImage || null,
+      featuredImage: cleanImage,
       author: input.author || session.user.name || 'CSCloud Solutions Team',
-      tags: input.tags || [],
+      tags: cleanTags,
       status: input.status || 'published',
       publishedAt: new Date(),
     });
 
-    const postId = result.insertId;
+    const postId = (result as any).insertId;
 
     // 2. Insertar traducciones
     // Español
@@ -68,7 +70,7 @@ export async function createPost(input: PostInput) {
     });
 
     // Inglés (si existe)
-    if (input.titleEn) {
+    if (input.titleEn && input.titleEn.trim() !== '') {
       await db.insert(schema.postTranslations).values({
         postId,
         locale: 'en',
@@ -79,7 +81,7 @@ export async function createPost(input: PostInput) {
     }
 
     // Portugués (si existe)
-    if (input.titlePt) {
+    if (input.titlePt && input.titlePt.trim() !== '') {
       await db.insert(schema.postTranslations).values({
         postId,
         locale: 'pt-BR',
@@ -97,7 +99,8 @@ export async function createPost(input: PostInput) {
     return { success: true, postId, slug: finalSlug };
   } catch (error: any) {
     console.error('[CMS Create Post Error]:', error);
-    return { success: false, error: error.message || 'Error al crear el artículo' };
+    const detail = error.cause?.sqlMessage || error.cause?.message || error.sqlMessage || error.message || 'Error desconocido al guardar el artículo';
+    return { success: false, error: detail };
   }
 }
 
@@ -106,6 +109,7 @@ export async function getAdminPosts() {
   if (!db) return [];
 
   try {
+    await ensureTablesExist();
     const allPosts = await db.select().from(schema.posts).orderBy(desc(schema.posts.createdAt));
     return allPosts;
   } catch (err) {

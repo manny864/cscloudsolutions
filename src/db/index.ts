@@ -13,7 +13,10 @@ export async function ensureTablesExist() {
   const database = process.env.MYSQL_DATABASE || 'cscloud_cms';
   const port = Number(process.env.MYSQL_PORT) || 3306;
 
-  if (!host || !password) return;
+  if (!host || !password) {
+    console.warn('[MySQL Init] Falta host o password de MySQL.');
+    return;
+  }
 
   try {
     const connection = await mysql.createConnection({
@@ -23,27 +26,27 @@ export async function ensureTablesExist() {
       database,
       port,
       ssl: {
-        rejectUnauthorized: true,
+        rejectUnauthorized: false,
       },
     });
 
     await connection.query(`
       CREATE TABLE IF NOT EXISTS \`posts\` (
-        \`id\` INT AUTO_INCREMENT PRIMARY KEY,
+        \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         \`slug\` VARCHAR(255) NOT NULL UNIQUE,
         \`featured_image\` TEXT,
         \`author\` VARCHAR(255) NOT NULL DEFAULT 'CSCloud Solutions Team',
         \`tags\` JSON,
         \`status\` ENUM('draft', 'published', 'archived') NOT NULL DEFAULT 'published',
-        \`published_at\` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-        \`created_at\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        \`updated_at\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        \`published_at\` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+        \`created_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        \`updated_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
 
     await connection.query(`
       CREATE TABLE IF NOT EXISTS \`post_translations\` (
-        \`id\` INT AUTO_INCREMENT PRIMARY KEY,
+        \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         \`post_id\` INT NOT NULL,
         \`locale\` VARCHAR(10) NOT NULL,
         \`title\` VARCHAR(255) NOT NULL,
@@ -51,31 +54,31 @@ export async function ensureTablesExist() {
         \`content\` LONGTEXT NOT NULL,
         \`seo_title\` VARCHAR(255),
         \`seo_description\` TEXT,
-        \`created_at\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        \`updated_at\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        \`created_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        \`updated_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         INDEX \`idx_post_locale\` (\`post_id\`, \`locale\`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
 
     await connection.query(`
       CREATE TABLE IF NOT EXISTS \`media_assets\` (
-        \`id\` INT AUTO_INCREMENT PRIMARY KEY,
+        \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         \`filename\` VARCHAR(255) NOT NULL,
         \`blob_url\` TEXT NOT NULL,
         \`size_bytes\` INT DEFAULT 0,
         \`mime_type\` VARCHAR(100) DEFAULT 'image/jpeg',
         \`uploaded_by\` VARCHAR(255) DEFAULT 'admin',
-        \`created_at\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        \`created_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
 
     await connection.query(`
       CREATE TABLE IF NOT EXISTS \`site_sections\` (
-        \`id\` INT AUTO_INCREMENT PRIMARY KEY,
+        \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         \`section_key\` VARCHAR(100) NOT NULL,
         \`locale\` VARCHAR(10) NOT NULL,
         \`content_json\` JSON NOT NULL,
-        \`updated_at\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        \`updated_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         UNIQUE KEY \`uk_section_locale\` (\`section_key\`, \`locale\`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
@@ -85,6 +88,7 @@ export async function ensureTablesExist() {
     console.log('[MySQL Init] Tablas del CMS creadas o verificadas exitosamente.');
   } catch (error) {
     console.error('[MySQL Init Error]:', error);
+    throw error;
   }
 }
 
@@ -110,11 +114,10 @@ export function getDb() {
       connectionLimit: 10,
       queueLimit: 0,
       ssl: {
-        rejectUnauthorized: true,
+        rejectUnauthorized: false,
       },
     });
 
-    // Auto-inicializar tablas en segundo plano
     ensureTablesExist().catch(console.error);
   }
 
