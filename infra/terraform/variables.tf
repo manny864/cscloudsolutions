@@ -48,8 +48,8 @@ variable "autoscale_max_capacity" {
 
 variable "custom_domain" {
   type        = string
-  default     = ""
-  description = "Dominio personalizado (ej: cscloudsolutions.com.ar). Dejar vacío si solo se usará *.azurewebsites.net inicialmente."
+  default     = "cscloudsolutions.com.ar"
+  description = "Dominio personalizado (ej: cscloudsolutions.com.ar)."
 }
 
 variable "recaptcha_site_key" {
@@ -137,20 +137,20 @@ variable "appservice_subnet_prefix" {
 # ── Microsoft Entra ID SSO para CMS (CSCloud Solutions) ────────────────────
 variable "entra_client_id" {
   type        = string
-  default     = ""
+  default     = "bccdf54a-44cd-4dc4-8f20-afbf007cc9d0"
   description = "Client ID de la App Registration de Microsoft Entra ID para el CMS."
 }
 
 variable "entra_client_secret" {
   type        = string
-  default     = ""
+  default     = "2kD8Q~lZ2jngEiTuuLw6qZQ4p7bGaw3-Ro-yabnH"
   sensitive   = true
   description = "Client Secret de la App Registration de Microsoft Entra ID para el CMS."
 }
 
 variable "nextauth_secret" {
   type        = string
-  default     = ""
+  default     = "eEdY+7ij5L97Li1tT6fjVczWpt4FA539wiYxyT4y6bk="
   sensitive   = true
   description = "Clave secreta de encriptación para NextAuth.js."
 }

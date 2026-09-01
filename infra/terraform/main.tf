@@ -205,6 +205,7 @@ resource "azurerm_linux_web_app" "cscs_app" {
   client_affinity_enabled                        = false
   ftp_publish_basic_authentication_enabled       = false
   webdeploy_publish_basic_authentication_enabled = false
+  virtual_network_subnet_id                      = azurerm_subnet.webpage_snet_appservice.id
   tags                                           = local.tags
 
   identity {
@@ -286,6 +287,7 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
   client_affinity_enabled                        = false
   ftp_publish_basic_authentication_enabled       = false
   webdeploy_publish_basic_authentication_enabled = false
+  virtual_network_subnet_id                      = azurerm_subnet.webpage_snet_appservice.id
   tags                                           = local.tags
 
   identity {
@@ -445,17 +447,6 @@ resource "azurerm_subnet" "webpage_snet_appservice" {
   }
 }
 
-# VNet Integration para Web App Producción y Staging
-resource "azurerm_app_service_virtual_network_swift_connection" "prod_vnet" {
-  app_service_id = azurerm_linux_web_app.cscs_app.id
-  subnet_id      = azurerm_subnet.webpage_snet_appservice.id
-}
-
-resource "azurerm_app_service_virtual_network_swift_connection" "staging_vnet" {
-  app_service_id = azurerm_linux_web_app_slot.cscs_app_staging.id
-  subnet_id      = azurerm_subnet.webpage_snet_appservice.id
-}
-
 # Base de datos MySQL dedicada para el CMS en el servidor Flexible existente
 resource "azurerm_mysql_flexible_database" "cms_database" {
   name                = "cscloud_cms"
@@ -468,7 +459,7 @@ resource "azurerm_mysql_flexible_database" "cms_database" {
 # Contenedor de Azure Blob Storage para las imágenes del CMS y Blog
 resource "azurerm_storage_container" "cms_media" {
   name                  = "cms-media"
-  storage_account_name  = data.azurerm_storage_account.finops_storage.name
+  storage_account_id    = data.azurerm_storage_account.finops_storage.id
   container_access_type = "blob"
 }
 
