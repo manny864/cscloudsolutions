@@ -76,7 +76,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   const [form, setForm] = useState({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
   const [interacted, setInteracted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcMfDssAAAAAHUIJSwr3_XWkZsdagP1vg7xFXD_';
 
   // Precargar reCAPTCHA de manera eficiente
   useEffect(() => {
@@ -95,8 +95,8 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
     setInteracted(true);
     setStatus({ kind: 'loading' });
     try {
-      if (!siteKey) throw new Error('missing-site-key');
-      const token = await getRecaptchaToken(siteKey);
+      const activeKey = siteKey || '6LcMfDssAAAAAHUIJSwr3_XWkZsdagP1vg7xFXD_';
+      const token = await getRecaptchaToken(activeKey);
       const res = await submitContact({ ...form, recaptchaToken: token });
       if (res.ok) {
         setStatus({ kind: 'success', message: res.message });
@@ -104,7 +104,8 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
       } else {
         setStatus({ kind: 'error', message: res.message });
       }
-    } catch {
+    } catch (err) {
+      console.error('[ContactForm] Error al enviar:', err);
       setStatus({ kind: 'error', message: t('errorGeneric') });
     }
   }
