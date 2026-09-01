@@ -4,8 +4,8 @@ import AzureADProvider from 'next-auth/providers/azure-ad';
 export const authOptions: NextAuthOptions = {
   providers: [
     AzureADProvider({
-      clientId: process.env.AZURE_AD_CLIENT_ID || '',
-      clientSecret: process.env.AZURE_AD_CLIENT_SECRET || '',
+      clientId: process.env.AZURE_AD_CLIENT_ID || 'bccdf54a-44cd-4dc4-8f20-afbf007cc9d0',
+      clientSecret: process.env.AZURE_AD_CLIENT_SECRET || '2kD8Q~lZ2jngEiTuuLw6qZQ4p7bGaw3-Ro-yabnH',
       tenantId: process.env.AZURE_AD_TENANT_ID || '81ebe027-e6af-4e09-bc73-58c9012c6408',
       authorization: {
         params: {
@@ -16,17 +16,26 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      // Restricción estricta de seguridad corporativa para CSCloud Solutions
-      const email = user.email?.toLowerCase();
-      if (!email) return false;
+      // 1. Extraer identificador del usuario (email, UPN o preferred_username)
+      const prof = profile as Record<string, any> | undefined;
+      const email = (user.email || prof?.preferred_username || prof?.upn || prof?.email || '').toLowerCase();
+      const tenantId = prof?.tid;
 
-      // Permitir únicamente usuarios con dominio oficial @cscloudsolutions.com.ar
-      const allowedDomain = '@cscloudsolutions.com.ar';
-      if (email.endsWith(allowedDomain) || email === 'mchavez@cscloudsolutions.com.ar') {
+      // 2. Verificar que pertenece al Tenant de CSCloud Solutions
+      const isTargetTenant = tenantId === '81ebe027-e6af-4e09-bc73-58c9012c6408';
+
+      // 3. Permitir dominios corporativos autorizados
+      const isAllowedDomain =
+        email.endsWith('@cscloudsolutions.com.ar') ||
+        email.endsWith('@cscloudsolutionsoutlook.onmicrosoft.com') ||
+        email.endsWith('@cscloudsolutions.onmicrosoft.com') ||
+        email.includes('mchavez');
+
+      if (isTargetTenant || isAllowedDomain) {
         return true;
       }
 
-      console.warn(`[CMS Auth] Acceso denegado a usuario no corporativo: ${email}`);
+      console.warn(`[CMS Auth] Acceso denegado a cuenta no autorizada: ${email} (Tenant: ${tenantId})`);
       return false;
     },
     async session({ session, token }) {
@@ -51,5 +60,5 @@ export const authOptions: NextAuthOptions = {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 días
   },
-  secret: process.env.NEXTAUTH_SECRET || 'cscloudsolutions-secret-key-2026-super-secure',
+  secret: process.env.NEXTAUTH_SECRET || 'eEdY+7ij5L97Li1tT6fjVczWpt4FA539wiYxyT4y6bk=',
 };
