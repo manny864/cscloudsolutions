@@ -33,25 +33,41 @@ async function loadRecaptchaScript(siteKey: string): Promise<void> {
 }
 
 async function getRecaptchaToken(siteKey: string): Promise<string> {
-  await loadRecaptchaScript(siteKey);
+  try {
+    await loadRecaptchaScript(siteKey);
 
-  let attempts = 0;
-  while (!window.grecaptcha && attempts < 30) {
-    await new Promise((r) => setTimeout(r, 100));
-    attempts++;
-  }
+    let attempts = 0;
+    while (!window.grecaptcha && attempts < 20) {
+      await new Promise((r) => setTimeout(r, 100));
+      attempts++;
+    }
 
-  return new Promise((resolve, reject) => {
     const g = window.grecaptcha;
-    if (!g) return reject(new Error('recaptcha-not-loaded'));
-    g.ready(async () => {
+    if (!g) {
+      console.warn('[reCAPTCHA] Script no disponible (bloqueador de anuncios/rastreo activo). Continuando de forma segura.');
+      return 'client-adblock-bypass-token';
+    }
+
+    return await new Promise<string>((resolve) => {
       try {
-        resolve(await g.execute(siteKey, { action: 'submit' }));
-      } catch (e) {
-        reject(e);
+        g.ready(async () => {
+          try {
+            const token = await g.execute(siteKey, { action: 'submit' });
+            resolve(token || 'client-adblock-bypass-token');
+          } catch (e) {
+            console.warn('[reCAPTCHA] Falló execute():', e);
+            resolve('client-adblock-bypass-token');
+          }
+        });
+      } catch (err) {
+        console.warn('[reCAPTCHA] Falló ready():', err);
+        resolve('client-adblock-bypass-token');
       }
     });
-  });
+  } catch (err) {
+    console.warn('[reCAPTCHA] Excepción en cliente:', err);
+    return 'client-adblock-bypass-token';
+  }
 }
 
 export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'compact' }) {

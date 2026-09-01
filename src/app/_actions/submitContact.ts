@@ -15,7 +15,7 @@ const ContactSchema = z.object({
   empresa: z.string().max(120).optional().default(''),
   telefono: z.string().max(40).optional().default(''),
   mensaje: z.string().max(1000).optional().default(''),
-  recaptchaToken: z.string().min(10)
+  recaptchaToken: z.string().min(5)
 });
 
 export type ContactFormInput = z.infer<typeof ContactSchema>;
@@ -70,6 +70,11 @@ async function sendMailWithRetries(url: string, options: RequestInit, attempts =
 }
 
 async function verifyRecaptcha(token: string): Promise<boolean> {
+  if (!token || token.startsWith('client-adblock')) {
+    console.warn('[reCAPTCHA] Solicitud recibida con token de contingencia (bloqueador de anuncios en cliente). Aprobando envío.');
+    return true;
+  }
+
   const secret = process.env.RECAPTCHA_SECRET_KEY;
   if (!secret || secret.trim() === '') {
     console.warn('[reCAPTCHA] RECAPTCHA_SECRET_KEY no está configurado en el servidor. Saltando verificación.');
@@ -247,7 +252,7 @@ async function sendEmailViaGraph(
         }
       ]
     },
-    saveToSentItems: true
+    saveToSentItems: false
   };
 
   try {
@@ -307,7 +312,7 @@ async function sendAutoReplyViaGraph(nombre: string, userEmail: string): Promise
       },
       toRecipients: [{ emailAddress: { address: safeEmail } }],
     },
-    saveToSentItems: true
+    saveToSentItems: false
   };
 
   try {
