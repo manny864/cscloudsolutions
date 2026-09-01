@@ -8,8 +8,8 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 // Construimos la directiva de scripts dinámicamente.
 // Agregamos 'unsafe-eval' SOLAMENTE en desarrollo para que funcione el Fast Refresh.
-// Agregamos los dominios de Google Tag Manager y Google Analytics.
-const scriptSrc = `script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://widget.clutch.co https://www.googletagmanager.com https://www.google-analytics.com https://assets.apollo.io ${isDev ? "'unsafe-eval'" : ""}`;
+// Agregamos los dominios de Google Tag Manager, Google Ads y Analytics.
+const scriptSrc = `script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://widget.clutch.co https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://assets.apollo.io ${isDev ? "'unsafe-eval'" : ""}`;
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -25,9 +25,9 @@ const securityHeaders = [
       scriptSrc,
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' blob: data: https://www.gstatic.com https://cscloudsolutions.com.ar https://clutch.co https://www.google-analytics.com",
-      "frame-src 'self' https://www.google.com https://clutch.co https://widget.clutch.co",
-      "connect-src 'self' https://www.google.com https://www.google-analytics.com https://*.apollo.io",
+      "img-src 'self' blob: data: https://www.gstatic.com https://cscloudsolutions.com.ar https://clutch.co https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://www.googleadservices.com https://www.google.com https://*.google.com",
+      "frame-src 'self' https://www.google.com https://clutch.co https://widget.clutch.co https://td.doubleclick.net https://*.doubleclick.net",
+      "connect-src 'self' https://www.google.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.apollo.io https://*.ingest.sentry.io",
       "object-src 'none'",
     ].join('; '),
   },
