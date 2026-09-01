@@ -54,7 +54,7 @@ variable "custom_domain" {
 
 variable "recaptcha_site_key" {
   type        = string
-  default     = ""
+  default     = "6LcMfDssAAAAAHUIJSwr3_XWkZsdagP1vg7xFXD_"
   description = "Clave pública del sitio de Google reCAPTCHA."
 }
 
@@ -153,5 +153,25 @@ variable "nextauth_secret" {
   default     = "eEdY+7ij5L97Li1tT6fjVczWpt4FA539wiYxyT4y6bk="
   sensitive   = true
   description = "Clave secreta de encriptación para NextAuth.js."
+}
+
+variable "azure_storage_connection_string" {
+  type        = string
+  default     = "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=cscsfinopsprodwestus2sa;AccountKey=ofgHezrzr+HPjdDI7xETbsREVVxu6zbn93q9PqFtg3hCR4k16X98dRnWTsh3QKukXVgqVj4BXl9r+AStBhlgDw==;BlobEndpoint=https://cscsfinopsprodwestus2sa.blob.core.windows.net/;FileEndpoint=https://cscsfinopsprodwestus2sa.file.core.windows.net/;QueueEndpoint=https://cscsfinopsprodwestus2sa.queue.core.windows.net/;TableEndpoint=https://cscsfinopsprodwestus2sa.table.core.windows.net/"
+  sensitive   = true
+  description = "Cadena de conexión para Azure Blob Storage (cscsfinopsprodwestus2sa)."
+}
+
+variable "mysql_user" {
+  type        = string
+  default     = "finops_admin"
+  description = "Usuario administrador del servidor MySQL Flexible."
+}
+
+variable "mysql_password" {
+  type        = string
+  default     = "KW0!<+2Cm3Y%rqZSccW1rR(}hilA0:lu"
+  sensitive   = true
+  description = "Contraseña del servidor MySQL Flexible."
 }
 

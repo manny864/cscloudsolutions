@@ -266,12 +266,18 @@ resource "azurerm_linux_web_app" "cscs_app" {
     # Conexión Privada MySQL CMS (VNet Backend)
     MYSQL_HOST                     = "${var.finops_mysql_server_name}.mysql.database.azure.com"
     MYSQL_DATABASE                 = "cscloud_cms"
+    MYSQL_USER                     = var.mysql_user
+    MYSQL_PASSWORD                 = var.mysql_password
     AZURE_STORAGE_CONTAINER_NAME   = "cms-media"
+    AZURE_STORAGE_CONNECTION_STRING = var.azure_storage_connection_string
   }
 
   sticky_settings {
     app_setting_names = [
-      "NEXTAUTH_URL"
+      "NEXTAUTH_URL",
+      "MYSQL_PASSWORD",
+      "MYSQL_USER",
+      "AZURE_STORAGE_CONNECTION_STRING"
     ]
   }
 
@@ -354,7 +360,10 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
     # Conexión Privada MySQL CMS (VNet Backend)
     MYSQL_HOST                     = "${var.finops_mysql_server_name}.mysql.database.azure.com"
     MYSQL_DATABASE                 = "cscloud_cms"
+    MYSQL_USER                     = var.mysql_user
+    MYSQL_PASSWORD                 = var.mysql_password
     AZURE_STORAGE_CONTAINER_NAME   = "cms-media"
+    AZURE_STORAGE_CONNECTION_STRING = var.azure_storage_connection_string
   }
 
   logs {
@@ -443,6 +452,7 @@ resource "azurerm_subnet" "webpage_snet_appservice" {
   resource_group_name  = data.azurerm_virtual_network.finops_vnet.resource_group_name
   virtual_network_name = data.azurerm_virtual_network.finops_vnet.name
   address_prefixes     = [var.appservice_subnet_prefix]
+  service_endpoints    = ["Microsoft.Storage", "Microsoft.KeyVault"]
 
   delegation {
     name = "delegation-appservice"
