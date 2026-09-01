@@ -1,8 +1,8 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { SessionProvider } from 'next-auth/react';
 import { Logo } from '@/components/Logo';
@@ -14,15 +14,44 @@ import {
   IconExternalLink,
   IconLogout,
   IconUserCheck,
+  IconLoader2,
 } from '@tabler/icons-react';
 
 function AdminLayoutInner({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const { data: session, status } = useSession();
+  const isLoginPage = pathname.includes('/admin/login');
 
-  // Si estamos en la página de login, no mostrar sidebar
-  if (pathname.includes('/admin/login')) {
+  useEffect(() => {
+    if (!isLoginPage && status === 'unauthenticated') {
+      router.replace('/admin/login');
+    }
+  }, [status, isLoginPage, router]);
+
+  // Si estamos en la página de login, renderizar únicamente el contenido de login
+  if (isLoginPage) {
     return <>{children}</>;
+  }
+
+  // Mientras se valida la sesión, mostrar pantalla de carga segura
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-3">
+        <IconLoader2 className="w-8 h-8 animate-spin text-[color:var(--cyan)]" />
+        <p className="text-xs font-bold uppercase tracking-widest">Validando credenciales de Microsoft...</p>
+      </div>
+    );
+  }
+
+  // Si no está autenticado, no renderizar el panel mientras se procesa la redirección
+  if (status === 'unauthenticated' || !session) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center text-slate-400 gap-3">
+        <IconLoader2 className="w-8 h-8 animate-spin text-[color:var(--cyan)]" />
+        <p className="text-xs font-bold uppercase tracking-widest">Redirigiendo al inicio de sesión corporativo...</p>
+      </div>
+    );
   }
 
   const navItems = [
@@ -39,7 +68,7 @@ function AdminLayoutInner({ children }: { children: ReactNode }) {
         <div>
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-800">
             <Link href="/admin">
-              <Logo />
+              <Logo locale="es" />
             </Link>
           </div>
 
@@ -77,10 +106,10 @@ function AdminLayoutInner({ children }: { children: ReactNode }) {
             </div>
             <div className="overflow-hidden">
               <p className="text-xs font-bold text-white truncate">
-                {session?.user?.name || 'Administrador'}
+                {session.user?.name || 'Administrador'}
               </p>
               <p className="text-[10px] text-slate-400 truncate">
-                {session?.user?.email || 'admin@cscloudsolutions.com.ar'}
+                {session.user?.email || 'admin@cscloudsolutions.com.ar'}
               </p>
             </div>
           </div>
