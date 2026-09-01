@@ -8,8 +8,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 // Construimos la directiva de scripts dinámicamente.
 // Agregamos 'unsafe-eval' SOLAMENTE en desarrollo para que funcione el Fast Refresh.
-// Agregamos los dominios de Google Tag Manager, Google Ads, reCAPTCHA y Analytics.
-const scriptSrc = `script-src 'self' 'unsafe-inline' https://www.google.com https://www.google.com.ar https://*.google.com https://*.google.com.ar https://www.gstatic.com https://*.gstatic.com https://www.recaptcha.net https://*.recaptcha.net https://widget.clutch.co https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://assets.apollo.io ${isDev ? "'unsafe-eval'" : ""}`;
+const scriptSrc = `script-src 'self' 'unsafe-inline' https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://gstatic.com https://*.gstatic.com https://www.gstatic.com https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://widget.clutch.co https://clutch.co https://googletagmanager.com https://*.googletagmanager.com https://www.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://www.google-analytics.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://assets.apollo.io https://*.apollo.io https://static.cloudflareinsights.com https://*.cloudflareinsights.com https://cloudflareinsights.com ${isDev ? "'unsafe-eval'" : ""}`;
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -23,11 +22,11 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       scriptSrc,
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com",
-      "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' blob: data: https://www.gstatic.com https://*.gstatic.com https://cscloudsolutions.com.ar https://clutch.co https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://www.googleadservices.com https://www.google.com https://*.google.com https://www.google.com.ar https://*.google.com.ar https://www.recaptcha.net https://*.recaptcha.net",
-      "frame-src 'self' https://www.google.com https://www.google.com.ar https://*.google.com https://*.google.com.ar https://www.recaptcha.net https://*.recaptcha.net https://clutch.co https://widget.clutch.co https://td.doubleclick.net https://*.doubleclick.net",
-      "connect-src 'self' https://www.google.com https://www.google.com.ar https://*.google.com https://*.google.com.ar https://www.recaptcha.net https://*.recaptcha.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.apollo.io https://*.ingest.sentry.io",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.gstatic.com https://www.gstatic.com",
+      "font-src 'self' https://fonts.gstatic.com data:",
+      "img-src 'self' blob: data: https://cscloudsolutions.com.ar https://clutch.co https://*.clutch.co https://gstatic.com https://*.gstatic.com https://www.gstatic.com https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://google-analytics.com https://*.google-analytics.com https://www.google-analytics.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://recaptcha.net https://*.recaptcha.net https://static.cloudflareinsights.com https://*.cloudflareinsights.com",
+      "frame-src 'self' https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://clutch.co https://*.clutch.co https://widget.clutch.co https://td.doubleclick.net https://*.doubleclick.net",
+      "connect-src 'self' https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://googletagmanager.com https://*.googletagmanager.com https://www.googletagmanager.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://apollo.io https://*.apollo.io https://aplo-evnt.com https://*.aplo-evnt.com https://cloudflareinsights.com https://*.cloudflareinsights.com https://static.cloudflareinsights.com https://*.ingest.sentry.io",
       "object-src 'none'",
     ].join('; '),
   },

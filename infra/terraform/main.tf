@@ -275,9 +275,22 @@ resource "azurerm_linux_web_app" "cscs_app" {
   sticky_settings {
     app_setting_names = [
       "NEXTAUTH_URL",
+      "NEXTAUTH_SECRET",
       "MYSQL_PASSWORD",
       "MYSQL_USER",
-      "AZURE_STORAGE_CONNECTION_STRING"
+      "AZURE_STORAGE_CONNECTION_STRING",
+      "AZURE_CLIENT_ID",
+      "AZURE_CLIENT_SECRET",
+      "AZURE_AD_CLIENT_ID",
+      "AZURE_AD_CLIENT_SECRET",
+      "RECAPTCHA_SECRET_KEY",
+      "NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
+    ]
+  }
+
+  lifecycle {
+    ignore_changes = [
+      app_settings
     ]
   }
 
@@ -366,13 +379,10 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
     AZURE_STORAGE_CONNECTION_STRING = var.azure_storage_connection_string
   }
 
-  logs {
-    http_logs {
-      file_system {
-        retention_in_days = 7
-        retention_in_mb   = 35
-      }
-    }
+  lifecycle {
+    ignore_changes = [
+      app_settings
+    ]
   }
 }
 

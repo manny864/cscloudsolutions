@@ -58,6 +58,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   const t = useTranslations('contact');
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const [form, setForm] = useState({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
+  const [interacted, setInteracted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -69,11 +70,13 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   }, [siteKey]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setInteracted(true);
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setInteracted(true);
     setStatus({ kind: 'loading' });
     try {
       if (!siteKey) throw new Error('missing-site-key');
@@ -95,156 +98,135 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   }`;
 
   return (
-    <div ref={formRef} className="w-full">
-      <form onSubmit={onSubmit} className="space-y-4" noValidate>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label htmlFor="nombre" className="mb-1.5 block text-xs font-semibold text-[color:var(--navy)]">
+    <div ref={formRef}>
+      <form
+        onSubmit={onSubmit}
+        noValidate
+        className="rounded-3xl bg-white p-8 shadow-sm"
+      >
+        <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold text-[color:var(--navy)]">
+          {t('formTitle')}
+        </h3>
+        <p className="mt-1 text-sm text-[color:var(--gray-600)]">{t('formSub')}</p>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {/* Nombre */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-nombre" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
               {t('name')}
             </label>
             <input
-              id="nombre"
+              id="cf-nombre"
               name="nombre"
               type="text"
-              required
               autoComplete="name"
-              placeholder={t('namePh')}
+              required
               value={form.nombre}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
+              placeholder={t('namePh')}
               className={inputClass}
             />
           </div>
-          <div>
-            <label htmlFor="email" className="mb-1.5 block text-xs font-semibold text-[color:var(--navy)]">
+
+          {/* Email */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-email" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
               {t('email')}
             </label>
             <input
-              id="email"
+              id="cf-email"
               name="email"
               type="email"
-              required
               autoComplete="email"
-              placeholder={t('emailPh')}
+              required
               value={form.email}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
+              placeholder={t('emailPh')}
               className={inputClass}
             />
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label htmlFor="empresa" className="mb-1.5 block text-xs font-semibold text-[color:var(--navy)]">
+          {/* Empresa */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-empresa" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
               {t('company')}
             </label>
             <input
-              id="empresa"
+              id="cf-empresa"
               name="empresa"
               type="text"
               autoComplete="organization"
-              placeholder={t('companyPh')}
               value={form.empresa}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
+              placeholder={t('companyPh')}
               className={inputClass}
             />
           </div>
-          <div>
-            <label htmlFor="telefono" className="mb-1.5 block text-xs font-semibold text-[color:var(--navy)]">
+
+          {/* Teléfono */}
+          <div className="flex flex-col gap-1">
+            <label htmlFor="cf-telefono" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
               {t('phone')}
             </label>
             <input
-              id="telefono"
+              id="cf-telefono"
               name="telefono"
               type="tel"
               autoComplete="tel"
-              placeholder={t('phonePh')}
               value={form.telefono}
               onChange={handleChange}
+              onFocus={() => setInteracted(true)}
+              placeholder={t('phonePh')}
               className={inputClass}
             />
           </div>
         </div>
 
-        <div>
-          <label htmlFor="mensaje" className="mb-1.5 block text-xs font-semibold text-[color:var(--navy)]">
+        {/* Mensaje */}
+        <div className="mt-4 flex flex-col gap-1">
+          <label htmlFor="cf-mensaje" className="text-xs font-bold uppercase tracking-wider text-[color:var(--gray-600)]">
             {t('message')}
           </label>
           <textarea
-            id="mensaje"
+            id="cf-mensaje"
             name="mensaje"
-            required
-            rows={variant === 'compact' ? 3 : 4}
-            placeholder={t('messagePh')}
+            rows={4}
             value={form.mensaje}
             onChange={handleChange}
+            onFocus={() => setInteracted(true)}
+            placeholder={t('messagePh')}
             className={`${inputClass} resize-none`}
           />
         </div>
 
+        {/* Error */}
         {status.kind === 'error' && (
-          <div
-            role="alert"
-            className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-700"
-          >
+          <p role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
             {status.message}
-          </div>
+          </p>
         )}
 
+        {/* Éxito */}
         {status.kind === 'success' && (
-          <div
-            role="alert"
-            className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700"
-          >
+          <p role="status" className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700">
             {status.message}
-          </div>
+          </p>
         )}
 
+        {/* Submit */}
         <button
           type="submit"
-          disabled={status.kind === 'loading'}
-          className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-[color:var(--navy)] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition duration-200 hover:bg-[color:var(--cyan-dark)] disabled:cursor-not-allowed disabled:opacity-60"
+          disabled={status.kind === 'loading' || status.kind === 'success'}
+          className="mt-6 w-full rounded-[5px] bg-[color:var(--cyan)] px-6 py-4 text-sm font-extrabold text-white shadow-[0_8px_30px_rgba(0,174,239,0.25)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-dark)] disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {status.kind === 'loading' ? (
-            <>
-              <svg
-                className="h-4 w-4 animate-spin text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              <span>{t('sending')}</span>
-            </>
-          ) : (
-            <span>{t('send')}</span>
-          )}
+          {status.kind === 'loading' ? t('sending') : t('send')}
         </button>
 
-        <p className="text-center text-[10px] text-[color:var(--gray-500)]">
-          {t('note')}{' '}
-          <a
-            href="https://policies.google.com/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-[color:var(--cyan)]"
-          >
-            Privacy
-          </a>{' '}
-          &amp;{' '}
-          <a
-            href="https://policies.google.com/terms"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-[color:var(--cyan)]"
-          >
-            Terms
-          </a>
+        <p className="mt-3 text-center text-[11px] font-semibold text-[color:var(--gray-400)]">
+          {t('note')}
         </p>
       </form>
     </div>
