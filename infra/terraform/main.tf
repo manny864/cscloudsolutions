@@ -217,7 +217,7 @@ resource "azurerm_linux_web_app" "cscs_app" {
     http2_enabled                     = true
     minimum_tls_version               = "1.2"
     ftps_state                        = "Disabled"
-    health_check_path                 = "/es"
+    health_check_path                 = "/api/health"
     health_check_eviction_time_in_min = 5
     app_command_line                  = "node server.js"
 
@@ -324,7 +324,7 @@ resource "azurerm_linux_web_app_slot" "cscs_app_staging" {
     http2_enabled                     = true
     minimum_tls_version               = "1.2"
     ftps_state                        = "Disabled"
-    health_check_path                 = "/es"
+    health_check_path                 = "/api/health"
     health_check_eviction_time_in_min = 5
     app_command_line                  = "node server.js"
 

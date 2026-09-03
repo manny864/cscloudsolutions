@@ -116,7 +116,7 @@ jobs:
         run: |
           echo "Esperando inicio de la aplicación en el slot de staging..."
           sleep 15
-          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://cscloudsolutions-staging.azurewebsites.net/es || true)
+          STATUS_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://cscloudsolutions-staging.azurewebsites.net/api/health || true)
           echo "Respuesta HTTP en Staging: $STATUS_CODE"
 
       - name: 3. Intercambiar Slots (Swap Staging -> Production)
