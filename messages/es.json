@@ -978,5 +978,33 @@
     "popupCta": "Empezar prueba gratuita de 7 días ›",
     "viewMore": "Ver todas las capacidades ({count})",
     "viewLess": "Ver menos capacidades"
+  },
+  "notFound": {
+    "badge": "Error 404 · Ruta no encontrada",
+    "status": "Sistemas Cloud 100% Operativos",
+    "title": "Parece que te has perdido en la nube",
+    "description": "La página que buscas no existe, ha cambiado de enlace o se encuentra temporalmente fuera de ruta. No te preocupes, nuestra infraestructura sigue activa.",
+    "backHome": "Volver al Inicio",
+    "goBack": "Página Anterior",
+    "contactSupport": "¿Necesitas asistencia urgente? Contactar a Soporte",
+    "exploreTitle": "Explora nuestras soluciones cloud principales",
+    "services": {
+      "m365": {
+        "title": "Microsoft 365",
+        "desc": "Migraciones seguras, colaboración moderna y licenciamiento corporativo."
+      },
+      "azure": {
+        "title": "Infraestructura Azure",
+        "desc": "Arquitectura cloud resiliente, backup y continuidad operativa."
+      },
+      "security": {
+        "title": "Ciberseguridad & SOC",
+        "desc": "Protección proactiva de identidades, auditorías y cumplimiento normativo."
+      },
+      "finops": {
+        "title": "Plataforma FinOps",
+        "desc": "Visibilidad, detección de anomalías y reducción del gasto cloud."
+      }
+    }
   }
 }

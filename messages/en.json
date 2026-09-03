@@ -978,5 +978,33 @@
     "popupCta": "Start free 7-day trial ›",
     "viewMore": "View all capabilities ({count})",
     "viewLess": "View fewer capabilities"
+  },
+  "notFound": {
+    "badge": "Error 404 · Route Not Found",
+    "status": "Cloud Systems 100% Operational",
+    "title": "Looks like you're lost in the cloud",
+    "description": "The page you are looking for doesn't exist, has been moved, or is temporarily unavailable. Don't worry, our cloud infrastructure is fully running.",
+    "backHome": "Back to Home",
+    "goBack": "Previous Page",
+    "contactSupport": "Need urgent help? Contact Support",
+    "exploreTitle": "Explore our core cloud solutions",
+    "services": {
+      "m365": {
+        "title": "Microsoft 365",
+        "desc": "Secure migrations, modern workplace collaboration, and enterprise licensing."
+      },
+      "azure": {
+        "title": "Azure Infrastructure",
+        "desc": "Resilient cloud architecture, backup solutions, and business continuity."
+      },
+      "security": {
+        "title": "Cybersecurity & SOC",
+        "desc": "Proactive identity protection, security audits, and regulatory compliance."
+      },
+      "finops": {
+        "title": "FinOps Platform",
+        "desc": "Cost visibility, anomaly detection, and cloud spend optimization."
+      }
+    }
   }
 }
