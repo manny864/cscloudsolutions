@@ -11,12 +11,16 @@ import {
   IconStarFilled,
   IconAward,
   IconLock,
+  IconArrowsMaximize,
+  IconTable,
 } from '@tabler/icons-react';
+import { FinOpsCapabilitiesTable } from './FinOpsCapabilitiesTable';
 
 const STORAGE_KEY = 'finops-popup-shown';
 
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<'cards' | 'fullscreen'>('cards');
   const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>({
     pro: false,
     business: false,
@@ -77,7 +81,27 @@ export function FinOpsPopup() {
     }));
   };
 
+  const handleToggleTier = (tier: string) => {
+    if (expandedTiers[tier]) {
+      // Cuando el usuario hace clic en "View fewer capabilities" / "Ver menos capacidades",
+      // se abre la matriz completa a pantalla completa con posibilidad de revertir
+      setViewMode('fullscreen');
+    } else {
+      toggleTier(tier);
+    }
+  };
+
   if (!isOpen) return null;
+
+  if (viewMode === 'fullscreen') {
+    return (
+      <FinOpsCapabilitiesTable
+        onRevert={() => setViewMode('cards')}
+        onClose={handleClose}
+        finopsUrl={finopsUrl}
+      />
+    );
+  }
 
   const proFeatures = (t.raw('pro.features') as string[]) || [];
   const businessFeatures = (t.raw('business.features') as string[]) || [];
@@ -116,6 +140,19 @@ export function FinOpsPopup() {
             <p className="mt-3 text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto px-2">
               {t('subtitle')}
             </p>
+
+            {/* Acceso directo a la Matriz Comparativa a Pantalla Completa */}
+            <div className="mt-4 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setViewMode('fullscreen')}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 bg-white hover:bg-slate-100/90 border border-slate-300 shadow-2xs hover:shadow-xs transition-all hover:-translate-y-0.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                <IconTable className="w-4 h-4 text-blue-600" />
+                <span>{t('compareFullscreen')}</span>
+                <IconArrowsMaximize className="w-3.5 h-3.5 text-slate-400" />
+              </button>
+            </div>
           </div>
 
           {/* Grid de 3 Planes */}
@@ -149,8 +186,8 @@ export function FinOpsPopup() {
 
               {proFeatures.length > 8 && (
                 <button
-                  onClick={() => toggleTier('pro')}
-                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan-dark)] hover:text-blue-800 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                  onClick={() => handleToggleTier('pro')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan-dark)] hover:text-blue-800 transition-colors text-left flex items-center gap-1 focus:outline-none cursor-pointer"
                 >
                   <span>
                     {expandedTiers.pro
@@ -195,8 +232,8 @@ export function FinOpsPopup() {
 
               {businessFeatures.length > 8 && (
                 <button
-                  onClick={() => toggleTier('business')}
-                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--navy)] hover:text-blue-900 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                  onClick={() => handleToggleTier('business')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--navy)] hover:text-blue-900 transition-colors text-left flex items-center gap-1 focus:outline-none cursor-pointer"
                 >
                   <span>
                     {expandedTiers.business
@@ -241,8 +278,8 @@ export function FinOpsPopup() {
 
               {enterpriseFeatures.length > 8 && (
                 <button
-                  onClick={() => toggleTier('enterprise')}
-                  className="mt-4 pt-2 text-xs font-bold text-white hover:text-white/80 transition-colors text-left flex items-center gap-1 focus:outline-none"
+                  onClick={() => handleToggleTier('enterprise')}
+                  className="mt-4 pt-2 text-xs font-bold text-white hover:text-white/80 transition-colors text-left flex items-center gap-1 focus:outline-none cursor-pointer"
                 >
                   <span>
                     {expandedTiers.enterprise
@@ -271,7 +308,7 @@ export function FinOpsPopup() {
             </a>
             <p className="inline-flex items-center gap-1.5 text-xs text-gray-500 font-medium">
               <IconLock className="w-3.5 h-3.5 text-gray-400" stroke={2} />
-              <span>Conexión segura con Azure • Sin tarjeta de crédito requerida • 100% de gobernanza</span>
+              <span>{t('trustBadge')}</span>
             </p>
           </div>
         </div>
