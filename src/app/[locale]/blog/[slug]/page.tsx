@@ -3,6 +3,8 @@ import { blogMapping } from '@/lib/blog-mapping';
 import { notFound, redirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Metadata } from 'next';
@@ -160,17 +162,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           prose-th:bg-[color:var(--navy)] prose-th:text-white prose-th:p-4 prose-td:p-4 prose-td:border prose-tr:nth-child(even):bg-[color:var(--gray-50)]
           prose-li:marker:text-[color:var(--cyan)]">
           
-          <ReactMarkdown 
+          <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
             components={{
               img: ({node, ...props}) => {
                 imageIndex++;
                 const isEven = imageIndex % 2 === 0;
                 return (
-                  <MarkdownImage 
-                    src={String(props.src || '')} 
-                    alt={String(props.alt || '')} 
-                    isEven={isEven} 
+                  <MarkdownImage
+                    src={String(props.src || '')}
+                    alt={String(props.alt || '')}
+                    isEven={isEven}
                   />
                 );
               }
