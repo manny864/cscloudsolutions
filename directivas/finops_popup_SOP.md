@@ -55,6 +55,8 @@ A diferencia de versiones anteriores con 4 tiers, la plataforma oficial maneja 3
 - **Master es la página de precios:** Siempre que se añadan o modifiquen viñetas en `/Users/manuelchavez/Documents/FinOpsProyect/src/components/PricingPage.tsx` o `messages/*.json`, el popup (`FinOpsPopup.tsx`) debe actualizarse inmediatamente para reflejar idénticas características.
 - **Evitar falsas promesas en Business:** No listar capacidades Enterprise en Business (como CSP Markup o Power BI Templates). Tampoco listar en Business beneficios que Professional ya incluye (como FOCUS 1.1 Export).
 - **Módulos restringidos a Enterprise:** Recordar que tras los ajustes de arquitectura, Inventario Costo Cero, Simulador What-If, Alertas avanzadas, Salud del Tenant, Scorecard, Beneficios Híbridos y Planes de Ahorro son exclusivos de Enterprise y no deben aparecer en Professional ni Business.
+- **Conflicto de Caché en `.next` (`@opentelemetry.js`):** No ejecutar `npm run build` mientras `next dev` se encuentre corriendo en segundo plano en el mismo proyecto. `next build` genera artefactos de producción y elimina los chunks de desarrollo en `.next/server/vendor-chunks/`, provocando el error `Cannot find module './vendor-chunks/@opentelemetry.js'`. Si ocurre, detener el servidor `next dev`, purgar la carpeta temporal con `rm -rf .next` y reiniciar el entorno de desarrollo.
 - **Reversión intuitiva:** El usuario debe poder regresar a la vista de tarjetas sin recargar la página ni perder el estado del popup.
+
 
 
