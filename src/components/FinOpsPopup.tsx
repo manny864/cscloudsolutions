@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import {
   IconX,
   IconCheck,
-  IconChevronDown,
+  IconArrowRight,
   IconSparkles,
   IconShieldCheck,
   IconStarFilled,
@@ -21,11 +21,6 @@ const STORAGE_KEY = 'finops-popup-shown';
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'cards' | 'fullscreen'>('cards');
-  const [expandedTiers, setExpandedTiers] = useState<Record<string, boolean>>({
-    pro: false,
-    business: false,
-    enterprise: false,
-  });
 
   const t = useTranslations('finopsPopup');
   const locale = useLocale();
@@ -74,23 +69,6 @@ export function FinOpsPopup() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, handleClose]);
 
-  const toggleTier = (tier: string) => {
-    setExpandedTiers((prev) => ({
-      ...prev,
-      [tier]: !prev[tier],
-    }));
-  };
-
-  const handleToggleTier = (tier: string) => {
-    if (expandedTiers[tier]) {
-      // Cuando el usuario hace clic en "View fewer capabilities" / "Ver menos capacidades",
-      // se abre la matriz completa a pantalla completa con posibilidad de revertir
-      setViewMode('fullscreen');
-    } else {
-      toggleTier(tier);
-    }
-  };
-
   if (!isOpen) return null;
 
   if (viewMode === 'fullscreen') {
@@ -122,7 +100,7 @@ export function FinOpsPopup() {
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[70] p-2.5 text-gray-500 hover:text-gray-900 bg-white/80 hover:bg-white rounded-full shadow-sm transition-all hover:scale-105 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
-          aria-label="Cerrar modal"
+          aria-label={t('fullscreenClose')}
         >
           <IconX className="w-5 h-5 text-gray-700" stroke={2.5} />
         </button>
@@ -175,7 +153,7 @@ export function FinOpsPopup() {
                 <div className="h-px bg-gray-100 mb-5" />
 
                 <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
-                  {(expandedTiers.pro ? proFeatures : proFeatures.slice(0, 8)).map((f, i) => (
+                  {proFeatures.slice(0, 8).map((f, i) => (
                     <li key={i} className="flex items-start">
                       <IconCheck className="w-4 h-4 text-[color:var(--cyan-dark)] mr-2.5 mt-0.5 flex-shrink-0" stroke={2.5} />
                       <span className={i === 0 ? 'font-semibold text-gray-900' : ''}>{f}</span>
@@ -186,16 +164,13 @@ export function FinOpsPopup() {
 
               {proFeatures.length > 8 && (
                 <button
-                  onClick={() => handleToggleTier('pro')}
-                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan-dark)] hover:text-blue-800 transition-colors text-left flex items-center gap-1 focus:outline-none cursor-pointer"
+                  type="button"
+                  onClick={() => setViewMode('fullscreen')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan-dark)] hover:text-blue-800 transition-colors text-left flex items-center gap-1.5 focus:outline-none cursor-pointer group"
                 >
-                  <span>
-                    {expandedTiers.pro
-                      ? t('viewLess')
-                      : t('viewMore', { count: proFeatures.length })}
-                  </span>
-                  <IconChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.pro ? 'rotate-180' : ''}`}
+                  <span>{t('viewMore', { count: proFeatures.length })}</span>
+                  <IconArrowRight
+                    className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
                     stroke={2.5}
                   />
                 </button>
@@ -219,7 +194,7 @@ export function FinOpsPopup() {
                 <div className="h-px bg-gray-100 mb-5" />
 
                 <ul className="space-y-3 text-xs sm:text-sm text-gray-700">
-                  {(expandedTiers.business ? businessFeatures : businessFeatures.slice(0, 8)).map((f, i) => (
+                  {businessFeatures.slice(0, 8).map((f, i) => (
                     <li key={i} className="flex items-start">
                       <IconCheck className="w-4 h-4 text-[color:var(--navy)] mr-2.5 mt-0.5 flex-shrink-0" stroke={2.5} />
                       <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-gray-900' : ''}>
@@ -232,16 +207,13 @@ export function FinOpsPopup() {
 
               {businessFeatures.length > 8 && (
                 <button
-                  onClick={() => handleToggleTier('business')}
-                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--navy)] hover:text-blue-900 transition-colors text-left flex items-center gap-1 focus:outline-none cursor-pointer"
+                  type="button"
+                  onClick={() => setViewMode('fullscreen')}
+                  className="mt-4 pt-2 text-xs font-bold text-[color:var(--navy)] hover:text-blue-900 transition-colors text-left flex items-center gap-1.5 focus:outline-none cursor-pointer group"
                 >
-                  <span>
-                    {expandedTiers.business
-                      ? t('viewLess')
-                      : t('viewMore', { count: businessFeatures.length })}
-                  </span>
-                  <IconChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${expandedTiers.business ? 'rotate-180' : ''}`}
+                  <span>{t('viewMore', { count: businessFeatures.length })}</span>
+                  <IconArrowRight
+                    className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
                     stroke={2.5}
                   />
                 </button>
@@ -265,7 +237,7 @@ export function FinOpsPopup() {
                 <div className="h-px bg-slate-700 mb-5" />
 
                 <ul className="space-y-3 text-xs sm:text-sm text-white">
-                  {(expandedTiers.enterprise ? enterpriseFeatures : enterpriseFeatures.slice(0, 8)).map((f, i) => (
+                  {enterpriseFeatures.slice(0, 8).map((f, i) => (
                     <li key={i} className="flex items-start">
                       <IconCheck className="w-4 h-4 text-white mr-2.5 mt-0.5 flex-shrink-0" stroke={2.5} />
                       <span className={i === 0 || f.startsWith('Todo lo de') || f.startsWith('Everything in') || f.startsWith('Tudo do') ? 'font-bold text-white' : 'text-slate-100'}>
@@ -278,16 +250,13 @@ export function FinOpsPopup() {
 
               {enterpriseFeatures.length > 8 && (
                 <button
-                  onClick={() => handleToggleTier('enterprise')}
-                  className="mt-4 pt-2 text-xs font-bold text-white hover:text-white/80 transition-colors text-left flex items-center gap-1 focus:outline-none cursor-pointer"
+                  type="button"
+                  onClick={() => setViewMode('fullscreen')}
+                  className="mt-4 pt-2 text-xs font-bold text-white hover:text-white/80 transition-colors text-left flex items-center gap-1.5 focus:outline-none cursor-pointer group"
                 >
-                  <span>
-                    {expandedTiers.enterprise
-                      ? t('viewLess')
-                      : t('viewMore', { count: enterpriseFeatures.length })}
-                  </span>
-                  <IconChevronDown
-                    className={`w-3.5 h-3.5 text-white transition-transform duration-200 ${expandedTiers.enterprise ? 'rotate-180' : ''}`}
+                  <span>{t('viewMore', { count: enterpriseFeatures.length })}</span>
+                  <IconArrowRight
+                    className="w-3.5 h-3.5 text-white transition-transform duration-200 group-hover:translate-x-1"
                     stroke={2.5}
                   />
                 </button>
