@@ -67,28 +67,28 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'azureSubs',
-          icon: <IconBrandAzure className="w-5 h-5 text-[#0078D4]" stroke={1.75} />,
+          icon: <IconBrandAzure className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:upTo2',
           business: 'val:upTo3',
           enterprise: 'val:unlimited',
         },
         {
           itemKey: 'usersAccounts',
-          icon: <IconUsers className="w-5 h-5 text-slate-700" stroke={1.75} />,
+          icon: <IconUsers className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:upTo3Users',
           business: 'val:upTo5Users',
           enterprise: 'val:unlimitedUsers',
         },
         {
           itemKey: 'multiCurrency',
-          icon: <IconReceipt className="w-5 h-5 text-emerald-600" stroke={1.75} />,
+          icon: <IconReceipt className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'multiTenantDelegations',
-          icon: <IconLayersLinked className="w-5 h-5 text-indigo-600" stroke={1.75} />,
+          icon: <IconLayersLinked className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: true,
           enterprise: true,
@@ -100,56 +100,56 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'whiteboard',
-          icon: <IconChartBar className="w-5 h-5 text-blue-600" stroke={1.75} />,
+          icon: <IconChartBar className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'costHistory',
-          icon: <IconClock className="w-5 h-5 text-slate-600" stroke={1.75} />,
+          icon: <IconClock className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'realConsumption',
-          icon: <IconChartBar className="w-5 h-5 text-[#00AEEF]" stroke={1.75} />,
+          icon: <IconChartBar className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'costGroups',
-          icon: <IconScale className="w-5 h-5 text-blue-700" stroke={1.75} />,
+          icon: <IconScale className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'focusExport',
-          icon: <IconFileSpreadsheet className="w-5 h-5 text-emerald-700" stroke={1.75} />,
+          icon: <IconFileSpreadsheet className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'finopsMaturity',
-          icon: <IconAward className="w-5 h-5 text-amber-600" stroke={1.75} />,
+          icon: <IconAward className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'executiveReport',
-          icon: <IconFileSpreadsheet className="w-5 h-5 text-indigo-700" stroke={1.75} />,
+          icon: <IconFileSpreadsheet className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'sharedCostAllocation',
-          icon: <IconScale className="w-5 h-5 text-purple-700" stroke={1.75} />,
+          icon: <IconScale className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
@@ -161,42 +161,42 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'zombieResources',
-          icon: <IconTrash className="w-5 h-5 text-rose-600" stroke={1.75} />,
+          icon: <IconTrash className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:detectionOnly',
           business: 'val:detectionRemediation',
           enterprise: 'val:detectionRemediationBlock',
         },
         {
           itemKey: 'zombieNetworking',
-          icon: <IconServer className="w-5 h-5 text-orange-600" stroke={1.75} />,
+          icon: <IconServer className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:detectionOnly',
           business: 'val:detectionRemediation',
           enterprise: 'val:detectionRemediationBlock',
         },
         {
           itemKey: 'tagCompliance',
-          icon: <IconTags className="w-5 h-5 text-teal-600" stroke={1.75} />,
+          icon: <IconTags className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:auditOnly',
           business: 'val:auditRemediation',
           enterprise: 'val:auditRemediationBlock',
         },
         {
           itemKey: 'autoPowerSchedules',
-          icon: <IconBolt className="w-5 h-5 text-amber-500" stroke={1.75} />,
+          icon: <IconBolt className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'ttlExpirations',
-          icon: <IconClock className="w-5 h-5 text-slate-700" stroke={1.75} />,
+          icon: <IconClock className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'expiringCredentials',
-          icon: <IconKey className="w-5 h-5 text-amber-700" stroke={1.75} />,
+          icon: <IconKey className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: true,
           enterprise: true,
@@ -208,56 +208,56 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'rightsizing',
-          icon: <IconCpu className="w-5 h-5 text-indigo-600" stroke={1.75} />,
+          icon: <IconCpu className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:basicRecommendations',
           business: true,
           enterprise: 'val:advancedRightsizingCode',
         },
         {
           itemKey: 'savingsPlansVsRis',
-          icon: <IconScale className="w-5 h-5 text-emerald-600" stroke={1.75} />,
+          icon: <IconScale className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'hybridBenefit',
-          icon: <IconAward className="w-5 h-5 text-blue-600" stroke={1.75} />,
+          icon: <IconAward className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'zeroCostInventory',
-          icon: <IconReceipt className="w-5 h-5 text-teal-600" stroke={1.75} />,
+          icon: <IconReceipt className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'whatIfScenarios',
-          icon: <IconSparkles className="w-5 h-5 text-purple-600" stroke={1.75} />,
+          icon: <IconSparkles className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'teamScorecard',
-          icon: <IconAward className="w-5 h-5 text-amber-500" stroke={1.75} />,
+          icon: <IconAward className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'storageComputeEfficiency',
-          icon: <IconServer className="w-5 h-5 text-cyan-600" stroke={1.75} />,
+          icon: <IconServer className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'maccTracking',
-          icon: <IconChartBar className="w-5 h-5 text-blue-800" stroke={1.75} />,
+          icon: <IconChartBar className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
@@ -269,21 +269,21 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'aksControl',
-          icon: <IconServer className="w-5 h-5 text-[#326CE5]" stroke={1.75} />,
+          icon: <IconServer className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'aksChargeback',
-          icon: <IconScale className="w-5 h-5 text-[#326CE5]" stroke={1.75} />,
+          icon: <IconScale className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'unitEconomics',
-          icon: <IconReceipt className="w-5 h-5 text-emerald-700" stroke={1.75} />,
+          icon: <IconReceipt className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
@@ -295,35 +295,35 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'finopsCopilot',
-          icon: <IconRobot className="w-5 h-5 text-purple-600" stroke={1.75} />,
+          icon: <IconRobot className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'zScoreAnomalies',
-          icon: <IconSparkles className="w-5 h-5 text-rose-600" stroke={1.75} />,
+          icon: <IconSparkles className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'aiCostAnalytics',
-          icon: <IconCpu className="w-5 h-5 text-violet-600" stroke={1.75} />,
+          icon: <IconCpu className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'm365CopilotCost',
-          icon: <IconRobot className="w-5 h-5 text-blue-600" stroke={1.75} />,
+          icon: <IconRobot className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'mcpApiKeys',
-          icon: <IconKey className="w-5 h-5 text-amber-600" stroke={1.75} />,
+          icon: <IconKey className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
@@ -335,35 +335,35 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'actionCenter',
-          icon: <IconCheck className="w-5 h-5 text-blue-600" stroke={1.75} />,
+          icon: <IconCheck className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:readOnly',
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'policiesAsCode',
-          icon: <IconShieldCheck className="w-5 h-5 text-rose-700" stroke={1.75} />,
+          icon: <IconShieldCheck className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'auditTrail',
-          icon: <IconClock className="w-5 h-5 text-slate-600" stroke={1.75} />,
+          icon: <IconClock className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'mfaMandatory',
-          icon: <IconLock className="w-5 h-5 text-emerald-600" stroke={1.75} />,
+          icon: <IconLock className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
         },
         {
           itemKey: 'notificationChannels',
-          icon: <IconBolt className="w-5 h-5 text-amber-600" stroke={1.75} />,
+          icon: <IconBolt className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: true,
           business: true,
           enterprise: true,
@@ -375,56 +375,56 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'lighthouseOnboarding',
-          icon: <IconBrandAzure className="w-5 h-5 text-[#0078D4]" stroke={1.75} />,
+          icon: <IconBrandAzure className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'cspBillingMarkup',
-          icon: <IconReceipt className="w-5 h-5 text-emerald-600" stroke={1.75} />,
+          icon: <IconReceipt className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'powerBiFocus',
-          icon: <IconChartBar className="w-5 h-5 text-amber-600" stroke={1.75} />,
+          icon: <IconChartBar className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'powerBiInvoicing',
-          icon: <IconFileSpreadsheet className="w-5 h-5 text-amber-700" stroke={1.75} />,
+          icon: <IconFileSpreadsheet className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'ssoFederation',
-          icon: <IconKey className="w-5 h-5 text-indigo-600" stroke={1.75} />,
+          icon: <IconKey className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'publicRestApi',
-          icon: <IconLayersLinked className="w-5 h-5 text-blue-600" stroke={1.75} />,
+          icon: <IconLayersLinked className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'azureKeyVault',
-          icon: <IconLock className="w-5 h-5 text-slate-700" stroke={1.75} />,
+          icon: <IconLock className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
         },
         {
           itemKey: 'marketplaceBilling',
-          icon: <IconBrandAzure className="w-5 h-5 text-[#0078D4]" stroke={1.75} />,
+          icon: <IconBrandAzure className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: true,
@@ -436,21 +436,21 @@ export function FinOpsCapabilitiesTable({
       rows: [
         {
           itemKey: 'supportTickets',
-          icon: <IconHeadset className="w-5 h-5 text-slate-700" stroke={1.75} />,
+          icon: <IconHeadset className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:tickets20',
           business: 'val:unlimited',
           enterprise: 'val:unlimited',
         },
         {
           itemKey: 'slaResponse',
-          icon: <IconClock className="w-5 h-5 text-slate-700" stroke={1.75} />,
+          icon: <IconClock className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: 'val:sla24h',
           business: 'val:sla8h',
           enterprise: 'val:sla4h',
         },
         {
           itemKey: 'dedicatedSupport',
-          icon: <IconShieldCheck className="w-5 h-5 text-blue-700" stroke={1.75} />,
+          icon: <IconShieldCheck className="w-4.5 h-4.5 text-white" stroke={1.75} />,
           pro: false,
           business: false,
           enterprise: 'val:dedicated247',
@@ -473,7 +473,7 @@ export function FinOpsCapabilitiesTable({
     if (value === true) {
       return (
         <span className="inline-flex items-center justify-center text-slate-900" aria-label={t('matrix.included')}>
-          <IconCheck className="w-5 h-5 text-slate-900" stroke={2.6} />
+          <IconCheck className="w-5 h-5 text-[#0054A6]" stroke={2.8} />
         </span>
       );
     }
@@ -627,7 +627,7 @@ export function FinOpsCapabilitiesTable({
                       {/* Columna de la Característica (Ícono + Nombre traducido) */}
                       <td className="py-4 px-4 text-slate-900">
                         <div className="flex items-center gap-3.5">
-                          <span className="shrink-0 flex items-center justify-center p-1 rounded-md bg-slate-100">
+                          <span className="shrink-0 flex items-center justify-center w-8 h-8 rounded-lg bg-[#0054A6] text-white shadow-2xs [&>svg]:text-white [&>svg]:stroke-white">
                             {row.icon}
                           </span>
                           <span className="text-xs sm:text-sm font-medium text-slate-800 leading-snug">
