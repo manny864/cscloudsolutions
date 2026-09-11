@@ -43,8 +43,14 @@ A diferencia de versiones anteriores con 4 tiers, la plataforma oficial maneja 3
 - **Comportamiento sin acordeón en tarjetas:** Las tarjetas de planes en el modal no deben actuar como desplegables/acordeón. Mantener siempre una vista compacta y uniforme (primeras 8 capacidades). El botón inferior ("Ver todas las capacidades ({count})") debe invocar directamente la matriz comparativa a pantalla completa (`FinOpsCapabilitiesTable`), evitando saltos visuales o tarjetas asimétricas.
 - **Pie de página limpio:** Por requerimiento de negocio y diseño, el mensaje "Sin tarjeta de crédito requerida" / "No credit card required" debe permanecer eliminado del pie de página de confianza (`trustBadge`) tanto en el modal como en la tabla completa.
 - **Internacionalización sin textos crudos:** La matriz completa `FinOpsCapabilitiesTable` no debe contener textos fijos en español en su JSX ni en su definición de filas. Todo debe resolverse dinámicamente vía `t('matrix.items.*')` y `t('matrix.values.*')` para garantizar paridad lingüística en ES, EN y PT-BR.
+- **Alineación Visual con FinOpsProyect:** La página de precios de FinOpsProyect (`PricingPage.tsx`) y el modal `FinOpsPopup.tsx` comparten la misma jerarquía estética:
+  - *Professional:* Tarjeta blanca/translúcida, badge azul con `IconAward`, tag verde de 7 días de prueba, tildes cian.
+  - *Business:* Tarjeta destacada con borde azul corporativo (`#0054A6`), barra superior con degradado (`#002244` a `#00AEEF`), badge marino con `IconStarFilled`, tildes oscuras y mención al plan base en negrita.
+  - *Enterprise:* Tarjeta de lujo oscuro (`from-[#0F172A] to-[#1E293B]`), badge escudo con `IconShieldCheck`, caja destacada para Azure Lighthouse, tildes blancas de alto contraste y botón blanco predominante.
+  - Ambas interfaces presentan las primeras 8 capacidades visibles y permiten expandir el listado completo sin alterar el flujo de checkout, MSAL o demo.
 - **Master es la página de precios:** Siempre que se añadan o modifiquen viñetas en `/Users/manuelchavez/Documents/FinOpsProyect/src/components/PricingPage.tsx` o `messages/*.json`, el popup (`FinOpsPopup.tsx`) debe actualizarse inmediatamente para reflejar idénticas características.
 - **Evitar falsas promesas en Business:** No listar capacidades Enterprise en Business (como CSP Markup o Power BI Templates). Tampoco listar en Business beneficios que Professional ya incluye (como FOCUS 1.1 Export).
 - **Módulos restringidos a Enterprise:** Recordar que tras los ajustes de arquitectura, Inventario Costo Cero, Simulador What-If, Alertas avanzadas, Salud del Tenant, Scorecard, Beneficios Híbridos y Planes de Ahorro son exclusivos de Enterprise y no deben aparecer en Professional ni Business.
 - **Reversión intuitiva:** El usuario debe poder regresar a la vista de tarjetas sin recargar la página ni perder el estado del popup.
+
 
