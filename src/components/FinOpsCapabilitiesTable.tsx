@@ -472,8 +472,11 @@ export function FinOpsCapabilitiesTable({
     }
     if (value === true) {
       return (
-        <span className="inline-flex items-center justify-center text-slate-900" aria-label={t('matrix.included')}>
-          <IconCheck className="w-5 h-5 text-[#0054A6]" stroke={2.8} />
+        <span
+          className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#0054A6] text-white shadow-2xs"
+          aria-label={t('matrix.included')}
+        >
+          <IconCheck className="w-4 h-4 text-white" stroke={3} />
         </span>
       );
     }
