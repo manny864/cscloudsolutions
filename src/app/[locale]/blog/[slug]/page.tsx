@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { remarkRemoveAnchorIds } from '@/lib/remark-remove-anchor-ids';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Metadata } from 'next';
@@ -163,7 +164,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           prose-li:marker:text-[color:var(--cyan)]">
           
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkRemoveAnchorIds]}
             rehypePlugins={[rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
             components={{
               img: ({node, ...props}) => {
