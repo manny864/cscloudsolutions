@@ -14,6 +14,7 @@ import {
   IconEye,
 } from '@tabler/icons-react';
 import Link from 'next/link';
+import { BLOG_CATEGORIES } from '@/lib/blog-categories';
 
 interface Translation {
   id: number;
@@ -27,6 +28,7 @@ interface Translation {
 interface PostData {
   id: number;
   slug: string;
+  category: string | null;
   featuredImage: string | null;
   author: string;
   tags: string[] | null;
@@ -72,6 +74,7 @@ export default function EditPostForm({ post }: { post: PostData }) {
   const [contentPt, setContentPt] = useState(ptTr?.content || '');
 
   const [slug, setSlug] = useState(post.slug || '');
+  const [category, setCategory] = useState(post.category || '');
   const [featuredImage, setFeaturedImage] = useState(post.featuredImage || '');
   const [tagsInput, setTagsInput] = useState(
     Array.isArray(post.tags) ? post.tags.join(', ') : 'Azure, Cloud, Microsoft 365'
@@ -155,6 +158,7 @@ export default function EditPostForm({ post }: { post: PostData }) {
       descPt,
       contentPt,
       slug,
+      category,
       featuredImage,
       tags,
       status,
@@ -419,8 +423,28 @@ export default function EditPostForm({ post }: { post: PostData }) {
               />
             </div>
 
-            {/* Tags */}
+            {/* Categoría */}
             <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Categoría
+              </label>
+              <input
+                type="text"
+                list="category-options"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder="Ej: FinOps, Ciberseguridad..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+              <datalist id="category-options">
+                {BLOG_CATEGORIES.map((c) => (
+                  <option key={c} value={c} />
+                ))}
+              </datalist>
+            </div>
+
+            {/* Tags */}
+            <div className="md:col-span-2">
               <label className="block text-xs font-bold text-slate-300 mb-1.5">
                 Etiquetas / Tags (Separadas por comas)
               </label>

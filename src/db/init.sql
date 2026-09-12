@@ -4,6 +4,7 @@
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `slug` VARCHAR(255) NOT NULL UNIQUE,
+  `category` VARCHAR(100),
   `featured_image` TEXT,
   `author` VARCHAR(255) NOT NULL DEFAULT 'CSCloud Solutions Team',
   `tags` JSON,

@@ -59,6 +59,7 @@ export default async function AdminPostsPage() {
               <thead className="border-b border-slate-800 text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
                 <tr>
                   <th className="py-3 px-4">Artículo / Slug</th>
+                  <th className="py-3 px-4">Categoría</th>
                   <th className="py-3 px-4">Autor</th>
                   <th className="py-3 px-4">Estado</th>
                   <th className="py-3 px-4">Fecha</th>
@@ -79,6 +80,15 @@ export default async function AdminPostsPage() {
                         <p className="text-[10px] text-[color:var(--cyan)] mt-0.5 truncate max-w-xs">
                           Imagen asignada en Azure Blob
                         </p>
+                      )}
+                    </td>
+                    <td className="py-4 px-4">
+                      {post.category ? (
+                        <span className="inline-flex items-center text-[11px] font-bold px-2.5 py-1 rounded-full bg-[color:var(--cyan)]/10 text-[color:var(--cyan)] border border-[color:var(--cyan)]/20">
+                          {post.category}
+                        </span>
+                      ) : (
+                        <span className="text-slate-600 text-[11px]">—</span>
                       )}
                     </td>
                     <td className="py-4 px-4 text-slate-300">{post.author}</td>

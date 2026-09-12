@@ -15,6 +15,7 @@ import {
   IconRefresh,
 } from '@tabler/icons-react';
 import Link from 'next/link';
+import { BLOG_CATEGORIES } from '@/lib/blog-categories';
 
 interface MediaItem {
   filename: string;
@@ -49,6 +50,7 @@ export default function NewPostPage() {
   const [contentPt, setContentPt] = useState('');
 
   const [slug, setSlug] = useState('');
+  const [category, setCategory] = useState('');
   const [featuredImage, setFeaturedImage] = useState('');
   const [tagsInput, setTagsInput] = useState('Azure, Cloud, Microsoft 365');
   const [status, setStatus] = useState<'published' | 'draft'>('published');
@@ -127,6 +129,7 @@ export default function NewPostPage() {
       descPt,
       contentPt,
       slug,
+      category,
       featuredImage,
       tags,
       status,
@@ -381,8 +384,28 @@ export default function NewPostPage() {
               />
             </div>
 
-            {/* Tags */}
+            {/* Categoría */}
             <div>
+              <label className="block text-xs font-bold text-slate-300 mb-1.5">
+                Categoría
+              </label>
+              <input
+                type="text"
+                list="category-options"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder="Ej: FinOps, Ciberseguridad..."
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
+              />
+              <datalist id="category-options">
+                {BLOG_CATEGORIES.map((c) => (
+                  <option key={c} value={c} />
+                ))}
+              </datalist>
+            </div>
+
+            {/* Tags */}
+            <div className="md:col-span-2">
               <label className="block text-xs font-bold text-slate-300 mb-1.5">
                 Etiquetas / Tags (Separadas por comas)
               </label>

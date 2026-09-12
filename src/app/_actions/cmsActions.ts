@@ -22,6 +22,7 @@ export interface PostInput {
   contentPt?: string;
 
   slug?: string;
+  category?: string;
   featuredImage?: string;
   author?: string;
   tags?: string[];
@@ -46,6 +47,7 @@ export async function createPost(input: PostInput) {
     const rawSlug = input.slug || input.titleEs;
     const finalSlug = slugify(rawSlug, { lower: true, strict: true });
     const cleanImage = input.featuredImage && input.featuredImage.trim() !== '' ? input.featuredImage.trim() : null;
+    const cleanCategory = input.category && input.category.trim() !== '' ? input.category.trim() : null;
     const cleanTags = Array.isArray(input.tags) ? input.tags : [];
     const authorName = input.author || session.user.name || 'CSCloud Solutions Team';
     const postStatus = input.status || 'published';
@@ -71,6 +73,7 @@ export async function createPost(input: PostInput) {
         .update(schema.posts)
         .set({
           slug: finalSlug,
+          category: cleanCategory,
           featuredImage: cleanImage,
           author: authorName,
           tags: cleanTags,
@@ -87,6 +90,7 @@ export async function createPost(input: PostInput) {
       // 1. Insertar nuevo post
       const [result] = await db.insert(schema.posts).values({
         slug: finalSlug,
+        category: cleanCategory,
         featuredImage: cleanImage,
         author: authorName,
         tags: cleanTags,

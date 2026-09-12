@@ -65,6 +65,7 @@ export async function getPostBySlug(slug: string, locale: string, allowDraft: bo
                 ? new Date(dbPost.publishedAt).toISOString().split('T')[0]
                 : new Date(dbPost.createdAt).toISOString().split('T')[0],
               author: dbPost.author,
+              category: dbPost.category || undefined,
               image: dbPost.featuredImage || '/images/blog/default.jpg',
               tags: dbPost.tags || [],
               status: dbPost.status,
@@ -144,6 +145,7 @@ export async function getAllPosts(locale: string) {
                 ? new Date(p.publishedAt).toISOString().split('T')[0]
                 : new Date(p.createdAt).toISOString().split('T')[0],
               author: p.author,
+              category: p.category || undefined,
               image: p.featuredImage || '/images/blog/default.jpg',
               tags: p.tags || [],
             },

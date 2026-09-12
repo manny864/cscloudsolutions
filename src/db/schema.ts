@@ -3,6 +3,7 @@ import { mysqlTable, serial, varchar, text, int, timestamp, mysqlEnum, json } fr
 export const posts = mysqlTable('posts', {
   id: serial('id').primaryKey(),
   slug: varchar('slug', { length: 255 }).notNull().unique(),
+  category: varchar('category', { length: 100 }),
   featuredImage: text('featured_image'),
   author: varchar('author', { length: 255 }).default('CSCloud Solutions Team').notNull(),
   tags: json('tags').$type<string[]>().default([]),

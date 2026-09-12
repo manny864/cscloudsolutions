@@ -34,6 +34,7 @@ export async function ensureTablesExist() {
       CREATE TABLE IF NOT EXISTS \`posts\` (
         \`id\` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         \`slug\` VARCHAR(255) NOT NULL UNIQUE,
+        \`category\` VARCHAR(100),
         \`featured_image\` TEXT,
         \`author\` VARCHAR(255) NOT NULL DEFAULT 'CSCloud Solutions Team',
         \`tags\` JSON,
@@ -43,6 +44,17 @@ export async function ensureTablesExist() {
         \`updated_at\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     `);
+
+    // Migración defensiva: agrega la columna `category` si la tabla ya existía sin ella
+    const [categoryColumn] = await connection.query(`
+      SELECT COUNT(*) AS cnt FROM information_schema.COLUMNS
+      WHERE TABLE_SCHEMA = ? AND TABLE_NAME = 'posts' AND COLUMN_NAME = 'category'
+    `, [database]);
+    const categoryExists = (categoryColumn as any)[0]?.cnt > 0;
+    if (!categoryExists) {
+      await connection.query(`ALTER TABLE \`posts\` ADD COLUMN \`category\` VARCHAR(100) AFTER \`slug\`;`);
+      console.log('[MySQL Init] Columna `category` agregada a `posts`.');
+    }
 
     await connection.query(`
       CREATE TABLE IF NOT EXISTS \`post_translations\` (
