@@ -1,7 +1,10 @@
-# Cómo Detectar Discos No Asociados en Azure y Recortar Costos de Almacenamiento Innecesarios
-
-**Por Manuel Chavez** | *Arquitecto Azure & Consultor de Infraestructura Cloud*
-
+---
+title: "Cómo Detectar Discos No Asociados en Azure y Recortar Costos de Almacenamiento Innecesarios"
+date: "2026-09-11"
+author: "Manuel Chavez"
+category: "FinOps"
+image: "/images/blog/Automatizacion-de-la-Infraestructura.avif"
+excerpt: "Aprende a identificar y eliminar discos huérfanos en Microsoft Azure mediante Azure Resource Graph, CLI y PowerShell para recortar costos innecesarios de almacenamiento."
 ---
 
 ## Índice de Contenidos
@@ -291,17 +294,17 @@ Los discos no asociados representan el ejemplo más nítido de cómo pequeños d
 
 ---
 
-## <i class="ti ti-rocket"></i> ¿Quieres Optimizar tu Infraestructura Azure?
+## 🚀 ¿Quieres Optimizar tu Infraestructura Azure?
 
 **CSCloudSolutions** es experto en auditorías de costo, implementación de FinOps y automatización de infraestructura en Azure.
 
 Si tu organización:
-- <i class="ti ti-circle-check"></i> Gestiona múltiples suscripciones de Azure
-- <i class="ti ti-circle-check"></i> Sospecha tener fugas en almacenamiento, red o cómputo
-- <i class="ti ti-circle-check"></i> Desea implementar gobernanza cloud automatizada
-- <i class="ti ti-circle-check"></i> Busca reducir gastos sin comprometer el performance
+- ✅ Gestiona múltiples suscripciones de Azure
+- ✅ Sospecha tener fugas en almacenamiento, red o cómputo
+- ✅ Desea implementar gobernanza cloud automatizada
+- ✅ Busca reducir gastos sin comprometer el performance
 
-**<i class="ti ti-phone"></i> Agenda una Sesión de Diagnóstico Gratuita con Nuestros Arquitectos Azure Certificados**
+**📞 Agenda una Sesión de Diagnóstico Gratuita con Nuestros Arquitectos Azure Certificados**
 
 Ofrecemos:
 - Auditoría gratuita de 90 minutos de tu tenant Azure
@@ -309,14 +312,14 @@ Ofrecemos:
 - Plan de implementación FinOps personalizado
 - Soporte continuo en optimización de costos
 
-**<i class="ti ti-tools"></i>** Conoce **CSCloud FinOps** en [finops.cscloudsolutions.com.ar](https://finops.cscloudsolutions.com.ar)
+**🔧** Conoce **CSCloud FinOps** en [finops.cscloudsolutions.com.ar](https://finops.cscloudsolutions.com.ar)
 
-**<i class="ti ti-pointing-right"></i> [Contacto: sales@cscloudsolutions.com.ar](mailto:sales@cscloudsolutions.com.ar) | [Agendar consulta](https://cscloudsolutions.com.ar/#contacto)**
+**👉 [Contacto: sales@cscloudsolutions.com.ar](mailto:sales@cscloudsolutions.com.ar) | [Agendar consulta](https://cscloudsolutions.com.ar/#contacto)**
 
 Conecta con nosotros:
-- <i class="ti ti-brand-linkedin"></i> [@Manuel Chavez](https://linkedin.com/in/manuel-enrique-chavez-manzano/)
-- <i class="ti ti-brand-linkedin"></i> [CSCloudSolutions](https://www.linkedin.com/company/cscloudsolutions)
-- <i class="ti ti-world"></i> [cscloudsolutions.com.ar](https://cscloudsolutions.com.ar)
+- 💼 [@Manuel Chavez](https://linkedin.com/in/manuel-enrique-chavez-manzano/)
+- 💼 [CSCloudSolutions](https://www.linkedin.com/company/cscloudsolutions)
+- 🌐 [cscloudsolutions.com.ar](https://cscloudsolutions.com.ar)
 
 ---
 

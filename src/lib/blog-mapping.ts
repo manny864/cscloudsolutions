@@ -43,6 +43,11 @@ export const blogMapping: Record<string, { es: string; en: string; 'pt-BR': stri
     es: "ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial",
     en: "agentic-ai-on-azure-the-ultimate-guide-to-enterprise-autonomy",
     "pt-BR": "ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial"
+  },
+  "deteccion-de-discos-huerfanos-en-azure": {
+    es: "deteccion-de-discos-huerfanos-en-azure",
+    en: "unattached-disks-cost-reduction",
+    "pt-BR": "deteccion-de-discos-huerfanos-en-azure"
   }
 };
   // A medida que crees más artículos, los agregas aquí

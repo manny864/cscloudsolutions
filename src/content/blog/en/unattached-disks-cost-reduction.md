@@ -1,7 +1,10 @@
-# How to Detect Unattached Azure Disks and Eliminate Unnecessary Storage Costs
-
-**By Manuel Chavez** | *Azure Architect & Cloud Infrastructure Lead at CSCloudSolutions*
-
+---
+title: "How to Detect Unattached Azure Disks and Eliminate Unnecessary Storage Costs"
+date: "2026-09-11"
+author: "Manuel Chavez"
+category: "FinOps"
+image: "/images/blog/Automatizacion-de-la-Infraestructura.avif"
+excerpt: "Learn how to detect and eliminate unattached orphan disks in Microsoft Azure using Resource Graph, Azure CLI, and PowerShell to cut unnecessary storage spend."
 ---
 
 ## Table of Contents

@@ -1,7 +1,10 @@
-# Como Detectar e Remover Discos Não Associados no Azure e Recortar Custos de Armazenamento
-
-**Por Manuel Chavez** | *Arquiteto Azure & Líder de Infraestrutura Cloud na CSCloudSolutions*
-
+---
+title: "Como Detectar e Remover Discos Não Associados no Azure e Recortar Custos de Armazenamento"
+date: "2026-09-11"
+author: "Manuel Chavez"
+category: "FinOps"
+image: "/images/blog/Automatizacion-de-la-Infraestructura.avif"
+excerpt: "Aprenda a identificar e remover discos órfãos no Microsoft Azure com Azure Resource Graph, CLI e PowerShell para eliminar custos desnecessários de armazenamento."
 ---
 
 ## Índice

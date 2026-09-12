@@ -44,9 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     try {
       const posts = await getAllPosts(locale);
       posts.forEach((post) => {
+        const rawDate = post.meta?.date ? new Date(post.meta.date) : new Date();
+        const lastModified = isNaN(rawDate.getTime()) ? new Date() : rawDate;
+
         blogEntries.push({
           url: `${baseUrl}/${locale}/blog/${post.slug}`,
-          lastModified: new Date(post.meta.date),
+          lastModified,
           changeFrequency: 'weekly',
           priority: 0.6,
         });
