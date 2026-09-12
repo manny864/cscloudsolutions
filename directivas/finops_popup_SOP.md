@@ -32,7 +32,13 @@ A diferencia de versiones anteriores con 4 tiers, la plataforma oficial maneja 3
 2. **Estructura Grid Responsiva:** Adaptar el contenedor a 3 columnas en desktop (`md:grid-cols-3`) y 1 columna en mobile.
 3. **Internacionalización Completa:** Sincronizar todas las claves en `es.json`, `en.json` y `pt-BR.json`, incluyendo el trust badge limpio (`trustBadge`: "Conexión segura con Azure • 100% de gobernanza" / "Secure Azure connection • 100% governance" / "Conexão segura com Azure • 100% de governança"), omitiendo cualquier mención a tarjeta de crédito en el pie de página.
 4. **Enlace Inteligente por Idioma:** El CTA debe dirigir a `https://finops.cscloudsolutions.com.ar/{locale}/upgrade` o a la demo según el idioma activo del usuario.
-5. **Persistencia y Accesibilidad:** Mantener el retraso en la primera visita y el guardado en `localStorage` ('finops-popup-shown'), con botón de cierre accesible y cierre con tecla Escape / backdrop.
+5. **Persistencia por Cookie de 24 Horas y Accesibilidad:** 
+   - El popup **solo debe desplegarse automáticamente cuando el usuario ingresa por primera vez al sitio**, con un retraso de 5 segundos.
+   - Debe gobernarse mediante una cookie persistente (`finops_popup_shown=1; path=/; max-age=86400; SameSite=Lax`) de **mínimo 24 horas**, sincronizada adicionalmente con `localStorage` (timestamp) y `sessionStorage`.
+   - **Bajo ninguna circunstancia debe volver a abrirse automáticamente al navegar entre páginas**, cambiar de URL o abrir una pestaña nueva dentro de la ventana de 24 horas.
+   - Se marca inmediatamente como visto en la cookie al mostrarse por primera vez o al cerrarse.
+   - El botón de cierre accesible y el cierre con tecla Escape / clic en backdrop deben permanecer operativos.
+   - La apertura manual (mediante botones que emiten el evento `open-finops-modal`) siempre debe funcionar independientemente del estado de la cookie.
 6. **Matriz Comparativa a Pantalla Completa y Reversibilidad:**
    - En las tarjetas del modal, el botón de capacidades ("Ver todas las capacidades ({count})") **no debe desplegar la lista interna verticalmente** (no debe deformar ni alargar la tarjeta con acordeones). Al hacer clic en él, o en el botón superior "Comparar todas las capacidades en pantalla completa", transiciona inmediatamente a la página/matriz a pantalla completa (`FinOpsCapabilitiesTable`) con el estilo sobrio, enterprise y minimalista (estilo Microsoft 365).
    - Dicha matriz agrupa las capacidades por categorías (Límites, Visibilidad, Ahorro/Zombies, Optimización, AKS, Gobernanza, IA, Enterprise y SLAs) con íconos descriptivos y tildes minimalistas alineados por columna.
@@ -56,6 +62,7 @@ A diferencia de versiones anteriores con 4 tiers, la plataforma oficial maneja 3
 - **Evitar falsas promesas en Business:** No listar capacidades Enterprise en Business (como CSP Markup o Power BI Templates). Tampoco listar en Business beneficios que Professional ya incluye (como FOCUS 1.1 Export).
 - **Módulos restringidos a Enterprise:** Recordar que tras los ajustes de arquitectura, Inventario Costo Cero, Simulador What-If, Alertas avanzadas, Salud del Tenant, Scorecard, Beneficios Híbridos y Planes de Ahorro son exclusivos de Enterprise y no deben aparecer en Professional ni Business.
 - **Conflicto de Caché en `.next` (`@opentelemetry.js`):** No ejecutar `npm run build` mientras `next dev` se encuentre corriendo en segundo plano en el mismo proyecto. `next build` genera artefactos de producción y elimina los chunks de desarrollo en `.next/server/vendor-chunks/`, provocando el error `Cannot find module './vendor-chunks/@opentelemetry.js'`. Si ocurre, detener el servidor `next dev`, purgar la carpeta temporal con `rm -rf .next` y reiniciar el entorno de desarrollo.
+- **Control de Frecuencia del Popup (Cookie 24h):** No utilizar únicamente `sessionStorage` para controlar la apertura automática, ya que `sessionStorage` se aísla por pestaña/sesión y no persiste entre pestañas nuevas o navegaciones completas, provocando que el popup se mostrara en cada página nueva que abría el usuario. La visualización automática debe estar estrictamente gobernada por una cookie con expiración mínima de 24 horas (`max-age=86400; path=/; SameSite=Lax`), marcándose como vista en la cookie en el instante en que se despliega o se cierra.
 - **Reversión intuitiva:** El usuario debe poder regresar a la vista de tarjetas sin recargar la página ni perder el estado del popup.
 
 

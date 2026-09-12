@@ -2,9 +2,9 @@ name: CI & Deploy to Azure
 
 on:
   push:
-    branches: ["main", "staging"]
+    branches: ["main"]
   pull_request:
-    branches: ["main", "staging"]
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -63,30 +63,6 @@ jobs:
           name: release-package
           path: release.zip
           retention-days: 1
-
-  # ── Despliegue a Staging (push a rama staging) ──────────────────────────
-  deploy-staging:
-    name: Despliegue a Staging Slot
-    needs: build-and-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/staging'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Descargar artefacto
-        uses: actions/download-artifact@v4
-        with:
-          name: release-package
-
-      - name: Login en Azure
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Desplegar a Azure Web App (Slot Staging)
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          slot-name: ${{ env.AZURE_STAGING_SLOT }}
-          package: release.zip
 
   # ── Despliegue a Producción con Zero-Downtime Swap (push a rama main) ──
   deploy-production:

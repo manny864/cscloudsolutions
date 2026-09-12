@@ -30,10 +30,7 @@ Aprovisionar y estandarizar la infraestructura como código (IaC) en Microsoft A
    - Compilación con `npm run build`
    - Empaquetado en formato `.zip` estándar (`release.zip`).
 
-2. **Push a `staging`:**
-   - Despliegue del `.zip` al slot `staging` (`cscloudsolutions-staging.azurewebsites.net`).
-
-3. **Push a `main` (Zero-Downtime Blue/Green Deployment):**
+2. **Push a `main` (Zero-Downtime Blue/Green Deployment):**
    - Despliegue del paquete `.zip` al slot `staging`.
    - Ejecución de smoke test de verificación.
    - **Swap instantáneo:** `az webapp deployment slot swap --resource-group cscs-webpage-wus2-prod --name cscloudsolutions --slot staging --target-slot production`.

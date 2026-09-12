@@ -16,7 +16,56 @@ import {
 } from '@tabler/icons-react';
 import { FinOpsCapabilitiesTable } from './FinOpsCapabilitiesTable';
 
+const COOKIE_NAME = 'finops_popup_shown';
 const STORAGE_KEY = 'finops-popup-shown';
+const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
+const TWENTY_FOUR_HOURS_SEC = 24 * 60 * 60; // 86400 segundos
+
+function getCookie(name: string): string | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie.match(new RegExp('(^|;\\s*)' + name + '=([^;]*)'));
+  return match ? decodeURIComponent(match[2]) : null;
+}
+
+function setCookie(name: string, value: string, maxAgeSeconds: number) {
+  if (typeof document === 'undefined') return;
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax`;
+}
+
+function hasSeenPopup(): boolean {
+  if (typeof window === 'undefined') return true;
+  try {
+    // 1. Validar cookie de 24 horas
+    if (getCookie(COOKIE_NAME)) return true;
+
+    // 2. Validar timestamp en localStorage (fallback confiable si cookies están limitadas)
+    const storedTimestamp = localStorage.getItem(STORAGE_KEY);
+    if (storedTimestamp) {
+      const time = parseInt(storedTimestamp, 10);
+      if (!isNaN(time) && Date.now() - time < TWENTY_FOUR_HOURS_MS) {
+        return true;
+      }
+    }
+
+    // 3. Validar sessionStorage
+    if (sessionStorage.getItem(STORAGE_KEY)) return true;
+
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+function markPopupAsSeen() {
+  if (typeof window === 'undefined') return;
+  try {
+    setCookie(COOKIE_NAME, '1', TWENTY_FOUR_HOURS_SEC);
+    localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  } catch {
+    // Ignorar si el almacenamiento está restringido
+  }
+}
 
 export function FinOpsPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,12 +77,7 @@ export function FinOpsPopup() {
   const finopsUrl = `https://finops.cscloudsolutions.com.ar/${finopsLocale}/upgrade`;
 
   const handleClose = useCallback(() => {
-    try {
-      sessionStorage.setItem(STORAGE_KEY, '1');
-      localStorage.setItem(STORAGE_KEY, '1');
-    } catch {
-      // Ignorar si el almacenamiento está deshabilitado
-    }
+    markPopupAsSeen();
     setIsOpen(false);
   }, []);
 
@@ -42,12 +86,15 @@ export function FinOpsPopup() {
     const handleOpenEvent = () => setIsOpen(true);
     window.addEventListener('open-finops-modal', handleOpenEvent);
 
-    // Apertura automática a los 5 segundos si no se ha mostrado en la sesión
+    // Apertura automática a los 5 segundos solo en la primera visita (cookie 24h)
     let timer: NodeJS.Timeout;
     try {
-      if (!sessionStorage.getItem(STORAGE_KEY)) {
+      if (!hasSeenPopup()) {
         timer = setTimeout(() => {
-          setIsOpen(true);
+          if (!hasSeenPopup()) {
+            markPopupAsSeen();
+            setIsOpen(true);
+          }
         }, 5000);
       }
     } catch {
