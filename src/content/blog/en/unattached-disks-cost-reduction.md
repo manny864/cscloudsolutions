@@ -285,17 +285,17 @@ Unattached disks are one of the most common causes of silent cloud cost inflatio
 
 ---
 
-## <i class="ti ti-rocket"></i> Ready to Optimize Your Azure Infrastructure?
+## 🚀 Ready to Optimize Your Azure Infrastructure?
 
 **CSCloudSolutions** specializes in cloud cost audits, FinOps implementation, and enterprise infrastructure automation.
 
 If your organization:
-- <i class="ti ti-circle-check"></i> Manages multiple Azure subscriptions
-- <i class="ti ti-circle-check"></i> Suspects waste in storage, networking, or compute
-- <i class="ti ti-circle-check"></i> Wants to implement automated cloud governance
-- <i class="ti ti-circle-check"></i> Seeks to reduce expenses without compromising performance
+- ✅ Manages multiple Azure subscriptions
+- ✅ Suspects waste in storage, networking, or compute
+- ✅ Wants to implement automated cloud governance
+- ✅ Seeks to reduce expenses without compromising performance
 
-**<i class="ti ti-phone"></i> Schedule a Free Diagnostic Session with Our Certified Azure Architects**
+**📞 Schedule a Free Diagnostic Session with Our Certified Azure Architects**
 
 We offer:
 - Free 90-minute audit of your Azure tenant
@@ -303,14 +303,14 @@ We offer:
 - Custom FinOps implementation roadmap
 - Ongoing cost optimization support
 
-**<i class="ti ti-tools"></i>** Discover **CSCloud FinOps** at [finops.cscloudsolutions.com.ar](https://finops.cscloudsolutions.com.ar)
+🔧 Discover **CSCloud FinOps** at [finops.cscloudsolutions.com.ar](https://finops.cscloudsolutions.com.ar)
 
-**<i class="ti ti-pointing-right"></i> [Contact: sales@cscloudsolutions.com.ar](mailto:sales@cscloudsolutions.com.ar) | [Schedule consultation](https://cscloudsolutions.com.ar/#contacto)**
+**👉 [Contact: sales@cscloudsolutions.com.ar](mailto:sales@cscloudsolutions.com.ar) | [Schedule consultation](https://cscloudsolutions.com.ar/#contacto)**
 
 Connect with us:
-- <i class="ti ti-brand-linkedin"></i> [@Manuel Chavez](https://linkedin.com/in/manuel-enrique-chavez-manzano/)
-- <i class="ti ti-brand-linkedin"></i> [CSCloudSolutions](https://www.linkedin.com/company/cscloudsolutions)
-- <i class="ti ti-world"></i> [cscloudsolutions.com.ar](https://cscloudsolutions.com.ar)
+- 💼 [@Manuel Chavez](https://linkedin.com/in/manuel-enrique-chavez-manzano/)
+- 💼 [CSCloudSolutions](https://www.linkedin.com/company/cscloudsolutions)
+- 🌐 [cscloudsolutions.com.ar](https://cscloudsolutions.com.ar)
 
 ---
 
