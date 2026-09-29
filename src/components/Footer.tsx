@@ -24,8 +24,6 @@ export function Footer() {
             <p className="text-sm leading-relaxed text-white/60">
               {t.rich('partnerNetwork', {b: (chunks) => <strong className="font-bold text-white/80">{chunks}</strong>})}
             </p>
-
-            <ClutchWidget />
           </div>
 
           <div className="md:col-span-3 space-y-4">
@@ -41,6 +39,11 @@ export function Footer() {
               <li>
                 <Link href="/blog" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('blog')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/partners" className="hover:text-[color:var(--cyan)] transition-colors">
+                  {t('partners')}
                 </Link>
               </li>
               <li>
@@ -90,6 +93,14 @@ export function Footer() {
             </div>
           </div>
 
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <ClutchWidget />
+          <a href="https://www.producthunt.com/products/cscloudsolutions-finops/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-cscloudsolutions-finops" target="_blank" rel="noopener" className="inline-block">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1310552&theme=light" alt="CSCloudSolutions FinOps - Automated Azure cost governance & 1-click cloud savings | Product Hunt" width={250} height={54} style={{ width: 250, height: 54 }} />
+          </a>
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/70">

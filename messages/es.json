@@ -76,6 +76,7 @@
     "azure": "Azure",
     "security": "Seguridad",
     "blog": "Blog",
+    "partners": "Partners",
     "about": "Nosotros",
     "cta": "Cloud FinOps ›",
     "services": "Servicios",
@@ -269,6 +270,10 @@
     "subtitle": "Conocimiento técnico, guías de arquitectura y novedades del ecosistema Microsoft Cloud."
   },
   "pages": {
+    "partners": {
+      "title": "Programa de Partners",
+      "description": "Ganá hasta el 20% anual de comisión recomendando la optimización de Azure con CSCloudSolutions FinOps."
+    },
     "about": {
       "title": "Quiénes Somos",
       "badge": "Nuestra Empresa",
@@ -840,6 +845,7 @@
     "company": "Empresa",
     "about": "Quiénes somos",
     "blog": "Blog",
+    "partners": "Partners",
     "privacy": "Política de privacidad",
     "terms": "Términos y condiciones",
     "contact": "Redes y contacto",

@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/finops',
     '/nosotros',
     '/blog',
+    '/partners',
     '/politica-de-privacidad',
     '/terminos-y-condiciones',
   ];

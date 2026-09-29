@@ -70,6 +70,10 @@ export function Header() {
             </Link>
           ))}
 
+          <Link href="/partners" className="rounded-[5px] px-4 py-2 text-sm font-bold transition text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]">
+            {t('partners')}
+          </Link>
+
           <a href={finopsUrl} target="_blank" rel="noopener" className="ml-4 rounded-[5px] bg-[color:var(--cyan)] px-6 py-2.5 text-sm font-black text-white hover:bg-[color:var(--cyan-dark)] transition">
             {t('cta')}
           </a>
@@ -114,6 +118,10 @@ export function Header() {
           </Link>
           <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === '/blog' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
             {t('blog')}
+          </Link>
+
+          <Link href="/partners" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[color:var(--navy)]">
+            {t('partners')}
           </Link>
 
           <div className="pt-4 mt-2 border-t border-black/10">
