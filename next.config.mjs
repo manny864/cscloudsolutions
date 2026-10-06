@@ -66,6 +66,10 @@ const nextConfig = {
         source: '/redirect.html',
         destination: '/finops_assesment/redirect.html',
       },
+      {
+        source: '/config.js',
+        destination: '/finops_assesment/config.js',
+      },
     ];
   },
   async headers() {

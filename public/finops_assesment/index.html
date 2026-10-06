@@ -303,10 +303,11 @@ tr:nth-child(even) td{background:#faf8fb}
   </div>
 </div>
 
-<script src="config.js"></script>
+<script src="/finops_assesment/config.js"></script>
 <script>
 'use strict';
 const VERSION = '2.0';
+const CFG = Object.assign({ spaClientId: '', partnerId: '', lighthouseAuthority: 'organizations' }, window.APP_CONFIG || {});
 const REDIRECT = location.protocol === 'file:'
   ? ''
   : `${location.origin}${location.pathname.startsWith('/finops_assesment') ? '/finops_assesment' : ''}/redirect.html`;
@@ -737,6 +738,8 @@ async function finishConnect(found) {
 }
 $('#btnConnect').onclick = async () => {
   const btn = $('#btnConnect'); const msg = $('#connMsg'); msg.innerHTML = ''; btn.disabled = true;
+  const origText = btn.textContent;
+  btn.textContent = 'Conectando con Microsoft…';
   try {
     if (isMsal()) await msalLogin(); else setToken($('#inToken').value);
     if (!$('#inTenant').value.trim() && AUTH.mode === 'token') $('#inTenant').value = AUTH.claims.tid;
@@ -758,8 +761,13 @@ $('#btnConnect').onclick = async () => {
     }
     await finishConnect(found);
   } catch (e) {
-    msg.innerHTML = `<div class="panel err">${esc(e.message)}</div>`;
-  } finally { btn.disabled = false; }
+    console.error('Error al conectar:', e);
+    msg.innerHTML = `<div class="panel err">${esc(e.message || String(e))}</div>`;
+    msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } finally {
+    btn.disabled = false;
+    btn.textContent = origText;
+  }
 };
 function unlock(sel) { $(sel).classList.remove('locked'); }
 
