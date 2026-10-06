@@ -8,7 +8,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 // Construimos la directiva de scripts dinámicamente.
 // Agregamos 'unsafe-eval' SOLAMENTE en desarrollo para que funcione el Fast Refresh.
-const scriptSrc = `script-src 'self' 'unsafe-inline' https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://gstatic.com https://*.gstatic.com https://www.gstatic.com https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://widget.clutch.co https://clutch.co https://googletagmanager.com https://*.googletagmanager.com https://www.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://www.google-analytics.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://assets.apollo.io https://*.apollo.io https://static.cloudflareinsights.com https://*.cloudflareinsights.com https://cloudflareinsights.com ${isDev ? "'unsafe-eval'" : ""}`;
+const scriptSrc = `script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://gstatic.com https://*.gstatic.com https://www.gstatic.com https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://widget.clutch.co https://clutch.co https://googletagmanager.com https://*.googletagmanager.com https://www.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://www.google-analytics.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://assets.apollo.io https://*.apollo.io https://static.cloudflareinsights.com https://*.cloudflareinsights.com https://cloudflareinsights.com ${isDev ? "'unsafe-eval'" : ""}`;
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -49,6 +49,18 @@ const nextConfig = {
       {
         source: '/finops_assesment/',
         destination: '/finops_assesment/index.html',
+      },
+      {
+        source: '/cliente.html',
+        destination: '/finops_assesment/cliente.html',
+      },
+      {
+        source: '/lib/:path*',
+        destination: '/finops_assesment/lib/:path*',
+      },
+      {
+        source: '/img/:path*',
+        destination: '/finops_assesment/img/:path*',
       },
     ];
   },

@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+<script src="/finops_assesment/lib/msal-browser.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src https://management.azure.com https://login.microsoftonline.com; frame-src https://login.microsoftonline.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
@@ -122,7 +124,7 @@ tr:nth-child(even) td{background:#faf8fb}
     </div>
   </div>
   <div class="row" style="display:block">
-    <p class="kick" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>azure value sprint · cscloudsolutions</span><a href="cliente.html" target="_blank" rel="noopener" style="color:#fff;font-weight:600">Instrucciones para el cliente</a></p>
+    <p class="kick" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>azure value sprint · cscloudsolutions</span><a href="/finops_assesment/cliente.html" target="_blank" rel="noopener" style="color:#fff;font-weight:600">Instrucciones para el cliente</a></p>
     <h1>Relevamiento de costos, seguridad y gobierno</h1>
     <p class="sub">Extrae del entorno Azure del cliente lo necesario para el informe de ahorro, el scorecard Well-Architected y el roadmap a 90 días.</p>
     <span class="ro">Solo lectura sobre los recursos del cliente. La única escritura posible es registrar el Partner Admin Link, y solo si la confirmás.</span>
@@ -642,7 +644,7 @@ function setMode(m) {
   $('#modeDel').setAttribute('aria-pressed', m === 'delegated'); $('#modeMsal').setAttribute('aria-pressed', m === 'msal'); $('#modeToken').setAttribute('aria-pressed', m === 'token');
   $('#paneToken').hidden = m !== 'token'; $('#paneMsal').hidden = m === 'token';
   $('#msalHint').innerHTML = m === 'delegated'
-    ? '<b>El caso normal:</b> el cliente nos dio <b>Reader</b> y <b>Cost Management Reader</b> y nos pasó su Tenant ID. Iniciás sesión con tu cuenta de CSCloudSolutions y la herramienta detecta sola cómo llegar a sus suscripciones: por <b>Azure Lighthouse</b> o como <b>invitado</b> en su tenant. Lo que hay que mandarle al cliente está en <a href="cliente.html" target="_blank" rel="noopener">cliente.html</a>.'
+    ? '<b>El caso normal:</b> el cliente nos dio <b>Reader</b> y <b>Cost Management Reader</b> y nos pasó su Tenant ID. Iniciás sesión con tu cuenta de CSCloudSolutions y la herramienta detecta sola cómo llegar a sus suscripciones: por <b>Azure Lighthouse</b> o como <b>invitado</b> en su tenant. Lo que hay que mandarle al cliente está en <a href="/finops_assesment/cliente.html" target="_blank" rel="noopener">cliente.html</a>.'
     : 'Inicia sesión una persona del cliente con su propia cuenta (por ejemplo, en una sesión compartida) que tenga los roles de lectura. La primera vez se le pide consentimiento para la app de CSCloudSolutions.';
 }
 $('#modeDel').onclick = () => setMode('delegated');
@@ -671,8 +673,20 @@ function loadScript(src) {
 }
 async function loadLib(globalName, localPath, cdnUrl) {
   if (window[globalName]) return;
-  try { await loadScript(localPath); } catch { /* sin copia local: CDN */ }
-  if (!window[globalName]) await loadScript(cdnUrl);
+  const cleanLocal = localPath.replace(/^\.?\//, '');
+  const sources = [
+    localPath,
+    '/finops_assesment/' + cleanLocal,
+    cdnUrl
+  ];
+  for (const src of sources) {
+    if (!src) continue;
+    try {
+      await loadScript(src);
+      if (window[globalName]) return;
+    } catch { /* intentar siguiente fuente */ }
+  }
+  if (!window[globalName]) throw new Error('No se pudo cargar ' + (localPath || cdnUrl));
 }
 
 async function msalLogin() {
