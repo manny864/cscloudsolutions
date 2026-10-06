@@ -307,8 +307,9 @@ tr:nth-child(even) td{background:#faf8fb}
 <script>
 'use strict';
 const VERSION = '2.0';
-const CFG = Object.assign({ spaClientId: '', partnerId: '', lighthouseAuthority: 'organizations' }, window.APP_CONFIG || {});
-const REDIRECT = location.protocol === 'file:' ? '' : new URL('redirect.html', location.href).href;
+const REDIRECT = location.protocol === 'file:'
+  ? ''
+  : `${location.origin}${location.pathname.startsWith('/finops_assesment') ? '/finops_assesment' : ''}/redirect.html`;
 const PILLARS = ['Costo', 'Seguridad', 'Confiabilidad', 'Excelencia operacional', 'Rendimiento'];
 const ADV_PILLAR = { Cost: 'Costo', Security: 'Seguridad', HighAvailability: 'Confiabilidad', OperationalExcellence: 'Excelencia operacional', Performance: 'Rendimiento' };
 const isGuid = x => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(x || '').trim());

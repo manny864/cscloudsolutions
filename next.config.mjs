@@ -62,6 +62,10 @@ const nextConfig = {
         source: '/img/:path*',
         destination: '/finops_assesment/img/:path*',
       },
+      {
+        source: '/redirect.html',
+        destination: '/finops_assesment/redirect.html',
+      },
     ];
   },
   async headers() {
