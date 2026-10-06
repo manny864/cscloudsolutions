@@ -5,8 +5,8 @@
   deploy.ps1 completa automáticamente los que puede.
 */
 window.APP_CONFIG = {
-  // App registration multi-tenant (SPA) en el tenant de CSCloudSolutions (deploy.ps1 -CreateAppRegistration).
-  spaClientId: '51320858-e6e2-4b19-83a8-29b72ace9157',
+  // App registration multi-tenant (SPA) en el tenant de CSCloudSolutions (cscs-app-finops-assessment-prod vía Terraform).
+  spaClientId: 'b86c228e-67ff-4f85-8f99-c605d27d74c8',
 
   // Partner ID de CSCloudSolutions (Microsoft AI Cloud Partner Program) para el Partner Admin Link.
   partnerId: '7111700',
