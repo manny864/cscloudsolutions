@@ -762,7 +762,12 @@ $('#btnConnect').onclick = async () => {
     await finishConnect(found);
   } catch (e) {
     console.error('Error al conectar:', e);
-    msg.innerHTML = `<div class="panel err">${esc(e.message || String(e))}</div>`;
+    const msgText = String(e.message || e);
+    if (msgText.includes('user_cancelled')) {
+      msg.innerHTML = `<div class="panel warn"><b>Inicio de sesión cancelado o ventana cerrada:</b> Se cerró la ventana emergente de Microsoft antes de completar el inicio de sesión. Hacé clic nuevamente en <b>Conectar y listar suscripciones</b> y completá el proceso en la ventana de Microsoft sin cerrarla manualmente (se cierra sola al finalizar).</div>`;
+    } else {
+      msg.innerHTML = `<div class="panel err">${esc(msgText)}</div>`;
+    }
     msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   } finally {
     btn.disabled = false;
