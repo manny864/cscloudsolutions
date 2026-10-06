@@ -739,9 +739,14 @@ async function finishConnect(found) {
 $('#btnConnect').onclick = async () => {
   const btn = $('#btnConnect'); const msg = $('#connMsg'); msg.innerHTML = ''; btn.disabled = true;
   const origText = btn.textContent;
-  btn.textContent = 'Conectando con Microsoft…';
+  btn.textContent = 'Esperando inicio de sesión en Microsoft…';
   try {
-    if (isMsal()) await msalLogin(); else setToken($('#inToken').value);
+    if (isMsal()) {
+      msg.innerHTML = '<div class="panel info" style="background:rgba(0,120,212,0.08);border-color:rgba(0,120,212,0.3);color:#004578"><b>Ventana emergente abierta:</b> Iniciá sesión con tu cuenta de Microsoft en la ventana que se abrió. <i>No la cierres manualmente; la ventana se cerrará automáticamente al autenticar.</i></div>';
+      await msalLogin();
+    } else {
+      setToken($('#inToken').value);
+    }
     if (!$('#inTenant').value.trim() && AUTH.mode === 'token') $('#inTenant').value = AUTH.claims.tid;
     if (AUTH.mode === 'token' && !$('#inClientId').value.trim() && AUTH.claims.appid) $('#inClientId').value = AUTH.claims.appid;
     refreshSnippet(); updateConnChip();
@@ -764,7 +769,7 @@ $('#btnConnect').onclick = async () => {
     console.error('Error al conectar:', e);
     const msgText = String(e.message || e);
     if (msgText.includes('user_cancelled')) {
-      msg.innerHTML = `<div class="panel warn"><b>Inicio de sesión cancelado o ventana cerrada:</b> Se cerró la ventana emergente de Microsoft antes de completar el inicio de sesión. Hacé clic nuevamente en <b>Conectar y listar suscripciones</b> y completá el proceso en la ventana de Microsoft sin cerrarla manualmente (se cierra sola al finalizar).</div>`;
+      msg.innerHTML = `<div class="panel warn"><b>Inicio de sesión no completado (ventana cerrada):</b> Se cerró la ventana emergente de Microsoft antes de terminar el flujo.<br>Hacé clic nuevamente en <b>Conectar y listar suscripciones</b> y completá el inicio de sesión en la ventana emergente sin cerrarla manualmente (se cierra sola al finalizar con éxito).</div>`;
     } else {
       msg.innerHTML = `<div class="panel err">${esc(msgText)}</div>`;
     }
