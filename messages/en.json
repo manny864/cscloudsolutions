@@ -169,6 +169,7 @@
       "calloutTitle": "Want to know if you are exposed before something happens?",
       "calloutSub": "We give you an executive report and clear priorities. If everything is fine, we will tell you that too.",
       "calloutCta": "Request audit now →",
+      "calloutFinops": "Azure Assessment (Read-only) →",
       "points": [
         "Multi-factor authentication (MFA)",
         "Email forwarding to external domains",
@@ -237,6 +238,7 @@
       "title": "Do you know how much you're wasting on Azure?",
       "sub": "Our FinOps platform detects zombie resources, right-sizes VMs, and projects your spend, all from a dashboard connected to your Azure. Try it in an interactive demo.",
       "ctaDemo": "See live demo →",
+      "ctaSprint": "Value Sprint Onboarding (Guide) ↗",
       "ctaLearnMore": "Learn about FinOps"
     }
   },

@@ -169,6 +169,7 @@
       "calloutTitle": "Quer saber se você está exposto antes que algo aconteça?",
       "calloutSub": "Entregamos um relatório executivo com prioridades claras. Se estiver tudo certo, também avisamos.",
       "calloutCta": "Solicitar auditoria →",
+      "calloutFinops": "Autoavaliação Azure (Somente leitura) →",
       "points": [
         "Autenticação multifator (MFA)",
         "Encaminhamentos de e-mail para domínios externos",
@@ -237,6 +238,7 @@
       "title": "Você sabe quanto está desperdiçando no Azure?",
       "sub": "Nossa plataforma FinOps detecta recursos zumbis, faz rightsizing de VMs e projeta seu gasto, tudo a partir de um dashboard conectado ao seu Azure. Experimente em uma demo interativa.",
       "ctaDemo": "Ver demo ao vivo →",
+      "ctaSprint": "Onboarding Value Sprint (Guia) ↗",
       "ctaLearnMore": "Conhecer o FinOps"
     }
   },

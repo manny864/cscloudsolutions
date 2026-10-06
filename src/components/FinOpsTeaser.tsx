@@ -31,6 +31,14 @@ export function FinOpsTeaser() {
           >
             {t('ctaDemo')}
           </button>
+          <a
+            href="/finops_assesment/cliente.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-[5px] border border-[color:var(--cyan)]/40 bg-[color:var(--cyan)]/10 px-6 py-4 text-sm font-bold text-[color:var(--cyan)] transition hover:bg-[color:var(--cyan)]/20 hover:border-[color:var(--cyan)]"
+          >
+            {t('ctaSprint')}
+          </a>
           <Link
             href="/finops"
             className="inline-flex items-center justify-center rounded-[5px] border border-white/25 px-6 py-4 text-sm font-bold text-white/95 transition hover:border-[color:var(--cyan)] hover:bg-white/5 hover:text-[color:var(--cyan)]"

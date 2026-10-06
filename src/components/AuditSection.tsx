@@ -12,7 +12,19 @@ export function AuditSection() {
             <div className="inline-flex rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white">{t('badge')}</div>
             <h2 className="mt-8 font-heading text-4xl font-extrabold sm:text-6xl">{t('titleA')} <br/><span className="text-[color:var(--cyan)]">{t('titleB')}</span></h2>
             <p className="mt-6 text-lg text-white/80">{t('sub')}</p>
-            <div className="mt-10"><a href="#contacto" className="rounded-[5px] bg-[color:var(--cyan)] px-10 py-5 font-black text-white shadow-2xl hover:bg-[color:var(--cyan-dark)] transition">{t('calloutCta')}</a></div>
+            <div className="mt-10 flex flex-wrap gap-4 items-center">
+              <a href="#contacto" className="rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 font-black text-white shadow-2xl hover:bg-[color:var(--cyan-dark)] transition inline-flex items-center">
+                {t('calloutCta')}
+              </a>
+              <a
+                href="/finops_assesment/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-[5px] border border-white/30 bg-white/10 px-8 py-4 font-bold text-white shadow-xl hover:bg-white/20 hover:border-white/50 transition inline-flex items-center gap-2"
+              >
+                {t('calloutFinops')}
+              </a>
+            </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {t.raw('points').map((point: string, idx: number) => (
