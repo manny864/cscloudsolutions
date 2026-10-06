@@ -138,7 +138,9 @@ export function Hero() {
 
           <div className="mt-8 sm:mt-7 w-full rounded-2xl bg-white/0">
             <a
-              href="#contacto"
+              href="/finops_assesment/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-6 py-4 sm:py-4 text-base sm:text-sm font-extrabold text-white transition hover:bg-[color:var(--cyan-dark)]"
             >
               {t('cardButton')}

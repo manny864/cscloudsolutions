@@ -25,8 +25,8 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.gstatic.com https://www.gstatic.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' https://api.producthunt.com blob: data: https://cscloudsolutions.com.ar https://clutch.co https://*.clutch.co https://gstatic.com https://*.gstatic.com https://www.gstatic.com https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://google-analytics.com https://*.google-analytics.com https://www.google-analytics.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://recaptcha.net https://*.recaptcha.net https://static.cloudflareinsights.com https://*.cloudflareinsights.com",
-      "frame-src 'self' https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://clutch.co https://*.clutch.co https://widget.clutch.co https://td.doubleclick.net https://*.doubleclick.net",
-      "connect-src 'self' https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://googletagmanager.com https://*.googletagmanager.com https://www.googletagmanager.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://apollo.io https://*.apollo.io https://aplo-evnt.com https://*.aplo-evnt.com https://cloudflareinsights.com https://*.cloudflareinsights.com https://static.cloudflareinsights.com https://*.ingest.sentry.io",
+      "frame-src 'self' https://login.microsoftonline.com https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://clutch.co https://*.clutch.co https://widget.clutch.co https://td.doubleclick.net https://*.doubleclick.net",
+      "connect-src 'self' https://login.microsoftonline.com https://management.azure.com https://graph.microsoft.com https://google.com https://*.google.com https://www.google.com https://google.com.ar https://*.google.com.ar https://www.google.com.ar https://recaptcha.net https://*.recaptcha.net https://www.recaptcha.net https://google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://googletagmanager.com https://*.googletagmanager.com https://www.googletagmanager.com https://googleadservices.com https://*.googleadservices.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://apollo.io https://*.apollo.io https://aplo-evnt.com https://*.aplo-evnt.com https://cloudflareinsights.com https://*.cloudflareinsights.com https://static.cloudflareinsights.com https://*.ingest.sentry.io",
       "object-src 'none'",
     ].join('; '),
   },
@@ -39,6 +39,18 @@ const nextConfig = {
   images: {
     qualities: [60],
     formats: ['image/avif', 'image/webp'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/finops_assesment',
+        destination: '/finops_assesment/index.html',
+      },
+      {
+        source: '/finops_assesment/',
+        destination: '/finops_assesment/index.html',
+      },
+    ];
   },
   async headers() {
     return [

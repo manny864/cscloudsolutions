@@ -1,74 +1,11 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { submitContact } from '@/app/_actions/submitContact';
 
 type Status = { kind: 'idle' | 'loading' | 'success' | 'error'; message?: string };
 
-declare global {
-  interface Window {
-    grecaptcha?: {
-      execute: (siteKey: string, opts: { action: string }) => Promise<string>;
-      ready: (cb: () => void) => void;
-    };
-  }
-}
-
-async function loadRecaptchaScript(siteKey: string): Promise<void> {
-  if (typeof window === 'undefined') return;
-  if (window.grecaptcha) return;
-
-  const existingScript = document.querySelector(`script[src*="recaptcha/api.js"]`);
-  if (existingScript) return;
-
-  return new Promise((resolve) => {
-    const script = document.createElement('script');
-    script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
-    script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => resolve();
-    document.head.appendChild(script);
-  });
-}
-
-async function getRecaptchaToken(siteKey: string): Promise<string> {
-  try {
-    await loadRecaptchaScript(siteKey);
-
-    let attempts = 0;
-    while (!window.grecaptcha && attempts < 20) {
-      await new Promise((r) => setTimeout(r, 100));
-      attempts++;
-    }
-
-    const g = window.grecaptcha;
-    if (!g) {
-      console.warn('[reCAPTCHA] Script no disponible (bloqueador de anuncios/rastreo activo). Continuando de forma segura.');
-      return 'client-adblock-bypass-token';
-    }
-
-    return await new Promise<string>((resolve) => {
-      try {
-        g.ready(async () => {
-          try {
-            const token = await g.execute(siteKey, { action: 'submit' });
-            resolve(token || 'client-adblock-bypass-token');
-          } catch (e) {
-            console.warn('[reCAPTCHA] Falló execute():', e);
-            resolve('client-adblock-bypass-token');
-          }
-        });
-      } catch (err) {
-        console.warn('[reCAPTCHA] Falló ready():', err);
-        resolve('client-adblock-bypass-token');
-      }
-    });
-  } catch (err) {
-    console.warn('[reCAPTCHA] Excepción en cliente:', err);
-    return 'client-adblock-bypass-token';
-  }
-}
 
 export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'compact' }) {
   const t = useTranslations('contact');
@@ -76,14 +13,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
   const [form, setForm] = useState({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
   const [interacted, setInteracted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6LcMfDssAAAAAHUIJSwr3_XWkZsdagP1vg7xFXD_';
 
-  // Precargar reCAPTCHA de manera eficiente
-  useEffect(() => {
-    if (siteKey) {
-      loadRecaptchaScript(siteKey).catch(console.error);
-    }
-  }, [siteKey]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setInteracted(true);
@@ -95,9 +25,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
     setInteracted(true);
     setStatus({ kind: 'loading' });
     try {
-      const activeKey = siteKey || '6LcMfDssAAAAAHUIJSwr3_XWkZsdagP1vg7xFXD_';
-      const token = await getRecaptchaToken(activeKey);
-      const res = await submitContact({ ...form, recaptchaToken: token });
+      const res = await submitContact(form);
       if (res.ok) {
         setStatus({ kind: 'success', message: res.message });
         setForm({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });

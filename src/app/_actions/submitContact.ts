@@ -15,7 +15,7 @@ const ContactSchema = z.object({
   empresa: z.string().max(120).optional().default(''),
   telefono: z.string().max(40).optional().default(''),
   mensaje: z.string().max(1000).optional().default(''),
-  recaptchaToken: z.string().min(5)
+
 });
 
 export type ContactFormInput = z.infer<typeof ContactSchema>;
@@ -69,50 +69,6 @@ async function sendMailWithRetries(url: string, options: RequestInit, attempts =
   return false;
 }
 
-async function verifyRecaptcha(token: string): Promise<boolean> {
-  if (!token || token.startsWith('client-adblock')) {
-    console.warn('[reCAPTCHA] Solicitud recibida con token de contingencia (bloqueador de anuncios en cliente). Aprobando envío.');
-    return true;
-  }
-
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret || secret.trim() === '') {
-    console.warn('[reCAPTCHA] RECAPTCHA_SECRET_KEY no está configurado en el servidor. Saltando verificación.');
-    return true;
-  }
-
-  try {
-    const res = await fetchWithTimeout('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ secret, response: token }).toString(),
-      cache: 'no-store'
-    }, 8000);
-
-    if (!res.ok) {
-      console.warn('[reCAPTCHA] Google verification request failed with status:', res.status);
-      return true;
-    }
-    const data = (await res.json()) as { success?: boolean; score?: number; 'error-codes'?: string[] };
-    if (!data?.success) {
-      console.warn('[reCAPTCHA] Token verification returned false:', data?.['error-codes']);
-      // Si la clave es inválida en Google, no bloqueamos el lead del cliente
-      if (data?.['error-codes']?.includes('invalid-input-secret')) {
-        console.error('[reCAPTCHA] RECAPTCHA_SECRET_KEY inválido en Google reCAPTCHA.');
-        return true;
-      }
-      return false;
-    }
-    if (typeof data.score === 'number' && data.score < 0.3) {
-      console.warn('[reCAPTCHA] Low bot score:', data.score);
-      return false;
-    }
-    return true;
-  } catch (err) {
-    console.error('reCAPTCHA verification error (short):', (err as Error).message);
-    return true;
-  }
-}
 
 async function hasMxRecords(email: string): Promise<boolean> {
   const parts = email.split('@');
@@ -342,7 +298,7 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
     return { ok: false, message: 'Revisá los datos e intentá nuevamente.' };
   }
 
-  const { nombre, email, empresa, telefono, mensaje, recaptchaToken } = parsed.data;
+  const { nombre, email, empresa, telefono, mensaje } = parsed.data;
 
   // Rate limiting by email (avoids reading request headers from server action)
   try {
@@ -367,10 +323,7 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
     console.warn('Rate limiting skipped:', (err as Error).message);
   }
 
-  const recaptchaOk = await verifyRecaptcha(recaptchaToken);
-  if (!recaptchaOk) {
-    return { ok: false, message: 'Validación de seguridad fallida. Probá de nuevo en unos segundos.' };
-  }
+
 
   const mxOk = await hasMxRecords(email);
   if (!mxOk) {

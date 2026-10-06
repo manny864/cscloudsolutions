@@ -103,17 +103,17 @@
         "s3n": "24/7",
         "s3l": "Support and monitoring"
       },
-      "cardTitle": "Free Security Audit in just 30 minutes",
-      "cardSub": "We review the critical points of your Microsoft 365 to detect real risks before they become a problem. No fine print, no commitment.",
+      "cardTitle": "Azure FinOps Assessment (100% Free)",
+      "cardSub": "We analyze your Azure infrastructure to detect idle costs, oversized resources, and instant cloud savings opportunities. Agentless and no cost.",
       "cardBullets": [
-        "Multi-factor authentication & access",
-        "External email forwarding",
-        "Conditional access & admin roles",
-        "Connected third-party apps",
-        "SharePoint & OneDrive (permissions)"
+        "Detection of orphan resources and zombie disks",
+        "VM and storage rightsizing recommendations",
+        "Optimization with Reservations & Savings Plans",
+        "Security posture and architecture best practices",
+        "Executive downloadable report in minutes"
       ],
-      "cardButton": "Request audit now →",
-      "cardNote": "Free · No commitment · Practical approach"
+      "cardButton": "Start Free Assessment (Always Free) →",
+      "cardNote": "Always free · 100% read-only · Zero installation"
     },
     "services": {
       "title": "Our Solutions",

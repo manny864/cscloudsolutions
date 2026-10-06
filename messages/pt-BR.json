@@ -103,17 +103,17 @@
         "s3n": "24/7",
         "s3l": "Suporte e monitoramento"
       },
-      "cardTitle": "Auditoria de Segurança sem custo, em apenas 30 minutos",
-      "cardSub": "Revisamos os pontos críticos do seu Microsoft 365 para detectar riscos reais antes que virem um problema. Sem letra miúda, sem compromisso.",
+      "cardTitle": "Assessment Azure FinOps (100% Gratuito)",
+      "cardSub": "Analisamos sua infraestrutura Azure para detectar custos ociosos, recursos superdimensionados e oportunidades de economia imediata. Sem agentes e sem custo.",
       "cardBullets": [
-        "Autenticação multifator e acessos",
-        "Encaminhamentos de e-mail para externos",
-        "Acesso condicional e funções de administrador",
-        "Apps de terceiros conectados",
-        "SharePoint e OneDrive (permissões)"
+        "Detecção de recursos órfãos e discos zumbis",
+        "Rightsizing de máquinas virtuais e armazenamento",
+        "Otimização com Reservas e Azure Savings Plans",
+        "Postura de segurança e melhores práticas Azure",
+        "Relatório executivo para download em minutos"
       ],
-      "cardButton": "Solicitar auditoria →",
-      "cardNote": "Sem custo · Sem compromisso · Abordagem prática"
+      "cardButton": "Iniciar Assessment (Sempre Gratuito) →",
+      "cardNote": "Sempre gratuito · 100% somente leitura · Sem instalação"
     },
     "services": {
       "title": "Nossas Soluções",

@@ -63,3 +63,18 @@ output "staging_principal_id" {
   description = "Managed Identity (SystemAssigned) del slot de Staging."
   value       = azurerm_linux_web_app_slot.cscs_app_staging.identity[0].principal_id
 }
+
+output "finops_lighthouse_group_id" {
+  description = "ID del grupo de Azure AD para delegaciones de Azure Lighthouse (lighthouseGroupId)."
+  value       = azuread_group.finops_lighthouse.id
+}
+
+output "finops_lighthouse_group_name" {
+  description = "Nombre corporativo del grupo de Azure AD para Azure Lighthouse."
+  value       = azuread_group.finops_lighthouse.display_name
+}
+
+output "finops_spa_client_id" {
+  description = "Client ID de la aplicación SPA multi-tenant para el FinOps Assessment (spaClientId)."
+  value       = azuread_application.finops_spa.client_id
+}
