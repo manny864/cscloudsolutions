@@ -699,7 +699,18 @@ async function msalLogin() {
   const authority = 'https://login.microsoftonline.com/' + (AUTH.mode === 'delegated' ? (CFG.lighthouseAuthority || 'organizations') : tenant);
   AUTH.authority = authority;
   await loadLib('msal', 'lib/msal-browser.min.js', 'https://cdn.jsdelivr.net/npm/@azure/msal-browser@2.39.0/lib/msal-browser.min.js');
-  AUTH.pca = new msal.PublicClientApplication({ auth: { clientId, authority, redirectUri: REDIRECT, navigateToLoginRequestUrl: false }, cache: { cacheLocation: 'sessionStorage' } });
+  AUTH.pca = new msal.PublicClientApplication({
+    auth: { clientId, authority, redirectUri: REDIRECT, navigateToLoginRequestUrl: false },
+    cache: { cacheLocation: 'sessionStorage' },
+    system: {
+      loggerOptions: {
+        loggerCallback: (level, message, containsPii) => {
+          if (!containsPii) console.log('[MSAL]', message);
+        },
+        logLevel: (typeof msal !== 'undefined' && msal.LogLevel) ? msal.LogLevel.Info : 2
+      }
+    }
+  });
   const r = await AUTH.pca.loginPopup({ scopes: [ARM_SCOPE], prompt: 'select_account' });
   AUTH.account = r.account; setToken(r.accessToken);
 }
