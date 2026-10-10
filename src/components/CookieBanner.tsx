@@ -54,10 +54,10 @@ export function CookieBanner() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <button onClick={() => setShowConfig(true)} className="rounded-[5px] border border-black/15 bg-black/[0.03] px-6 py-3 text-sm font-bold text-[color:var(--navy)] hover:bg-black/[0.06] transition">
+              <button id="cookie-banner-config-btn" onClick={() => setShowConfig(true)} className="rounded-[5px] border border-black/15 bg-black/[0.03] px-6 py-3 text-sm font-bold text-[color:var(--navy)] hover:bg-black/[0.06] transition">
                 {t('btnConfig')}
               </button>
-              <button onClick={() => saveConsent({necessary: true, analytics: true, marketing: true})} className="rounded-[5px] bg-[color:var(--cyan)] px-6 py-3 text-sm font-black text-white hover:bg-[color:var(--cyan-dark)] transition">
+              <button id="cookie-banner-accept-btn" onClick={() => saveConsent({necessary: true, analytics: true, marketing: true})} className="rounded-[5px] bg-[color:var(--cyan)] px-6 py-3 text-sm font-black text-white hover:bg-[color:var(--cyan-dark)] transition">
                 {t('btnAccept')}
               </button>
             </div>
@@ -66,15 +66,15 @@ export function CookieBanner() {
           <div className="space-y-6 animate-in fade-in duration-300">
             <h3 className="font-[family:var(--font-heading)] text-xl font-extrabold">{t('configTitle')}</h3>
             <div className="grid gap-4 sm:grid-cols-3">
-              <CookieOption label={t('lblNecessary')} checked disabled desc={t('descNecessary')} />
-              <CookieOption label={t('lblAnalytics')} checked={consent.analytics} onChange={(v: boolean) => setConsent({...consent, analytics: v})} desc={t('descAnalytics')} />
-              <CookieOption label={t('lblMarketing')} checked={consent.marketing} onChange={(v: boolean) => setConsent({...consent, marketing: v})} desc={t('descMarketing')} />
+              <CookieOption id="cookie-opt-necessary" label={t('lblNecessary')} checked disabled desc={t('descNecessary')} />
+              <CookieOption id="cookie-opt-analytics" label={t('lblAnalytics')} checked={consent.analytics} onChange={(v: boolean) => setConsent({...consent, analytics: v})} desc={t('descAnalytics')} />
+              <CookieOption id="cookie-opt-marketing" label={t('lblMarketing')} checked={consent.marketing} onChange={(v: boolean) => setConsent({...consent, marketing: v})} desc={t('descMarketing')} />
             </div>
             <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-black/10">
-              <button onClick={() => setShowConfig(false)} className="text-sm font-bold text-gray-500 hover:text-[color:var(--navy)] transition">
+              <button id="cookie-banner-back-btn" onClick={() => setShowConfig(false)} className="text-sm font-bold text-gray-500 hover:text-[color:var(--navy)] transition">
                 {t('btnBack')}
               </button>
-              <button onClick={() => saveConsent(consent)} className="rounded-[5px] bg-[color:var(--navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[color:var(--navy-light)]">
+              <button id="cookie-banner-save-btn" onClick={() => saveConsent(consent)} className="rounded-[5px] bg-[color:var(--navy)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[color:var(--navy-light)]">
                 {t('btnSave')}
               </button>
             </div>
@@ -85,12 +85,22 @@ export function CookieBanner() {
   );
 }
 
-function CookieOption({ label, checked, onChange, disabled, desc }: CookieOptionProps) {
+interface CookieOptionExtendedProps {
+  id: string;
+  label: string;
+  checked: boolean;
+  onChange?: (v: boolean) => void;
+  disabled?: boolean;
+  desc: string;
+}
+
+function CookieOption({ id, label, checked, onChange, disabled, desc }: CookieOptionExtendedProps) {
   return (
     <div className="rounded-2xl border border-black/10 bg-black/[0.03] p-4">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-bold text-[color:var(--navy)]">{label}</span>
+        <label htmlFor={id} className="text-sm font-bold text-[color:var(--navy)] cursor-pointer">{label}</label>
         <input
+          id={id}
           type="checkbox"
           checked={checked}
           disabled={disabled}

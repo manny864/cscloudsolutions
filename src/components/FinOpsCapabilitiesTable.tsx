@@ -505,7 +505,7 @@ export function FinOpsCapabilitiesTable({
               CSCloudSolutions
             </span>
             <span className="text-slate-300">•</span>
-            <h1 className="text-sm font-bold text-slate-900">{t('fullscreenTitle')}</h1>
+            <span className="text-sm font-bold text-slate-900">{t('fullscreenTitle')}</span>
           </div>
         </div>
 

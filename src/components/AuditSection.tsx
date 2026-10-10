@@ -13,10 +13,11 @@ export function AuditSection() {
             <h2 className="mt-8 font-heading text-4xl font-extrabold sm:text-6xl">{t('titleA')} <br/><span className="text-[color:var(--cyan)]">{t('titleB')}</span></h2>
             <p className="mt-6 text-lg text-white/80">{t('sub')}</p>
             <div className="mt-10 flex flex-wrap gap-4 items-center">
-              <a href="#contacto" className="rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 font-black text-white shadow-2xl hover:bg-[color:var(--cyan-dark)] transition inline-flex items-center">
+              <a id="audit-cta-contact" href="#contacto" className="rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 font-black text-white shadow-2xl hover:bg-[color:var(--cyan-dark)] transition inline-flex items-center">
                 {t('calloutCta')}
               </a>
               <a
+                id="audit-cta-finops"
                 href="/finops_assesment/"
                 target="_blank"
                 rel="noopener noreferrer"

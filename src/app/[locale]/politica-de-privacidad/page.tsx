@@ -1,16 +1,31 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const isEs = locale === 'es';
-  return {
-    title: isEs ? 'Política de Privacidad' : 'Privacy Policy',
-    description: isEs 
-      ? 'Política de privacidad y protección de datos personales de CSCloudSolutions.' 
-      : 'Privacy policy and personal data protection of CSCloudSolutions.',
+  const titles: Record<string, { title: string; description: string }> = {
+    es: {
+      title: 'Política de Privacidad',
+      description: 'Política de privacidad y protección de datos personales de CSCloudSolutions.',
+    },
+    'pt-BR': {
+      title: 'Política de Privacidade',
+      description: 'Política de privacidade e proteção de dados pessoais da CSCloudSolutions.',
+    },
+    en: {
+      title: 'Privacy Policy',
+      description: 'Privacy policy and personal data protection of CSCloudSolutions.',
+    },
   };
+  const meta = titles[locale] || titles.es;
+  return createPageMetadata({
+    locale,
+    path: '/politica-de-privacidad',
+    title: meta.title,
+    description: meta.description,
+  });
 }
 
 export default async function PrivacyPolicyPage({ params }: { params: Promise<{ locale: string }> }) {

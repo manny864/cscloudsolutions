@@ -228,6 +228,7 @@ export function NotFoundContent({ translations, locale = 'es' }: NotFoundContent
         {/* Botones de Acción (Rescue CTA Hub) */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           <Link
+            id="not-found-back-home-btn"
             href="/"
             className="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-[color:var(--cyan-light)] to-[color:var(--cyan)] px-6 py-3.5 text-sm font-extrabold text-white shadow-[0_0_30px_rgba(0,174,239,0.35)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(0,174,239,0.55)] hover:brightness-110 active:translate-y-0"
           >
@@ -236,6 +237,7 @@ export function NotFoundContent({ translations, locale = 'es' }: NotFoundContent
           </Link>
 
           <button
+            id="not-found-go-back-btn"
             type="button"
             onClick={handleGoBack}
             className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/[0.08] px-5 py-3.5 text-sm font-bold text-white/90 backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/[0.14] hover:text-white active:translate-y-0 cursor-pointer"
@@ -248,6 +250,7 @@ export function NotFoundContent({ translations, locale = 'es' }: NotFoundContent
         {/* Enlace rápido de asistencia técnica */}
         <div className="mt-6">
           <Link
+            id="not-found-support-link"
             href="/soporte"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-sky-300/80 hover:text-sky-200 transition-colors group"
           >
@@ -273,6 +276,7 @@ export function NotFoundContent({ translations, locale = 'es' }: NotFoundContent
             {serviceCards.map((service, idx) => (
               <Link
                 key={idx}
+                id={`not-found-service-${idx}`}
                 href={service.href}
                 className={`group relative flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] ${service.borderColor}`}
               >

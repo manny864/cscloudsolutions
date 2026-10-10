@@ -2,13 +2,19 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 import './partners.css';
 import { PartnersCalculator } from './PartnersCalculator';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'pages.partners' });
-  return { title: t('title'), description: t('description') };
+  return createPageMetadata({
+    locale,
+    path: '/partners',
+    title: t('title'),
+    description: t('description'),
+  });
 }
 
 export default async function PartnersPage({ params }: { params: Promise<{ locale: string }> }) {

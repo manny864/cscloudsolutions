@@ -3,15 +3,18 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tPages = await getTranslations({ locale, namespace: 'pages.about' });
   const tAbout = await getTranslations({ locale, namespace: 'about' });
-  return {
+  return createPageMetadata({
+    locale,
+    path: '/nosotros',
     title: tPages('title'),
     description: tAbout('hero.sub'),
-  };
+  });
 }
 
 export default async function NosotrosPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -22,7 +25,7 @@ export default async function NosotrosPage({ params }: { params: Promise<{ local
   const tAbout = await getTranslations({ locale, namespace: 'about' });
 
   return (
-    <main className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* ENCABEZADO MAESTRO (Lado a lado, Proporción original) */}
       <section className="bg-[color:var(--navy)] py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -113,6 +116,6 @@ export default async function NosotrosPage({ params }: { params: Promise<{ local
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

@@ -3,14 +3,17 @@ import { getAllPosts } from '@/lib/blog';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
-  return {
+  return createPageMetadata({
+    locale,
+    path: '/blog',
     title: `${t('titleA')}${t('titleB')}`,
     description: t('subtitle'),
-  };
+  });
 }
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {

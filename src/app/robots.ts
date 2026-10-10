@@ -5,7 +5,15 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/_next/'], // Evitamos que indexe rutas técnicas
+      disallow: [
+        '/api/',
+        '/_next/',
+        '/admin/',
+        '/admin',
+        '/en/admin/',
+        '/pt-BR/admin/',
+        '/finops_assesment/lib/',
+      ],
     },
     sitemap: 'https://cscloudsolutions.com.ar/sitemap.xml',
   };

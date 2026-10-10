@@ -4,14 +4,16 @@ import { useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 
-type Props = { title: string; description: string; videoSrc: string; posterSrc: string; badge: string; href: string };
+type Props = { id?: string; title: string; description: string; videoSrc: string; posterSrc: string; badge: string; href: string };
 
-export function InteractiveVideoCard({ title, description, videoSrc, posterSrc, badge, href }: Props) {
+export function InteractiveVideoCard({ id, title, description, videoSrc, posterSrc, badge, href }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHover, setIsHover] = useState(false);
+  const cardId = id || `bento-card-${href.replace(/^\//, '')}`;
 
   return (
     <Link
+      id={cardId}
       href={href}
       onMouseEnter={() => { setIsHover(true); videoRef.current?.play().catch(() => {}) }}
       onMouseLeave={() => { setIsHover(false); videoRef.current?.pause() }}

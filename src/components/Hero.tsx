@@ -78,12 +78,14 @@ export function Hero() {
 
           <div className="mt-8 flex w-full flex-col sm:w-auto sm:flex-row flex-wrap justify-center gap-4 lg:justify-start">
             <a
+              id="hero-cta-contact"
               href="#contacto"
               className="inline-flex w-full sm:w-auto items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-6 py-4 text-base sm:text-sm font-extrabold text-white shadow-[0_16px_45px_rgba(0,79,138,0.30)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-dark)]"
             >
               {t('ctaPrimary')}
             </a>
             <Link
+              id="hero-cta-azure"
               href="/azure"
               className="inline-flex w-full sm:w-auto items-center justify-center rounded-[5px] border border-white/25 bg-white/0 px-6 py-4 text-base sm:text-sm font-bold text-white/95 transition hover:border-[color:var(--cyan)] hover:bg-white/5 hover:text-[color:var(--cyan)]"
             >
@@ -138,6 +140,7 @@ export function Hero() {
 
           <div className="mt-8 sm:mt-7 w-full rounded-2xl bg-white/0">
             <a
+              id="hero-cta-finops-assessment"
               href="/finops_assesment/"
               target="_blank"
               rel="noopener noreferrer"

@@ -20,6 +20,7 @@ export function LanguageSwitcher() {
 
   return (
     <select
+      id="language-switcher-select"
       value={locale}
       onChange={handleChange}
       aria-label="Cambiar idioma / Change language / Mudar idioma"

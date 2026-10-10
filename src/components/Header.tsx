@@ -46,18 +46,18 @@ export function Header() {
         <Logo locale={locale} />
         
         <nav className="hidden lg:flex items-center gap-2">
-          <Link href="/" className={`rounded-[5px] px-4 py-2 text-sm font-bold transition ${pathname === '/' ? 'text-[color:var(--cyan)] bg-[color:var(--cyan)]/10' : 'text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]'}`}>
+          <Link id="header-nav-home" href="/" className={`rounded-[5px] px-4 py-2 text-sm font-bold transition ${pathname === '/' ? 'text-[color:var(--cyan)] bg-[color:var(--cyan)]/10' : 'text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]'}`}>
             {t('home')}
           </Link>
 
           <div className="group relative">
-            <button className="rounded-[5px] px-4 py-2 text-sm font-bold text-[color:var(--navy)]/80 transition hover:text-[color:var(--cyan)] flex items-center gap-1">
+            <button id="header-nav-services-dropdown-btn" className="rounded-[5px] px-4 py-2 text-sm font-bold text-[color:var(--navy)]/80 transition hover:text-[color:var(--cyan)] flex items-center gap-1">
               {t('services')}
               <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div className="absolute top-full left-0 hidden w-56 flex-col gap-1 rounded-xl border border-black/10 bg-white p-3 shadow-2xl group-hover:flex">
               {serviceLinks.map((it) => (
-                <Link key={it.key} href={it.href} className={`rounded-[5px] px-4 py-2 text-sm font-bold transition ${pathname === it.href ? 'text-[color:var(--cyan)] bg-[color:var(--cyan)]/10' : 'text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)] hover:bg-[color:var(--cyan)]/5'}`}>
+                <Link key={it.key} id={`header-nav-service-${it.key}`} href={it.href} className={`rounded-[5px] px-4 py-2 text-sm font-bold transition ${pathname === it.href ? 'text-[color:var(--cyan)] bg-[color:var(--cyan)]/10' : 'text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)] hover:bg-[color:var(--cyan)]/5'}`}>
                   {t(it.key)}
                 </Link>
               ))}
@@ -65,16 +65,16 @@ export function Header() {
           </div>
 
           {mainLinks.slice(1).map((it) => (
-            <Link key={it.key} href={it.href} className={`rounded-[5px] px-4 py-2 text-sm font-bold transition ${pathname === it.href ? 'text-[color:var(--cyan)] bg-[color:var(--cyan)]/10' : 'text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]'}`}>
+            <Link key={it.key} id={`header-nav-${it.key}`} href={it.href} className={`rounded-[5px] px-4 py-2 text-sm font-bold transition ${pathname === it.href ? 'text-[color:var(--cyan)] bg-[color:var(--cyan)]/10' : 'text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]'}`}>
               {t(it.key)}
             </Link>
           ))}
 
-          <Link href="/partners" className="rounded-[5px] px-4 py-2 text-sm font-bold transition text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]">
+          <Link id="header-nav-partners" href="/partners" className="rounded-[5px] px-4 py-2 text-sm font-bold transition text-[color:var(--navy)]/80 hover:text-[color:var(--cyan)]">
             {t('partners')}
           </Link>
 
-          <a href={finopsUrl} target="_blank" rel="noopener" className="ml-4 rounded-[5px] bg-[color:var(--cyan)] px-6 py-2.5 text-sm font-black text-white hover:bg-[color:var(--cyan-dark)] transition">
+          <a id="header-cta-finops" href={finopsUrl} target="_blank" rel="noopener" className="ml-4 rounded-[5px] bg-[color:var(--cyan)] px-6 py-2.5 text-sm font-black text-white hover:bg-[color:var(--cyan-dark)] transition">
             {t('cta')}
           </a>
           <LanguageSwitcher />
@@ -83,6 +83,7 @@ export function Header() {
         <div className="flex items-center gap-4 lg:hidden">
           <LanguageSwitcher />
           <button 
+            id="header-mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-[color:var(--navy)] p-2 focus:outline-none"
             aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -100,32 +101,32 @@ export function Header() {
 
       {isMobileMenuOpen && (
         <div className="absolute top-20 left-0 w-full bg-white border-b border-black/10 p-6 flex flex-col gap-4 shadow-2xl lg:hidden animate-in slide-in-from-top-5 duration-300 overflow-y-auto max-h-[80vh]">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === '/' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
+          <Link id="mobile-nav-home" href="/" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === '/' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
             {t('home')}
           </Link>
 
           <div className="text-sm font-bold uppercase tracking-widest text-[color:var(--navy)]/60 mt-2">{t('services')}</div>
           <div className="flex flex-col gap-3 pl-4 border-l border-black/10">
             {serviceLinks.map((it) => (
-              <Link key={it.key} href={it.href} onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === it.href ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]/80'}`}>
+              <Link key={it.key} id={`mobile-nav-service-${it.key}`} href={it.href} onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === it.href ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]/80'}`}>
                 {t(it.key)}
               </Link>
             ))}
           </div>
 
-          <Link href="/nosotros" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold mt-2 ${pathname === '/nosotros' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
+          <Link id="mobile-nav-about" href="/nosotros" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold mt-2 ${pathname === '/nosotros' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
             {t('about')}
           </Link>
-          <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === '/blog' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
+          <Link id="mobile-nav-blog" href="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`text-lg font-bold ${pathname === '/blog' ? 'text-[color:var(--cyan)]' : 'text-[color:var(--navy)]'}`}>
             {t('blog')}
           </Link>
 
-          <Link href="/partners" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[color:var(--navy)]">
+          <Link id="mobile-nav-partners" href="/partners" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-[color:var(--navy)]">
             {t('partners')}
           </Link>
 
           <div className="pt-4 mt-2 border-t border-black/10">
-            <a href={finopsUrl} target="_blank" rel="noopener" onClick={() => setIsMobileMenuOpen(false)} className="inline-flex w-full justify-center rounded-[5px] bg-[color:var(--cyan)] px-6 py-3.5 text-base font-black text-white">
+            <a id="mobile-cta-finops" href={finopsUrl} target="_blank" rel="noopener" onClick={() => setIsMobileMenuOpen(false)} className="inline-flex w-full justify-center rounded-[5px] bg-[color:var(--cyan)] px-6 py-3.5 text-base font-black text-white">
               {t('cta')}
             </a>
           </div>

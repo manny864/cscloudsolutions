@@ -21,29 +21,38 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
   return {
     metadataBase: new URL('https://cscloudsolutions.com.ar'),
     title: {
-      default: 'CSCloudSolutions',
+      default: t('homeTitle'),
       template: '%s | CSCloudSolutions'
     },
     description: t('homeDescription'),
     alternates: {
       canonical: locale === 'es' ? '/' : `/${locale}`,
-      languages: { es: '/', en: '/en', 'pt-BR': '/pt-BR' }
+      languages: { es: '/', en: '/en', 'pt-BR': '/pt-BR', 'x-default': '/' }
     },
     verification: {
       google: 'FXWGTuJKHNAxiW38Ti-DUn_1ltz7zHhWMStgIaMUlAw',
     },
     openGraph: {
-      title: 'CSCloudSolutions',
+      title: t('homeTitle'),
       description: t('homeDescription'),
-      url: 'https://cscloudsolutions.com.ar',
+      url: locale === 'es' ? 'https://cscloudsolutions.com.ar' : `https://cscloudsolutions.com.ar/${locale}`,
       siteName: 'CSCloudSolutions',
       locale: locale === 'es' ? 'es_AR' : locale === 'pt-BR' ? 'pt_BR' : 'en_US',
       type: 'website',
+      images: [
+        {
+          url: 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png',
+          width: 1200,
+          height: 630,
+          alt: t('homeTitle'),
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'CSCloudSolutions',
+      title: t('homeTitle'),
       description: t('homeDescription'),
+      images: ['https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png'],
     },
   };
 }

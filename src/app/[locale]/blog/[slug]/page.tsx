@@ -26,17 +26,31 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     post = null;
   }
 
+  const esSlug = mapping ? mapping.es : slug;
+  const enSlug = mapping ? mapping.en : slug;
+  const ptSlug = mapping ? mapping['pt-BR'] : slug;
+  const canonicalPath = locale === 'es' ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+
   const alternates = {
+    canonical: canonicalPath,
     languages: {
-      es: `/es/blog/${mapping ? mapping.es : slug}`,
-      en: `/en/blog/${mapping ? mapping.en : slug}`,
-      'pt-BR': `/pt-BR/blog/${mapping ? mapping['pt-BR'] : slug}`,
+      es: `/blog/${esSlug}`,
+      en: `/en/blog/${enSlug}`,
+      'pt-BR': `/pt-BR/blog/${ptSlug}`,
+      'x-default': `/blog/${esSlug}`,
     },
   };
 
   if (!post) {
     return { alternates };
   }
+
+  const postUrl = `https://cscloudsolutions.com.ar${canonicalPath}`;
+  const imageUrl = post.meta.image
+    ? post.meta.image.startsWith('http')
+      ? post.meta.image
+      : `https://cscloudsolutions.com.ar${post.meta.image}`
+    : 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png';
 
   return {
     metadataBase: new URL('https://cscloudsolutions.com.ar'),
@@ -47,21 +61,21 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       title: post.meta.title,
       description: post.meta.excerpt || post.meta.title,
       type: 'article',
-      url: `https://cscloudsolutions.com.ar/${locale}/blog/${slug}`,
-      images: post.meta.image ? [
+      url: postUrl,
+      images: [
         {
-          url: post.meta.image,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: post.meta.title,
         },
-      ] : [],
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.meta.title,
       description: post.meta.excerpt || post.meta.title,
-      images: post.meta.image ? [post.meta.image] : [],
+      images: [imageUrl],
     },
   };
 }
@@ -93,10 +107,48 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     notFound();
   }
 
+  const canonicalPath = locale === 'es' ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
+  const postUrl = `https://cscloudsolutions.com.ar${canonicalPath}`;
+  const imageUrl = post.meta.image
+    ? post.meta.image.startsWith('http')
+      ? post.meta.image
+      : `https://cscloudsolutions.com.ar${post.meta.image}`
+    : 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png';
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.meta.title,
+    description: post.meta.excerpt || post.meta.title,
+    image: [imageUrl],
+    datePublished: post.meta.date,
+    dateModified: post.meta.date,
+    author: {
+      '@type': 'Person',
+      name: post.meta.author || 'CS Cloud Solutions',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'CSCloudSolutions',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+  };
+
   let imageIndex = 0;
 
   return (
-    <div className="bg-white px-6 py-24 lg:px-8 min-h-screen">
+    <article className="bg-white px-6 py-24 lg:px-8 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/<\/script>/g, '<\\/script>') }}
+      />
       <div className="mx-auto max-w-4xl">
         {post.status === 'draft' && (
           <div className="mb-10 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-semibold flex items-center justify-between shadow-sm">
@@ -187,6 +239,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
         <div className="mt-20 pt-10 border-t border-[color:var(--gray-200)] flex justify-between items-center clear-both">
           <Link 
+            id="blog-back-btn"
             href="/blog" 
             className="inline-flex items-center gap-2 text-sm font-bold text-[color:var(--navy)] hover:text-[color:var(--cyan)] transition-colors px-6 py-3 rounded-[5px] bg-[color:var(--gray-50)] border border-[color:var(--gray-200)]"
           >
@@ -195,6 +248,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

@@ -19,6 +19,7 @@ export function FAQ() {
           </h2>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[color:var(--gray-600)]">{t('sub')}</p>
           <a
+            id="faq-cta-contact"
             href="#contacto"
             className="mt-7 inline-flex items-center justify-center rounded-[5px] bg-[color:var(--navy)] px-6 py-3 text-sm font-extrabold text-white transition hover:bg-[color:var(--navy-light)]"
           >
@@ -30,11 +31,13 @@ export function FAQ() {
           {items.map((it, idx) => (
             <details 
               key={it.q} 
+              id={`faq-item-${idx}`}
               name="faq-accordion"
               open={idx === 0 ? true : undefined}
               className="group overflow-hidden rounded-2xl border border-[color:var(--gray-200)] bg-white"
             >
               <summary
+                id={`faq-summary-${idx}`}
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-[color:var(--navy)] hover:bg-[color:var(--gray-50)] list-none cursor-pointer [&::-webkit-details-marker]:hidden focus-visible:outline-none"
               >
                 <span>{it.q}</span>

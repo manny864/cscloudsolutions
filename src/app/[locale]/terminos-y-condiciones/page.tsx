@@ -1,16 +1,31 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const isEs = locale === 'es';
-  return {
-    title: isEs ? 'Términos y Condiciones' : 'Terms and Conditions',
-    description: isEs 
-      ? 'Términos y condiciones de uso del sitio web y servicios de CSCloudSolutions.' 
-      : 'Terms and conditions of use of the website and services of CSCloudSolutions.',
+  const titles: Record<string, { title: string; description: string }> = {
+    es: {
+      title: 'Términos y Condiciones',
+      description: 'Términos y condiciones de uso del sitio web y servicios de CSCloudSolutions.',
+    },
+    'pt-BR': {
+      title: 'Termos e Condições',
+      description: 'Termos e condições de uso do site e serviços da CSCloudSolutions.',
+    },
+    en: {
+      title: 'Terms and Conditions',
+      description: 'Terms and conditions of use of the website and services of CSCloudSolutions.',
+    },
   };
+  const meta = titles[locale] || titles.es;
+  return createPageMetadata({
+    locale,
+    path: '/terminos-y-condiciones',
+    title: meta.title,
+    description: meta.description,
+  });
 }
 
 export default async function TermsConditionsPage({ params }: { params: Promise<{ locale: string }> }) {

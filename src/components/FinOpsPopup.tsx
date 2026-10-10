@@ -145,6 +145,7 @@ export function FinOpsPopup() {
       <div className="relative w-full max-w-6xl max-h-[92vh] overflow-y-auto bg-slate-50/95 backdrop-blur-xl rounded-3xl shadow-2xl p-5 sm:p-8 lg:p-10 border border-white/40 custom-scrollbar">
         {/* Botón de Cierre */}
         <button
+          id="finops-popup-close-btn"
           onClick={handleClose}
           className="absolute top-4 right-4 sm:top-6 sm:right-6 z-[70] p-2.5 text-gray-500 hover:text-gray-900 bg-white/80 hover:bg-white rounded-full shadow-sm transition-all hover:scale-105 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[color:var(--cyan)]"
           aria-label={t('fullscreenClose')}
@@ -169,6 +170,7 @@ export function FinOpsPopup() {
             {/* Acceso directo a la Matriz Comparativa a Pantalla Completa */}
             <div className="mt-4 flex justify-center">
               <button
+                id="finops-popup-compare-matrix-btn"
                 type="button"
                 onClick={() => setViewMode('fullscreen')}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 bg-white hover:bg-slate-100/90 border border-slate-300 shadow-2xs hover:shadow-xs transition-all hover:-translate-y-0.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -211,6 +213,7 @@ export function FinOpsPopup() {
 
               {proFeatures.length > 8 && (
                 <button
+                  id="finops-popup-pro-more-btn"
                   type="button"
                   onClick={() => setViewMode('fullscreen')}
                   className="mt-4 pt-2 text-xs font-bold text-[color:var(--cyan-dark)] hover:text-blue-800 transition-colors text-left flex items-center gap-1.5 focus:outline-none cursor-pointer group"
@@ -254,6 +257,7 @@ export function FinOpsPopup() {
 
               {businessFeatures.length > 8 && (
                 <button
+                  id="finops-popup-business-more-btn"
                   type="button"
                   onClick={() => setViewMode('fullscreen')}
                   className="mt-4 pt-2 text-xs font-bold text-[color:var(--navy)] hover:text-blue-900 transition-colors text-left flex items-center gap-1.5 focus:outline-none cursor-pointer group"
@@ -297,6 +301,7 @@ export function FinOpsPopup() {
 
               {enterpriseFeatures.length > 8 && (
                 <button
+                  id="finops-popup-enterprise-more-btn"
                   type="button"
                   onClick={() => setViewMode('fullscreen')}
                   className="mt-4 pt-2 text-xs font-bold text-white hover:text-white/80 transition-colors text-left flex items-center gap-1.5 focus:outline-none cursor-pointer group"
@@ -314,6 +319,7 @@ export function FinOpsPopup() {
           {/* CTA Footer */}
           <div className="mt-8 sm:mt-10 text-center flex flex-col items-center justify-center gap-3">
             <a
+              id="finops-popup-main-cta"
               href={finopsUrl}
               target="_blank"
               rel="noopener noreferrer"

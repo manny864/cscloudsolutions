@@ -32,32 +32,32 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/nosotros" className="hover:text-[color:var(--cyan)] transition-colors">
+                <Link id="footer-link-about" href="/nosotros" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('about')}
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[color:var(--cyan)] transition-colors">
+                <Link id="footer-link-blog" href="/blog" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('blog')}
                 </Link>
               </li>
               <li>
-                <Link href="/partners" className="hover:text-[color:var(--cyan)] transition-colors">
+                <Link id="footer-link-partners" href="/partners" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('partners')}
                 </Link>
               </li>
               <li>
-                <Link href="/politica-de-privacidad" className="hover:text-[color:var(--cyan)] transition-colors">
+                <Link id="footer-link-privacy" href="/politica-de-privacidad" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('privacy')}
                 </Link>
               </li>
               <li>
-                <Link href="/terminos-y-condiciones" className="hover:text-[color:var(--cyan)] transition-colors">
+                <Link id="footer-link-terms" href="/terminos-y-condiciones" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('terms')}
                 </Link>
               </li>
               <li>
-                <Link href="/politica-de-reembolso" className="hover:text-[color:var(--cyan)] transition-colors">
+                <Link id="footer-link-refund" href="/politica-de-reembolso" className="hover:text-[color:var(--cyan)] transition-colors">
                   {t('refund')}
                 </Link>
               </li>
@@ -97,7 +97,7 @@ export function Footer() {
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <ClutchWidget />
-          <a href="https://www.producthunt.com/products/cscloudsolutions-finops/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-cscloudsolutions-finops" target="_blank" rel="noopener" className="inline-block">
+          <a id="footer-producthunt-link" href="https://www.producthunt.com/products/cscloudsolutions-finops/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-cscloudsolutions-finops" target="_blank" rel="noopener" className="inline-block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1310552&theme=light" alt="CSCloudSolutions FinOps - Automated Azure cost governance & 1-click cloud savings | Product Hunt" width={250} height={54} style={{ width: 250, height: 54 }} />
           </a>

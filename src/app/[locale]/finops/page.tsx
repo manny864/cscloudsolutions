@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: t.raw('meta.keywords') as string[],
     alternates: {
       canonical: path,
-      languages: { es: '/finops', en: '/en/finops', 'pt-BR': '/pt-BR/finops' }
+      languages: { es: '/finops', en: '/en/finops', 'pt-BR': '/pt-BR/finops', 'x-default': '/finops' }
     },
     openGraph: {
       title: t('meta.title'),
@@ -88,6 +88,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
 
           <div className="flex flex-wrap gap-4 mb-12">
             <a
+              id="finops-hero-cta-demo"
               href={FINOPS_DEMO_URL}
               target="_blank"
               rel="noopener"
@@ -96,6 +97,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
               {t('hero.ctaDemo')}
             </a>
             <a
+              id="finops-hero-cta-consult"
               href="#contacto"
               className="inline-flex items-center justify-center rounded-[5px] border border-white/25 px-8 py-4 text-sm font-bold text-white/95 transition hover:border-[color:var(--cyan)] hover:bg-white/5 hover:text-[color:var(--cyan)]"
             >
@@ -199,6 +201,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
             </h2>
             <p className="mb-8 text-lg leading-relaxed text-gray-600">{t('tiers.sub')}</p>
             <a
+              id="finops-tiers-cta"
               href={`${FINOPS_DEMO_URL}/es/upgrade`}
               target="_blank"
               rel="noopener"
@@ -225,10 +228,11 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
             {faqItems.map((it, idx) => (
               <details
                 key={it.q}
+                id={`finops-faq-item-${idx}`}
                 open={idx === 0 ? true : undefined}
                 className="group overflow-hidden rounded-2xl border border-gray-200 bg-white"
               >
-                <summary className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-[color:var(--navy)] hover:bg-[color:var(--gray-50)] list-none cursor-pointer [&::-webkit-details-marker]:hidden">
+                <summary id={`finops-faq-summary-${idx}`} className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-[15px] font-bold text-[color:var(--navy)] hover:bg-[color:var(--gray-50)] list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                   <span>{it.q}</span>
                   <span className="text-xl text-[color:var(--cyan)] transition duration-300 group-open:rotate-45">+</span>
                 </summary>
@@ -246,6 +250,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
           <p className="mb-8 text-lg text-white/75">{t('finalCta.sub')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
+              id="finops-final-cta-demo"
               href={FINOPS_DEMO_URL}
               target="_blank"
               rel="noopener"
@@ -254,6 +259,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
               {t('finalCta.ctaDemo')}
             </a>
             <a
+              id="finops-final-cta-consult"
               href="#contacto"
               className="inline-flex items-center justify-center rounded-[5px] border border-white/25 px-8 py-4 text-sm font-bold text-white/95 transition hover:border-[color:var(--cyan)] hover:bg-white/5 hover:text-[color:var(--cyan)]"
             >

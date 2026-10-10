@@ -25,6 +25,7 @@ export function FinOpsTeaser() {
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row shrink-0">
           <button
+            id="finops-teaser-demo-btn"
             type="button"
             onClick={handleOpenPopup}
             className="inline-flex items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-6 py-4 text-sm font-extrabold text-white transition hover:bg-[color:var(--cyan-dark)] shadow-md hover:scale-105"
@@ -32,6 +33,7 @@ export function FinOpsTeaser() {
             {t('ctaDemo')}
           </button>
           <a
+            id="finops-teaser-sprint-link"
             href="/finops_assesment/cliente.html"
             target="_blank"
             rel="noopener noreferrer"
@@ -40,6 +42,7 @@ export function FinOpsTeaser() {
             {t('ctaSprint')}
           </a>
           <Link
+            id="finops-teaser-learnmore-link"
             href="/finops"
             className="inline-flex items-center justify-center rounded-[5px] border border-white/25 px-6 py-4 text-sm font-bold text-white/95 transition hover:border-[color:var(--cyan)] hover:bg-white/5 hover:text-[color:var(--cyan)]"
           >
