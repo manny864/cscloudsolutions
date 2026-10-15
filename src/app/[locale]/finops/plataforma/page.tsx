@@ -1,8 +1,8 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import Image from 'next/image';
 import { Container } from '@/components/Container';
 import { ContactSection } from '@/components/ContactSection';
 import { StatCounter } from '@/components/StatCounter';
+import { ZoomableImage } from '@/components/ZoomableImage';
 import { Metadata } from 'next';
 import { SITE, absoluteUrl, createBreadcrumbJsonLd, createServiceJsonLd } from '@/lib/seo';
 
@@ -231,9 +231,6 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
 
           {/* GEO / AEO Direct Definition Block */}
           <div className="mx-auto max-w-3xl mb-10 rounded-2xl border border-[color:var(--cyan-light)]/40 bg-white/5 p-6 backdrop-blur-md text-left shadow-xl">
-            <div className="flex items-center gap-2 mb-2 text-xs font-extrabold uppercase tracking-wider text-[color:var(--cyan-light)]">
-              <span className="text-base">📌</span> Resumen Ejecutivo / Definición FinOps:
-            </div>
             <p className="text-white/90 text-sm sm:text-base leading-relaxed font-normal">
               {t('hero.geoDefinition')}
             </p>
@@ -293,16 +290,15 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
           {/* Hero Visual: WhiteBoard Browser Mockup */}
           <div className="mx-auto max-w-5xl">
             <div className="rounded-2xl border border-white/20 bg-[#0E1A2B]/80 p-2 sm:p-3 shadow-[0_30px_100px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-              <div className="relative w-full overflow-hidden rounded-xl bg-[#0A121E]">
-                <Image
-                  src="/images/finops/finops-azure-whiteboard-dashboard.png"
-                  alt="Dashboard ejecutivo de FinOps para Azure con visibilidad de costos, ahorro potencial y KPIs financieros en tiempo real"
-                  width={1200}
-                  height={680}
-                  priority
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+              <ZoomableImage
+                src="/images/finops/finops-azure-whiteboard-dashboard.png"
+                alt="Dashboard ejecutivo de FinOps para Azure con visibilidad de costos, ahorro potencial y KPIs financieros en tiempo real"
+                width={1200}
+                height={680}
+                priority
+                className="w-full h-auto object-cover"
+                containerClassName="relative w-full overflow-hidden rounded-xl bg-[#0A121E]"
+              />
             </div>
           </div>
 
@@ -363,9 +359,6 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
 
                     {/* GEO Direct Answer Box */}
                     <div className="mb-6 rounded-xl border-l-4 border-[color:var(--cyan)] bg-white p-4 shadow-xs">
-                      <p className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">
-                        Respuesta Directa (AEO):
-                      </p>
                       <p className="text-sm leading-relaxed text-gray-700 font-medium">
                         {pillar.geoAnswer}
                       </p>
@@ -404,15 +397,14 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
                   {/* Visual Column */}
                   <div className={`lg:col-span-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                     <div className="rounded-2xl border border-gray-200 bg-white p-2.5 sm:p-3 shadow-xl transition-all duration-300 hover:shadow-2xl">
-                      <div className="relative w-full overflow-hidden rounded-xl bg-[#0A121E]">
-                        <Image
-                          src={imageSrc}
-                          alt={pillar.imgAlt}
-                          width={1000}
-                          height={580}
-                          className="w-full h-auto object-cover"
-                        />
-                      </div>
+                      <ZoomableImage
+                        src={imageSrc}
+                        alt={pillar.imgAlt}
+                        width={1000}
+                        height={580}
+                        className="w-full h-auto object-cover"
+                        containerClassName="relative w-full overflow-hidden rounded-xl bg-[#0A121E]"
+                      />
                     </div>
                   </div>
                 </article>
@@ -454,12 +446,13 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
                 {t('specialized.mysql.desc')}
               </p>
               <div className="rounded-xl border border-gray-200 bg-[#0E1A2B] p-2 shadow-md overflow-hidden">
-                <Image
+                <ZoomableImage
                   src="/images/finops/finops-azure-databases-mysql-cost.png"
                   alt={t('specialized.mysql.imgAlt')}
                   width={1000}
                   height={580}
                   className="w-full h-auto rounded-lg object-cover"
+                  containerClassName="relative w-full overflow-hidden rounded-lg bg-[#0E1A2B]"
                 />
               </div>
             </div>
@@ -479,12 +472,13 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
                 {t('specialized.contenedores.desc')}
               </p>
               <div className="rounded-xl border border-gray-200 bg-[#0E1A2B] p-2 shadow-md overflow-hidden">
-                <Image
+                <ZoomableImage
                   src="/images/finops/finops-azure-contenedores-cost.png"
                   alt={t('specialized.contenedores.imgAlt')}
                   width={1000}
                   height={580}
                   className="w-full h-auto rounded-lg object-cover"
+                  containerClassName="relative w-full overflow-hidden rounded-lg bg-[#0E1A2B]"
                 />
               </div>
             </div>
