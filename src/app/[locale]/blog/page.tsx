@@ -3,7 +3,8 @@ import { getAllPosts } from '@/lib/blog';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
-import { createPageMetadata } from '@/lib/seo';
+import { createPageMetadata, createBreadcrumbJsonLd } from '@/lib/seo';
+import { StructuredData } from '@/components/StructuredData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,8 +22,15 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'blog' });
   const posts = await getAllPosts(locale);
 
+  const homeLabel = locale === 'en' ? 'Home' : locale === 'pt-BR' ? 'Início' : 'Inicio';
+  const breadcrumb = createBreadcrumbJsonLd([
+    { name: homeLabel, path: '/' },
+    { name: 'Blog', path: '/blog' },
+  ], locale);
+
   return (
     <div className="bg-white py-24 sm:py-32">
+      <StructuredData data={breadcrumb} />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         
         {/* CABECERA CENTRADA */}

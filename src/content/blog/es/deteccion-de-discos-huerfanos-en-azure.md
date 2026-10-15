@@ -5,6 +5,8 @@ author: "Manuel Chavez"
 category: "FinOps"
 image: "/images/blog/Automatizacion-de-la-Infraestructura.avif"
 excerpt: "Aprende a identificar y eliminar discos huérfanos en Microsoft Azure mediante Azure Resource Graph, CLI y PowerShell para recortar costos innecesarios de almacenamiento."
+datePublished: "2026-09-11"
+dateModified: "2026-10-14"
 ---
 
 ## Índice de Contenidos

@@ -4,7 +4,7 @@ import { ContactSection } from '@/components/ContactSection';
 import { StatCounter } from '@/components/StatCounter';
 import { Link } from '@/i18n/routing';
 import { Metadata } from 'next';
-import { SITE, absoluteUrl } from '@/lib/seo';
+import { SITE, absoluteUrl, createBreadcrumbJsonLd, createServiceJsonLd } from '@/lib/seo';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -43,9 +43,26 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
   const features = t.raw('features.items') as { icon: string; title: string; desc: string }[];
   const faqItems = t.raw('faq.items') as { q: string; a: string }[];
 
+  const homeLabel = locale === 'en' ? 'Home' : locale === 'pt-BR' ? 'Início' : 'Inicio';
+  const breadcrumb = createBreadcrumbJsonLd([
+    { name: homeLabel, path: '/' },
+    { name: t('meta.title') || 'FinOps', path: '/finops' },
+  ], locale);
+
+  const service = createServiceJsonLd({
+    name: 'Consultoría y Gestión FinOps en Azure',
+    description: t('meta.description'),
+    path: '/finops',
+    locale,
+    serviceType: 'Cloud Financial Management (FinOps) Consulting & Tooling',
+    areaServed: ['Latin America', 'Argentina', 'United States', 'Europe'],
+  });
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
+      breadcrumb,
+      service,
       {
         '@type': 'SoftwareApplication',
         '@id': `${SITE.url}/finops/#software`,

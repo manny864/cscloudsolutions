@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Infraestrutura Cloud"
 image: "/images/blog/CSCloudSolutions-Implementacion-AVD-Sector-Manufactura-300x300.avif"
 excerpt: "Conheça as vantagens dos desktops virtuais com Azure (AVD): acesso remoto seguro, Windows 11 multi-sessão e até 50% de economia frente ao VDI tradicional."
+datePublished: "2025-10-10"
+dateModified: "2026-10-14"
 ---
 
 ## Introdução: O Futuro do Trabalho Remoto com o AVD

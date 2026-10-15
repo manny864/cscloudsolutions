@@ -119,30 +119,83 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
       : `https://cscloudsolutions.com.ar${post.meta.image}`
     : 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png';
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
+  const homeLabel = locale === 'en' ? 'Home' : locale === 'pt-BR' ? 'Início' : 'Inicio';
+  const blogLabel = 'Blog';
+
+  const breadcrumbList = {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: homeLabel,
+        item: locale === 'es' ? 'https://cscloudsolutions.com.ar' : `https://cscloudsolutions.com.ar/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: blogLabel,
+        item: locale === 'es' ? 'https://cscloudsolutions.com.ar/blog' : `https://cscloudsolutions.com.ar/${locale}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.meta.title,
+        item: postUrl,
+      },
+    ],
+  };
+
+  const publishDate = post.meta.datePublished || post.meta.date || '2025-09-01';
+  const modifiedDate = post.meta.dateModified || post.meta.date || '2026-10-14';
+  const formattedPublish = String(publishDate).includes('T') ? String(publishDate) : `${publishDate}T09:00:00Z`;
+  const formattedModified = String(modifiedDate).includes('T') ? String(modifiedDate) : `${modifiedDate}T09:00:00Z`;
+
+  const blogPosting = {
     '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
     headline: post.meta.title,
     description: post.meta.excerpt || post.meta.title,
     image: [imageUrl],
-    datePublished: post.meta.date,
-    dateModified: post.meta.date,
-    author: {
-      '@type': 'Person',
-      name: post.meta.author || 'CS Cloud Solutions',
+    datePublished: formattedPublish,
+    dateModified: formattedModified,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
     },
+    author: [
+      {
+        '@type': 'Organization',
+        name: 'CSCloudSolutions',
+        url: 'https://cscloudsolutions.com.ar',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png',
+        },
+      },
+      ...(post.meta.author && post.meta.author !== 'CSCloudSolutions'
+        ? [
+            {
+              '@type': 'Person',
+              name: post.meta.author,
+            },
+          ]
+        : []),
+    ],
     publisher: {
       '@type': 'Organization',
       name: 'CSCloudSolutions',
+      url: 'https://cscloudsolutions.com.ar',
       logo: {
         '@type': 'ImageObject',
         url: 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png',
       },
     },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
+  };
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [breadcrumbList, blogPosting],
   };
 
   let imageIndex = 0;

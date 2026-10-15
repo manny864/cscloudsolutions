@@ -5,6 +5,8 @@ author: "Manuel Chavez"
 category: "FinOps"
 image: "/images/blog/Automatizacion-de-la-Infraestructura.avif"
 excerpt: "Aprenda a identificar e remover discos órfãos no Microsoft Azure com Azure Resource Graph, CLI e PowerShell para eliminar custos desnecessários de armazenamento."
+datePublished: "2026-09-11"
+dateModified: "2026-10-14"
 ---
 
 ## Índice

@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Redes e Segurança"
 image: "/images/blog/Azure-NAT-Gateway-Seguridad-y-Simplicidad-para-tus-Salidas-a-Internet.avif"
 excerpt: "Comparamos o Azure NAT Gateway e o Azure Firewall. Descubra qual é a melhor opção para gerenciar saídas para a Internet em sub-redes privadas, otimizando custos e segurança."
+datePublished: "2025-09-15"
+dateModified: "2026-10-14"
 ---
 
 ## Resumo: Gestão de Tráfego de Saída no Microsoft Azure

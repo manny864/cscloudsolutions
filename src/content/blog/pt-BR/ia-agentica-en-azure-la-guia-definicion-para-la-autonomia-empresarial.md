@@ -5,6 +5,8 @@ category: "Inteligência Artificial"
 excerpt: "Descubra como a IA Agêntica sobre Microsoft Azure e Microsoft 365 revoluciona a produtividade, otimiza custos em FinOps e elimina tarefas manuais."
 image: "/images/blog/el-cambio-de-paradigma-ia-tradicional-vs-ia-agentica.avif"
 author: "CSCloudSolutions"
+datePublished: "2026-05-18"
+dateModified: "2026-10-14"
 ---
 
 # A Revolução Invisível: Por Que a IA Agêntica sobre o Azure é o Próximo Grande Salto para a Produtividade Empresarial

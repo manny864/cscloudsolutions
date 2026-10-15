@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Microsoft 365"
 image: "/images/blog/migrar-correo.avif"
 excerpt: "Descubre por qué abandonar tu viejo servidor de correo o hosting web y dar el salto a Microsoft 365 es el mejor movimiento estratégico para tu PyME."
+datePublished: "2026-04-22"
+dateModified: "2026-10-14"
 ---
 
 ## El dolor de cabeza de los correos tradicionales 🤯

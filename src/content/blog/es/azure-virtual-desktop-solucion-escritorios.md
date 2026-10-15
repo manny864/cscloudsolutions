@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Infraestructura Cloud"
 image: "/images/blog/CSCloudSolutions-Implementacion-AVD-Sector-Manufactura-300x300.avif"
 excerpt: "Conocé los beneficios de contratar escritorios virtuales con Azure (AVD): acceso remoto seguro, Windows 11 multi-sesión y hasta un 50% de ahorro frente a VDI."
+datePublished: "2025-10-10"
+dateModified: "2026-10-14"
 ---
 
 ## Introducción: El Futuro del Trabajo Remoto con AVD

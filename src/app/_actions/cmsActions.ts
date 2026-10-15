@@ -6,6 +6,7 @@ import { getDb, schema, ensureTablesExist } from '@/db';
 import { eq, desc } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import slugify from 'slugify';
+import { notifyBlogPostUpdate } from '@/lib/indexnow';
 
 export interface PostInput {
   id?: number;
@@ -143,6 +144,13 @@ export async function createPost(input: PostInput) {
     revalidatePath('/[locale]/admin/posts', 'page');
     revalidatePath('/[locale]/admin', 'page');
     revalidatePath('/[locale]', 'page');
+
+    // 4. Notificación instantánea a motores de búsqueda (IndexNow)
+    if (postStatus === 'published') {
+      notifyBlogPostUpdate(finalSlug).catch((idxErr) => {
+        console.warn('[CMS Action] IndexNow background submission notice:', idxErr);
+      });
+    }
 
     return { success: true, postId, slug: finalSlug };
   } catch (error: any) {

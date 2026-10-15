@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Cybersecurity"
 image: "/images/blog/cscloudsolutions-backup-dr-flujo-bcdr-1.avif"
 excerpt: "Complete Azure Backup and Disaster Recovery (BCDR) guide. Ensure business continuity, eliminate downtime, and configure Azure Site Recovery step by step."
+datePublished: "2025-10-15"
+dateModified: "2026-10-14"
 ---
 
 ## What is BCDR and why is it vital for your business?

@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "FinOps"
 image: "/images/blog/El_Shock_del_Gasto_Cloud_y_el_Rol_de_FinOps.avif"
 excerpt: "Proven Azure FinOps solutions and consulting tactics to cut your Microsoft cloud bill up to 30%. Rightsizing, orphan disk cleanup, and reservation strategies."
+datePublished: "2026-04-24"
+dateModified: "2026-10-14"
 ---
 
 ## The Cloud Honeymoon and the Dreaded Month-End Bill 💸

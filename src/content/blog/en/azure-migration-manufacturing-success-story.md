@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Cloud Infrastructure"
 image: "/images/blog/Migracion-a-Azure-Un-Caso-de-Exito-de-CSCloudSolutions.avif"
 excerpt: "Discover how we modernized the IT infrastructure of a 500+ employee manufacturing company by migrating their servers to Microsoft Azure with zero downtime."
+datePublished: "2025-10-25"
+dateModified: "2026-10-14"
 ---
 
 ## Innovation and Flexibility: The Challenge of Modern Industry

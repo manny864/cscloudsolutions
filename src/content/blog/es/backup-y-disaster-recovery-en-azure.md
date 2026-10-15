@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Ciberseguridad"
 image: "/images/blog/cscloudsolutions-backup-dr-flujo-bcdr-1.avif"
 excerpt: "Asegurá la continuidad del negocio con Azure Backup y Disaster Recovery (BCDR). Reducí tu RTO/RPO a cero con Azure Site Recovery y respaldo ante ransomware."
+datePublished: "2025-10-15"
+dateModified: "2026-10-14"
 ---
 
 ## ¿Qué es BCDR y por qué es vital para tu negocio?

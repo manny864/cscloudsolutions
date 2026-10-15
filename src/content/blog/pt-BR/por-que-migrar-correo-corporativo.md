@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Microsoft 365"
 image: "/images/blog/migrar-correo.avif"
 excerpt: "Descubra por que abandonar seu antigo servidor de e-mail ou hosting web e dar o salto para o Microsoft 365 é o melhor movimento estratégico para sua PME."
+datePublished: "2026-04-22"
+dateModified: "2026-10-14"
 ---
 
 ## A dor de cabeça dos e-mails tradicionais 🤯

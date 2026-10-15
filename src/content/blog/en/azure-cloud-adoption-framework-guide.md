@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Cloud Adoption"
 image: "/images/blog/guia-caf-azure.avif"
 excerpt: "Plan and optimize your Azure cloud migration with the Microsoft Cloud Adoption Framework (CAF). A comprehensive guide to migrating, innovating, and governing your cloud environment for maximum security and operational excellence."
+datePublished: "2025-09-02"
+dateModified: "2026-10-14"
 ---
 
 ## Executive Summary: From Cloud Infrastructure to Holistic Operations

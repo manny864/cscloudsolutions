@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Networking & Security"
 image: "/images/blog/Azure-NAT-Gateway-Seguridad-y-Simplicidad-para-tus-Salidas-a-Internet.avif"
 excerpt: "A deep dive comparison between Azure NAT Gateway and Azure Firewall. Learn the best way to manage outbound traffic in private subnets while optimizing for cost and security."
+datePublished: "2025-09-15"
+dateModified: "2026-10-14"
 ---
 
 ## Summary: Managing Outbound Traffic in Microsoft Azure

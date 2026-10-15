@@ -69,6 +69,22 @@ Toda página pública debe exportar una función `generateMetadata` utilizando o
 - Páginas de error (`not-found.tsx`, `[...rest]`):
   - Deben exportar explícitamente `robots: { index: false, follow: false }` para evitar que las páginas no encontradas hereden la canónica raíz y se indexen como duplicadas.
 
+### 9. Datos Estructurados JSON-LD (Schema.org)
+- **Migas de Pan (`BreadcrumbList`):**
+  - Obligatorio en todas las subpáginas de servicios (`/azure`, `/finops`, `/seguridad`, etc.) y artículos del blog (`/blog/[slug]`).
+  - Permite a Google presentar en las SERPs una jerarquía clara de navegación (`Home > Servicios > Azure Cloud`) mejorando el CTR.
+- **Esquema de Servicio (`Service`):**
+  - Obligatorio en todas las páginas comerciales.
+  - Debe declarar: `provider` (Organization: CSCloudSolutions), `areaServed` (Latin America, United States, Europe, Argentina), `serviceType` y `hasOfferCatalog`.
+- **Artículos de Blog (`BlogPosting` / `Article`):**
+  - Obligatorio incluir `datePublished` y `dateModified` en formato ISO (YYYY-MM-DD o ISO-8601) para reflejar la frescura de contenidos en Google.
+  - Autor corporativo estructurado (`Organization`: CSCloudSolutions) además del autor individual si aplica.
+
+### 10. Indexación Instantánea con IndexNow
+- Toda publicación o actualización de contenido en el blog/CMS debe ejecutar automáticamente el envío de URLs a IndexNow (`https://api.indexnow.org/indexnow`).
+- La clave debe estar accesible públicamente en la raíz mediante `/{INDEXNOW_KEY}.txt`.
+- Disponer de una API route `/api/indexnow` para reenvío masivo o webhooks.
+
 ---
 
 ## Checklist de Verificación Pre-Merge
@@ -80,6 +96,7 @@ Antes de fusionar o hacer push de una nueva página:
 - [ ] ¿No contiene ningún tag `<main>` anidado?
 - [ ] ¿Los botones y enlaces principales tienen atributos `id` únicos?
 - [ ] ¿Los enlaces internos (`<Link>`) no tienen el prefijo `/es/`?
+- [ ] ¿Tiene inyectados sus esquemas JSON-LD (`BreadcrumbList` y `Service` o `BlogPosting`)?
 - [ ] ¿Fue añadida a `src/app/sitemap.ts` con sus variantes de idioma?
 - [ ] ¿`npm run build` compila con código 0 y genera la página sin errores?
 
@@ -90,3 +107,4 @@ Antes de fusionar o hacer push de una nueva página:
 2. **Error: Hardcodear canónicas fijas:** Si una página copia el metadata de otra (ej: `/finops/guia` apuntando a `/finops/plataforma`), Google desindexa la página por canónica cruzada.
 3. **Error: Usar `redirect({ href: '/es/...' })`:** En Next.js con prefijo `as-needed`, redirigir explícitamente a `/es/...` causa bucles o saltos dobles de redirección.
 4. **Error: Agregar URLs con redirección al sitemap:** Todo lo que esté en `sitemap.xml` debe devolver `200 OK` en el primer intento.
+5. **Error: Omitir `dateModified` en blogs:** Priva a Google de mostrar la fecha reciente en las SERPs, disminuyendo el CTR frente a contenidos actualizados.

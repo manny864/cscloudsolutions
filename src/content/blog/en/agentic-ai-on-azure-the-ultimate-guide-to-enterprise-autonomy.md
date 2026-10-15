@@ -5,6 +5,8 @@ category: "Artificial Intelligence"
 excerpt: "Discover how Agentic AI on Microsoft Azure and Microsoft 365 revolutionizes productivity, optimizes cloud costs via FinOps, and eliminates manual tasks."
 image: "/images/blog/the-paradigm-shift-tradicional-ia-vs-agentic-ia.avif"
 author: "CSCloudSolutions"
+datePublished: "2026-05-18"
+dateModified: "2026-10-14"
 ---
 
 # The Invisible Revolution: Why Agentic AI on Azure is the Next Quantum Leap for Enterprise Productivity

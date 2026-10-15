@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "Adopción de la nube"
 image: "/images/blog/guia-caf-azure.avif"
 excerpt: "Planifica y optimiza tu adopción de Azure con el Cloud Adoption Framework. Una guía completa para migrar, innovar y gobernar tu entorno en la nube."
+datePublished: "2025-09-02"
+dateModified: "2026-10-14"
 ---
 
 ## Resumen Ejecutivo: De la Infraestructura a la Operación Holística

@@ -88,3 +88,155 @@ export function createPageMetadata({
     },
   };
 }
+
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export function createBreadcrumbJsonLd(items: BreadcrumbItem[], locale: string = 'es') {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(getLocalizedPath(item.path, locale)),
+    })),
+  };
+}
+
+export interface ServiceJsonLdOptions {
+  name: string;
+  description: string;
+  path: string;
+  locale: string;
+  serviceType?: string;
+  areaServed?: string[];
+  image?: string;
+}
+
+export function createServiceJsonLd({
+  name,
+  description,
+  path,
+  locale,
+  serviceType = 'Cloud Consulting & Managed Services',
+  areaServed = ['Latin America', 'Argentina', 'United States', 'Europe'],
+  image = SITE.defaultOgImage,
+}: ServiceJsonLdOptions) {
+  const serviceUrl = absoluteUrl(getLocalizedPath(path, locale));
+  return {
+    '@type': 'Service',
+    '@id': `${serviceUrl}#service`,
+    name,
+    description,
+    url: serviceUrl,
+    serviceType,
+    provider: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.url,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl(SITE.defaultOgImage),
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: SITE.whatsapp,
+        contactType: 'sales',
+        email: SITE.email,
+        availableLanguage: ['es', 'en', 'pt'],
+      },
+    },
+    areaServed: areaServed.map((area) => ({
+      '@type': 'AdministrativeArea',
+      name: area,
+    })),
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${name} Solutions`,
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name,
+            description,
+          },
+        },
+      ],
+    },
+  };
+}
+
+export interface BlogPostingJsonLdOptions {
+  title: string;
+  description: string;
+  path: string;
+  locale: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  authorName?: string;
+}
+
+export function createBlogPostingJsonLd({
+  title,
+  description,
+  path,
+  locale,
+  datePublished,
+  dateModified,
+  image = SITE.defaultOgImage,
+  authorName,
+}: BlogPostingJsonLdOptions) {
+  const postUrl = absoluteUrl(getLocalizedPath(path, locale));
+  const imageUrl = image.startsWith('http') ? image : absoluteUrl(image);
+  const formattedPublish = datePublished.includes('T') ? datePublished : `${datePublished}T09:00:00Z`;
+  const formattedModified = (dateModified || datePublished).includes('T')
+    ? dateModified || datePublished
+    : `${dateModified || datePublished}T09:00:00Z`;
+
+  return {
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
+    headline: title,
+    description,
+    image: [imageUrl],
+    datePublished: formattedPublish,
+    dateModified: formattedModified,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+    author: [
+      {
+        '@type': 'Organization',
+        name: SITE.name,
+        url: SITE.url,
+        logo: {
+          '@type': 'ImageObject',
+          url: absoluteUrl(SITE.defaultOgImage),
+        },
+      },
+      ...(authorName && authorName !== SITE.name
+        ? [
+            {
+              '@type': 'Person',
+              name: authorName,
+            },
+          ]
+        : []),
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.url,
+      logo: {
+        '@type': 'ImageObject',
+        url: absoluteUrl(SITE.defaultOgImage),
+      },
+    },
+  };
+}

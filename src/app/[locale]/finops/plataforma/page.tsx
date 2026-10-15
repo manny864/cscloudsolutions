@@ -4,7 +4,7 @@ import { Container } from '@/components/Container';
 import { ContactSection } from '@/components/ContactSection';
 import { StatCounter } from '@/components/StatCounter';
 import { Metadata } from 'next';
-import { SITE, absoluteUrl } from '@/lib/seo';
+import { SITE, absoluteUrl, createBreadcrumbJsonLd, createServiceJsonLd } from '@/lib/seo';
 
 const FINOPS_LOGIN_URL = 'https://finops.cscloudsolutions.com.ar/es?utm_source=cscloudsolutions&utm_medium=hero_demo&utm_campaign=finops_platform';
 
@@ -86,9 +86,27 @@ export default async function FinOpsPlatformPage({ params }: { params: Promise<{
     copilot: '/images/finops/finops-copilot-ai-cost-optimization.png',
   };
 
+  const homeLabel = locale === 'en' ? 'Home' : locale === 'pt-BR' ? 'Início' : 'Inicio';
+  const breadcrumb = createBreadcrumbJsonLd([
+    { name: homeLabel, path: '/' },
+    { name: 'FinOps', path: '/finops' },
+    { name: t('meta.title') || 'Plataforma FinOps', path: '/finops/plataforma' },
+  ], locale);
+
+  const service = createServiceJsonLd({
+    name: 'Plataforma FinOps CloudHealth & Consultoría Azure',
+    description: t('meta.description'),
+    path: '/finops/plataforma',
+    locale,
+    serviceType: 'Cloud Financial Management Software & Managed Platform',
+    areaServed: ['Latin America', 'Argentina', 'United States', 'Europe'],
+  });
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
+      breadcrumb,
+      service,
       {
         '@type': 'SoftwareApplication',
         '@id': `${SITE.url}${path}#software`,

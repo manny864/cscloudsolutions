@@ -3,7 +3,8 @@ import { Container } from '@/components/Container';
 import { ContactSection } from '@/components/ContactSection';
 import { StatCounter } from '@/components/StatCounter';
 import { Metadata } from 'next';
-import { createPageMetadata } from '@/lib/seo';
+import { createPageMetadata, createBreadcrumbJsonLd, createServiceJsonLd } from '@/lib/seo';
+import { StructuredData } from '@/components/StructuredData';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,8 +22,32 @@ export default async function AutomationsPage({ params }: { params: Promise<{ lo
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'pages.automations' });
 
+  const homeLabel = locale === 'en' ? 'Home' : locale === 'pt-BR' ? 'Início' : 'Inicio';
+  const pageTitle = t('hero.title');
+  const pageDesc = t('hero.sub');
+
+  const breadcrumbs = createBreadcrumbJsonLd([
+    { name: homeLabel, path: '/' },
+    { name: pageTitle, path: '/automations' },
+  ], locale);
+
+  const service = createServiceJsonLd({
+    name: pageTitle,
+    description: pageDesc,
+    path: '/automations',
+    locale,
+    serviceType: 'Cloud Automation, CI/CD & DevOps Engineering Services',
+    areaServed: ['Latin America', 'Argentina', 'United States', 'Europe'],
+  });
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [breadcrumbs, service],
+  };
+
   return (
     <>
+      <StructuredData data={structuredData} />
       <section className="relative overflow-hidden bg-[color:var(--navy)] py-24 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_80%_50%,rgba(0,174,239,0.1),transparent_70%)]" />
         <Container className="relative z-10">

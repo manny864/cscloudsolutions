@@ -5,6 +5,8 @@ author: "CSCloudSolutions"
 category: "FinOps"
 image: "/images/blog/El_Shock_del_Gasto_Cloud_y_el_Rol_de_FinOps.avif"
 excerpt: "Estratégias e soluções FinOps para Azure: elimine recursos ociosos, otimize instâncias e reduza sua fatura cloud em até 30% sem perder desempenho operacional."
+datePublished: "2026-04-24"
+dateModified: "2026-10-14"
 ---
 
 ## A lua de mel na nuvem e a temida fatura no fim do mês 💸
