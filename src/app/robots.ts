@@ -35,6 +35,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: standardDisallow,
       })),
     ],
-    sitemap: 'https://cscloudsolutions.com.ar/sitemap.xml',
+    sitemap: 'https://cscloudsolutions.com.ar/sitemap.xml\n# AI Crawlers Context\nLLMs-Txt: https://cscloudsolutions.com.ar/llms.txt',
   };
 }

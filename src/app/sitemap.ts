@@ -103,5 +103,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...staticEntries, ...blogEntries];
+  // 4. Entradas para archivos semánticos y contexto de IA (llms.txt)
+  const llmEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/llms.txt`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/llms-full.txt`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+
+  return [...staticEntries, ...blogEntries, ...llmEntries];
 }
