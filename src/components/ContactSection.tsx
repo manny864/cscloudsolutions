@@ -3,20 +3,38 @@ import {Container} from './Container';
 import {ContactForm} from './ContactForm';
 import {SITE} from '@/lib/seo';
 
-export function ContactSection() {
+interface ContactSectionProps {
+  badge?: string;
+  titleA?: string;
+  titleB?: string;
+  sub?: string;
+  origen?: string;
+  origenLabel?: string;
+  defaultMessage?: string;
+}
+
+export function ContactSection({
+  badge,
+  titleA,
+  titleB,
+  sub,
+  origen,
+  origenLabel,
+  defaultMessage,
+}: ContactSectionProps = {}) {
   const t = useTranslations('contact');
 
   return (
-    <section id="contacto" className="bg-[color:var(--navy)] py-20 text-white">
+    <section id="contacto" className="bg-[color:var(--navy)] py-20 text-white scroll-mt-20">
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-start">
         <div>
           <div className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[11px] font-extrabold uppercase tracking-widest text-white">
-            {t('badge')}
+            {badge || t('badge')}
           </div>
           <h2 className="mt-4 font-[family:var(--font-heading)] text-3xl font-extrabold sm:text-4xl">
-            {t('titleA')} <span className="text-[color:var(--cyan)]">{t('titleB')}</span>
+            {titleA || t('titleA')} <span className="text-[color:var(--cyan)]">{titleB || t('titleB')}</span>
           </h2>
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/75">{t('sub')}</p>
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/75">{sub || t('sub')}</p>
 
           <div className="mt-10 space-y-5">
             <div className="flex items-start gap-4">
@@ -40,7 +58,11 @@ export function ContactSection() {
           </div>
         </div>
 
-        <ContactForm />
+        <ContactForm 
+          origen={origen} 
+          origenLabel={origenLabel} 
+          defaultMessage={defaultMessage} 
+        />
       </Container>
     </section>
   );

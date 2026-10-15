@@ -2,10 +2,9 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Container } from '@/components/Container';
 import { ContactSection } from '@/components/ContactSection';
 import { StatCounter } from '@/components/StatCounter';
+import { Link } from '@/i18n/routing';
 import { Metadata } from 'next';
 import { SITE, absoluteUrl } from '@/lib/seo';
-
-const FINOPS_DEMO_URL = 'https://finops.cscloudsolutions.com.ar';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -89,13 +88,18 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
           <div className="flex flex-wrap gap-4 mb-12">
             <a
               id="finops-hero-cta-demo"
-              href={FINOPS_DEMO_URL}
-              target="_blank"
-              rel="noopener"
+              href="#contacto"
               className="inline-flex items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 text-sm font-extrabold text-white shadow-[0_16px_45px_rgba(0,79,138,0.30)] transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-dark)]"
             >
               {t('hero.ctaDemo')}
             </a>
+            <Link
+              id="finops-hero-cta-platform"
+              href="/finops/plataforma"
+              className="inline-flex items-center justify-center rounded-[5px] bg-white/10 backdrop-blur-md border border-white/30 px-8 py-4 text-sm font-extrabold text-white transition hover:bg-white/20 hover:border-white"
+            >
+              {t('platformBanner.cta')}
+            </Link>
             <a
               id="finops-hero-cta-consult"
               href="#contacto"
@@ -192,6 +196,44 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
         </Container>
       </section>
 
+      {/* PLATFORM SHOWCASE BANNER */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-[color:var(--navy)] via-[color:var(--navy-mid)] to-[color:var(--navy)] py-20 border-y border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_20%_50%,rgba(0,79,138,0.25),transparent_70%)]" />
+        <Container className="relative z-10">
+          <div className="rounded-3xl border border-white/15 bg-white/5 p-8 sm:p-12 backdrop-blur-md shadow-2xl">
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+              <div className="lg:col-span-8">
+                <div className="inline-flex rounded-full border border-[color:var(--cyan-light)] bg-[color:var(--cyan)]/25 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-white mb-4">
+                  {t('platformBanner.badge')}
+                </div>
+                <h2 className="text-white text-3xl sm:text-4xl font-extrabold leading-tight mb-4">
+                  {t('platformBanner.title')}
+                </h2>
+                <p className="text-white/80 text-base sm:text-lg leading-relaxed">
+                  {t('platformBanner.sub')}
+                </p>
+              </div>
+              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
+                <Link
+                  id="finops-showcase-cta"
+                  href="/finops/plataforma"
+                  className="inline-flex items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 text-sm font-extrabold text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-[color:var(--cyan-dark)] text-center"
+                >
+                  {t('platformBanner.cta')}
+                </Link>
+                <a
+                  id="finops-showcase-demo-btn"
+                  href="#contacto"
+                  className="inline-flex items-center justify-center rounded-[5px] border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white/10 text-center"
+                >
+                  {t('hero.ctaDemo')}
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* TIERS TEASER */}
       <section className="bg-[color:var(--gray-50)] py-20">
         <Container>
@@ -202,9 +244,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
             <p className="mb-8 text-lg leading-relaxed text-gray-600">{t('tiers.sub')}</p>
             <a
               id="finops-tiers-cta"
-              href={`${FINOPS_DEMO_URL}/es/upgrade`}
-              target="_blank"
-              rel="noopener"
+              href="#contacto"
               className="inline-flex items-center justify-center rounded-[5px] bg-[color:var(--navy)] px-8 py-4 text-sm font-extrabold text-white transition hover:bg-[color:var(--navy-light)]"
             >
               {t('tiers.cta')}
@@ -251,9 +291,7 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
           <div className="flex flex-wrap justify-center gap-4">
             <a
               id="finops-final-cta-demo"
-              href={FINOPS_DEMO_URL}
-              target="_blank"
-              rel="noopener"
+              href="#contacto"
               className="inline-flex items-center justify-center rounded-[5px] bg-[color:var(--cyan)] px-8 py-4 text-sm font-extrabold text-white transition hover:bg-[color:var(--cyan-dark)]"
             >
               {t('finalCta.ctaDemo')}
@@ -269,7 +307,11 @@ export default async function FinOpsPage({ params }: { params: Promise<{ locale:
         </Container>
       </section>
 
-      <ContactSection />
+      <ContactSection 
+        origen="Agendar Demo - Servicios FinOps"
+        origenLabel="Agendar Demo FinOps"
+        defaultMessage="Hola, quisiera agendar una demo de la solución FinOps para evaluar la optimización de costos en Azure."
+      />
     </>
   );
 }

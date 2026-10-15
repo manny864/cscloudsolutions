@@ -7,10 +7,27 @@ import { submitContact } from '@/app/_actions/submitContact';
 type Status = { kind: 'idle' | 'loading' | 'success' | 'error'; message?: string };
 
 
-export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'compact' }) {
+export function ContactForm({ 
+  variant = 'default',
+  origen = '',
+  origenLabel,
+  defaultMessage = ''
+}: { 
+  variant?: 'default' | 'compact';
+  origen?: string;
+  origenLabel?: string;
+  defaultMessage?: string;
+}) {
   const t = useTranslations('contact');
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
-  const [form, setForm] = useState({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
+  const [form, setForm] = useState({ 
+    nombre: '', 
+    email: '', 
+    empresa: '', 
+    telefono: '', 
+    mensaje: defaultMessage,
+    origen: origen
+  });
   const [interacted, setInteracted] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +45,7 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
       const res = await submitContact(form);
       if (res.ok) {
         setStatus({ kind: 'success', message: res.message });
-        setForm({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '' });
+        setForm({ nombre: '', email: '', empresa: '', telefono: '', mensaje: '', origen });
       } else {
         setStatus({ kind: 'error', message: res.message });
       }
@@ -53,6 +70,19 @@ export function ContactForm({ variant = 'default' }: { variant?: 'default' | 'co
           {t('formTitle')}
         </h3>
         <p className="mt-1 text-sm text-[color:var(--gray-600)]">{t('formSub')}</p>
+
+        {origen && (
+          <div className="mt-4 flex items-center gap-2 rounded-xl border border-[color:var(--cyan)]/30 bg-[color:var(--cyan)]/10 px-4 py-2.5 text-xs font-bold text-[color:var(--navy)]">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[color:var(--cyan)] text-white text-[10px]">
+              ✓
+            </span>
+            <span>
+              {t('consultingFor')}: <strong className="text-[color:var(--cyan)]">{origenLabel || origen}</strong>
+            </span>
+          </div>
+        )}
+
+        <input type="hidden" name="origen" value={form.origen} />
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {/* Nombre */}

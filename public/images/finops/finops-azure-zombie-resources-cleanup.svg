@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgZ" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1A2B"/>
+      <stop offset="100%" stop-color="#142337"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="580" rx="14" fill="url(#bgZ)"/>
+  <!-- Header -->
+  <rect width="1000" height="42" rx="14" fill="#0A121E"/>
+  <circle cx="24" cy="21" r="5" fill="#EF4444"/>
+  <circle cx="42" cy="21" r="5" fill="#F59E0B"/>
+  <circle cx="60" cy="21" r="5" fill="#10B981"/>
+  <text x="90" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">CSCloud FinOps · Limpieza de Nube (Omni-Scan) &amp; Aprobaciones de 4 Ojos</text>
+
+  <!-- Top Metrics Row -->
+  <g transform="translate(30, 58)">
+    <rect width="215" height="74" rx="8" fill="#16273F" stroke="#1F3A5F" stroke-width="1"/>
+    <text x="16" y="24" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#94A3B8">DISCOS NO CONECTADOS</text>
+    <text x="16" y="52" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">18 <tspan font-size="12" fill="#F87171">($1,420/m)</tspan></text>
+  </g>
+  <g transform="translate(265, 58)">
+    <rect width="215" height="74" rx="8" fill="#16273F" stroke="#1F3A5F" stroke-width="1"/>
+    <text x="16" y="24" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#94A3B8">IPS PÚBLICAS SIN USO</text>
+    <text x="16" y="52" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">12 <tspan font-size="12" fill="#F87171">($432/m)</tspan></text>
+  </g>
+  <g transform="translate(500, 58)">
+    <rect width="215" height="74" rx="8" fill="#16273F" stroke="#1F3A5F" stroke-width="1"/>
+    <text x="16" y="24" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#94A3B8">APP SERVICE PLANS VACÍOS</text>
+    <text x="16" y="52" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF">8 <tspan font-size="12" fill="#F87171">($1,160/m)</tspan></text>
+  </g>
+  <g transform="translate(735, 58)">
+    <rect width="235" height="74" rx="8" fill="#10B981" fill-opacity="0.1" stroke="#10B981" stroke-width="1"/>
+    <text x="16" y="24" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#34D399">AHORRO TOTAL LIBERABLE</text>
+    <text x="16" y="52" font-family="system-ui, sans-serif" font-size="22" font-weight="800" fill="#34D399">$3,012 USD/m</text>
+  </g>
+
+  <!-- Table Section -->
+  <g transform="translate(30, 148)">
+    <rect width="940" height="400" rx="10" fill="#101D30" stroke="#1F3A5F" stroke-width="1"/>
+    <rect width="940" height="40" rx="10" fill="#16273F"/>
+    <text x="24" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">RECURSO HUÉRFANO AUDITADO</text>
+    <text x="320" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">TIPO DE RECURSO</text>
+    <text x="490" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">DÍAS INACTIVO</text>
+    <text x="630" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">COSTO MES</text>
+    <text x="760" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">ACCIÓN (4 OJOS)</text>
+
+    <!-- Row 1 -->
+    <g transform="translate(0, 40)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="36" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">disk-data-prod-analytics-01</text>
+      <text x="24" y="52" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">rg-data-prod · East US 2 · Premium SSD 1TB</text>
+      <text x="320" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#94A3B8">Microsoft.Compute/disks</text>
+      <text x="490" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#F87171">74 días sin VM</text>
+      <text x="630" y="42" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">$132.80 USD</text>
+      <rect x="760" y="24" width="155" height="28" rx="6" fill="#EF4444"/>
+      <text x="772" y="42" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Borrar con Snapshot</text>
+    </g>
+
+    <!-- Row 2 -->
+    <g transform="translate(0, 105)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="36" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">pip-k8s-ingress-old-ip</text>
+      <text x="24" y="52" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">rg-network · Central US · Static Standard SKU</text>
+      <text x="320" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#94A3B8">Microsoft.Network/publicIPAddresses</text>
+      <text x="490" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#F87171">112 días sin asociar</text>
+      <text x="630" y="42" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">$36.00 USD</text>
+      <rect x="760" y="24" width="155" height="28" rx="6" fill="#00AEEF"/>
+      <text x="784" y="42" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Liberar IP (1-Clic)</text>
+    </g>
+
+    <!-- Row 3 -->
+    <g transform="translate(0, 170)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="36" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">plan-staging-microservices</text>
+      <text x="24" y="52" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">rg-staging · West Europe · P2v3 SKU</text>
+      <text x="320" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#94A3B8">Microsoft.Web/serverfarms</text>
+      <text x="490" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#F87171">0 Web Apps vinculadas</text>
+      <text x="630" y="42" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">$285.00 USD</text>
+      <rect x="760" y="24" width="155" height="28" rx="6" fill="#EF4444"/>
+      <text x="780" y="42" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Eliminar Plan ASP</text>
+    </g>
+
+    <!-- Approval Banner Notification -->
+    <g transform="translate(20, 260)">
+      <rect width="900" height="60" rx="8" fill="#16273F" stroke="#00AEEF" stroke-width="1"/>
+      <circle cx="36" cy="30" r="14" fill="#00AEEF" fill-opacity="0.2"/>
+      <text x="32" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#00AEEF">🛡️</text>
+      <text x="65" y="26" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Gobernanza de Cuatro Ojos Activa</text>
+      <text x="65" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">Las solicitudes destructivas quedan en `/governance/approvals`. Requiere validación de un segundo administrador antes de ejecutar la API de Azure.</text>
+    </g>
+  </g>
+</svg>

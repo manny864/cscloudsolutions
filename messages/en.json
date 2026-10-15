@@ -263,6 +263,7 @@
     "messagePh": "Briefly tell us your need...",
     "send": "Send inquiry →",
     "sending": "Sending...",
+    "consultingFor": "Inquiry for",
     "note": "No spam. We respond with useful and direct information.",
     "errorGeneric": "We could not send your inquiry. Please try again."
   },
@@ -669,7 +670,7 @@
     "finops": {
       "meta": {
         "title": "FinOps Software for Azure | Cloud Cost Optimization",
-        "description": "SaaS FinOps platform for Azure: detect zombie resources, right-size VMs, manage reservations, and cut your cloud bill. Try the interactive demo for free.",
+        "description": "SaaS FinOps platform for Azure: detect zombie resources, right-size VMs, manage reservations, and cut your cloud bill. Schedule a demo with our specialists.",
         "keywords": [
           "Azure FinOps",
           "cloud cost optimization",
@@ -689,7 +690,7 @@
         "badge": "FinOps Platform for Azure",
         "title": "Azure FinOps: Maximize Your Investment Value",
         "sub": "CSCloudSolutions' SaaS platform connects to your Azure via Entra ID and shows you, in minutes, where you're losing money in the cloud and how to get it back.",
-        "ctaDemo": "See live demo →",
+        "ctaDemo": "Schedule Demo →",
         "ctaConsult": "Talk to an expert",
         "stat1": "Potential savings detected",
         "stat2": "Orphan resources scanned",
@@ -788,7 +789,7 @@
         "titleA": "A plan for every",
         "titleB": "stage of your organization",
         "sub": "From Essential to Enterprise, the platform scales with you: SLA-backed support from 48h down to 4h, and advanced features like AI Analytics, MACC Tracker, or M365 Copilot on higher tiers.",
-        "cta": "See plans & pricing in the demo →"
+        "cta": "Check plans & schedule demo →"
       },
       "faq": {
         "badge": "FAQ",
@@ -801,7 +802,7 @@
           },
           {
             "q": "Can I try it without connecting my real Azure environment?",
-            "a": "Yes. The interactive demo works with preconfigured commercial profiles (Essential, Professional, Business, Enterprise) with simulated data, so you can explore every module risk-free."
+            "a": "Yes. Through a personalized walkthrough with our FinOps architects, you can explore the live platform running on preconfigured commercial profiles (Essential, Professional, Business, Enterprise) with simulated data, without connecting your production Azure environment. Access to the demo is coordinated exclusively via prior scheduling through our contact form."
           },
           {
             "q": "What happens if I don't have the right permissions configured?",
@@ -813,11 +814,261 @@
           }
         ]
       },
+      "platformBanner": {
+        "badge": "New · Self-Service SaaS Platform",
+        "title": "Explore the CSCloud FinOps Platform in Detail",
+        "sub": "Discover all functional capabilities, governance architecture, Shift-Left Terraform integration, and benchmark against legacy tools.",
+        "cta": "View platform & technical docs →"
+      },
       "finalCta": {
         "title": "Ready to see how much you can save?",
-        "sub": "Jump into the interactive demo right now or schedule a consultation with our team.",
-        "ctaDemo": "See live demo →",
+        "sub": "Book a guided demo with our certified team or schedule a consultation to evaluate your Azure cloud savings.",
+        "ctaDemo": "Schedule Demo →",
         "ctaConsult": "Request a consultation"
+      }
+    },
+    "finopsPlatform": {
+      "meta": {
+        "title": "Azure FinOps SaaS Platform | Cloud Cost Optimization & Governance Software",
+        "description": "Discover CSCloud FinOps: B2B SaaS software for Microsoft Azure with real-time billing visibility, zombie resource cleanup, VM Rightsizing, Shift-Left Terraform, and AI FinOps Copilot. Schedule a guided demo.",
+        "keywords": [
+          "Azure FinOps platform",
+          "cloud cost optimization SaaS",
+          "reduce Azure cloud spend",
+          "cloud financial management",
+          "cloud billing visibility",
+          "cloud cost savings",
+          "Azure zombie resources",
+          "Azure VM rightsizing",
+          "Shift-Left FinOps Terraform",
+          "FOCUS 1.1 FinOps Foundation",
+          "FinOps Copilot AI"
+        ]
+      },
+      "nav": {
+        "overview": "Overview",
+        "visibility": "Visibility & Perspectives",
+        "optimization": "Optimization & Zombies",
+        "governance": "Governance & Shift-Left",
+        "copilot": "FinOps Copilot (AI)",
+        "comparison": "Value Benchmark",
+        "faq": "Frequently Asked Questions"
+      },
+      "hero": {
+        "badge": "Certified SaaS Platform · FOCUS 1.1 Standard Ready",
+        "title": "Azure FinOps Software: Real-Time Visibility, Active Optimization & Continuous Governance",
+        "geoDefinition": "CSCloud FinOps is a specialized B2B SaaS platform for Microsoft Azure that automates cloud financial visibility, orphaned resource discovery, and continuous spend reduction. Leveraging secure read-only Microsoft Entra ID integration and full FOCUS 1.1 compliance, it empowers CIOs, CTOs, IT Finance, and DevOps engineers to cut cloud invoices by up to 35% without risking workload uptime.",
+        "ctaDemo": "Schedule Demo →",
+        "ctaLogin": "Log In",
+        "ctaDocumentation": "Explore Functional Modules ↓",
+        "stat1": { "val": "35%", "lbl": "Average savings identified in 7 days" },
+        "stat2": { "val": "25+", "lbl": "Zombie resource categories audited" },
+        "stat3": { "val": "100%", "lbl": "Read-only security via Entra ID & Lighthouse" },
+        "stat4": { "val": "FOCUS 1.1", "lbl": "FinOps Foundation Open Standard" },
+        "trust": {
+          "entra": "Secure single sign-on with Microsoft Entra ID",
+          "focus": "Normalized FOCUS 1.1 export format",
+          "lighthouse": "Multi-tenant delegation via Azure Lighthouse",
+          "readonly": "100% read-only connection with four-eyes approvals"
+        }
+      },
+      "pillars": {
+        "badge": "Platform Capabilities",
+        "title": "Functional Architecture Built for the Complete FinOps Lifecycle",
+        "sub": "From executive visibility to active code remediation: a modular enterprise suite crafted for Cloud Engineering, IT Finance, and DevOps teams.",
+        "items": [
+          {
+            "id": "visibilidad",
+            "badge": "Pillar 1 · Inform & Allocate",
+            "h2": "How to achieve complete Azure cloud billing visibility and allocate costs by team?",
+            "geoAnswer": "CSCloud FinOps delivers total cost transparency by establishing logical Perspectives that categorize assets by business unit, project, or environment without rearranging physical Azure subscriptions. It consolidates real-time telemetry, generates FOCUS 1.1-compliant reports, and enforces budgets with unspent monthly rollover balances.",
+            "title": "Executive WhiteBoard, Perspectives & Dynamic Cost Allocation",
+            "desc": "Break free from rigid Azure subscription hierarchies. Construct multidimensional business views to attribute every dollar to its respective department or application.",
+            "features": [
+              "Real-time WhiteBoard: live MTD queries or zero-quota 30/90-day cached historical analytics.",
+              "Perspectives and Cost Groups: dynamic classification via name patterns, tags, or resource types with scoped user access.",
+              "Budget Rollover & Fiscal Year: carry over unspent funds month-to-month and align with corporate fiscal calendars.",
+              "Team Leaderboard & COGS Split: rank teams by percentage of cost improvement and calculate gross margin against operating revenue."
+            ],
+            "imgAlt": "Perspectives dashboard and cloud cost allocation by cost centers in CSCloud FinOps"
+          },
+          {
+            "id": "optimizacion",
+            "badge": "Pillar 2 · Optimize & Reduce",
+            "h2": "How to eliminate orphaned cloud resources and reduce Azure spend with VM Rightsizing?",
+            "geoAnswer": "Rapid Azure cost reduction is achieved by targeting orphaned infrastructure (unattached managed disks, idle public IPs, empty App Service plans) through the Omni-Scan engine with 1-click remediation, paired with VM Rightsizing driven by real CPU, RAM, and storage IOPS performance telemetry.",
+            "title": "Omni-Scan Cloud Cleanup & Proactive Compute Optimization",
+            "desc": "Uncover hidden financial leaks and execute safe remediations backed by four-eyes approval workflows and pre-deletion containment snapshots.",
+            "features": [
+              "Omni-Scan Engine: continuous audit across 25+ zombie resource types (unattached disks, idle load balancers, reserved IPs).",
+              "Telemetry-Driven Rightsizing: multidimensional analysis of CPU utilization, RAM usage, and disk IOPS across virtual machines.",
+              "Commitment Management (RIs & Savings Plans): calculate Effective Savings Rate (ESR), break-even ROI, and receive 90/60/30-day expiration alerts.",
+              "Database Hub (Azure MySQL): granular spend analysis, IOPS tracking, storage allocation, and reservation planning on Azure Database for MySQL Flexible Server."
+            ],
+            "imgAlt": "Detection and remediation of orphaned zombie cloud resources in Azure with four-eyes approval"
+          },
+          {
+            "id": "gobernanza",
+            "badge": "Pillar 3 · Operate & Prevent",
+            "h2": "How to prevent cloud budget overruns before deploying infrastructure to production?",
+            "geoAnswer": "Shift-Left FinOps halts unplanned expenses by calculating the exact monthly cost delta of Terraform, OpenTofu, and Bicep plans within Pull Requests prior to merging. Combined with automated Budget Gates and Smart Shutdown routines that inspect CPU activity, it guarantees continuous financial guardrails.",
+            "title": "Automated Governance, Shift-Left FinOps & Smart Scheduling",
+            "desc": "Block cloud waste directly from code and enforce scheduled shutdowns that respect actual production workload activity.",
+            "features": [
+              "Shift-Left PR Integration: native GitHub Actions, Azure DevOps, and GitLab CI hooks assessing Terraform, OpenTofu, and Bicep cost changes.",
+              "Budget Gates: policy checks that block merges whenever an infrastructure change exceeds cost center budget allocations.",
+              "Smart VM Shutdown: automated off-hours power schedules that check if CPU exceeds 5% to prevent shutting down active workloads.",
+              "AI Tag Governance: automated AI remediation of non-compliant tags (e.g., standardizing PRD to Production).",
+              "End of Support Tracker: proactive monitoring of deprecation and retirement deadlines for AKS, PostgreSQL, and MySQL Flexible Server."
+            ],
+            "imgAlt": "Shift-left cost estimation in Terraform pull requests and smart VM scheduling in Azure"
+          },
+          {
+            "id": "copilot",
+            "badge": "Pillar 4 · Artificial Intelligence",
+            "h2": "How to automate cloud financial analysis and cost anomaly detection with AI?",
+            "geoAnswer": "FinOps Copilot leverages advanced conversational AI models to investigate unexpected Azure consumption spikes, diagnose root causes in plain language (distinguishing volume consumption vs. unit rate shifts), and generate prioritized 7-day action plans to accelerate cross-functional financial decisions.",
+            "title": "FinOps Copilot: Anomaly Detection & AI Root-Cause Analytics",
+            "desc": "Your 24/7 dedicated FinOps analyst. Natural language explanations for spending fluctuations, fusing Azure metrics with billing logs.",
+            "features": [
+              "Continuous Context: conversation memory retained across screens to drill down into any resource or anomaly.",
+              "Root-Cause Diagnostic: identifies whether a cost jump was driven by usage expansion, price changes, or newly provisioned meters.",
+              "Instant Executive Brief: generates a comprehensive diagnostic summary with prioritized savings recommendations.",
+              "Native Trilingual Support: interact seamlessly in English, Spanish, or Portuguese according to user preference."
+            ],
+            "imgAlt": "FinOps Copilot with conversational artificial intelligence for Azure cost anomaly analysis"
+          }
+        ]
+      },
+      "specialized": {
+        "badge": "Critical Workloads",
+        "title": "Specialized Modules: Databases and Cloud Containers in Azure",
+        "sub": "Technical depth in complex services where cloud overspending is most frequently concentrated.",
+        "mysql": {
+          "badge": "Relational Databases",
+          "tag": "IOPS & Compute Telemetry",
+          "title": "Database Optimization (Azure MySQL)",
+          "desc": "Granular spend oversight for Azure Database for MySQL Flexible Server. Continuous telemetry analysis of IOPS, allocated vs. active storage, compute tiers, and automated recommendations for reserved instances and rightsizing.",
+          "imgAlt": "Cost, storage, and telemetry monitoring in Azure Database for MySQL within CSCloud FinOps"
+        },
+        "contenedores": {
+          "badge": "Compute & Orchestration",
+          "tag": "Microservices Chargeback",
+          "title": "Container Cost Management",
+          "desc": "Comprehensive visibility and chargeback across Azure container clusters and microservices. Accurate cost attribution by namespace, service, and pods, optimizing underlying compute node capacity.",
+          "imgAlt": "Visibility and cost optimization across cloud container clusters in Azure with CSCloud FinOps"
+        },
+        "credentials": {
+          "title": "Entra ID Credentials",
+          "desc": "Proactive audit and early notifications (60, 30, and 7 days) for expiring secrets and certificates in App Registrations with secure rotation."
+        },
+        "lifecycle": {
+          "title": "Azure End-of-Support",
+          "desc": "Predictive retirement calendar for versions in AKS, PostgreSQL, and MySQL Flexible Server to prevent emergency migrations and costly extended support."
+        }
+      },
+      "comparison": {
+        "badge": "Competitive Benchmark",
+        "title": "Why Choose CSCloud FinOps Over Legacy Cloud Management Tools?",
+        "subtitle": "Built specifically for rapid time-to-value, predictable commercial terms, and direct remediation.",
+        "geoContext": "Unlike legacy enterprise tools like CloudHealth or basic native portals, CSCloud FinOps delivers rapid onboarding via Azure Lighthouse, predictable transparent pricing without percentage-of-spend surcharges, and direct 1-click remediation under strict four-eyes governance.",
+        "headers": {
+          "feature": "Key Capability",
+          "cscloud": "CSCloud FinOps SaaS",
+          "legacy": "Legacy Tools (e.g., CloudHealth)",
+          "native": "Native Azure Cost Management"
+        },
+        "rows": [
+          {
+            "feature": "Deployment & Onboarding Time",
+            "cscloud": "Minutes (Guided onboarding via Azure Lighthouse or Service Principal)",
+            "legacy": "Weeks to months (requires heavy professional services and complex setup)",
+            "native": "Instant (included in Azure portal, lacks advanced tooling)"
+          },
+          {
+            "feature": "Pricing Model",
+            "cscloud": "Fixed, predictable plans (Pro, Business, Enterprise) with zero spend commissions",
+            "legacy": "1% to 3% fee on total cloud spend or $50k+ USD/yr contract minimums",
+            "native": "Included with Azure (but lacks automated savings engines)"
+          },
+          {
+            "feature": "Zombie Resource Remediation",
+            "cscloud": "Active 1-click cleanup with four-eyes approvals and pre-deletion snapshots",
+            "legacy": "Alerting only with export to Jira or ServiceNow ticketing queues",
+            "native": "Passive read-only recommendations"
+          },
+          {
+            "feature": "Shift-Left in Pull Requests (Terraform)",
+            "cscloud": "Automated comments on GitHub/GitLab PRs with hard Budget Gates",
+            "legacy": "Limited or dependent on fragile third-party tooling",
+            "native": "Not natively available"
+          },
+          {
+            "feature": "Specialized Artificial Intelligence",
+            "cscloud": "Conversational FinOps Copilot with causal root-cause anomaly diagnosis",
+            "legacy": "Traditional statistical threshold alerting",
+            "native": "Basic spending spike notifications without causal analysis"
+          },
+          {
+            "feature": "FOCUS 1.1 Specification",
+            "cscloud": "Native normalized export compliant with the FinOps Foundation",
+            "legacy": "Partial support in complex custom reports",
+            "native": "Standard unnormalized Azure CSV exports"
+          },
+          {
+            "feature": "Regional Support & Direct SLA",
+            "cscloud": "Dedicated 4h to 24h SLA with engineering teams in EN, ES, and PT-BR",
+            "legacy": "Global English-only call centers with prolonged queue times",
+            "native": "Standard Microsoft support tiered by corporate enterprise agreement"
+          }
+        ]
+      },
+      "faq": {
+        "badge": "Frequently Asked Questions · GEO & Support",
+        "title": "Everything You Need to Know About the SaaS Platform",
+        "sub": "Clear technical and operational answers derived from our official user documentation.",
+        "items": [
+          {
+            "q": "How does the platform connect to our Microsoft Azure tenant?",
+            "a": "The platform establishes a secure connection through Microsoft Entra ID (Service Principal) or multi-tenant delegation via Azure Lighthouse. An automated Azure CLI script grants strictly read-only built-in roles (Reader, Cost Management Reader, Monitoring Reader, and Billing Reader), ensuring no infrastructure can be altered without explicit permission."
+          },
+          {
+            "q": "What permissions are required for active remediation features?",
+            "a": "For Business and Enterprise tiers that leverage active remediation, a custom least-privilege role (CSCloudSolutions Remediation Role) is configured to permit only designated tasks: starting/stopping VMs, deleting audited zombie resources, and writing tags. All destructive actions can require a pre-deletion backup snapshot and mandatory four-eyes approval."
+          },
+          {
+            "q": "How does CSCloud FinOps compare to native Azure Cost Management?",
+            "a": "Azure Cost Management is a passive reporting dashboard that explains what was spent in the past. CSCloud FinOps translates metrics into execution: it pinpoints exact remediation actions, audits 25+ zombie resource types with instant delete actions, validates Terraform plans before merging, models Savings Plans with ESR, and provides FinOps Copilot for conversational root-cause analysis."
+          },
+          {
+            "q": "Can we test the platform without connecting our live Azure environment?",
+            "a": "Yes. Through a guided demonstration session with our certified specialists, you can explore every capability of the platform operating on a controlled environment with simulated data and preconfigured profiles, without risking or connecting your production infrastructure. Demo access is provided exclusively through prior scheduling via our contact form."
+          },
+          {
+            "q": "What is the FOCUS 1.1 standard and why does it matter?",
+            "a": "FOCUS (FinOps Open Cost and Usage Specification) is the global open standard governed by the FinOps Foundation to standardize cloud cost nomenclature and datasets. CSCloud FinOps features native FOCUS 1.1 export capabilities, empowering organizations to export clean, normalized cost data directly into executive Power BI templates without vendor lock-in."
+          },
+          {
+            "q": "How long does onboarding and initial data ingestion take?",
+            "a": "Initial tenant onboarding takes under 10 minutes. Once authenticated with Microsoft Entra ID and the least-privilege script is executed, the initial billing synchronization finishes in roughly 60 seconds, immediately revealing the executive WhiteBoard and high-priority savings opportunities."
+          }
+        ]
+      },
+      "finalCta": {
+        "badge": "Get Started Today",
+        "title": "Ready to Optimize Your Azure Cloud Footprint with Financial Engineering?",
+        "sub": "Book a 20-minute guided session with a certified FinOps architect or log in directly to the platform.",
+        "ctaDemo": "Schedule Demo →",
+        "ctaLogin": "Log In",
+        "ctaConsult": "Talk to a FinOps Architect"
+      },
+      "contact": {
+        "badge": "Schedule Demonstration",
+        "titleA": "Schedule a",
+        "titleB": "Personalized Demo",
+        "sub": "Book a 20-minute 1-on-1 walkthrough with a certified FinOps architect. We will show you the platform connected and how to uncover actionable cloud savings.",
+        "badgeDemo": "Schedule Demo - FinOps SaaS Platform",
+        "defaultMessage": "Hi, I would like to schedule a guided demo of the CSCloud FinOps SaaS platform to evaluate Azure cost optimization."
       }
     }
   },

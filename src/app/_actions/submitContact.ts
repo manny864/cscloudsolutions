@@ -15,7 +15,7 @@ const ContactSchema = z.object({
   empresa: z.string().max(120).optional().default(''),
   telefono: z.string().max(40).optional().default(''),
   mensaje: z.string().max(1000).optional().default(''),
-
+  origen: z.string().max(200).optional().default(''),
 });
 
 export type ContactFormInput = z.infer<typeof ContactSchema>;
@@ -142,7 +142,8 @@ async function sendEmailViaGraph(
   email: string,
   empresa: string,
   telefono: string,
-  mensaje: string
+  mensaje: string,
+  origen: string = ''
 ): Promise<boolean> {
   const token = await getGraphAccessToken();
   if (!token) return false;
@@ -161,12 +162,14 @@ async function sendEmailViaGraph(
   const safeTelefono = escapeHtml(telefono || 'No especificado');
   const safeMensajeHtml = escapeHtml(mensaje).replace(/\n/g, '<br>');
   const safeMensajeText = mensaje;
+  const safeOrigen = origen ? escapeHtml(origen) : '';
 
   const headerSafeName = sanitizeHeaderValue(nombre);
   const headerSafeEmail = sanitizeHeaderValue(email);
 
   const htmlContent = `
     <h2>Nuevo contacto desde CSCloudSolutions</h2>
+    ${safeOrigen ? `<p style="margin: 8px 0; font-size: 14px;"><strong>Origen / Tipo de Consulta:</strong> <span style="background:#e0f2fe;color:#0284c7;padding:3px 8px;border-radius:4px;font-weight:bold;">${safeOrigen}</span></p>` : ''}
     <p><strong>Nombre:</strong> ${safeNombre}</p>
     <p><strong>Email:</strong> ${safeEmail}</p>
     <p><strong>Empresa:</strong> ${safeEmpresa}</p>
@@ -176,13 +179,13 @@ async function sendEmailViaGraph(
     <hr>
     <p style="color: #666; font-size: 12px;">Enviado desde el formulario de contacto del sitio web</p>
     <div style="margin-top:12px;font-family:monospace;white-space:pre-wrap;background:#f8f8f8;padding:8px;border-radius:6px;color:#111;">
-      Plain text version:\n${escapeHtml(safeMensajeText)}
+      Plain text version:\n${safeOrigen ? `Origen: ${safeOrigen}\n` : ''}${escapeHtml(safeMensajeText)}
     </div>
   `;
 
   // Limit attachment size to 32KB to avoid large emails
   const MAX_ATTACHMENT_BYTES = 32 * 1024;
-  let plainText = safeMensajeText;
+  let plainText = safeOrigen ? `[Origen: ${safeOrigen}]\n\n${safeMensajeText}` : safeMensajeText;
   if (Buffer.byteLength(plainText, 'utf8') > MAX_ATTACHMENT_BYTES) {
     // truncate preserving UTF-8
     const buf = Buffer.from(plainText, 'utf8').slice(0, MAX_ATTACHMENT_BYTES);
@@ -190,9 +193,11 @@ async function sendEmailViaGraph(
   }
   const attachmentContent = Buffer.from(plainText, 'utf8').toString('base64');
 
+  const subjectPrefix = safeOrigen ? `[${sanitizeHeaderValue(safeOrigen, 40)}] ` : '';
+
   const emailBody = {
     message: {
-      subject: `Nuevo contacto desde el sitio web — ${headerSafeName}`,
+      subject: `${subjectPrefix}Nuevo contacto — ${headerSafeName}`,
       body: {
         contentType: 'HTML',
         content: htmlContent
@@ -298,7 +303,7 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
     return { ok: false, message: 'Revisá los datos e intentá nuevamente.' };
   }
 
-  const { nombre, email, empresa, telefono, mensaje } = parsed.data;
+  const { nombre, email, empresa, telefono, mensaje, origen } = parsed.data;
 
   // Rate limiting by email (avoids reading request headers from server action)
   try {
@@ -323,14 +328,12 @@ export async function submitContact(payload: ContactFormInput): Promise<ActionRe
     console.warn('Rate limiting skipped:', (err as Error).message);
   }
 
-
-
   const mxOk = await hasMxRecords(email);
   if (!mxOk) {
     return { ok: false, message: 'Ese correo no parece válido (dominio sin MX). Usá un email corporativo.' };
   }
 
-  const sent = await sendEmailViaGraph(nombre, email, empresa, telefono, mensaje);
+  const sent = await sendEmailViaGraph(nombre, email, empresa, telefono, mensaje, origen);
 
   if (sent) {
     // Si el correo a la empresa se mandó exitosamente, enviamos la respuesta al usuario.

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1A2B"/>
+      <stop offset="100%" stop-color="#142337"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="580" rx="14" fill="url(#bgC)"/>
+  <!-- Header -->
+  <rect width="1000" height="42" rx="14" fill="#0A121E"/>
+  <circle cx="24" cy="21" r="5" fill="#EF4444"/>
+  <circle cx="42" cy="21" r="5" fill="#F59E0B"/>
+  <circle cx="60" cy="21" r="5" fill="#10B981"/>
+  <text x="90" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">CSCloud FinOps · FinOps Copilot (IA Conversacional &amp; Diagnóstico Causal)</text>
+
+  <!-- Split Screen: Left Anomalies Graph, Right Copilot Chat -->
+  <!-- Left Side: Anomaly Event -->
+  <g transform="translate(30, 58)">
+    <rect width="450" height="490" rx="12" fill="#101D30" stroke="#1F3A5F" stroke-width="1"/>
+    <text x="24" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Detección de Anomalías de Gasto</text>
+    <text x="24" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Algoritmo estadístico Z-Score sobre telemetría de Azure</text>
+
+    <!-- Anomaly Alert Card -->
+    <g transform="translate(20, 75)">
+      <rect width="410" height="90" rx="8" fill="#EF4444" fill-opacity="0.1" stroke="#EF4444" stroke-width="1"/>
+      <text x="16" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#F87171">⚠️ Anomalía Detectada: +$420 USD en 24h</text>
+      <text x="16" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#FFFFFF">Servicio: Microsoft.Compute · Suscripción: Production-Core</text>
+      <text x="16" y="68" font-family="system-ui, sans-serif" font-size="10" fill="#94A3B8">Desvío de +84% sobre la media histórica de los últimos 30 días</text>
+    </g>
+
+    <!-- Mini Chart with Spike -->
+    <g transform="translate(20, 185)">
+      <rect width="410" height="260" rx="8" fill="#16273F"/>
+      <text x="16" y="26" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">CURVA DE CONSUMO HORARIO</text>
+      
+      <!-- Baseline Line -->
+      <path d="M 30 180 Q 120 175 220 180 T 320 170" fill="none" stroke="#00AEEF" stroke-width="2"/>
+      <!-- Spike -->
+      <path d="M 320 170 L 350 60 L 380 70" fill="none" stroke="#EF4444" stroke-width="3"/>
+      <!-- Red Dot -->
+      <circle cx="350" cy="60" r="5" fill="#EF4444"/>
+      <rect x="290" y="32" width="120" height="20" rx="4" fill="#EF4444"/>
+      <text x="300" y="46" font-family="system-ui" font-size="10" font-weight="bold" fill="#FFFFFF">Pico Anómalo: 14:00h</text>
+      <text x="30" y="240" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">Normal: ~$50/h · Detectado: $470/h</text>
+    </g>
+  </g>
+
+  <!-- Right Side: FinOps Copilot Chat Window -->
+  <g transform="translate(505, 58)">
+    <rect width="465" height="490" rx="12" fill="#101D30" stroke="#00AEEF" stroke-width="1.5"/>
+    
+    <!-- Chat Header -->
+    <rect width="465" height="50" rx="12" fill="#16273F"/>
+    <text x="20" y="30" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">🤖 FinOps Copilot</text>
+    <rect x="140" y="16" width="60" height="20" rx="4" fill="#10B981" fill-opacity="0.2"/>
+    <text x="150" y="30" font-family="system-ui" font-size="10" font-weight="bold" fill="#34D399">Activo</text>
+    <text x="330" y="30" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">Memoria: Retenida</text>
+
+    <!-- Message 1 (User) -->
+    <g transform="translate(20, 70)">
+      <rect x="80" width="345" height="44" rx="8" fill="#004F8A"/>
+      <text x="96" y="27" font-family="system-ui, sans-serif" font-size="12" fill="#FFFFFF">¿A qué se debe el pico de gasto detectado hoy a las 14h?</text>
+    </g>
+
+    <!-- Message 2 (Copilot Answer with Root Cause) -->
+    <g transform="translate(20, 130)">
+      <rect width="425" height="235" rx="10" fill="#16273F" stroke="#1F3A5F" stroke-width="1"/>
+      <text x="16" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#00AEEF">Diagnóstico de Causa Raíz (Análisis con IA):</text>
+      
+      <text x="16" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#E2E8F0">El aumento de <tspan font-weight="bold" fill="#F87171">$420 USD</tspan> no fue por tarifa, sino por <tspan font-weight="bold" fill="#FFFFFF">consumo nuevo</tspan>:</text>
+      
+      <text x="16" y="75" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">• Despliegue de 2 instancias <tspan fill="#FFFFFF">Standard_D8s_v5</tspan> en East US 2.</text>
+      <text x="16" y="95" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">• Sin etiquetar: falta etiqueta requerida <tspan fill="#F59E0B">CostCenter</tspan>.</text>
+      <text x="16" y="115" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">• El autor registrado en Azure Activity Log fue <tspan fill="#FFFFFF">devops-admin@empresa.com</tspan>.</text>
+      
+      <line x1="16" y1="135" x2="409" y2="135" stroke="#1F3A5F"/>
+      
+      <text x="16" y="155" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34D399">Plan de Acción Recomendado:</text>
+      <text x="16" y="175" font-family="system-ui, sans-serif" font-size="11" fill="#E2E8F0">1. Aplicar horario de Smart Shutdown (ahorro $210 USD).</text>
+      <text x="16" y="195" font-family="system-ui, sans-serif" font-size="11" fill="#E2E8F0">2. Si es carga permanente, cubrir con Azure Savings Plan (ESR 31%).</text>
+      <text x="16" y="215" font-family="system-ui, sans-serif" font-size="10" font-style="italic" fill="#64748B">¿Deseas que ejecute la solicitud de asignación de etiqueta ahora?</text>
+    </g>
+
+    <!-- Chat Input Box -->
+    <g transform="translate(20, 420)">
+      <rect width="425" height="46" rx="8" fill="#0A121E" stroke="#1F3A5F" stroke-width="1"/>
+      <text x="16" y="28" font-family="system-ui, sans-serif" font-size="11" fill="#64748B">Escribe una pregunta a FinOps Copilot...</text>
+      <rect x="365" y="8" width="50" height="30" rx="6" fill="#00AEEF"/>
+      <text x="380" y="27" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">→</text>
+    </g>
+  </g>
+</svg>

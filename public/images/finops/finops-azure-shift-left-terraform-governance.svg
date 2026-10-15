@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgS" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1A2B"/>
+      <stop offset="100%" stop-color="#142337"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="580" rx="14" fill="url(#bgS)"/>
+  <!-- Header -->
+  <rect width="1000" height="42" rx="14" fill="#0A121E"/>
+  <circle cx="24" cy="21" r="5" fill="#EF4444"/>
+  <circle cx="42" cy="21" r="5" fill="#F59E0B"/>
+  <circle cx="60" cy="21" r="5" fill="#10B981"/>
+  <text x="90" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">CSCloud FinOps · Shift-Left en Pull Request (Terraform / GitHub Actions)</text>
+
+  <!-- PR Comment Mockup -->
+  <g transform="translate(30, 58)">
+    <rect width="940" height="340" rx="12" fill="#101D30" stroke="#1F3A5F" stroke-width="1"/>
+    
+    <!-- Bot Header -->
+    <g transform="translate(24, 20)">
+      <rect width="36" height="36" rx="8" fill="#004F8A"/>
+      <text x="10" y="24" font-family="system-ui, sans-serif" font-size="18">🤖</text>
+      <text x="48" y="18" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">cscloud-finops-bot <tspan font-size="11" font-weight="normal" fill="#64748B">comentó en PR #142 · hace 4 minutos</tspan></text>
+      <text x="48" y="34" font-family="system-ui, sans-serif" font-size="11" fill="#00AEEF">Pipeline: GitHub Actions · SHA verified · Commit 7b84f2a</text>
+    </g>
+
+    <!-- PR Delta Box -->
+    <g transform="translate(24, 75)">
+      <rect width="892" height="70" rx="8" fill="#16273F" stroke="#22C55E" stroke-opacity="0.5" stroke-width="1.5"/>
+      <text x="20" y="28" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#94A3B8">IMPACTO EN COSTO MENSUAL (ESTIMACIÓN FINOPS):</text>
+      <text x="20" y="52" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#22C55E">+$184.20 USD / mes <tspan font-size="12" font-weight="normal" fill="#94A3B8">(Precio con descuento contrato EA aplicado)</tspan></text>
+      <rect x="730" y="20" width="140" height="30" rx="6" fill="#10B981" fill-opacity="0.2"/>
+      <text x="742" y="39" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34D399">✓ Gate Aprobado</text>
+    </g>
+
+    <!-- Table of Resources in PR -->
+    <g transform="translate(24, 160)">
+      <rect width="892" height="150" rx="6" fill="#0B1523"/>
+      <text x="16" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#64748B">RECURSO TERRAFORM</text>
+      <text x="340" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#64748B">ACCIÓN</text>
+      <text x="480" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#64748B">SKU / TIPO</text>
+      <text x="690" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#64748B">DELTA COSTO</text>
+
+      <line x1="0" y1="36" x2="892" y2="36" stroke="#16273F"/>
+
+      <!-- Item 1 -->
+      <text x="16" y="60" font-family="monospace" font-size="12" fill="#FFFFFF">azurerm_linux_virtual_machine.api</text>
+      <rect x="340" y="47" width="55" height="18" rx="4" fill="#10B981" fill-opacity="0.2"/>
+      <text x="346" y="60" font-family="system-ui" font-size="10" font-weight="bold" fill="#34D399">+ Crear</text>
+      <text x="480" y="60" font-family="system-ui" font-size="12" fill="#94A3B8">Standard_D4s_v5 (East US)</text>
+      <text x="690" y="60" font-family="system-ui" font-size="12" font-weight="bold" fill="#FFFFFF">+$140.16 USD/m</text>
+
+      <line x1="0" y1="76" x2="892" y2="76" stroke="#16273F"/>
+
+      <!-- Item 2 -->
+      <text x="16" y="100" font-family="monospace" font-size="12" fill="#FFFFFF">azurerm_managed_disk.data</text>
+      <rect x="340" y="87" width="55" height="18" rx="4" fill="#10B981" fill-opacity="0.2"/>
+      <text x="346" y="100" font-family="system-ui" font-size="10" font-weight="bold" fill="#34D399">+ Crear</text>
+      <text x="480" y="100" font-family="system-ui" font-size="12" fill="#94A3B8">Premium SSD P15 256GB</text>
+      <text x="690" y="100" font-family="system-ui" font-size="12" font-weight="bold" fill="#FFFFFF">+$44.04 USD/m</text>
+
+      <line x1="0" y1="116" x2="892" y2="116" stroke="#16273F"/>
+      <text x="16" y="136" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">Presupuesto restante del Centro de Costos "Backend API": $3,790 USD. El PR representa el 4.8% del remanente.</text>
+    </g>
+  </g>
+
+  <!-- Bottom Smart Shutdown Module Preview -->
+  <g transform="translate(30, 415)">
+    <rect width="940" height="135" rx="12" fill="#101D30" stroke="#1F3A5F" stroke-width="1"/>
+    <text x="24" y="32" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Smart Shutdown &amp; Verificación de CPU (5%)</text>
+    <text x="24" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">Monitorea la actividad real antes del apagado programado para evitar la caída de procesos activos.</text>
+
+    <g transform="translate(24, 68)">
+      <rect width="280" height="46" rx="6" fill="#16273F"/>
+      <text x="14" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#FFFFFF">vm-qa-worker-01</text>
+      <text x="14" y="36" font-family="system-ui" font-size="10" fill="#22C55E">CPU: 1.2% · Apagada (Ahorro $120/m)</text>
+    </g>
+    <g transform="translate(320, 68)">
+      <rect width="280" height="46" rx="6" fill="#16273F"/>
+      <text x="14" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#FFFFFF">vm-qa-db-test</text>
+      <text x="14" y="36" font-family="system-ui" font-size="10" fill="#F59E0B">CPU: 8.4% · Apagado Omitido (Trabajando)</text>
+    </g>
+    <g transform="translate(615, 68)">
+      <rect width="300" height="46" rx="6" fill="#004F8A"/>
+      <text x="16" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#FFFFFF">Ahorro Mensual Recuperado</text>
+      <text x="16" y="36" font-family="system-ui" font-size="13" font-weight="800" fill="#38BDF8">$2,840 USD fuera de horario</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 580" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgP" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E1A2B"/>
+      <stop offset="100%" stop-color="#142337"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="580" rx="14" fill="url(#bgP)"/>
+  <!-- Window Header -->
+  <rect width="1000" height="42" rx="14" fill="#0A121E"/>
+  <circle cx="24" cy="21" r="5" fill="#EF4444"/>
+  <circle cx="42" cy="21" r="5" fill="#F59E0B"/>
+  <circle cx="60" cy="21" r="5" fill="#10B981"/>
+  <text x="90" y="25" font-family="system-ui, sans-serif" font-size="11" fill="#94A3B8">CSCloud FinOps · Perspectives &amp; Centros de Costo (Cost Groups)</text>
+  
+  <!-- Perspective Scope Bar -->
+  <g transform="translate(30, 58)">
+    <rect width="940" height="46" rx="8" fill="#16273F" stroke="#1F3A5F" stroke-width="1"/>
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#00AEEF">ALCANCE ACTIVO:</text>
+    <rect x="130" y="10" width="180" height="26" rx="6" fill="#004F8A"/>
+    <text x="145" y="27" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Perspective: Equipos</text>
+    <text x="325" y="28" font-family="system-ui, sans-serif" font-size="14" fill="#64748B">→</text>
+    <rect x="345" y="10" width="180" height="26" rx="6" fill="#0E1A2B" stroke="#00AEEF" stroke-width="1"/>
+    <text x="360" y="27" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#38BDF8">Grupo: Ingeniería Core</text>
+    <rect x="740" y="10" width="180" height="26" rx="6" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="1"/>
+    <text x="755" y="27" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#34D399">Vista de Equipo Guardada ★</text>
+  </g>
+
+  <!-- Table of Cost Centers -->
+  <g transform="translate(30, 120)">
+    <rect width="940" height="430" rx="10" fill="#101D30" stroke="#1F3A5F" stroke-width="1"/>
+    <!-- Table Header -->
+    <rect width="940" height="40" rx="10" fill="#16273F"/>
+    <text x="24" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">CENTRO DE COSTO / GRUPO</text>
+    <text x="300" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">PRESUPUESTO BASE</text>
+    <text x="480" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">ROLLOVER (ARRASTRE)</text>
+    <text x="690" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">GASTO MTD</text>
+    <text x="830" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#94A3B8">ESTADO</text>
+
+    <!-- Row 1 -->
+    <g transform="translate(0, 40)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="38" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Ingeniería &amp; Backend API</text>
+      <text x="24" y="54" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">142 Recursos · 3 Suscripciones</text>
+      <text x="300" y="42" font-family="system-ui, sans-serif" font-size="13" fill="#FFFFFF">$18,000 USD</text>
+      <text x="480" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#34D399">+$2,400 USD (Arrastre)</text>
+      <text x="690" y="42" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">$14,210 USD</text>
+      <rect x="830" y="24" width="85" height="22" rx="4" fill="#10B981" fill-opacity="0.2"/>
+      <text x="842" y="39" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#34D399">69% Dentro</text>
+    </g>
+
+    <!-- Row 2 -->
+    <g transform="translate(0, 105)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="38" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Data Science &amp; Azure OpenAI</text>
+      <text x="24" y="54" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">38 Recursos · Foundry Deployments</text>
+      <text x="300" y="42" font-family="system-ui, sans-serif" font-size="13" fill="#FFFFFF">$12,000 USD</text>
+      <text x="480" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#94A3B8">$0 (Sin arrastre)</text>
+      <text x="690" y="42" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#F87171">$11,850 USD</text>
+      <rect x="830" y="24" width="85" height="22" rx="4" fill="#EF4444" fill-opacity="0.2"/>
+      <text x="844" y="39" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#F87171">98% Alerta</text>
+    </g>
+
+    <!-- Row 3 -->
+    <g transform="translate(0, 170)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="38" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Plataforma eCommerce Web</text>
+      <text x="24" y="54" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">86 Recursos · AKS + Cosmos DB</text>
+      <text x="300" y="42" font-family="system-ui, sans-serif" font-size="13" fill="#FFFFFF">$22,000 USD</text>
+      <text x="480" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#34D399">+$4,100 USD (Arrastre)</text>
+      <text x="690" y="42" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">$16,340 USD</text>
+      <rect x="830" y="24" width="85" height="22" rx="4" fill="#10B981" fill-opacity="0.2"/>
+      <text x="842" y="39" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#34D399">62% Dentro</text>
+    </g>
+
+    <!-- Row 4 -->
+    <g transform="translate(0, 235)">
+      <line x1="0" y1="65" x2="940" y2="65" stroke="#1E293B"/>
+      <text x="24" y="38" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Ambientes Dev / Sandbox</text>
+      <text x="24" y="54" font-family="system-ui, sans-serif" font-size="10" fill="#64748B">54 Recursos · Smart Shutdown activo</text>
+      <text x="300" y="42" font-family="system-ui, sans-serif" font-size="13" fill="#FFFFFF">$6,000 USD</text>
+      <text x="480" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#34D399">+$950 USD (Arrastre)</text>
+      <text x="690" y="42" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">$2,890 USD</text>
+      <rect x="830" y="24" width="85" height="22" rx="4" fill="#10B981" fill-opacity="0.2"/>
+      <text x="842" y="39" font-family="system-ui, sans-serif" font-size="10" font-weight="bold" fill="#34D399">41% Óptimo</text>
+    </g>
+  </g>
+</svg>

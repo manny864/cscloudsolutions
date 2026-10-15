@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/automations',
     '/agentic-ai',
     '/finops',
+    '/finops/plataforma',
     '/nosotros',
     '/blog',
     '/partners',
@@ -36,11 +37,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           ? `${baseUrl}${route || '/'}`
           : `${baseUrl}/${locale}${route}`;
 
+      const isHome = route === '';
+      const isFinopsPlatform = route === '/finops/plataforma';
+      const isLegal = route.startsWith('/politica') || route.startsWith('/terminos');
+
       staticEntries.push({
         url,
         lastModified: new Date(),
-        changeFrequency: route === '' ? 'weekly' : 'monthly',
-        priority: route === '' ? 1.0 : route.startsWith('/politica') || route.startsWith('/terminos') ? 0.3 : 0.8,
+        changeFrequency: isHome || isFinopsPlatform ? 'weekly' : 'monthly',
+        priority: isHome ? 1.0 : isFinopsPlatform ? 0.9 : isLegal ? 0.3 : 0.8,
         alternates: {
           languages: {
             es: `${baseUrl}${route || '/'}`,
