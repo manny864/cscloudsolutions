@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return createPageMetadata({
     locale,
     path: '/microsoft-365',
-    title: t('title'),
-    description: t('sub'),
+    title: t.has('meta.title') ? t('meta.title') : t('title'),
+    description: t.has('meta.description') ? t('meta.description') : t('sub'),
   });
 }
 

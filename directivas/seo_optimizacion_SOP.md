@@ -60,17 +60,30 @@ Establecer el procedimiento estándar y las mejores prácticas para el SEO técn
 - Los artículos de blog en `src/app/[locale]/blog/[slug]/page.tsx` deben estructurarse con la etiqueta `<article>`.
 
 ### 4. Rutas Canónicas y Hreflang en Modo 'as-needed'
-- En `src/i18n/routing.ts`, el enrutamiento está configurado con `localePrefix: 'as-needed'` y `defaultLocale: 'es'`.
+- En `src/i18n/routing.ts`, el enrutamiento está configurado con `localePrefix: 'as-needed'`, `defaultLocale: 'es'` y **`localeDetection: false`**.
+- **CRÍTICO PARA GOOGLEBOT / CRAWLERS:** `localeDetection` DEBE ser `false`. Si está en `true`, los crawlers de Google (cuyas IPs son de EE. UU. y envían `Accept-Language: en`) que solicitan la raíz `/` o rutas en español reciben una redirección temporal 307 hacia `/en/`, lo que destruye la indexación en español y genera advertencias masivas de "Error de redirección" y "Rastreada: actualmente sin indexar" en GSC.
 - Por ende:
   - Para `es`: la URL canónica NO lleva prefijo (ej: `https://cscloudsolutions.com.ar/azure`).
   - Para `en`: la URL canónica lleva `/en` (ej: `https://cscloudsolutions.com.ar/en/azure`).
   - Para `pt-BR`: la URL canónica lleva `/pt-BR` (ej: `https://cscloudsolutions.com.ar/pt-BR/azure`).
-- **En `sitemap.ts`:** No generar URLs con `/es/...` ya que el middleware las redirige con 307/308 hacia la ruta sin prefijo, lo cual penaliza el puntaje de rastreo en Google Search Console. Incluir la ruta `/politica-de-reembolso`.
+  - En `alternates.languages`: incluir siempre `es`, `en`, `pt` (apuntando a `https://cscloudsolutions.com.ar/pt-BR/...`) y `x-default`.
+- **En `sitemap.ts`:**
+  - NUNCA generar URLs con `/es/...`.
+  - NUNCA incluir archivos de texto plano como `llms.txt` o `robots.txt` en el mapa XML de URLs web.
+  - Todas las URLs del sitemap deben retornar `200 OK` directo en un solo salto.
+- **Redirecciones 301 en `next.config.mjs`:**
+  - Toda petición histórica que entre con `/es` o `/es/:path*` debe ser redirigida con código permanente `301` hacia `/` y `/:path*` a nivel de servidor antes de llegar al middleware, garantizando que Google consolide la autoridad sin pasar por 307 temporales.
+  - Rutas de idioma abreviado `/pt` y `/pt/:path*` deben redirigirse limpiamente vía 301 a `/pt-BR` y `/pt-BR/:path*`.
+  - Slugs de blog heredados (antiguas URLs de WordPress sin prefijo `/blog/`, ej: `/backup-y-disaster-recovery-en-azure/`) deben redirigirse vía 301 a `/blog/:slug`.
 
-### 5. Identificadores Únicos (Unique IDs)
+### 5. Control de Indexación (noindex) y Páginas de Error 404
+- **Rutas privadas/administrativas:** El layout de `/admin` (`src/app/[locale]/admin/layout.tsx`) debe ser un Server Component y exportar explícitamente `robots: { index: false, follow: false }`. No depender únicamente de `robots.txt`.
+- **Páginas 404 y catch-all:** Tanto `src/app/[locale]/not-found.tsx` como `src/app/[locale]/[...rest]/page.tsx` deben exportar `robots: { index: false, follow: false }` para evitar que páginas con errores 404 hereden la canónica del layout raíz (`/`) y Googlebot las catalogue como "Duplicada: el usuario no ha indicado ninguna versión canónica".
+
+### 6. Identificadores Únicos (Unique IDs)
 - Todos los elementos interactivos principales (`<button>`, `<a>` de llamada a la acción, `<input>`, `<textarea>`, `<select>`, `<details>`, `<summary>`) deben contar con un atributo `id` descriptivo y único (ej: `id="header-nav-services"`, `id="hero-cta-contact"`, `id="contact-submit-btn"`).
 
-### 6. Rendimiento y Carga Rápida
+### 7. Rendimiento y Carga Rápida
 - Mantener las imágenes optimizadas con formato WebP/AVIF y dimensiones explícitas.
 - Atributo `priority` en imágenes above-the-fold del Hero.
 - Carga postergada (`strategy="lazyOnload"`) para scripts de terceros (GTM, Analytics, Apollo).
@@ -78,8 +91,12 @@ Establecer el procedimiento estándar y las mejores prácticas para el SEO técn
 ---
 
 ## Casos Borde y Aprendizajes
+- **Nota: `localeDetection: false` es obligatorio cuando se usa `localePrefix: 'as-needed'`.** Dejar `localeDetection: true` hace que Googlebot (EE. UU.) sea redirigido con 307 a `/en`, provocando errores de redirección y evitando el rastreo de la versión principal en español.
+- **Nota: Redirigir `/es/:path*` con 301 en `next.config.mjs` para evitar 307 de `next-intl`.** Search Console penaliza las redirecciones 307 como inestables/temporales. El redirect permanente 301 informa a Google la URL definitiva de inmediato.
 - **Nota: No omitir el objeto `alternates` en las páginas secundarias de Next.js App Router.** Si una página no define `alternates.canonical`, hereda la canónica de `layout.tsx` (`/`), lo que hace que los motores de búsqueda consideren las subpáginas como duplicados de la home.
-- **Nota: No incluir `/es/...` en `sitemap.ts` cuando `localePrefix` es `'as-needed'`.** Genera advertencias de "Página con redirección en el sitemap" en Google Search Console.
+- **Nota: Si una página 404 no tiene `robots: { index: false }`, hereda la canónica raíz y se indexa como "Duplicada sin canónica seleccionada por el usuario".**
+- **Nota: No incluir `/es/...` ni archivos `.txt` en `sitemap.ts`.** Genera advertencias de "Página con redirección en el sitemap" y errores de parseo XML en Google Search Console.
 - **Nota: No utilizar `<h1>` en cabeceras de tablas o modales fullscreen.** Confunde a los indexadores sobre la temática principal de la URL.
 - **Nota: Al inyectar esquemas JSON-LD o metadatos dinámicos en componentes de blog (`blog/[slug]/page.tsx`), no remover la inicialización `let imageIndex = 0;` requerida para el cálculo alternado de imágenes en `ReactMarkdown`.**
 - **Nota: La función `getAllPosts` retorna `{ slug: string; meta: any; content: string }[]` (el filtro de borrador ya se aplica a nivel de base de datos). En `sitemap.ts`, validar `post.meta?.status` en lugar de una propiedad de primer nivel `post.status` no tipada.**
+- **Nota: Slugs históricos de blog sin prefijo `/blog/` deben tener redirección 301 explícita en `next.config.mjs` hacia `/blog/:slug`.** De lo contrario, los enlaces entrantes antiguos o URLs indexadas previamente en WordPress devuelven 404 en Next.js.

@@ -1,10 +1,10 @@
 ---
-title: "Backup y Disaster Recovery en Azure: Continuidad de Negocio para PyMEs"
+title: "Azure Backup y Disaster Recovery (BCDR): Guía Práctica"
 date: "2025-10-15"
 author: "CSCloudSolutions"
 category: "Ciberseguridad"
 image: "/images/blog/cscloudsolutions-backup-dr-flujo-bcdr-1.avif"
-excerpt: "Descubre las diferencias clave entre Backup y Disaster Recovery, y cómo proteger la operación y los datos de tu empresa utilizando Azure Site Recovery."
+excerpt: "Asegurá la continuidad del negocio con Azure Backup y Disaster Recovery (BCDR). Reducí tu RTO/RPO a cero con Azure Site Recovery y respaldo ante ransomware."
 ---
 
 ## ¿Qué es BCDR y por qué es vital para tu negocio?

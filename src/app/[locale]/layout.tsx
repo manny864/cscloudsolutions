@@ -27,7 +27,7 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     description: t('homeDescription'),
     alternates: {
       canonical: locale === 'es' ? '/' : `/${locale}`,
-      languages: { es: '/', en: '/en', 'pt-BR': '/pt-BR', 'x-default': '/' }
+      languages: { es: '/', en: '/en', 'pt-BR': '/pt-BR', pt: '/pt-BR', 'x-default': '/' }
     },
     verification: {
       google: 'FXWGTuJKHNAxiW38Ti-DUn_1ltz7zHhWMStgIaMUlAw',

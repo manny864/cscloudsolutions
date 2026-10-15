@@ -126,7 +126,7 @@ export default async function AdminPostsPage() {
                       </Link>
 
                       <Link
-                        href={`/es/blog/${post.slug}`}
+                        href={`/blog/${post.slug}`}
                         target="_blank"
                         className="inline-flex p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
                         title={post.status === 'draft' ? 'Vista previa del borrador' : 'Ver en vivo'}

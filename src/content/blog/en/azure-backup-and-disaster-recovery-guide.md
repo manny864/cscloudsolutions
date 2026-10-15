@@ -1,10 +1,10 @@
 ---
-title: "Azure Backup & Disaster Recovery: Business Continuity for SMBs"
+title: "Azure Backup and Disaster Recovery (BCDR) Guide"
 date: "2025-10-15"
 author: "CSCloudSolutions"
 category: "Cybersecurity"
 image: "/images/blog/cscloudsolutions-backup-dr-flujo-bcdr-1.avif"
-excerpt: "Discover the key differences between Backup and Disaster Recovery, and how to protect your company's operations and data using Azure Site Recovery."
+excerpt: "Complete Azure Backup and Disaster Recovery (BCDR) guide. Ensure business continuity, eliminate downtime, and configure Azure Site Recovery step by step."
 ---
 
 ## What is BCDR and why is it vital for your business?

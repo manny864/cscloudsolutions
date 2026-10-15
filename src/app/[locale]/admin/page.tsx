@@ -163,7 +163,7 @@ export default async function AdminDashboardPage() {
           </Link>
 
           <Link
-            href="/es/blog"
+            href="/blog"
             target="_blank"
             className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-white transition border border-slate-700/50"
           >

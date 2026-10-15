@@ -51,6 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             es: `${baseUrl}${route || '/'}`,
             en: `${baseUrl}/en${route}`,
             'pt-BR': `${baseUrl}/pt-BR${route}`,
+            pt: `${baseUrl}/pt-BR${route}`,
             'x-default': `${baseUrl}${route || '/'}`,
           },
         },
@@ -85,6 +86,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           es: `${baseUrl}/blog/${mapping ? mapping.es : post.slug}`,
           en: `${baseUrl}/en/blog/${mapping ? mapping.en : post.slug}`,
           'pt-BR': `${baseUrl}/pt-BR/blog/${mapping ? mapping['pt-BR'] : post.slug}`,
+          pt: `${baseUrl}/pt-BR/blog/${mapping ? mapping['pt-BR'] : post.slug}`,
           'x-default': `${baseUrl}/blog/${mapping ? mapping.es : post.slug}`,
         };
 
@@ -103,21 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // 4. Entradas para archivos semánticos y contexto de IA (llms.txt)
-  const llmEntries: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/llms.txt`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/llms-full.txt`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-  ];
-
-  return [...staticEntries, ...blogEntries, ...llmEntries];
+  // Nota: llms.txt y llms-full.txt se declaran directamente en robots.txt (LLMs-Txt: ...)
+  // y se excluyen del sitemap web para evitar advertencias de formato no HTML en GSC.
+  return [...staticEntries, ...blogEntries];
 }

@@ -1,5 +1,14 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { NotFoundContent } from '@/components/NotFoundContent';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Página no encontrada | CSCloudSolutions',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFoundPage() {
   const t = useTranslations('notFound');

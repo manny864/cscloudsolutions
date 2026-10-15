@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     keywords: t.raw('meta.keywords') as string[],
     alternates: {
       canonical: path,
-      languages: { es: '/finops', en: '/en/finops', 'pt-BR': '/pt-BR/finops', 'x-default': '/finops' }
+      languages: { es: '/finops', en: '/en/finops', 'pt-BR': '/pt-BR/finops', pt: '/pt-BR/finops', 'x-default': '/finops' }
     },
     openGraph: {
       title: t('meta.title'),

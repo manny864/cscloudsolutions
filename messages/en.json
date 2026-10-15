@@ -1,7 +1,7 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions — Microsoft Cloud Solutions for SMBs | Azure & Microsoft 365",
-    "homeDescription": "We help SMBs migrate, protect, and optimize Microsoft 365 and Azure. Free security audit, expert support, and real guidance."
+    "homeTitle": "CSCloudSolutions | Microsoft Cloud Solutions, Azure & FinOps",
+    "homeDescription": "Certified Microsoft Cloud Solutions Partner: Azure migration, M365, cybersecurity, and FinOps cost optimization for businesses. Get a free cloud assessment."
   },
   "structured": {
     "orgDescription": "Expert consulting in Microsoft Azure, Microsoft 365, and cybersecurity. Secure cloud migration and technical support for SMBs in Latin America and worldwide.",
@@ -327,6 +327,10 @@
         "headingPart1": "More than email,",
         "headingPart2": "it's your company engine",
         "sub": "We plan migrations carefully so your team can start working better immediately."
+      },
+      "meta": {
+        "title": "Microsoft 365 Solutions for Business | Migration & Support",
+        "description": "Certified Microsoft 365 solutions for business: seamless email migration, Teams collaboration, advanced security, and dedicated ongoing IT support."
       }
     },
     "modern": {
@@ -571,7 +575,11 @@
           "title": "Cost Optimization (FinOps)",
           "desc": "We monitor usage and apply right-sizing and reserved instances for cost efficiency."
         }
-      ]
+      ],
+      "meta": {
+        "title": "Managed Microsoft Azure Services | Cloud Migration & Support",
+        "description": "Managed Microsoft Azure cloud services for enterprises: secure cloud migration, virtual infrastructure management, 24/7 support, and continuous FinOps savings."
+      }
     },
     "automations": {
       "hero": {
@@ -665,12 +673,16 @@
             "desc": "Agents that qualify leads, schedule meetings, or solve technical tickets by extracting info from internal manuals."
           }
         ]
+      },
+      "meta": {
+        "title": "Enterprise Autonomous AI Agents | Agentic AI Solutions",
+        "description": "Deploy autonomous AI agents for enterprise workflows. Custom cognitive agents that reason, plan, and automate complex tasks with Azure AI and Copilot Studio."
       }
     },
     "finops": {
       "meta": {
-        "title": "FinOps Software for Azure | Cloud Cost Optimization",
-        "description": "SaaS FinOps platform for Azure: detect zombie resources, right-size VMs, manage reservations, and cut your cloud bill. Schedule a demo with our specialists.",
+        "title": "Azure FinOps Solutions & Services | Cloud Cost Optimization",
+        "description": "Enterprise Azure FinOps solutions and consulting: eliminate zombie resources, rightsize VMs, and reduce cloud spend by up to 35%. Book your free assessment.",
         "keywords": [
           "Azure FinOps",
           "cloud cost optimization",
@@ -861,10 +873,22 @@
         "ctaDemo": "Schedule Demo →",
         "ctaLogin": "Log In",
         "ctaDocumentation": "Explore Functional Modules ↓",
-        "stat1": { "val": "35%", "lbl": "Average savings identified in 7 days" },
-        "stat2": { "val": "25+", "lbl": "Zombie resource categories audited" },
-        "stat3": { "val": "100%", "lbl": "Read-only security via Entra ID & Lighthouse" },
-        "stat4": { "val": "FOCUS 1.1", "lbl": "FinOps Foundation Open Standard" },
+        "stat1": {
+          "val": "35%",
+          "lbl": "Average savings identified in 7 days"
+        },
+        "stat2": {
+          "val": "25+",
+          "lbl": "Zombie resource categories audited"
+        },
+        "stat3": {
+          "val": "100%",
+          "lbl": "Read-only security via Entra ID & Lighthouse"
+        },
+        "stat4": {
+          "val": "FOCUS 1.1",
+          "lbl": "FinOps Foundation Open Standard"
+        },
         "trust": {
           "entra": "Secure single sign-on with Microsoft Entra ID",
           "focus": "Normalized FOCUS 1.1 export format",

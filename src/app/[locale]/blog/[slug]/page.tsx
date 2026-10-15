@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       es: `/blog/${esSlug}`,
       en: `/en/blog/${enSlug}`,
       'pt-BR': `/pt-BR/blog/${ptSlug}`,
+      pt: `/pt-BR/blog/${ptSlug}`,
       'x-default': `/blog/${esSlug}`,
     },
   };
@@ -101,7 +102,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
     if (mapping) {
       const correctSlug = mapping[locale as 'es' | 'en' | 'pt-BR'];
-      if (correctSlug) redirect(`/${locale}/blog/${correctSlug}`);
+      if (correctSlug) {
+        const targetPath = locale === 'es' ? `/blog/${correctSlug}` : `/${locale}/blog/${correctSlug}`;
+        redirect(targetPath);
+      }
     }
 
     notFound();

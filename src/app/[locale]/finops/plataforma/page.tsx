@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         es: '/finops/plataforma',
         en: '/en/finops/plataforma',
         'pt-BR': '/pt-BR/finops/plataforma',
+        pt: '/pt-BR/finops/plataforma',
         'x-default': '/finops/plataforma',
       },
     },

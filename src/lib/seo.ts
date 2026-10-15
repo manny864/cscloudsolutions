@@ -29,7 +29,7 @@ export function getLocalizedPath(path: string, locale: string): string {
 export interface PageMetadataOptions {
   locale: string;
   path: string;
-  title: string;
+  title: string | { absolute: string };
   description: string;
   keywords?: string[];
   image?: string;
@@ -47,6 +47,7 @@ export function createPageMetadata({
 }: PageMetadataOptions): Metadata {
   const canonicalPath = getLocalizedPath(path, locale);
   const imageUrl = image.startsWith('http') ? image : absoluteUrl(image);
+  const plainTitle = typeof title === 'string' ? title : title.absolute;
 
   return {
     metadataBase: new URL(SITE.url),
@@ -59,11 +60,12 @@ export function createPageMetadata({
         es: getLocalizedPath(path, 'es'),
         en: getLocalizedPath(path, 'en'),
         'pt-BR': getLocalizedPath(path, 'pt-BR'),
+        pt: getLocalizedPath(path, 'pt-BR'),
         'x-default': getLocalizedPath(path, 'es'),
       },
     },
     openGraph: {
-      title,
+      title: plainTitle,
       description,
       url: absoluteUrl(canonicalPath),
       siteName: SITE.name,
@@ -74,13 +76,13 @@ export function createPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: plainTitle,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: plainTitle,
       description,
       images: [imageUrl],
     },

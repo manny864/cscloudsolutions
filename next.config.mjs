@@ -40,6 +40,163 @@ const nextConfig = {
     qualities: [60],
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return [
+      // 1. Redirecciones 301 permanentes para eliminar el prefijo /es/ (localePrefix: 'as-needed')
+      {
+        source: '/es',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/es/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+      // 2. Redirección de alias de idioma portugués /pt hacia /pt-BR
+      {
+        source: '/pt',
+        destination: '/pt-BR',
+        permanent: true,
+      },
+      {
+        source: '/pt/:path*',
+        destination: '/pt-BR/:path*',
+        permanent: true,
+      },
+      // 3. Redirecciones 301 de URLs legadas de blog (sin prefijo /blog/) hacia su ruta canónica actual
+      {
+        source: '/5-razones-por-que-tu-pyme-necesita-backup-en-azure',
+        destination: '/blog/backup-y-disaster-recovery-en-azure',
+        permanent: true,
+      },
+      {
+        source: '/5-razones-por-que-tu-pyme-necesita-backup-en-azure/',
+        destination: '/blog/backup-y-disaster-recovery-en-azure',
+        permanent: true,
+      },
+      {
+        source: '/por-que-migrar-tu-correo-corporativo-a-microsoft-365',
+        destination: '/blog/por-que-migrar-correo-corporativo',
+        permanent: true,
+      },
+      {
+        source: '/por-que-migrar-tu-correo-corporativo-a-microsoft-365/',
+        destination: '/blog/por-que-migrar-correo-corporativo',
+        permanent: true,
+      },
+      {
+        source: '/backup-y-disaster-recovery-en-azure',
+        destination: '/blog/backup-y-disaster-recovery-en-azure',
+        permanent: true,
+      },
+      {
+        source: '/backup-y-disaster-recovery-en-azure/',
+        destination: '/blog/backup-y-disaster-recovery-en-azure',
+        permanent: true,
+      },
+      {
+        source: '/azure-nat-gateway-vs-firewall',
+        destination: '/blog/azure-nat-gateway-vs-firewall',
+        permanent: true,
+      },
+      {
+        source: '/azure-nat-gateway-vs-firewall/',
+        destination: '/blog/azure-nat-gateway-vs-firewall',
+        permanent: true,
+      },
+      {
+        source: '/migracion-azure-caso-exito-manufactura',
+        destination: '/blog/migracion-azure-caso-exito-manufactura',
+        permanent: true,
+      },
+      {
+        source: '/migracion-azure-caso-exito-manufactura/',
+        destination: '/blog/migracion-azure-caso-exito-manufactura',
+        permanent: true,
+      },
+      {
+        source: '/guia-adopcion-caf-azure',
+        destination: '/blog/guia-adopcion-caf-azure',
+        permanent: true,
+      },
+      {
+        source: '/guia-adopcion-caf-azure/',
+        destination: '/blog/guia-adopcion-caf-azure',
+        permanent: true,
+      },
+      {
+        source: '/deteccion-de-discos-huerfanos-en-azure',
+        destination: '/blog/deteccion-de-discos-huerfanos-en-azure',
+        permanent: true,
+      },
+      {
+        source: '/deteccion-de-discos-huerfanos-en-azure/',
+        destination: '/blog/deteccion-de-discos-huerfanos-en-azure',
+        permanent: true,
+      },
+      {
+        source: '/ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial',
+        destination: '/blog/ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial',
+        permanent: true,
+      },
+      {
+        source: '/ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial/',
+        destination: '/blog/ia-agentica-en-azure-la-guia-definicion-para-la-autonomia-empresarial',
+        permanent: true,
+      },
+      {
+        source: '/migracion-correo-exchange-online',
+        destination: '/blog/migracion-correo-exchange-online',
+        permanent: true,
+      },
+      {
+        source: '/migracion-correo-exchange-online/',
+        destination: '/blog/migracion-correo-exchange-online',
+        permanent: true,
+      },
+      {
+        source: '/azure-virtual-desktop-solucion-escritorios',
+        destination: '/blog/azure-virtual-desktop-solucion-escritorios',
+        permanent: true,
+      },
+      {
+        source: '/azure-virtual-desktop-solucion-escritorios/',
+        destination: '/blog/azure-virtual-desktop-solucion-escritorios',
+        permanent: true,
+      },
+      {
+        source: '/por-que-migrar-correo-corporativo',
+        destination: '/blog/por-que-migrar-correo-corporativo',
+        permanent: true,
+      },
+      {
+        source: '/por-que-migrar-correo-corporativo/',
+        destination: '/blog/por-que-migrar-correo-corporativo',
+        permanent: true,
+      },
+      {
+        source: '/reducir-costos-azure-con-finops',
+        destination: '/blog/reducir-costos-azure-con-finops',
+        permanent: true,
+      },
+      {
+        source: '/reducir-costos-azure-con-finops/',
+        destination: '/blog/reducir-costos-azure-con-finops',
+        permanent: true,
+      },
+      {
+        source: '/unattached-disks-cost-reduction',
+        destination: '/blog/unattached-disks-cost-reduction',
+        permanent: true,
+      },
+      {
+        source: '/unattached-disks-cost-reduction/',
+        destination: '/blog/unattached-disks-cost-reduction',
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
@@ -49,6 +206,18 @@ const nextConfig = {
       {
         source: '/finops_assesment/',
         destination: '/finops_assesment/index.html',
+      },
+      {
+        source: '/:locale(en|pt-BR)/finops_assesment',
+        destination: '/finops_assesment/index.html',
+      },
+      {
+        source: '/:locale(en|pt-BR)/finops_assesment/',
+        destination: '/finops_assesment/index.html',
+      },
+      {
+        source: '/:locale(en|pt-BR)/finops_assesment/:path*',
+        destination: '/finops_assesment/:path*',
       },
       {
         source: '/cliente.html',

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions — Soluções Cloud Microsoft para PMEs | Azure e Microsoft 365",
-    "homeDescription": "Ajudamos PMEs a migrar, proteger e otimizar Microsoft 365 e Azure. Auditoria de segurança gratuita, suporte especializado e acompanhamento de verdade."
+    "homeTitle": "CSCloudSolutions | Soluções Cloud Microsoft, Azure e FinOps",
+    "homeDescription": "Especialistas em Soluções Cloud Microsoft: migração para Azure, Microsoft 365, cibersegurança e otimização FinOps para empresas. Solicite sua auditoria gratuita."
   },
   "structured": {
     "orgDescription": "Consultoria especializada em Microsoft Azure, Microsoft 365 e cibersegurança. Migração cloud segura e suporte técnico para PMEs na América Latina e no mundo.",
@@ -327,6 +327,10 @@
         "headingPart1": "Mais que e-mail,",
         "headingPart2": "é o motor da sua empresa",
         "sub": "Planejamos cada migração para que seu time comece a trabalhar melhor imediatamente."
+      },
+      "meta": {
+        "title": "Soluções Microsoft 365 para Empresas | Migração e Suporte",
+        "description": "Implementação e migração de Soluções Microsoft 365 para empresas: Exchange, Teams, OneDrive e segurança avançada com suporte técnico especializado."
       }
     },
     "modern": {
@@ -571,7 +575,11 @@
           "title": "Otimização de Custos (FinOps)",
           "desc": "Monitoramos o consumo e aplicamos right-sizing e instâncias reservadas."
         }
-      ]
+      ],
+      "meta": {
+        "title": "Serviços Gerenciados Microsoft Azure | Migração em Nuvem",
+        "description": "Serviços gerenciados Microsoft Azure para empresas: migração segura para a nuvem, gestão de infraestrutura, suporte 24/7 e otimização contínua de custos."
+      }
     },
     "automations": {
       "hero": {
@@ -665,12 +673,16 @@
             "desc": "Agentes que qualificam prospects, agendam reuniões ou resolvem tickets técnicos extraindo informações de manuais internos."
           }
         ]
+      },
+      "meta": {
+        "title": "Agentes Autônomos de IA para Empresas | Soluções Agênticas",
+        "description": "Desenvolvimento de agentes de inteligência artificial autônomos para empresas. Automatize fluxos de trabalho complexos com soluções de IA integradas ao Azure."
       }
     },
     "finops": {
       "meta": {
-        "title": "Software FinOps para Azure | Otimização de Custos Cloud",
-        "description": "Plataforma FinOps SaaS para Azure: detecte recursos zumbis, faça rightsizing de VMs, gerencie reservas e reduza sua fatura cloud. Agende uma demonstração com nossos especialistas.",
+        "title": "Serviços FinOps para Empresas | Otimização de Custos Azure",
+        "description": "Serviços FinOps para empresas: otimize seus custos no Azure, elimine recursos ociosos e reduza até 35% da sua fatura cloud. Agende sua consultoria gratuita.",
         "keywords": [
           "FinOps Azure",
           "otimização de custos cloud",
@@ -863,10 +875,22 @@
         "ctaDemo": "Agendar Demonstração →",
         "ctaLogin": "Iniciar Sessão",
         "ctaDocumentation": "Explorar Módulos Funcionais ↓",
-        "stat1": { "val": "35%", "lbl": "Economia média identificada em 7 dias" },
-        "stat2": { "val": "25+", "lbl": "Tipos de recursos zumbis auditados" },
-        "stat3": { "val": "100%", "lbl": "Somente leitura com Entra ID & Lighthouse" },
-        "stat4": { "val": "FOCUS 1.1", "lbl": "Padrão da FinOps Foundation" },
+        "stat1": {
+          "val": "35%",
+          "lbl": "Economia média identificada em 7 dias"
+        },
+        "stat2": {
+          "val": "25+",
+          "lbl": "Tipos de recursos zumbis auditados"
+        },
+        "stat3": {
+          "val": "100%",
+          "lbl": "Somente leitura com Entra ID & Lighthouse"
+        },
+        "stat4": {
+          "val": "FOCUS 1.1",
+          "lbl": "Padrão da FinOps Foundation"
+        },
         "trust": {
           "entra": "Autenticação segura com Microsoft Entra ID",
           "focus": "Formato de exportação padronizado FOCUS 1.1",

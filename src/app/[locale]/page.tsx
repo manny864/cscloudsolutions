@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return createPageMetadata({
     locale,
     path: '/',
-    title: t('homeTitle'),
+    title: { absolute: t('homeTitle') },
     description: t('homeDescription'),
   });
 }

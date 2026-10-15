@@ -11,8 +11,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return createPageMetadata({
     locale,
     path: '/agentic-ai',
-    title: t('hero.title'),
-    description: t('hero.sub'),
+    title: t.has('meta.title') ? t('meta.title') : t('hero.title'),
+    description: t.has('meta.description') ? t('meta.description') : t('hero.sub'),
   });
 }
 

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "homeTitle": "CSCloudSolutions — Soluciones Cloud Microsoft para PyMEs | Azure y Microsoft 365",
-    "homeDescription": "Ayudamos a PyMEs a migrar, proteger y optimizar Microsoft 365 y Azure. Auditoría de seguridad gratuita, soporte experto y acompañamiento real."
+    "homeTitle": "CSCloudSolutions | Soluciones Cloud Microsoft, Azure y FinOps",
+    "homeDescription": "Consultoría experta en Soluciones Cloud Microsoft: migración a Azure, Microsoft 365, ciberseguridad y optimización FinOps para empresas. Solicitá tu asesoría."
   },
   "structured": {
     "orgDescription": "Consultoría experta en Microsoft Azure, Microsoft 365 y ciberseguridad. Migración cloud segura y soporte técnico para PyMEs en Latinoamérica y el mundo.",
@@ -327,6 +327,10 @@
         "headingPart1": "Más que correo electrónico,",
         "headingPart2": "es el motor de tu empresa",
         "sub": "Planificamos cada migración para que tu equipo pueda empezar a trabajar mejor de inmediato."
+      },
+      "meta": {
+        "title": "Soluciones Microsoft 365 para Empresas | Migración y Soporte",
+        "description": "Implementación y migración experta a Soluciones Microsoft 365 para empresas: Exchange, Teams, OneDrive y seguridad avanzada con soporte técnico continuo."
       }
     },
     "modern": {
@@ -571,7 +575,11 @@
           "title": "Optimización de Costos (FinOps)",
           "desc": "Monitorizamos consumo y aplicamos right-sizing e instancias reservadas."
         }
-      ]
+      ],
+      "meta": {
+        "title": "Servicios Gestionados de Microsoft Azure | Migración Cloud",
+        "description": "Servicios gestionados de Microsoft Azure para empresas: migración cloud segura, administración de servidores, soporte 24/7 y optimización continua de costos."
+      }
     },
     "automations": {
       "hero": {
@@ -665,12 +673,16 @@
             "desc": "Agentes que califican prospectos, agendan reuniones o resuelven tickets técnicos extrayendo info de manuales internos."
           }
         ]
+      },
+      "meta": {
+        "title": "Agentes Autónomos de IA para Empresas | Soluciones Agénticas",
+        "description": "Desarrollo de agentes de inteligencia artificial autónomos para empresas en Argentina y Latinoamérica. Automatizá tareas complejas con IA en Azure y Copilot."
       }
     },
     "finops": {
       "meta": {
-        "title": "Software FinOps para Azure | Optimización de Costos Cloud",
-        "description": "Plataforma FinOps SaaS para Azure: detectá recursos zombis, hacé rightsizing de VMs, gestioná reservas y reducí tu factura cloud. Agendá una demo con nuestros especialistas.",
+        "title": "Servicios FinOps para Empresas | Optimización de Costos Azure",
+        "description": "Servicios FinOps para empresas: optimizá tu gasto en Azure, eliminá recursos zombis y reducí hasta 35% de tu factura cloud. Agendá una demo con especialistas.",
         "keywords": [
           "FinOps Azure",
           "optimización de costos cloud",
@@ -863,10 +875,22 @@
         "ctaDemo": "Agendar Demo →",
         "ctaLogin": "Iniciar Sesión",
         "ctaDocumentation": "Explorar Módulos Funcionales ↓",
-        "stat1": { "val": "35%", "lbl": "Ahorro promedio detectado en 7 días" },
-        "stat2": { "val": "25+", "lbl": "Tipos de recursos zombis auditados" },
-        "stat3": { "val": "100%", "lbl": "Solo lectura con Entra ID & Lighthouse" },
-        "stat4": { "val": "FOCUS 1.1", "lbl": "Estándar de la FinOps Foundation" },
+        "stat1": {
+          "val": "35%",
+          "lbl": "Ahorro promedio detectado en 7 días"
+        },
+        "stat2": {
+          "val": "25+",
+          "lbl": "Tipos de recursos zombis auditados"
+        },
+        "stat3": {
+          "val": "100%",
+          "lbl": "Solo lectura con Entra ID & Lighthouse"
+        },
+        "stat4": {
+          "val": "FOCUS 1.1",
+          "lbl": "Estándar de la FinOps Foundation"
+        },
         "trust": {
           "entra": "Autenticación segura con Microsoft Entra ID",
           "focus": "Formato de exportación normalizado FOCUS 1.1",
