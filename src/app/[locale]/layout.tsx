@@ -32,6 +32,17 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     verification: {
       google: 'FXWGTuJKHNAxiW38Ti-DUn_1ltz7zHhWMStgIaMUlAw',
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
     openGraph: {
       title: t('homeTitle'),
       description: t('homeDescription'),

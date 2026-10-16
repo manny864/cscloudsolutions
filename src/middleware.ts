@@ -54,6 +54,6 @@ export const config = {
   matcher: [
     '/',
     '/(es|en|pt-BR)/:path*',
-    '/((?!api|_next|_vercel|finops_assesment|sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt|images|icon\\.png|opengraph-image\\.png|favicon\\.ico|.*\\..*).*)'
+    '/((?!api|_next|_vercel|stories|finops_assesment|sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt|images|icon\\.png|opengraph-image\\.png|favicon\\.ico|.*\\..*).*)'
   ]
 };

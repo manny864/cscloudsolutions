@@ -54,6 +54,17 @@ export function createPageMetadata({
     title,
     description,
     ...(keywords && keywords.length > 0 ? { keywords } : {}),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
     alternates: {
       canonical: canonicalPath,
       languages: {

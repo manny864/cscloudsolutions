@@ -58,6 +58,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: post.meta.title,
     description: post.meta.excerpt || post.meta.title,
     alternates,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
     openGraph: {
       title: post.meta.title,
       description: post.meta.excerpt || post.meta.title,
@@ -67,7 +78,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         {
           url: imageUrl,
           width: 1200,
-          height: 630,
+          height: 675,
           alt: post.meta.title,
         },
       ],
@@ -151,8 +162,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   const formattedPublish = String(publishDate).includes('T') ? String(publishDate) : `${publishDate}T09:00:00Z`;
   const formattedModified = String(modifiedDate).includes('T') ? String(modifiedDate) : `${modifiedDate}T09:00:00Z`;
 
+  const authorName = post.meta.author || 'Manuel Chavez';
+  const isManuel = authorName.toLowerCase().includes('manuel') || authorName.toLowerCase().includes('chavez');
+
   const blogPosting = {
-    '@type': 'BlogPosting',
+    '@type': 'TechArticle',
     '@id': `${postUrl}#article`,
     headline: post.meta.title,
     description: post.meta.excerpt || post.meta.title,
@@ -165,27 +179,30 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     },
     author: [
       {
+        '@type': 'Person',
+        name: authorName,
+        jobTitle: 'Cloud & FinOps Specialist',
+        url: 'https://cscloudsolutions.com.ar',
+        sameAs: isManuel
+          ? ['https://linkedin.com/in/manuel-enrique-chavez-manzano/']
+          : ['https://www.linkedin.com/company/cscloudsolutions'],
+      },
+      {
         '@type': 'Organization',
         name: 'CSCloudSolutions',
         url: 'https://cscloudsolutions.com.ar',
+        sameAs: ['https://www.linkedin.com/company/cscloudsolutions'],
         logo: {
           '@type': 'ImageObject',
           url: 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png',
         },
       },
-      ...(post.meta.author && post.meta.author !== 'CSCloudSolutions'
-        ? [
-            {
-              '@type': 'Person',
-              name: post.meta.author,
-            },
-          ]
-        : []),
     ],
     publisher: {
       '@type': 'Organization',
       name: 'CSCloudSolutions',
       url: 'https://cscloudsolutions.com.ar',
+      sameAs: ['https://www.linkedin.com/company/cscloudsolutions'],
       logo: {
         '@type': 'ImageObject',
         url: 'https://cscloudsolutions.com.ar/images/Logo_CSCloudSolutions.png',

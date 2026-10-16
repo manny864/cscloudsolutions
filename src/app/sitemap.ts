@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getAllPosts } from '@/lib/blog';
 import { blogMapping } from '@/lib/blog-mapping';
+import { getAllStories } from '@/lib/stories';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://cscloudsolutions.com.ar';
@@ -105,7 +106,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // 4. Entradas para Google Web Stories
+  const stories = getAllStories();
+  const storyEntries: MetadataRoute.Sitemap = stories.map((story) => {
+    const rawDate = story.modifiedTime ? new Date(story.modifiedTime) : new Date();
+    const lastModified = isNaN(rawDate.getTime()) ? new Date() : rawDate;
+
+    return {
+      url: `${baseUrl}/stories/${story.slug}`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    };
+  });
+
   // Nota: llms.txt y llms-full.txt se declaran directamente en robots.txt (LLMs-Txt: ...)
   // y se excluyen del sitemap web para evitar advertencias de formato no HTML en GSC.
-  return [...staticEntries, ...blogEntries];
+  return [...staticEntries, ...blogEntries, ...storyEntries];
 }
