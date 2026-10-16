@@ -132,3 +132,4 @@ export interface WebStory {
 - **Trampa 1:** No incluir etiquetas `<script>` personalizadas ni React hooks en las rutas `/stories/...` porque provocan error fatal de AMP `MANDATORY_TAG_MISSING` o `TAG_NOT_ALLOWED`.
 - **Trampa 2:** No usar imágenes de portada de menos de 1200 px de ancho para artículos del blog; Discover las ignora silenciosamente sin avisar en Search Console.
 - **Trampa 3:** El atributo `poster-portrait-src` en `<amp-story>` no debe contener texto incrustado denso, ya que Google genera la vista previa dinámica con el título superpuesto.
+- **Trampa 4 (Content-Security-Policy):** Si el proyecto utiliza cabeceras CSP estrictas en `next.config.mjs`, se DEBE autorizar explícitamente `https://cdn.ampproject.org` y `https://*.ampproject.org` en `script-src`, `frame-src` y `connect-src`. De lo contrario, el navegador bloqueará la descarga del runtime `v0.js` y `amp-story-1.0.js`, impidiendo la interacción con la historia.
