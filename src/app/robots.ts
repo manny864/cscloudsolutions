@@ -20,6 +20,14 @@ export default function robots(): MetadataRoute.Robots {
     '/en/admin/',
     '/pt-BR/admin/',
     '/finops_assesment/lib/',
+    '/tag/',
+    '/tag/*',
+    '/category/',
+    '/category/*',
+    '/wp-login.php',
+    '/wp-admin/',
+    '/wp-content/',
+    '/wp-includes/',
   ];
 
   return {
