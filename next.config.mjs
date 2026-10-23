@@ -106,6 +106,31 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/migracion-a-azure-un-caso-de-exito',
+        destination: '/blog/migracion-azure-caso-exito-manufactura',
+        permanent: true,
+      },
+      {
+        source: '/migracion-a-azure-un-caso-de-exito/',
+        destination: '/blog/migracion-azure-caso-exito-manufactura',
+        permanent: true,
+      },
+      {
+        source: '/post-type-page-sitemap-1.xml',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
+      {
+        source: '/tag/:path*',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/category/:path*',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
         source: '/migracion-azure-caso-exito-manufactura',
         destination: '/blog/migracion-azure-caso-exito-manufactura',
         permanent: true,
